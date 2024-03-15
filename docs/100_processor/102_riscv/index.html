@@ -12,22 +12,22 @@
     <title>102 - RISC-V :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1708012616" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/hybrid.css?1708012616" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1708012616" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1708012616" rel="stylesheet">
-    <link href="../../css/theme.css?1708012616" rel="stylesheet">
-    <link href="../../css/tabs.css?1708012616" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1708012616" rel="stylesheet">
+    <link href="../../css/nucleus.css?1709889567" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/hybrid.css?1709889567" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1709889567" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1709889567" rel="stylesheet">
+    <link href="../../css/theme.css?1709889567" rel="stylesheet">
+    <link href="../../css/tabs.css?1709889567" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1709889567" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1708012616" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1709889567" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1708012616"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1709889567"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1708012616"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1708012616"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1709889567"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1709889567"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1708012616"></script>
+<script type="text/javascript" src="../../js/search.js?1709889567"></script>
 
     
   </div>
@@ -880,9 +880,9 @@
 <p>To interpret and execute a program, an <strong>architecture</strong> is needed. Such a computer architecture is a model on how the list of instructions should be executed. A frequently used <strong>instruction set architecture (ISA)</strong> is the <strong>load-store</strong> architecture. This technique is used by the PowerPC, a MIPS processor, an ARM core &hellip; and the RISC-V. Another famous ISA is the <strong>register-memory</strong> architecture. This is used by the Intel x86 and the Motorola 68000 series.</p>
 <p>The difference between a load-store architecture and a register-memory architecture can be illustrated using an example: <code>add a, b, c</code>. This instruction has the processor calculate the sum of b and c and places the result in a. In a load-store architecture <strong>all</strong> three locations (a, b, and c) must be residing in a register. In a register-memory architecture these locations can also reside in memory.</p>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/RISC-V-logo.svg/220px-RISC-V-logo.svg.png" alt="RSIC-V_logo"></p>
-<p>In 2011 the University of California, Berkely published the <a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2011/EECS-2011-62.pdf"><strong>RISC-V Instruction Set Manual</strong></a>. The full history of RISC-V can be found on <a href="https://riscv.org/about/history/">their website</a>. This original specification has undergone quite some change. The most recent version (at the moment of writing) is December 16, 2021 and can be found <a href="https://github.com/riscv/riscv-isa-manual/releases/tag/draft-20211216-5651528">here</a>. Finally it is pointed out that RISC-V ISA is completely open and freely available to academia and industry 😃.</p>
+<p>In 2011 the University of California, Berkely published the <a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2011/EECS-2011-62.pdf" target="_blank">&lt;strong&gt;RISC-V Instruction Set Manual&lt;/strong&gt;</a>. The full history of RISC-V can be found on <a href="https://riscv.org/about/history/" target="_blank">their website</a>. This original specification has undergone quite some change. The most recent version (at the moment of writing) is December 16, 2021 and can be found <a href="https://github.com/riscv/riscv-isa-manual/releases/tag/draft-20211216-5651528" target="_blank">here</a>. Finally it is pointed out that RISC-V ISA is completely open and freely available to academia and industry 😃.</p>
 <p>A <em>word</em> from the instruction set is (for this course) assumed to be 32 bits. Such a 32-bit word can mean anything in the world until a consensus is achieved on how to interpret these words. This is done in the RISC-V ISA and will be shortly (re-)visit below.</p>
-<p>Having any idea, like the RISC-V, on paper is an important step. Of course, even the best design on paper is not running any programs. An <strong>implementation</strong> of the described ideas has to be made. For this course an existing implementation of RISC-V will used: the <a href="https://github.com/YosysHQ/picorv32">PicoRV32</a>. This implementation is a hardware description of a RISC-V processor and is optimised for size.</p>
+<p>Having any idea, like the RISC-V, on paper is an important step. Of course, even the best design on paper is not running any programs. An <strong>implementation</strong> of the described ideas has to be made. For this course an existing implementation of RISC-V will used: the <a href="https://github.com/YosysHQ/picorv32" target="_blank">PicoRV32</a>. This implementation is a hardware description of a RISC-V processor and is optimised for size.</p>
 <h2 id="risc-v-instruction-formats">RISC-V instruction formats</h2>
 <p>The core instructions in RISC-V can be grouped in 6 different formats:</p>
 <div class="multiHcolumn">
@@ -1446,19 +1446,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1708012616"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1708012616"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1708012616"></script>
-    <script src="../../js/jquery.sticky.js?1708012616"></script>
-    <script src="../../js/featherlight.min.js?1708012616"></script>
-    <script src="../../js/highlight.pack.js?1708012616"></script>
+    <script src="../../js/clipboard.min.js?1709889567"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1709889567"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1709889567"></script>
+    <script src="../../js/jquery.sticky.js?1709889567"></script>
+    <script src="../../js/featherlight.min.js?1709889567"></script>
+    <script src="../../js/highlight.pack.js?1709889567"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1708012616"></script>
-    <script src="../../js/learn.js?1708012616"></script>
-    <script src="../../js/hugo-learn.js?1708012616"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1709889567"></script>
+    <script src="../../js/learn.js?1709889567"></script>
+    <script src="../../js/hugo-learn.js?1709889567"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1708012616"></script>
+            <script src="../../mermaid/mermaid.js?1709889567"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

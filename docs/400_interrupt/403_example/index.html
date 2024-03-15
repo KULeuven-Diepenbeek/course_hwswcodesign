@@ -12,22 +12,22 @@
     <title>403 - Example :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1708012616" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/hybrid.css?1708012616" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1708012616" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1708012616" rel="stylesheet">
-    <link href="../../css/theme.css?1708012616" rel="stylesheet">
-    <link href="../../css/tabs.css?1708012616" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1708012616" rel="stylesheet">
+    <link href="../../css/nucleus.css?1709889567" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/hybrid.css?1709889567" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1709889567" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1709889567" rel="stylesheet">
+    <link href="../../css/theme.css?1709889567" rel="stylesheet">
+    <link href="../../css/tabs.css?1709889567" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1709889567" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1708012616" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1709889567" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1708012616"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1709889567"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1708012616"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1708012616"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1709889567"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1709889567"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1708012616"></script>
+<script type="text/javascript" src="../../js/search.js?1709889567"></script>
 
     
   </div>
@@ -916,7 +916,7 @@
 </div>    
 <h2 id="software">SOFTWARE</h2>
 <h3 id="picorv32-custom-instructions">PicoRV32 custom instructions</h3>
-<p>The PicoRV32 has a handful of custom instructions. To make the assembly-code (a bit) more readable some custom instructions and register-names have been defined. These can be found in <strong>custom_ops.S</strong> from the <a href="https://github.com/YosysHQ/picorv32/blob/master/firmware/custom_ops.S">PicoRV32 Github repository</a>.</p>
+<p>The PicoRV32 has a handful of custom instructions. To make the assembly-code (a bit) more readable some custom instructions and register-names have been defined. These can be found in <strong>custom_ops.S</strong> from the <a href="https://github.com/YosysHQ/picorv32/blob/master/firmware/custom_ops.S" target="_blank">PicoRV32 Github repository</a>.</p>
 <ul>
 <li><strong>picorv32_getq_insn()</strong>: copy q-register to gp-register</li>
 <li><strong>picorv32_setq_insn()</strong>: copy gp-register to q-register</li>
@@ -926,7 +926,7 @@
 <li><strong>picorv32_timer_insn()</strong>: reset the timer counter to a new value.</li>
 </ul>
 
-<div class="notices note" ><p>More info <a href="https://github.com/YosysHQ/picorv32#custom-instructions-for-irq-handling">here</a>.</p>
+<div class="notices note" ><p>More info <a href="https://github.com/YosysHQ/picorv32#custom-instructions-for-irq-handling" target="_blank">here</a>.</p>
 </div>
 
 <h3 id="reset-vector">Reset vector</h3>
@@ -1095,7 +1095,7 @@
 <p>The <em>restore</em> of the <em>state</em> is done in a similar fashion as the backup. When everything is tidied up, the &lsquo;return-from-interrupt&rsquo; function is called: <strong>picorv32_retirq_insn()</strong>.</p>
 </div>    
 </div>    
-<p>The actual C-code for the interrupt handler can be downloaded from the PicoRV32 Github repository (<a href="https://github.com/YosysHQ/picorv32/blob/master/firmware/irq.c">irq.c</a>).</p>
+<p>The actual C-code for the interrupt handler can be downloaded from the PicoRV32 Github repository (<a href="https://github.com/YosysHQ/picorv32/blob/master/firmware/irq.c" target="_blank">irq.c</a>).</p>
 <div class="multiHcolumn">
 <div class="column">
   <h3 id="interrupt-registers">Interrupt registers</h3>
@@ -1642,19 +1642,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1708012616"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1708012616"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1708012616"></script>
-    <script src="../../js/jquery.sticky.js?1708012616"></script>
-    <script src="../../js/featherlight.min.js?1708012616"></script>
-    <script src="../../js/highlight.pack.js?1708012616"></script>
+    <script src="../../js/clipboard.min.js?1709889567"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1709889567"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1709889567"></script>
+    <script src="../../js/jquery.sticky.js?1709889567"></script>
+    <script src="../../js/featherlight.min.js?1709889567"></script>
+    <script src="../../js/highlight.pack.js?1709889567"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1708012616"></script>
-    <script src="../../js/learn.js?1708012616"></script>
-    <script src="../../js/hugo-learn.js?1708012616"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1709889567"></script>
+    <script src="../../js/learn.js?1709889567"></script>
+    <script src="../../js/hugo-learn.js?1709889567"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1708012616"></script>
+            <script src="../../mermaid/mermaid.js?1709889567"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

@@ -120,7 +120,7 @@ begin
     -------------------------------------------------------------------------------
     -- APB peripheral
     -------------------------------------------------------------------------------
-    APB_dummy_inst00: component APB_dummy generic map(
+    APB_counter_inst00: component APB_counter generic map(
         G_BASE_ADDRESS => C_BASE_ADDRESS_2,
         G_HIGH_ADDRESS => C_HIGH_ADDRESS_2) 
     port map(
@@ -137,8 +137,8 @@ begin
         PRDATA => PRDATA_COMP_2_i,
         PSLVERR => PSLVERR_COMP_2_i
     );
-    
-    APB_dummy_inst01: component APB_dummy generic map(
+
+    APB_dummy_inst00: component APB_dummy generic map(
         G_BASE_ADDRESS => C_BASE_ADDRESS_3,
         G_HIGH_ADDRESS => C_HIGH_ADDRESS_3) 
     port map(
@@ -266,7 +266,7 @@ begin
             CATCH_MISALIGN => '1',
             CATCH_ILLINSN => '1',
             ENABLE_PCPI => '0',
-            ENABLE_MUL => '0',
+            ENABLE_MUL => '1',
             ENABLE_FAST_MUL => '0',
             ENABLE_DIV => '0',
             ENABLE_IRQ => '0',

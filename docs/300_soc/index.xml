@@ -25,7 +25,7 @@ A number of standardised bus architectures exist, for example:</description>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/300_soc/302_counter/</guid>
       <description>When a hardware/software codesign is made, we need to be able to measure the performance. A simple way to achieve this, is counting how many clock cycles certain operations take. Later on, this shall be revisited, but the peripheral will be useful (pinky swear).
-Having a arrived at your Master year, a counter is not exactly rocket science, nor brain surgery. The simple design that is shown, is a counter that either be incremented or cleared.</description>
+Having arrived at your Master year, a counter is not exactly rocket science, nor brain surgery (lol). The simple design that is shown, is a counter that either be incremented or cleared.</description>
     </item>
     
     <item>

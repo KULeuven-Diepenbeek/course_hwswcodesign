@@ -10,7 +10,7 @@ When a hardware/software codesign is made, we need to be able to **measure** the
 ![example](/img/300/counter.png)
 {{% /column %}}
 {{% column %}}
-Having a arrived at your Master year, a counter is not exactly rocket science, nor brain surgery. The simple design that is shown, is a counter that either be incremented or cleared.
+Having arrived at your Master year, a counter is not exactly rocket science, nor brain surgery ([lol](https://youtu.be/THNPmhBl-8I?si=dO2R8b0iyGD4_-Lm)). The simple design that is shown, is a counter that either be incremented or cleared.
 
 Note that this is **not** a special component, but a simple register with a load. The multiplexer and the adder add the functionality of a counter to the register. 
 {{% /column %}}

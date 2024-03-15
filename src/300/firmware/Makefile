@@ -1,8 +1,8 @@
 # Makefile
 
-RISCV_GNU_TOOLCHAIN_GIT_REVISION = 411d134
-RISCV_GNU_TOOLCHAIN_INSTALL_PREFIX = /opt/riscv32
-TOOLCHAIN_PREFIX = $(RISCV_GNU_TOOLCHAIN_INSTALL_PREFIX)i/bin/riscv32-unknown-elf-
+RISCV_GNU_TOOLCHAIN_GIT_REVISION = 8c969a9
+RISCV_GNU_TOOLCHAIN_INSTALL_PREFIX = /opt/riscv
+TOOLCHAIN_PREFIX = $(RISCV_GNU_TOOLCHAIN_INSTALL_PREFIX)/bin/riscv32-unknown-elf-
 
 PYTHON = /usr/bin/python3
 
@@ -11,13 +11,13 @@ GCC_ARGS = -mcmodel=medlow
 COMPRESSED_ISA = 
 
 CC      = /usr/bin/gcc
-CFLAGS  = -Wall -O3
-LDFLAGS = -Os #-pg -g 
+CFLAGS  = -Wall -pg
+LDFLAGS = #-pg -g
 
 BUILDDIR = build
 SOURCEDIR = src
 HEADERDIR = src
-TOOLS = tools
+TOOLS = ../../tools
 
 SOURCES = $(wildcard $(SOURCEDIR)/*.c)
 SOURCES_A = $(wildcard $(SOURCEDIR)/*.S)
@@ -29,7 +29,7 @@ BINARY = firmware.elf
 RM = rm -rf
 MKDIR = mkdir
 
-ARCHITECTURE = rv32i$(subst C,c,$(COMPRESSED_ISA))
+ARCHITECTURE = rv32im$(subst C,c,$(COMPRESSED_ISA))
 
 .PHONY: all clean sizes setup
 
@@ -50,11 +50,11 @@ all: firmware.hex firmware.objdump
 
 # LINKING ######################################################################
 $(BINARY): $(OBJECTS) $(OBJECTS_A)
-	$(TOOLCHAIN_PREFIX)gcc -ffreestanding -nostdlib -o $@ $^ $(GCC_ARGS) --std=gnu99 -Wl,-Bstatic,-T,firmware.lds,-Map,firmware.map,--strip-debug -lgcc
+	$(TOOLCHAIN_PREFIX)gcc -Os -ffreestanding -nostdlib -o $@ $^ $(GCC_ARGS) --std=gnu99 -Wl,-Bstatic,-T,firmware.lds,-Map,firmware.map,--strip-debug -lgcc
 
 # COMPILING ####################################################################
 $(BUILDDIR)/%.o: $(SOURCEDIR)/%.c
-	$(TOOLCHAIN_PREFIX)gcc -c -march=$(ARCHITECTURE) -O3 --std=c99 $(GCC_WARNS) -ffreestanding -nostdlib -o $@ $<
+	$(TOOLCHAIN_PREFIX)gcc -c -march=$(ARCHITECTURE) -Os --std=c99 $(GCC_WARNS) -ffreestanding -nostdlib -o $@ $<
 
 # MAIN STRUCTURE
 $(BUILDDIR)/start.o: $(SOURCEDIR)/start.S
@@ -72,6 +72,7 @@ setup:
 clean:
 	$(RM) firmware*.elf firmware*.bin firmware*.hex firmware*.map firmware*.objdump
 	$(RM) $(BINARY) $(OBJECTS) $(OBJECTS_A)
+	$(RM) -f simulation_output.dat
 
 report: simulation_output.dat
 	$(PYTHON) $(TOOLS)/parse_simulation.py $<

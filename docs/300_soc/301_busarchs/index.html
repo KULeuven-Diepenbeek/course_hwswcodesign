@@ -12,22 +12,22 @@
     <title>301 - Bus architectures :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1708012616" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/hybrid.css?1708012616" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1708012616" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1708012616" rel="stylesheet">
-    <link href="../../css/theme.css?1708012616" rel="stylesheet">
-    <link href="../../css/tabs.css?1708012616" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1708012616" rel="stylesheet">
+    <link href="../../css/nucleus.css?1709889567" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/hybrid.css?1709889567" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1709889567" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1709889567" rel="stylesheet">
+    <link href="../../css/theme.css?1709889567" rel="stylesheet">
+    <link href="../../css/tabs.css?1709889567" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1709889567" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1708012616" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1709889567" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1708012616"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1709889567"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1708012616"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1708012616"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1709889567"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1709889567"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1708012616"></script>
+<script type="text/javascript" src="../../js/search.js?1709889567"></script>
 
     
   </div>
@@ -911,11 +911,11 @@
   <p><img src="https://www.mouser.be/images/marketingid/2019/microsites/0/Zynq-7000BlockDiagram.png" alt="example"></p>
 </div>    
 </div>    
-<p>To protect ourselves from getting lost in details, only the <em>APB</em> bus will be used in this course. The most recent specification of this protocol can be obtained from the <a href="https://developer.arm.com/documentation/ihi0024/d">ARM website</a>.</p>
+<p>To protect ourselves from getting lost in details, only the <em>APB</em> bus will be used in this course. The most recent specification of this protocol can be obtained from the <a href="https://developer.arm.com/documentation/ihi0024/d" target="_blank">ARM website</a>.</p>
 <h2 id="advanced-peripheral-bus-apb">Advanced Peripheral Bus (APB)</h2>
 <p>When two components are talking, typically the names master and slave are used. The lingo in the APB-bus uses: the <strong>requester</strong> and the <strong>completer</strong>. The image below shows a setup with one requester and one completer. The <strong>clock</strong> and <strong>reset</strong> signals are provided externally. Most of the signals are driven by the requester, but (offcourse) a couple of signals are driven by the completer.</p>
 <p><img src="../../img/300/apb.png" alt="APB"></p>
-<p>For a more in-depth description of each of these signals, you can visit the <a href="https://developer.arm.com/documentation/ihi0024/d">specification</a>.</p>
+<p>For a more in-depth description of each of these signals, you can visit the <a href="https://developer.arm.com/documentation/ihi0024/d" target="_blank">specification</a>.</p>
 <p>Transfers on the APB-bus follow 2 successive phases: the the <strong>setup phase</strong> and the <strong>access phase</strong>. In the <em>setup phase</em> the requester drives the SEL and the ADDR lines, amongst other. After <strong>one clock cycle</strong> the requester drives the <em>ENABLE</em> signal in the <em>access phase</em>.</p>
 <div class="multiHcolumn">
 <div class="column">
@@ -946,7 +946,7 @@
 <li> the <b>PSEL</b> input is high</li>
 <li> the <b>PENABLE</b> input is low (= setup phase)</li>
 </ul>
-When these conditions are met, the transfer is aimed at this peripheral. Depending on the **PWRITE** signal, the transfer is either a write (1) or a read (0) transfer.
+<p>When these conditions are met, the transfer is aimed at this peripheral. Depending on the <strong>PWRITE</strong> signal, the transfer is either a write (1) or a read (0) transfer.</p>
 <p>The transfer that is considered for this peripheral (both in case of read or write) is sampled in one of the register on the bottom right. A simple OR of these registers can be used as the <strong>PREADY</strong> signal.</p>
 </div>    
 <div class="column">
@@ -1478,19 +1478,19 @@ When these conditions are met, the transfer is aimed at this peripheral. Dependi
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1708012616"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1708012616"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1708012616"></script>
-    <script src="../../js/jquery.sticky.js?1708012616"></script>
-    <script src="../../js/featherlight.min.js?1708012616"></script>
-    <script src="../../js/highlight.pack.js?1708012616"></script>
+    <script src="../../js/clipboard.min.js?1709889567"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1709889567"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1709889567"></script>
+    <script src="../../js/jquery.sticky.js?1709889567"></script>
+    <script src="../../js/featherlight.min.js?1709889567"></script>
+    <script src="../../js/highlight.pack.js?1709889567"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1708012616"></script>
-    <script src="../../js/learn.js?1708012616"></script>
-    <script src="../../js/hugo-learn.js?1708012616"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1709889567"></script>
+    <script src="../../js/learn.js?1709889567"></script>
+    <script src="../../js/hugo-learn.js?1709889567"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1708012616"></script>
+            <script src="../../mermaid/mermaid.js?1709889567"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

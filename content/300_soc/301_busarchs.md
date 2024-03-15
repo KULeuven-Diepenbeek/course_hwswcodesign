@@ -95,6 +95,7 @@ This example takes into account the following conditions to determine whether or
 <li> the <b>PSEL</b> input is high</li>
 <li> the <b>PENABLE</b> input is low (= setup phase)</li>
 </ul>
+
 When these conditions are met, the transfer is aimed at this peripheral. Depending on the **PWRITE** signal, the transfer is either a write (1) or a read (0) transfer.
 
 The transfer that is considered for this peripheral (both in case of read or write) is sampled in one of the register on the bottom right. A simple OR of these registers can be used as the **PREADY** signal.

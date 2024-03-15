@@ -8,7 +8,11 @@
 #ifndef PRINT_H
 #define PRINT_H
 
+#include <stdint.h>
+#include <stdbool.h>
+
 #define OUTPORT 0x80000000
+
 
 // print.c
 void print_chr(char ch);

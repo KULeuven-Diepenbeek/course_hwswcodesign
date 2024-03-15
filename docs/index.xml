@@ -34,7 +34,7 @@ When we hear stories, from a certain level of abstraction these stories are simp
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/100_processor/103_picorv/</guid>
-      <description>RISC-V is not a processor, but a specification. Of course there is the Internet and plenty of people have made an implementation for this specification. In this course we&amp;rsquo;ll be working with the PicoRV32. The entity (or module) looks like the image below.
+      <description>RISC-V is not a processor, but a specification. Of course there is the Internet and plenty of people have made an implementation for this specification. In this course we&amp;rsquo;ll be working with the &amp;lt;strong&amp;gt;PicoRV32&amp;lt;/strong&amp;gt;. The entity (or module) looks like the image below.
 Native memory interface The PicoRV32 has a simple memory interface. It allows for a single memory transfer at a time. Every transaction is initiated by the PicoRV32 core, by raising mem_valid.</description>
     </item>
     
@@ -128,7 +128,7 @@ A number of standardised bus architectures exist, for example:</description>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/300_soc/302_counter/</guid>
       <description>When a hardware/software codesign is made, we need to be able to measure the performance. A simple way to achieve this, is counting how many clock cycles certain operations take. Later on, this shall be revisited, but the peripheral will be useful (pinky swear).
-Having a arrived at your Master year, a counter is not exactly rocket science, nor brain surgery. The simple design that is shown, is a counter that either be incremented or cleared.</description>
+Having arrived at your Master year, a counter is not exactly rocket science, nor brain surgery (lol). The simple design that is shown, is a counter that either be incremented or cleared.</description>
     </item>
     
     <item>

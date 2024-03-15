@@ -28,6 +28,7 @@ void print_dec(unsigned int val)
 	print_chr('\n');
 }
 
+
 void print_hex(unsigned int val, int digits)
 {
 	for (int i = (4*digits)-4; i >= 0; i -= 4)

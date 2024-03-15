@@ -12,22 +12,22 @@
     <title>104 - Cross compiling :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1708012616" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/hybrid.css?1708012616" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1708012616" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1708012616" rel="stylesheet">
-    <link href="../../css/theme.css?1708012616" rel="stylesheet">
-    <link href="../../css/tabs.css?1708012616" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1708012616" rel="stylesheet">
+    <link href="../../css/nucleus.css?1709889567" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/hybrid.css?1709889567" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1709889567" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1709889567" rel="stylesheet">
+    <link href="../../css/theme.css?1709889567" rel="stylesheet">
+    <link href="../../css/tabs.css?1709889567" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1709889567" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1708012616" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1709889567" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1708012616"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1709889567"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1708012616"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1708012616"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1709889567"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1709889567"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1708012616"></script>
+<script type="text/javascript" src="../../js/search.js?1709889567"></script>
 
     
   </div>
@@ -879,7 +879,7 @@
 <p>To make a program run on the PicoRV32, it has to be written first. The software that is written in this course will be in <strong>C</strong>. Of course, the processor does not understand C instructions. As you have seen in earlier courses, the C-code is first <strong>compiled</strong> and then <strong>linked</strong> to end up with a binary. This binary contains machine code that can be ran on the processor.</p>
 <p>If the machine on which the compiler and linker are executed differs from the target machine that is to execute the program, the term <strong>cross-compilation</strong> is used.</p>
 <p>All examples in this course were compiled with the <strong>riscv32-unknown-elf-gcc</strong>. For more information on installing this toolchain please use <a href="http://www.google.com" target="_blank"><span style="font-weight: bold"><span style="color: #4885ed">G</span><span style="color: #db3236">o</span><span style="color: #f4c20d">o</span><span style="color: #4885ed">g</span><span style="color: #3cba54">l</span><span style="color: #db3236">e</span></span></a>
-(e.g. <a href="https://mindchasers.com/dev/rv-getting-started">here</a>).</p>
+(e.g. <a href="https://mindchasers.com/dev/rv-getting-started" target="_blank">here</a>).</p>
 <h2 id="bare-metal">Bare metal</h2>
 <p>Bare metal programming is writing software that is not running on an Operating System (OS). You probably have done this when (maybe unknowingly) programming an Arduino or another microprocessor.</p>
 <div class="multiHcolumn">
@@ -1043,7 +1043,7 @@
 <p><img src="../../img/100/toolflow1.png" alt="build"></p>
 </div>    
 </div>    
-<p>With these 5 files (1 header, 3 C files and a linker script) the final binary file can be generated. This binary is in the <em>Executable and Linkable Format (<a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">.elf</a>)</em></p>
+<p>With these 5 files (1 header, 3 C files and a linker script) the final binary file can be generated. This binary is in the <em>Executable and Linkable Format (<a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank">.elf</a>)</em></p>
 <h2 id="conversion-to-human-readable-and-to-fpga-compatible">Conversion to human-readable and to FPGA-compatible</h2>
 <p>After running the tool chain, an <strong>.elf</strong> file is generated. It might become useful to understand what is going on in this file (as humans). Secondly, this file needs to be loaded to the FPGA implementation of the RISC-V.</p>
 <div class="multiHcolumn">
@@ -1246,7 +1246,7 @@
 </div>    
 <div class="column">
   <h3 id="-to-fpga-compatible">&hellip; to FPGA-compatible</h3>
-<p>Next to &lsquo;decompiling&rsquo; the binary .elf file to a human-readable representation, it can also be translated to a flat text format. This can be achieved with a Python script <a href="https://github.com/KULeuven-Diepenbeek/course_hwswcodesign/blob/master/src/tools/makehex.py">makehex.py</a>.</p>
+<p>Next to &lsquo;decompiling&rsquo; the binary .elf file to a human-readable representation, it can also be translated to a flat text format. This can be achieved with a Python script <a href="https://github.com/KULeuven-Diepenbeek/course_hwswcodesign/blob/master/src/tools/makehex.py" target="_blank">makehex.py</a>.</p>
 <p>An option to generate this hex dump is present in the Makefile and the result should look something like this.</p>
 <div class="code_caption">
     firmware.hex
@@ -1942,19 +1942,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1708012616"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1708012616"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1708012616"></script>
-    <script src="../../js/jquery.sticky.js?1708012616"></script>
-    <script src="../../js/featherlight.min.js?1708012616"></script>
-    <script src="../../js/highlight.pack.js?1708012616"></script>
+    <script src="../../js/clipboard.min.js?1709889567"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1709889567"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1709889567"></script>
+    <script src="../../js/jquery.sticky.js?1709889567"></script>
+    <script src="../../js/featherlight.min.js?1709889567"></script>
+    <script src="../../js/highlight.pack.js?1709889567"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1708012616"></script>
-    <script src="../../js/learn.js?1708012616"></script>
-    <script src="../../js/hugo-learn.js?1708012616"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1709889567"></script>
+    <script src="../../js/learn.js?1709889567"></script>
+    <script src="../../js/hugo-learn.js?1709889567"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1708012616"></script>
+            <script src="../../mermaid/mermaid.js?1709889567"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

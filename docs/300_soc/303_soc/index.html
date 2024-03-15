@@ -12,22 +12,22 @@
     <title>303 - System on Chip (SoC) :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1708012616" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/hybrid.css?1708012616" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1708012616" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1708012616" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1708012616" rel="stylesheet">
-    <link href="../../css/theme.css?1708012616" rel="stylesheet">
-    <link href="../../css/tabs.css?1708012616" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1708012616" rel="stylesheet">
+    <link href="../../css/nucleus.css?1709889567" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/hybrid.css?1709889567" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1709889567" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1709889567" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1709889567" rel="stylesheet">
+    <link href="../../css/theme.css?1709889567" rel="stylesheet">
+    <link href="../../css/tabs.css?1709889567" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1709889567" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1708012616" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1709889567" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1708012616"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1709889567"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1708012616"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1708012616"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1709889567"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1709889567"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1708012616"></script>
+<script type="text/javascript" src="../../js/search.js?1709889567"></script>
 
     
   </div>
@@ -874,7 +874,7 @@
         
 
 
-<p>A system on a chip or <strong>SoC</strong> stands in contrast to the traditional PC or laptop which are organised around a motherboard. In the third Bachelor of this program an entire course was spent on this topic: System-on-Chip design and experimentation. If you need a refresher, please head over to <a href="https://kuleuven-diepenbeek.github.io/soc-lab/">the website</a>.</p>
+<p>A system on a chip or <strong>SoC</strong> stands in contrast to the traditional PC or laptop which are organised around a motherboard. In the third Bachelor of this program an entire course was spent on this topic: System-on-Chip design and experimentation. If you need a refresher, please head over to <a href="https://kuleuven-diepenbeek.github.io/soc-lab/" target="_blank">the website</a>.</p>
 <p>The figure below shows an example of a SoC that we can build with what was seen before. At the hearth of the system is the RISC-V processor (<strong>picorv32i</strong>). The bus system that connects all the components together is an <strong>APB bus</strong>. Critical readers might point out the <em>native</em> memory interface of the picorv32i does not fit the APB-bus. A custom adapter is made to make this connection feasible (<strong>APB adapter</strong>). As you might have already spotted, the picorv32i already comes with two other adapters: 1 for connecting to an AXI bus, and 1 for converting to a wishbone interface.</p>
 <p><img src="../../img/300/soc.png" alt="soc"></p>
 <p>The <strong>APB memory</strong> and the <strong>APB print</strong> components were already discussed. It is pointed out once more that both these components are actually <em>models</em>. The HDL code of these components is <strong>non-synthesisable</strong>, meaning: it&rsquo;s valid HDL code, but it cannot be converted into hardware.</p>
@@ -1444,19 +1444,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1708012616"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1708012616"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1708012616"></script>
-    <script src="../../js/jquery.sticky.js?1708012616"></script>
-    <script src="../../js/featherlight.min.js?1708012616"></script>
-    <script src="../../js/highlight.pack.js?1708012616"></script>
+    <script src="../../js/clipboard.min.js?1709889567"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1709889567"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1709889567"></script>
+    <script src="../../js/jquery.sticky.js?1709889567"></script>
+    <script src="../../js/featherlight.min.js?1709889567"></script>
+    <script src="../../js/highlight.pack.js?1709889567"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1708012616"></script>
-    <script src="../../js/learn.js?1708012616"></script>
-    <script src="../../js/hugo-learn.js?1708012616"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1709889567"></script>
+    <script src="../../js/learn.js?1709889567"></script>
+    <script src="../../js/hugo-learn.js?1709889567"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1708012616"></script>
+            <script src="../../mermaid/mermaid.js?1709889567"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

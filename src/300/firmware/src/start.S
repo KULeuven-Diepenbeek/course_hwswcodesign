@@ -1,6 +1,6 @@
   .section .init
   .global main
-  /*.global hard_div*/
+  .global hard_div
   .global esns_nop
 
 start:
@@ -50,3 +50,7 @@ start:
 esns_nop:
   ADDI x0, x0, 0
   ret
+
+hard_div:
+	div a0, a0, a1
+	ret
