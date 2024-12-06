@@ -55,13 +55,13 @@ enableGitInfo = true
     ordersectionsby = "weight"
     disableLandingPageButton = true # Disable the "Home" link in the navigation menu
 
+[params.author]
+  name = "Jo Vliegen"
+  email = "<i>fname</i>.<i>lname</i>A T<i>kuleuven.be</i>"
+
 # see https://learn.netlify.com/en/basics/configuration/
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
-
-[Author]
-  name = "Jo Vliegen"
-  email = "<i>fname</i>.<i>lname</i>A T<i>kuleuven.be</i>"
 
 [[menu.shortcuts]] 
 name = "<i class='fa fa-university'></i> Toledo"

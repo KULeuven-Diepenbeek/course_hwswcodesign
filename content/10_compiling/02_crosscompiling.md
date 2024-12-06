@@ -13,14 +13,14 @@ cli@hwswcd:~/$> gcc -o main.bin main.c
 ```
 {{% /column %}}
 {{% column %}}
-![gcc_1](/img/20/compile_1.png)
+![gcc_1](/img/10/compile_1.png)
 {{% /column %}}
 {{% /multiHcolumn %}}
 
 
 {{% multiHcolumn %}}
 {{% column %}}
-![gcc_1](/img/20/compile_2.png)
+![gcc_1](/img/10/compile_2.png)
 {{% /column %}}
 {{% column %}}
 A more accurate use of **Compiling** is to indicate the part of the toolchain that converts source code into machine code. (Although this is not entirely correct, going into the details falls out of the scope of this course.) The output of the compilers are called **object files (.o)** which need to be stiched together by **Linking**.
