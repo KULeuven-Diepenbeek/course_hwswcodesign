@@ -36,19 +36,24 @@ Maybe the assembly code that is shown already adds a level of abstraction to wha
 
 If all these bits are concatenated, the 32-bit binary string is formed *0b00000000011100110000001010110011*. Writing it hexadecimally, this becomes: **0x007302b3**. Many tools exist that help us automate this, however (e.g. [instruction encoder/decoders](https://luplab.gitlab.io/rvcodecjs/#q=007302b3&abi=true&isa=AUTO)).
 
+
+
+{{% /column %}}
+{{% column %}}
+{{< include_file "/src/10/01_firmware.S" "S" >}}
+{{% /column %}}
+{{% column %}}
+{{< include_file "/src/10/01_firmware.mc" "S" >}}
+{{% /column %}}
+{{% /multiHcolumn %}}
+
+![fib](/img/10/sim_fib.png)
+
 Adding layers of abstraction helps us (the human programmer) to write code more easily: **add t0, t1, t2** vs **0x007302b3**.
 
 {{% notice note %}}
 Note the *endless* loop at the end. What is it for?
 {{% /notice %}}
-
-{{% /column %}}
-{{% column %}}
-{{< include_file "/src/10/firmware.S" "S" >}}
-{{% /column %}}
-{{% /multiHcolumn %}}
-
-![fib](/img/10/sim_fib.png)
 
 ## Let's **C** another level of abstraction
 
@@ -56,7 +61,7 @@ Another level of abstraction can make programmer-live even more manageable. In t
 
 {{% multiHcolumn %}}
 {{% column %}}
-{{< include_file "/src/10/fib.c" "c" >}}
+{{< include_file "/src/10/01_fib.c" "c" >}}
 {{% /column %}}
 {{% column %}}
 The example shown here, is written in C and is much more human-friendly. Four variables are declared and two of them are initialised. After printing these values, a loop is executed in which the Fibonacci sequence is calculated and printed. All printed values are 2-digit hexadecimal and they are seperated with a dash ('-').

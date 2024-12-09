@@ -1,0 +1,106 @@
+
+firmware.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <start>:
+   0:	00000093          	addi	ra,zero,0
+   4:	00000113          	addi	sp,zero,0
+   8:	00000193          	addi	gp,zero,0
+   c:	00000213          	addi	tp,zero,0
+  10:	00000293          	addi	t0,zero,0
+  14:	00000313          	addi	t1,zero,0
+  18:	00000393          	addi	t2,zero,0
+  1c:	00000413          	addi	s0,zero,0
+  20:	00000493          	addi	s1,zero,0
+  24:	00000513          	addi	a0,zero,0
+  28:	00000593          	addi	a1,zero,0
+  2c:	00000613          	addi	a2,zero,0
+  30:	00000693          	addi	a3,zero,0
+  34:	00000713          	addi	a4,zero,0
+  38:	00000793          	addi	a5,zero,0
+  3c:	00000813          	addi	a6,zero,0
+  40:	00000893          	addi	a7,zero,0
+  44:	00000913          	addi	s2,zero,0
+  48:	00000993          	addi	s3,zero,0
+  4c:	00000a13          	addi	s4,zero,0
+  50:	00000a93          	addi	s5,zero,0
+  54:	00000b13          	addi	s6,zero,0
+  58:	00000b93          	addi	s7,zero,0
+  5c:	00000c13          	addi	s8,zero,0
+  60:	00000c93          	addi	s9,zero,0
+  64:	00000d13          	addi	s10,zero,0
+  68:	00000d93          	addi	s11,zero,0
+  6c:	00000e13          	addi	t3,zero,0
+  70:	00000e93          	addi	t4,zero,0
+  74:	00000f13          	addi	t5,zero,0
+  78:	00000f93          	addi	t6,zero,0
+  7c:	00001137          	lui	sp,0x1
+  80:	008000ef          	jal	ra,88 <main>
+
+00000084 <done>:
+  84:	0000006f          	jal	zero,84 <done>
+
+00000088 <main>:
+  88:	00001537          	lui	a0,0x1
+  8c:	ff010113          	addi	sp,sp,-16 # ff0 <print_hex+0xf1c>
+  90:	c0050513          	addi	a0,a0,-1024 # c00 <print_hex+0xb2c>
+  94:	00112623          	sw	ra,12(sp)
+  98:	020000ef          	jal	ra,b8 <print_str>
+  9c:	00c12083          	lw	ra,12(sp)
+  a0:	00000513          	addi	a0,zero,0
+  a4:	01010113          	addi	sp,sp,16
+  a8:	00008067          	jalr	zero,0(ra)
+
+000000ac <print_chr>:
+  ac:	800007b7          	lui	a5,0x80000
+  b0:	00a7a023          	sw	a0,0(a5) # 80000000 <print_hex+0x7fffff2c>
+  b4:	00008067          	jalr	zero,0(ra)
+
+000000b8 <print_str>:
+  b8:	80000737          	lui	a4,0x80000
+  bc:	00054783          	lbu	a5,0(a0)
+  c0:	00079463          	bne	a5,zero,c8 <print_str+0x10>
+  c4:	00008067          	jalr	zero,0(ra)
+  c8:	00150513          	addi	a0,a0,1
+  cc:	00f72023          	sw	a5,0(a4) # 80000000 <print_hex+0x7fffff2c>
+  d0:	fedff06f          	jal	zero,bc <print_str+0x4>
+
+000000d4 <print_hex>:
+  d4:	fff58593          	addi	a1,a1,-1
+  d8:	00259593          	slli	a1,a1,0x2
+  dc:	000016b7          	lui	a3,0x1
+  e0:	80000637          	lui	a2,0x80000
+  e4:	0005da63          	bge	a1,zero,f8 <print_hex+0x24>
+  e8:	800007b7          	lui	a5,0x80000
+  ec:	00a00713          	addi	a4,zero,10
+  f0:	00e7a023          	sw	a4,0(a5) # 80000000 <print_hex+0x7fffff2c>
+  f4:	00008067          	jalr	zero,0(ra)
+  f8:	00b55733          	srl	a4,a0,a1
+  fc:	c1068793          	addi	a5,a3,-1008 # c10 <print_hex+0xb3c>
+ 100:	0ff77713          	andi	a4,a4,255
+ 104:	00e787b3          	add	a5,a5,a4
+ 108:	0007c783          	lbu	a5,0(a5)
+ 10c:	ffc58593          	addi	a1,a1,-4
+ 110:	00f62023          	sw	a5,0(a2) # 80000000 <print_hex+0x7fffff2c>
+ 114:	fd1ff06f          	jal	zero,e4 <print_hex+0x10>
+
+Disassembly of section .rodata.str1.4:
+
+00000c00 <.rodata.str1.4>:
+ c00:	6548                	.insn	2, 0x6548
+ c02:	6c6c                	.insn	2, 0x6c6c
+ c04:	6f77206f          	jal	zero,73afa <print_hex+0x73a26>
+ c08:	6c72                	.insn	2, 0x6c72
+ c0a:	2164                	.insn	2, 0x2164
+ c0c:	2121                	.insn	2, 0x2121
+ c0e:	000a                	.insn	2, 0x000a
+ c10:	3130                	.insn	2, 0x3130
+ c12:	3332                	.insn	2, 0x3332
+ c14:	3534                	.insn	2, 0x3534
+ c16:	3736                	.insn	2, 0x3736
+ c18:	3938                	.insn	2, 0x3938
+ c1a:	4241                	.insn	2, 0x4241
+ c1c:	46454443          	.insn	4, 0x46454443
+	...

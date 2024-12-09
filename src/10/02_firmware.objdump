@@ -1,0 +1,50 @@
+
+build/firmware.o:     file format elf32-littleriscv
+build/firmware.o
+architecture: riscv:rv32, flags 0x00000011:
+HAS_RELOC, HAS_SYMS
+start address 0x00000000
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000000  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00000000  00000000  00000034  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000000  00000000  00000000  00000034  2**0
+                  ALLOC
+  3 .rodata.str1.4 0000000e  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .text.startup 0000001c  00000000  00000000  00000044  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .comment      0000001a  00000000  00000000  00000060  2**0
+                  CONTENTS, READONLY
+  6 .note.GNU-stack 00000000  00000000  00000000  0000007a  2**0
+                  CONTENTS, READONLY
+  7 .riscv.attributes 0000001c  00000000  00000000  0000007a  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+00000000 l    df *ABS*	00000000 firmware.c
+00000000 l    d  .text	00000000 .text
+00000000 l    d  .data	00000000 .data
+00000000 l    d  .bss	00000000 .bss
+00000000 l    d  .rodata.str1.4	00000000 .rodata.str1.4
+00000000 l    d  .text.startup	00000000 .text.startup
+00000000 l    d  .note.GNU-stack	00000000 .note.GNU-stack
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .riscv.attributes	00000000 .riscv.attributes
+00000000 g     F .text.startup	0000001c main
+00000000         *UND*	00000000 print_str
+
+
+RELOCATION RECORDS FOR [.text.startup]:
+OFFSET   TYPE              VALUE
+00000000 R_RISCV_HI20      .LC0
+00000000 R_RISCV_RELAX     *ABS*
+00000008 R_RISCV_LO12_I    .LC0
+00000008 R_RISCV_RELAX     *ABS*
+00000010 R_RISCV_CALL_PLT  print_str
+00000010 R_RISCV_RELAX     *ABS*
+00000018 R_RISCV_JAL       .L2
+
+

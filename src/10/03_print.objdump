@@ -1,0 +1,88 @@
+
+build/print.o:     file format elf32-littleriscv
+build/print.o
+architecture: riscv:rv32, flags 0x00000011:
+HAS_RELOC, HAS_SYMS
+start address 0x00000000
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000006c  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .data         00000000  00000000  00000000  000000a0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000000  00000000  00000000  000000a0  2**0
+                  ALLOC
+  3 .rodata.str1.4 00000011  00000000  00000000  000000a0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .comment      0000001a  00000000  00000000  000000b1  2**0
+                  CONTENTS, READONLY
+  5 .note.GNU-stack 00000000  00000000  00000000  000000cb  2**0
+                  CONTENTS, READONLY
+  6 .riscv.attributes 0000001c  00000000  00000000  000000cb  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+00000000 l    df *ABS*	00000000 print.c
+00000000 l    d  .text	00000000 .text
+00000000 l    d  .data	00000000 .data
+00000000 l    d  .bss	00000000 .bss
+00000000 l    d  .rodata.str1.4	00000000 .rodata.str1.4
+00000000 l    d  .note.GNU-stack	00000000 .note.GNU-stack
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .riscv.attributes	00000000 .riscv.attributes
+00000000 g     F .text	0000000c print_chr
+0000000c g     F .text	0000001c print_str
+00000028 g     F .text	00000044 print_hex
+
+
+
+Disassembly of section .text:
+
+00000000 <print_chr>:
+   0:	800007b7          	lui	a5,0x80000
+   4:	00a7a023          	sw	a0,0(a5) # 80000000 <.L7+0x7fffffb4>
+   8:	00008067          	ret
+
+0000000c <print_str>:
+   c:	80000737          	lui	a4,0x80000
+
+00000010 <.L3>:
+  10:	00054783          	lbu	a5,0(a0)
+  14:	00079463          	bnez	a5,1c <.L4>
+			14: R_RISCV_BRANCH	.L4
+  18:	00008067          	ret
+
+0000001c <.L4>:
+  1c:	00150513          	addi	a0,a0,1
+  20:	00f72023          	sw	a5,0(a4) # 80000000 <.L7+0x7fffffb4>
+  24:	fedff06f          	j	10 <.L3>
+			24: R_RISCV_JAL	.L3
+
+00000028 <print_hex>:
+  28:	fff58593          	addi	a1,a1,-1
+  2c:	00259593          	slli	a1,a1,0x2
+  30:	000006b7          	lui	a3,0x0
+			30: R_RISCV_HI20	.LC0
+			30: R_RISCV_RELAX	*ABS*
+  34:	80000637          	lui	a2,0x80000
+
+00000038 <.L6>:
+  38:	0005da63          	bgez	a1,4c <.L7>
+			38: R_RISCV_BRANCH	.L7
+  3c:	800007b7          	lui	a5,0x80000
+  40:	00a00713          	li	a4,10
+  44:	00e7a023          	sw	a4,0(a5) # 80000000 <.L7+0x7fffffb4>
+  48:	00008067          	ret
+
+0000004c <.L7>:
+  4c:	00b55733          	srl	a4,a0,a1
+  50:	00068793          	mv	a5,a3
+			50: R_RISCV_LO12_I	.LC0
+			50: R_RISCV_RELAX	*ABS*
+  54:	0ff77713          	zext.b	a4,a4
+  58:	00e787b3          	add	a5,a5,a4
+  5c:	0007c783          	lbu	a5,0(a5)
+  60:	ffc58593          	addi	a1,a1,-4
+  64:	00f62023          	sw	a5,0(a2) # 80000000 <.L7+0x7fffffb4>
+  68:	fd1ff06f          	j	38 <.L6>
+			68: R_RISCV_JAL	.L6
