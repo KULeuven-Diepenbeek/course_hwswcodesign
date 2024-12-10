@@ -2,6 +2,7 @@
 title: '1 Processor'
 chapter: true
 weight: 100
+draft: true
 ---
 
 # Processor

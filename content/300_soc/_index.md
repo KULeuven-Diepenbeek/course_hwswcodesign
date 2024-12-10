@@ -2,6 +2,7 @@
 title: '3  System on Chip'
 chapter: true
 weight: 300
+draft: true
 ---
 
 # System on Chip (SOC)
