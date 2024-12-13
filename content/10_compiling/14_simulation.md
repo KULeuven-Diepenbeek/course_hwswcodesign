@@ -172,4 +172,6 @@ The overall *conversion* that is done by the Makefile (and python scripts) is: *
 
 ## The .zip
 
-A zip archive is prepared that helps you to get started: [hwswcd_template.zip](/src/hwswcd_template.zip)
+A zip archive is prepared that helps you to get started. The archive contains the recommended folder structure. The example Makefile and the linkerscript are : [hwswcd_template.zip](https://github.com/KULeuven-Diepenbeek/course_hwswcodesign/blob/master/src/hwswcd_template.zip)
+
+![template](/img/10/ss_zip.png)
