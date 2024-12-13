@@ -2,52 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>3  System on Chip on HW/SW codesign</title>
-    <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/300_soc/</link>
+    <link>http://localhost:1313/course_hwswcodesign/300_soc/</link>
     <description>Recent content in 3  System on Chip on HW/SW codesign</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
     <managingEditor>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</managingEditor>
-    <webMaster>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</webMaster><atom:link href="https://kuleuven-diepenbeek.github.io/course_hwswcodesign/300_soc/index.xml" rel="self" type="application/rss+xml" />
+    <webMaster>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</webMaster>
+    <atom:link href="http://localhost:1313/course_hwswcodesign/300_soc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>301 - Bus architectures</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/300_soc/301_busarchs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/300_soc/301_busarchs/</guid>
-      <description>A SoC consists of more components than only a processor, as the name already implies. The system has multiple components depending on the task for which it was designed. Having multiple components like timers, interrupt controllers, or communication cores are very useful, unless they can&amp;rsquo;t be used. To achieve reachability, all the components must be connected through some bus architecture to the processor.
-A number of standardised bus architectures exist, for example:</description>
+      <link>http://localhost:1313/course_hwswcodesign/300_soc/301_busarchs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>http://localhost:1313/course_hwswcodesign/300_soc/301_busarchs/</guid>
+      <description>A SoC consists of more components than only a processor, as the name already implies. The system has multiple components depending on the task for which it was designed. Having multiple components like timers, interrupt controllers, or communication cores are very useful, unless they can&amp;rsquo;t be used. To achieve reachability, all the components must be connected through some bus architecture to the processor.&#xA;A number of standardised bus architectures exist, for example:</description>
     </item>
-    
     <item>
       <title>302 - Counter peripheral</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/300_soc/302_counter/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/300_soc/302_counter/</guid>
-      <description>When a hardware/software codesign is made, we need to be able to measure the performance. A simple way to achieve this, is counting how many clock cycles certain operations take. Later on, this shall be revisited, but the peripheral will be useful (pinky swear).
-Having arrived at your Master year, a counter is not exactly rocket science, nor brain surgery (lol). The simple design that is shown, is a counter that either be incremented or cleared.</description>
+      <link>http://localhost:1313/course_hwswcodesign/300_soc/302_counter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>http://localhost:1313/course_hwswcodesign/300_soc/302_counter/</guid>
+      <description>When a hardware/software codesign is made, we need to be able to measure the performance. A simple way to achieve this, is counting how many clock cycles certain operations take. Later on, this shall be revisited, but the peripheral will be useful (pinky swear).&#xA;Having arrived at your Master year, a counter is not exactly rocket science, nor brain surgery (lol). The simple design that is shown, is a counter that either be incremented or cleared.</description>
     </item>
-    
     <item>
       <title>303 - System on Chip (SoC)</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/300_soc/303_soc/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/300_soc/303_soc/</guid>
-      <description>A system on a chip or SoC stands in contrast to the traditional PC or laptop which are organised around a motherboard. In the third Bachelor of this program an entire course was spent on this topic: System-on-Chip design and experimentation. If you need a refresher, please head over to the website.
-The figure below shows an example of a SoC that we can build with what was seen before. At the hearth of the system is the RISC-V processor (picorv32i).</description>
+      <link>http://localhost:1313/course_hwswcodesign/300_soc/303_soc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>http://localhost:1313/course_hwswcodesign/300_soc/303_soc/</guid>
+      <description>A system on a chip or SoC stands in contrast to the traditional PC or laptop which are organised around a motherboard. In the third Bachelor of this program an entire course was spent on this topic: System-on-Chip design and experimentation. If you need a refresher, please head over to the website.&#xA;The figure below shows an example of a SoC that we can build with what was seen before. At the hearth of the system is the RISC-V processor (picorv32i).</description>
     </item>
-    
     <item>
       <title>304 - Exercises</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/300_soc/304_exercises/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/300_soc/304_exercises/</guid>
-      <description>Exercise 301 Try to get the example for the counter-enforced SoC to work.
-Exercise 302 Make a new (as in: don&amp;rsquo;t modify the dummy) component that can calculated the Hamming distance of two values. Make a comparison like the table in 202 where you compare your pure software implementation of the Hamming distance with the codesign.
-Exercise 303 Make a new component that calculates the sine of a positive angle. The angle is provided as natural number (no decimals), in degrees and can be up to 10 bits.</description>
+      <link>http://localhost:1313/course_hwswcodesign/300_soc/304_exercises/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>http://localhost:1313/course_hwswcodesign/300_soc/304_exercises/</guid>
+      <description>Exercise 301 Try to get the example for the counter-enforced SoC to work.&#xA;Exercise 302 Make a new (as in: don&amp;rsquo;t modify the dummy) component that can calculated the Hamming distance of two values. Make a comparison like the table in 202 where you compare your pure software implementation of the Hamming distance with the codesign.&#xA;Exercise 303 Make a new component that calculates the sine of a positive angle. The angle is provided as natural number (no decimals), in degrees and can be up to 10 bits.</description>
     </item>
-    
   </channel>
 </rss>

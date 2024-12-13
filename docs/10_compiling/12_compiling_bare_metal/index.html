@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.123.7">
+    <meta name="description" content="">
+<meta name="author" content="map[email:&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; name:Jo Vliegen]">
+
+    <link rel="icon" href="../../images/favicon.png" type="image/png">
+
+    <title>2 - Compiling Bare Metal :: HW/SW codesign</title>
+
+    
+    <link href="../../css/nucleus.css?1734094324" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1734094324" rel="stylesheet">
+    <link href="../../css/hybrid.css?1734094324" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1734094324" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1734094324" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1734094324" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1734094324" rel="stylesheet">
+    <link href="../../css/theme.css?1734094324" rel="stylesheet">
+    <link href="../../css/tabs.css?1734094324" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1734094324" rel="stylesheet">
+    
+    <link href="../../css/theme-kul.css?1734094324" rel="stylesheet">
+    
+    
+
+    <script src="../../js/jquery-3.3.1.min.js?1734094324"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script src=../../js/exercises.js></script> 
+  </head>
+  <body class="" data-url="../../10_compiling/12_compiling_bare_metal/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="https://www.kuleuven.be/kuleuven/" target="_blank">
+  <img src="../../img/style/kul.png" alt="KU Leuven" /><br/>
+</a>
+<a href="https://www.uhasselt.be/" target="_blank">
+  <img src="../../img/style/uhasselt.svg" alt="UHasselt" id="uhlogo" />
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1734094324"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1734094324"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1734094324"></script>
+
+    
+  </div>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/10_compiling/" title="1 Setting the playing field" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="../../10_compiling/">
+          1 Setting the playing field
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/11_programming/" title="1 - Programming the RISC-V" class="dd-item ">
+        <a href="../../10_compiling/11_programming/">
+        1 - Programming the RISC-V
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/12_compiling_bare_metal/" title="2 - Compiling Bare Metal" class="dd-item active">
+        <a href="../../10_compiling/12_compiling_bare_metal/">
+        2 - Compiling Bare Metal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/13_linking_bare_metal/" title="3 - Linking Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/13_linking_bare_metal/">
+        3 - Linking Bare Metal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/14_simulation/" title="4 - Simulation" class="dd-item ">
+        <a href="../../10_compiling/14_simulation/">
+        4 - Simulation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/15_exercises/" title="5 - Exercises" class="dd-item ">
+        <a href="../../10_compiling/15_exercises/">
+        5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/20_counter/" title="2 Once upon a time" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../20_counter/">
+          2 Once upon a time
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_counter/21_timer/" title="1 - Timer" class="dd-item ">
+        <a href="../../20_counter/21_timer/">
+        1 - Timer
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/30_interrupts/" title="3 Interrupts" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../30_interrupts/">
+          3 Interrupts
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_interrupts/31_interrupt/" title="1 - Interrupt" class="dd-item ">
+        <a href="../../30_interrupts/31_interrupt/">
+        1 - Interrupt
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://studiegidswww.uhasselt.be/opleidingsonderdeel.aspx?a=2023&amp;i=3468&amp;n=4&amp;t=04"><i class='fa fa-university'></i> ECTS Sheet</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://p.cygnus.cc.kuleuven.be/webapps/blackboard/execute/announcement?method=search&amp;context=course&amp;course_id=_1176295_1&amp;handle=cp_announcements&amp;mode=cpview"><i class='fa fa-university'></i> Toledo</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../'>HWSW codesign</a> > <a href='../../10_compiling/'>1 Setting the playing field</a> > 2 - Compiling Bare Metal
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#bare-metal">Bare metal</a></li>
+    <li><a href="#booting">Booting</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              2 - Compiling Bare Metal
+            </h1>
+          
+
+        
+
+
+<p>When you learned to write C, you might have been in touch with compiling already. In case you&rsquo;re a master at compiling and cross compiling, this section is a refresher. In the other case (which also includes those that only <em>clicked the Compile-button in an IDE</em>), this section will guide you through the most import aspects (for this course).</p>
+<div class="multiHcolumn">
+<div class="column">
+  <p><strong>Compiling</strong> is typically used to describe the proces that converts the C sources into a binary that can be executed. When looking into detail what happens, it turns out to be a bit more complex than simply invoking <em>gcc</em>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cli@hwswcd:~/$&gt; gcc -o main.bin main.c
+</span></span></code></pre></div>
+</div>    
+<div class="column">
+  <p><img src="../../img/10/compile_1.png" alt="gcc_1"></p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p><img src="../../img/10/compile_2.png" alt="gcc_1"></p>
+</div>    
+<div class="column">
+  <p>A more accurate use of <strong>Compiling</strong> is to indicate the part of the toolchain that converts source code into machine code. (Although this is not entirely correct, going into the details falls out of the scope of this course.) The output of the compilers are called <strong>object files (.o)</strong> which need to be stiched together by <strong>Linking</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cli@hwswcd:~/$&gt; gcc -c main.c
+</span></span><span style="display:flex;"><span>cli@hwswcd:~/$&gt; gcc -o main.bin main.o
+</span></span></code></pre></div>
+</div>    
+</div>    
+<p>When your entire program only consists out of a single file, it is (probably) not worth going into this much detail. Luckily tools exists that nicely hide this away for the programmer. In this course <strong>Make</strong> will be used. To use make, the programmer (as in: YOU) need to work with a Makefile. (Trust me, you&rsquo;ll be thankful for it.)</p>
+<div class="multiHcolumn">
+<div class="column">
+  <p>The <strong>linker</strong> is the tool that connects everything together and fills in the dots. This example shows a very simple C program that prints the <em>classical</em> message to the output. However there is not many code written, the linker has work to do. For example, what is this <strong>printf()</strong> function? Where is it coming from and what does it do exactly?
+As you might know already, this comes from libraries that have done some boring, heavy lifting for you.
+This is just a simple example of where the linker jumps in to hook-up everything together.</p>
+</div>    
+<div class="column">
+  <div class="code_caption">
+    main.c
+</div>    
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Hello world!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>    
+</div>    
+<p>If the machine on which the compiler and linker are executed differs from the target machine that is to execute the program, the term <strong>cross-compilation</strong> is used. Probably you have already used a cross compiler before (unknowingly), or haven&rsquo;t you programmed an Arduino yet? Although you compiled-and-linked the code on your laptop, the program was executed by another processor.</p>
+<p>All the code in this course will also be cross-compiled. The toolchain that is used is official RISC-V C and C++ cross-compiler. You can download and install it for yourself from <a href="https://github.com/riscv-collab/riscv-gnu-toolchain" target="_blank">GitHub</a>. For more information on installing this toolchain please use <a href="http://www.google.com" target="_blank"><span style="font-weight: bold"><span style="color: #4885ed">G</span><span style="color: #db3236">o</span><span style="color: #f4c20d">o</span><span style="color: #4885ed">g</span><span style="color: #3cba54">l</span><span style="color: #db3236">e</span></span></a>
+(e.g. <a href="https://mindchasers.com/dev/rv-getting-started" target="_blank">here</a>).</p>
+
+<div class="notices warning" ><p>Ofcourse you are warmly invited to get the toolchain up and running on your own machines. However, this is not always easy and it can be a dive into a rabbit hole. This cross-compiler is installed on <strong>Roger</strong>, especially for you!</p>
+</div>
+
+<h2 id="bare-metal">Bare metal</h2>
+<p>Bare metal programming is writing software that is <em>not running on an Operating System (OS)</em>. You probably have done this (maybe unknowingly) while programming an Arduino or another microprocessor. Running without an OS has one major disadvantage: there is no OS. This implies that everything a programmer needs, has to be provided. In the C-example of the previous section, two functions have been used: <code>print_hex(x, y);</code> and <code>print_chr(x);</code>. Code for these functions has to be provided too.</p>
+<div class="multiHcolumn">
+<div class="column">
+  <div class="code_caption">
+    print.h
+</div>    
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#ifndef PRINT_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define PRINT_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define OUTPORT 0x80000000
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_chr</span>(<span style="color:#66d9ef">char</span> ch);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_str</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_hex</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> val, <span style="color:#66d9ef">int</span> digits);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span></code></pre></div>
+</div>    
+<div class="column">
+  <div class="code_caption">
+    print.c
+</div>    
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;print.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_chr</span>(<span style="color:#66d9ef">char</span> ch)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">*</span>((<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span>)OUTPORT) <span style="color:#f92672">=</span> ch;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_str</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (<span style="color:#f92672">*</span>p <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">*</span>((<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span>)OUTPORT) <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>(p<span style="color:#f92672">++</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_hex</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> val, <span style="color:#66d9ef">int</span> digits)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> (<span style="color:#ae81ff">4</span><span style="color:#f92672">*</span>digits)<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">-=</span> <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">*</span>((<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span>)OUTPORT) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0123456789ABCDEF&#34;</span>[(val <span style="color:#f92672">&gt;&gt;</span> i) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">255</span>];
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">print_chr</span>(<span style="color:#e6db74">&#39;\n&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>    
+</div>    
+<p>With these three functions, there is an opportunity to print a character, a string (as in: a list of characters), or a hexadecimal value. A logical question would be: <strong>&ldquo;Where is my character (or other variable) printed ?&rdquo;</strong>. The answer lies in this line:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#f92672">*</span>((<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">uint32_t</span><span style="color:#f92672">*</span>)OUTPORT) <span style="color:#f92672">=</span> ch;</span></span></code></pre></div></p>
+<p>Let’s break this down for those whose C-skills are a bit rusty. The define <strong>OUTPORT</strong> makes sure that, everywhere in the code this <em>define</em> is substituted by the 32-bit number 0x80000000.
+During assignment, this value is type-cast to an unsigned 32-bit pointer ((volatile uint32_t*)). The keyword <strong>volatile</strong> states that the content of a variable can also be altered from another source. <u>This is important!!</u> Otherwise the optimisation of the C-compiler might optimise-out certain lines of C-code. Finally, that <em>address</em> is dereferenced ( <b>*</b>(<em>&lt;address&gt;</em>) ) to target <em>the memory</em> that is located at the provided address.</p>
+<p>To make the code even more readable, another define can be made that hides this low level C-code.</p>
+<p><div class="code_caption">
+    print.h
+</div>    
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#ifndef PRINT_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define PRINT_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define HWSWCD_PRINT_BASE_ADDRESS   0x80000000
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define HWSWCD_PRINT                *((volatile unsigned int*)HWSWCD_PRINT_BASE_ADDRESS)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_chr</span>(<span style="color:#66d9ef">char</span> ch);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_str</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_hex</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> val, <span style="color:#66d9ef">int</span> digits);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span></code></pre></div>
+<div class="code_caption">
+    print.c
+</div>    
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;print.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_chr</span>(<span style="color:#66d9ef">char</span> ch) {
+</span></span><span style="display:flex;"><span>	HWSWCD_PRINT <span style="color:#f92672">=</span> ch;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_str</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (<span style="color:#f92672">*</span>p <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>		HWSWCD_PRINT <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>(p<span style="color:#f92672">++</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_hex</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> val, <span style="color:#66d9ef">int</span> digits) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> (<span style="color:#ae81ff">4</span><span style="color:#f92672">*</span>digits)<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">-=</span> <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>		HWSWCD_PRINT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0123456789ABCDEF&#34;</span>[(val <span style="color:#f92672">&gt;&gt;</span> i) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">255</span>];
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">print_chr</span>(<span style="color:#e6db74">&#39;\n&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></p>
+<p>When it comes to compiling, more files are involved. When the linker looks at the generated object files, it can now <strong>find</strong> all the necessary functions.</p>
+<p><img src="../../img/10/compile_3.png" alt="gcc_1"></p>
+<p>Note that also the object files can be inspected. The compiler typically includes a tool for this. In case of the RISC-V crosscompiler this tool is invoked like this: <code>riscv32-unknown-elf-objdump -x build/print.o</code>.</p>
+<p><div class="code_caption">
+    objdump of print.o
+</div>    
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-S" data-lang="S"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>build<span style="color:#f92672">/</span>print.o<span style="color:#f92672">:</span>     file format elf32<span style="color:#f92672">-</span>littleriscv
+</span></span><span style="display:flex;"><span>build<span style="color:#f92672">/</span>print.o
+</span></span><span style="display:flex;"><span>architecture<span style="color:#f92672">:</span> riscv<span style="color:#f92672">:</span>rv32, flags <span style="color:#ae81ff">0x00000011</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>HAS_RELOC, HAS_SYMS
+</span></span><span style="display:flex;"><span>start address <span style="color:#ae81ff">0x00000000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Sections<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>Idx Name          Size      VMA       LMA       File off  Algn
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">0</span> .text         <span style="color:#ae81ff">0000006</span>c  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000034</span>  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">1</span> .data         <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">000000</span>a0  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, ALLOC, LOAD, DATA
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">2</span> .bss          <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">000000</span>a0  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                  ALLOC
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">3</span> .rodata.str1.4 <span style="color:#ae81ff">00000011</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">000000</span>a0  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">4</span> .comment      <span style="color:#ae81ff">0000001</span>a  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">000000</span>b1  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, READONLY
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">5</span> .note.GNU<span style="color:#f92672">-</span>stack <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">000000</span>cb  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, READONLY
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">6</span> .riscv.attributes <span style="color:#ae81ff">0000001</span>c  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">000000</span>cb  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, READONLY
+</span></span><span style="display:flex;"><span>SYMBOL TABLE<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    df <span style="color:#f92672">*</span>ABS<span style="color:#f92672">*</span>	<span style="color:#ae81ff">00000000</span> print.c
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .text	<span style="color:#ae81ff">00000000</span> .text
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .data	<span style="color:#ae81ff">00000000</span> .data
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .bss	<span style="color:#ae81ff">00000000</span> .bss
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .rodata.str1.4	<span style="color:#ae81ff">00000000</span> .rodata.str1.4
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .note.GNU<span style="color:#f92672">-</span>stack	<span style="color:#ae81ff">00000000</span> .note.GNU<span style="color:#f92672">-</span>stack
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .comment	<span style="color:#ae81ff">00000000</span> .comment
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .riscv.attributes	<span style="color:#ae81ff">00000000</span> .riscv.attributes
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> g     F .text	<span style="color:#ae81ff">0000000</span>c print_chr
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0000000</span>c g     F .text	<span style="color:#ae81ff">0000001</span>c print_str
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000028</span> g     F .text	<span style="color:#ae81ff">00000044</span> print_hex
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RELOCATION RECORDS FOR [.text]<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>OFFSET   TYPE              VALUE
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000014</span> R_RISCV_BRANCH    .L4
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000024</span> R_RISCV_JAL       .L3
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000030</span> R_RISCV_HI20      .LC0
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000030</span> R_RISCV_RELAX     <span style="color:#f92672">*</span>ABS<span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000038</span> R_RISCV_BRANCH    .L7
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000050</span> R_RISCV_LO12_I    .LC0
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000050</span> R_RISCV_RELAX     <span style="color:#f92672">*</span>ABS<span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000068</span> R_RISCV_JAL       .L6
+</span></span></code></pre></div>
+<div class="code_caption">
+    objdump of firmware.o
+</div>    
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-S" data-lang="S"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>build<span style="color:#f92672">/</span>firmware.o<span style="color:#f92672">:</span>     file format elf32<span style="color:#f92672">-</span>littleriscv
+</span></span><span style="display:flex;"><span>build<span style="color:#f92672">/</span>firmware.o
+</span></span><span style="display:flex;"><span>architecture<span style="color:#f92672">:</span> riscv<span style="color:#f92672">:</span>rv32, flags <span style="color:#ae81ff">0x00000011</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>HAS_RELOC, HAS_SYMS
+</span></span><span style="display:flex;"><span>start address <span style="color:#ae81ff">0x00000000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Sections<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>Idx Name          Size      VMA       LMA       File off  Algn
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">0</span> .text         <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000034</span>  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">1</span> .data         <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000034</span>  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, ALLOC, LOAD, DATA
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">2</span> .bss          <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000034</span>  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                  ALLOC
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">3</span> .rodata.str1.4 <span style="color:#ae81ff">0000000</span>e  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000034</span>  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">4</span> .text.startup <span style="color:#ae81ff">0000001</span>c  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000044</span>  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">5</span> .comment      <span style="color:#ae81ff">0000001</span>a  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000060</span>  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, READONLY
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">6</span> .note.GNU<span style="color:#f92672">-</span>stack <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">0000007</span>a  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, READONLY
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">7</span> .riscv.attributes <span style="color:#ae81ff">0000001</span>c  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">0000007</span>a  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, READONLY
+</span></span><span style="display:flex;"><span>SYMBOL TABLE<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    df <span style="color:#f92672">*</span>ABS<span style="color:#f92672">*</span>	<span style="color:#ae81ff">00000000</span> firmware.c
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .text	<span style="color:#ae81ff">00000000</span> .text
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .data	<span style="color:#ae81ff">00000000</span> .data
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .bss	<span style="color:#ae81ff">00000000</span> .bss
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .rodata.str1.4	<span style="color:#ae81ff">00000000</span> .rodata.str1.4
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .text.startup	<span style="color:#ae81ff">00000000</span> .text.startup
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .note.GNU<span style="color:#f92672">-</span>stack	<span style="color:#ae81ff">00000000</span> .note.GNU<span style="color:#f92672">-</span>stack
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .comment	<span style="color:#ae81ff">00000000</span> .comment
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .riscv.attributes	<span style="color:#ae81ff">00000000</span> .riscv.attributes
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> g     F .text.startup	<span style="color:#ae81ff">0000001</span>c main
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span>         <span style="color:#f92672">*</span>UND<span style="color:#f92672">*</span>	<span style="color:#ae81ff">00000000</span> print_str
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RELOCATION RECORDS FOR [.text.startup]<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>OFFSET   TYPE              VALUE
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> R_RISCV_HI20      .LC0
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> R_RISCV_RELAX     <span style="color:#f92672">*</span>ABS<span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000008</span> R_RISCV_LO12_I    .LC0
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000008</span> R_RISCV_RELAX     <span style="color:#f92672">*</span>ABS<span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000010</span> R_RISCV_CALL_PLT  print_str
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000010</span> R_RISCV_RELAX     <span style="color:#f92672">*</span>ABS<span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000018</span> R_RISCV_JAL       .L2
+</span></span></code></pre></div></p>
+<h2 id="booting">Booting</h2>
+<p>Typically, the one function that has to be present in every C-program is the main() function. This function is called by the OS to start of the program. As in bare metal programming there is no OS, some form of <strong>booting-process</strong> needs to be defined. <strong>Assembly to the rescue!!</strong></p>
+<div class="multiHcolumn">
+<div class="column">
+  <p>A short assembly file can jump in and do that job. This assembly code will do the following:</p>
+<ul>
+<li>initialise all the registers of the <strong>register file</strong> to 0x0</li>
+<li>initialise the <strong>stack pointer</strong> (x2 - sp) to 4096 (=0x00001000)</li>
+<li>jump to the <strong>main function</strong> and <em>backup</em> the program counter (x1 - ra)</li>
+<li>create and <strong>endless loop</strong> to catch a returning main function</li>
+</ul>
+<p>One thing to note is the line <code>.global start</code>. This line makes the <strong>start function</strong> visible outside this assembly file. As this function is going to be called from outside, this line is NOT optional.</p>
+<p>Then there is the line <code>.section .init</code> which is needed. This tells the compiler that the code that follows has to be compiled under a section with the name <em>init</em>. This will later be necessary for the linking.</p>
+<p>This assembly file is compiled in a similar way as the c-files. An object file is generated which can be inspected. Note that <strong>0 bytes</strong> are allocated to the <em>.text</em> section and <strong>88 bytes</strong> are present in the <em>.init</em> section.</p>
+<div class="code_caption">
+    objdump of start.o
+</div>    
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-S" data-lang="S"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>build<span style="color:#f92672">/</span>start.o<span style="color:#f92672">:</span>     file format elf32<span style="color:#f92672">-</span>littleriscv
+</span></span><span style="display:flex;"><span>build<span style="color:#f92672">/</span>start.o
+</span></span><span style="display:flex;"><span>architecture<span style="color:#f92672">:</span> riscv<span style="color:#f92672">:</span>rv32, flags <span style="color:#ae81ff">0x00000011</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>HAS_RELOC, HAS_SYMS
+</span></span><span style="display:flex;"><span>start address <span style="color:#ae81ff">0x00000000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Sections<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>Idx Name          Size      VMA       LMA       File off  Algn
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">0</span> .text         <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000034</span>  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">1</span> .data         <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000034</span>  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, ALLOC, LOAD, DATA
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">2</span> .bss          <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000034</span>  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                  ALLOC
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">3</span> .init         <span style="color:#ae81ff">00000088</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000034</span>  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">4</span> .riscv.attributes <span style="color:#ae81ff">0000001</span>a  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">00000000</span>  <span style="color:#ae81ff">000000</span>bc  <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                  CONTENTS, READONLY
+</span></span><span style="display:flex;"><span>SYMBOL TABLE<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .text	<span style="color:#ae81ff">00000000</span> .text
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .data	<span style="color:#ae81ff">00000000</span> .data
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .bss	<span style="color:#ae81ff">00000000</span> .bss
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .init	<span style="color:#ae81ff">00000000</span> .init
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000084</span> l       .init	<span style="color:#ae81ff">00000000</span> done
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> l    d  .riscv.attributes	<span style="color:#ae81ff">00000000</span> .riscv.attributes
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span> g       .init	<span style="color:#ae81ff">00000000</span> start
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span>         <span style="color:#f92672">*</span>UND<span style="color:#f92672">*</span>	<span style="color:#ae81ff">00000000</span> main
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RELOCATION RECORDS FOR [.init]<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>OFFSET   TYPE              VALUE
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000080</span> R_RISCV_JAL       main
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000084</span> R_RISCV_JAL       done
+</span></span></code></pre></div>
+</div>    
+<div class="column">
+  <div class="code_caption">
+    start.S
+</div>    
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-S" data-lang="S"><span style="display:flex;"><span>.global start
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.section .init
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>start<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">/*</span> zero<span style="color:#f92672">-</span>initialize all registers <span style="color:#f92672">*/</span>
+</span></span><span style="display:flex;"><span>  addi x1, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x2, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x3, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x4, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x5, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x6, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x7, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x8, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x9, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x10, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x11, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x12, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x13, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x14, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x15, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x16, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x17, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x18, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x19, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x20, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x21, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x22, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x23, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x24, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x25, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x26, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x27, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x28, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x29, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x30, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x31, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">/*</span> set stack pointer <span style="color:#f92672">*/</span>
+</span></span><span style="display:flex;"><span>  lui sp, %<span style="color:#a6e22e">hi</span>(<span style="color:#ae81ff">4</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1024</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">/*</span> call main <span style="color:#f92672">*/</span>
+</span></span><span style="display:flex;"><span>  jal ra, main
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>done<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  j done
+</span></span></code></pre></div>
+</div>    
+</div>    
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../10_compiling/11_programming/" title="1 - Programming the RISC-V"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../10_compiling/13_linking_bare_metal/" title="3 - Linking Bare Metal" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1734094324"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1734094324"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1734094324"></script>
+    <script src="../../js/jquery.sticky.js?1734094324"></script>
+    <script src="../../js/featherlight.min.js?1734094324"></script>
+    <script src="../../js/highlight.pack.js?1734094324"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1734094324"></script>
+    <script src="../../js/learn.js?1734094324"></script>
+    <script src="../../js/hugo-learn.js?1734094324"></script>
+    
+        
+            <script src="../../mermaid/mermaid.js?1734094324"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

@@ -2,52 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>2  Coprocessor on HW/SW codesign</title>
-    <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/200_coprocessor/</link>
+    <link>http://localhost:1313/course_hwswcodesign/200_coprocessor/</link>
     <description>Recent content in 2  Coprocessor on HW/SW codesign</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
     <managingEditor>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</managingEditor>
-    <webMaster>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</webMaster><atom:link href="https://kuleuven-diepenbeek.github.io/course_hwswcodesign/200_coprocessor/index.xml" rel="self" type="application/rss+xml" />
+    <webMaster>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</webMaster>
+    <atom:link href="http://localhost:1313/course_hwswcodesign/200_coprocessor/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>201 - Coprocessor</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/200_coprocessor/201_coprocessor/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/200_coprocessor/201_coprocessor/</guid>
+      <link>http://localhost:1313/course_hwswcodesign/200_coprocessor/201_coprocessor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>http://localhost:1313/course_hwswcodesign/200_coprocessor/201_coprocessor/</guid>
       <description>All the code that you write has to be executed on the processor. With computers being ever more powerful, it is easy to forget about all the work a processor is doing. Irrespective of how simple a job might seem, it still needs to be executed. The example illustrates this. The only thing the processor needs to do is output 2 values. Nonetheless with the software as seen before, this takes 74 clock cycles.</description>
     </item>
-    
     <item>
       <title>202 - Pico CoProcessor Interface (PCPI)</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/200_coprocessor/202_pcpi/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/200_coprocessor/202_pcpi/</guid>
-      <description>In Chapter 1 we&amp;rsquo;ve used the PicoRV32 implementation of a RISC-V. This implementation has a number of interfaces to the outside world. The memory interface was already discussed. In this section the Pico CoProcessor Interface (PCPI) is handled.
-Multiplication coprocessor To illustrate (the use of) a coprocessor, let&amp;rsquo;s take the multiplication. In the previous section it is illustrated how the compiler jumped in to achieve multiplication. Depending on the factors, this might take a lot time.</description>
+      <link>http://localhost:1313/course_hwswcodesign/200_coprocessor/202_pcpi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>http://localhost:1313/course_hwswcodesign/200_coprocessor/202_pcpi/</guid>
+      <description>In Chapter 1 we&amp;rsquo;ve used the PicoRV32 implementation of a RISC-V. This implementation has a number of interfaces to the outside world. The memory interface was already discussed. In this section the Pico CoProcessor Interface (PCPI) is handled.&#xA;Multiplication coprocessor To illustrate (the use of) a coprocessor, let&amp;rsquo;s take the multiplication. In the previous section it is illustrated how the compiler jumped in to achieve multiplication. Depending on the factors, this might take a lot time.</description>
     </item>
-    
     <item>
       <title>203 - Coprocessor example</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/200_coprocessor/203_coproccesor_hd/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/200_coprocessor/203_coproccesor_hd/</guid>
-      <description>Coprocessor example As an example of a custom coprocessor a hardware component is made for calculating the Hamming distance.
-Control path The control path is made with a set-reset flipflop. The condition for setting is determined by the pcpi_valid signal and the instruction. Only if the opcode in pcpi_insn is 0110011 and the additional opcode field (funct7) is 0000001, this coprocessor is targeted.
-As long as the set-reset-flipflop is turned on, the coprocessor keeps on working.</description>
+      <link>http://localhost:1313/course_hwswcodesign/200_coprocessor/203_coproccesor_hd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>http://localhost:1313/course_hwswcodesign/200_coprocessor/203_coproccesor_hd/</guid>
+      <description>Coprocessor example As an example of a custom coprocessor a hardware component is made for calculating the Hamming distance.&#xA;Control path The control path is made with a set-reset flipflop. The condition for setting is determined by the pcpi_valid signal and the instruction. Only if the opcode in pcpi_insn is 0110011 and the additional opcode field (funct7) is 0000001, this coprocessor is targeted.&#xA;As long as the set-reset-flipflop is turned on, the coprocessor keeps on working.</description>
     </item>
-    
     <item>
       <title>204 - Exercises</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/200_coprocessor/204_exercises/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/200_coprocessor/204_exercises/</guid>
-      <description>Exercise 201 Try to get the example for the Hamming distance to work. Make a comparison like the table in 202 where you compare your pure software implementation of the Hamming distance with the codesign.
-Exercise 202 Transform the Hamming distance coprocessor to work on the div instruction in stead of the mul instruction.
-Exercise 203 Make a new coprocessor that calculates the average of two integer numbers. If the result is non-integer, round it down.</description>
+      <link>http://localhost:1313/course_hwswcodesign/200_coprocessor/204_exercises/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>http://localhost:1313/course_hwswcodesign/200_coprocessor/204_exercises/</guid>
+      <description>Exercise 201 Try to get the example for the Hamming distance to work. Make a comparison like the table in 202 where you compare your pure software implementation of the Hamming distance with the codesign.&#xA;Exercise 202 Transform the Hamming distance coprocessor to work on the div instruction in stead of the mul instruction.&#xA;Exercise 203 Make a new coprocessor that calculates the average of two integer numbers. If the result is non-integer, round it down.</description>
     </item>
-    
   </channel>
 </rss>

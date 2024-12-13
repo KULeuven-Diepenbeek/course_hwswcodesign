@@ -3,31 +3,31 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.111.3">
+    <meta name="generator" content="Hugo 0.123.7">
     <meta name="description" content="">
-
+<meta name="author" content="map[email:&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; name:Jo Vliegen]">
 
     <link rel="icon" href="../../images/favicon.png" type="image/png">
 
     <title>401 - Interrupt :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1709889567" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1709889567" rel="stylesheet">
-    <link href="../../css/hybrid.css?1709889567" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1709889567" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1709889567" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1709889567" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1709889567" rel="stylesheet">
-    <link href="../../css/theme.css?1709889567" rel="stylesheet">
-    <link href="../../css/tabs.css?1709889567" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1709889567" rel="stylesheet">
+    <link href="../../css/nucleus.css?1734094324" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1734094324" rel="stylesheet">
+    <link href="../../css/hybrid.css?1734094324" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1734094324" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1734094324" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1734094324" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1734094324" rel="stylesheet">
+    <link href="../../css/theme.css?1734094324" rel="stylesheet">
+    <link href="../../css/tabs.css?1734094324" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1734094324" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1709889567" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1734094324" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1709889567"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1734094324"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1709889567"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1709889567"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1734094324"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1734094324"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1709889567"></script>
+<script type="text/javascript" src="../../js/search.js?1734094324"></script>
 
     
   </div>
@@ -92,13 +92,13 @@
  
   
     
-    <li data-nav-id="/100_processor/" title="1 Processor" class="dd-item
+    <li data-nav-id="/10_compiling/" title="1 Setting the playing field" class="dd-item
         
         
         
         ">
-      <a href="../../100_processor/">
-          1 Processor
+      <a href="../../10_compiling/">
+          1 Setting the playing field
           
       </a>
       
@@ -119,9 +119,9 @@
  
   
     
-      <li data-nav-id="/100_processor/101_processor/" title="101 - Processor" class="dd-item ">
-        <a href="../../100_processor/101_processor/">
-        101 - Processor
+      <li data-nav-id="/10_compiling/11_programming/" title="1 - Programming the RISC-V" class="dd-item ">
+        <a href="../../10_compiling/11_programming/">
+        1 - Programming the RISC-V
         
         </a>
     </li>
@@ -140,9 +140,9 @@
  
   
     
-      <li data-nav-id="/100_processor/102_riscv/" title="102 - RISC-V" class="dd-item ">
-        <a href="../../100_processor/102_riscv/">
-        102 - RISC-V
+      <li data-nav-id="/10_compiling/12_compiling_bare_metal/" title="2 - Compiling Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/12_compiling_bare_metal/">
+        2 - Compiling Bare Metal
         
         </a>
     </li>
@@ -161,9 +161,9 @@
  
   
     
-      <li data-nav-id="/100_processor/103_picorv/" title="103 - PicoRV32" class="dd-item ">
-        <a href="../../100_processor/103_picorv/">
-        103 - PicoRV32
+      <li data-nav-id="/10_compiling/13_linking_bare_metal/" title="3 - Linking Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/13_linking_bare_metal/">
+        3 - Linking Bare Metal
         
         </a>
     </li>
@@ -182,9 +182,9 @@
  
   
     
-      <li data-nav-id="/100_processor/104_crosscomp/" title="104 - Cross compiling" class="dd-item ">
-        <a href="../../100_processor/104_crosscomp/">
-        104 - Cross compiling
+      <li data-nav-id="/10_compiling/14_simulation/" title="4 - Simulation" class="dd-item ">
+        <a href="../../10_compiling/14_simulation/">
+        4 - Simulation
         
         </a>
     </li>
@@ -203,30 +203,9 @@
  
   
     
-      <li data-nav-id="/100_processor/105_simulation/" title="105 - Simulation" class="dd-item ">
-        <a href="../../100_processor/105_simulation/">
-        105 - Simulation
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/100_processor/106_exercises/" title="106 - Exercises" class="dd-item ">
-        <a href="../../100_processor/106_exercises/">
-        106 - Exercises
+      <li data-nav-id="/10_compiling/15_exercises/" title="5 - Exercises" class="dd-item ">
+        <a href="../../10_compiling/15_exercises/">
+        5 - Exercises
         
         </a>
     </li>
@@ -252,13 +231,13 @@
  
   
     
-    <li data-nav-id="/200_coprocessor/" title="2  Coprocessor" class="dd-item
+    <li data-nav-id="/20_counter/" title="2 Once upon a time" class="dd-item
         
         
         
         ">
-      <a href="../../200_coprocessor/">
-          2  Coprocessor
+      <a href="../../20_counter/">
+          2 Once upon a time
           
       </a>
       
@@ -279,72 +258,9 @@
  
   
     
-      <li data-nav-id="/200_coprocessor/201_coprocessor/" title="201 - Coprocessor" class="dd-item ">
-        <a href="../../200_coprocessor/201_coprocessor/">
-        201 - Coprocessor
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/200_coprocessor/202_pcpi/" title="202 - Pico CoProcessor Interface (PCPI)" class="dd-item ">
-        <a href="../../200_coprocessor/202_pcpi/">
-        202 - Pico CoProcessor Interface (PCPI)
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/200_coprocessor/203_coproccesor_hd/" title="203 - Coprocessor example" class="dd-item ">
-        <a href="../../200_coprocessor/203_coproccesor_hd/">
-        203 - Coprocessor example
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/200_coprocessor/204_exercises/" title="204 - Exercises" class="dd-item ">
-        <a href="../../200_coprocessor/204_exercises/">
-        204 - Exercises
+      <li data-nav-id="/20_counter/21_timer/" title="1 - Timer" class="dd-item ">
+        <a href="../../20_counter/21_timer/">
+        1 - Timer
         
         </a>
     </li>
@@ -370,13 +286,13 @@
  
   
     
-    <li data-nav-id="/300_soc/" title="3  System on Chip" class="dd-item
+    <li data-nav-id="/30_interrupts/" title="3 Interrupts" class="dd-item
         
         
         
         ">
-      <a href="../../300_soc/">
-          3  System on Chip
+      <a href="../../30_interrupts/">
+          3 Interrupts
           
       </a>
       
@@ -397,363 +313,9 @@
  
   
     
-      <li data-nav-id="/300_soc/301_busarchs/" title="301 - Bus architectures" class="dd-item ">
-        <a href="../../300_soc/301_busarchs/">
-        301 - Bus architectures
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/300_soc/302_counter/" title="302 - Counter peripheral" class="dd-item ">
-        <a href="../../300_soc/302_counter/">
-        302 - Counter peripheral
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/300_soc/303_soc/" title="303 - System on Chip (SoC)" class="dd-item ">
-        <a href="../../300_soc/303_soc/">
-        303 - System on Chip (SoC)
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/300_soc/304_exercises/" title="304 - Exercises" class="dd-item ">
-        <a href="../../300_soc/304_exercises/">
-        304 - Exercises
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-        
-        </ul>
-      
-    </li>
-  
- 
-
-          
-          
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/400_interrupt/" title="4  Interrupt" class="dd-item
-        parent
-        
-        
-        ">
-      <a href="../../400_interrupt/">
-          4  Interrupt
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-          
-
-        
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/400_interrupt/401_interrupt/" title="401 - Interrupt" class="dd-item active">
-        <a href="../../400_interrupt/401_interrupt/">
-        401 - Interrupt
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/400_interrupt/402_handling/" title="402 - Interrupt handling" class="dd-item ">
-        <a href="../../400_interrupt/402_handling/">
-        402 - Interrupt handling
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/400_interrupt/403_example/" title="403 - Example" class="dd-item ">
-        <a href="../../400_interrupt/403_example/">
-        403 - Example
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/400_interrupt/404_exercises/" title="404 - Exercises" class="dd-item ">
-        <a href="../../400_interrupt/404_exercises/">
-        404 - Exercises
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-        
-        </ul>
-      
-    </li>
-  
- 
-
-          
-          
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/500_qoi/" title="5 QOI" class="dd-item
-        
-        
-        
-        ">
-      <a href="../../500_qoi/">
-          5 QOI
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-          
-
-        
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/500_qoi/501_digital_image/" title="501 Digital image" class="dd-item ">
-        <a href="../../500_qoi/501_digital_image/">
-        501 Digital image
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/500_qoi/502_image_formats/" title="502 Image formats" class="dd-item ">
-        <a href="../../500_qoi/502_image_formats/">
-        502 Image formats
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/500_qoi/503_example/" title="503 Example" class="dd-item ">
-        <a href="../../500_qoi/503_example/">
-        503 Example
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/500_qoi/504_project/" title="504 Project" class="dd-item ">
-        <a href="../../500_qoi/504_project/">
-        504 Project
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-        
-        </ul>
-      
-    </li>
-  
- 
-
-          
-          
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/900_appendices/" title="9 Appendices" class="dd-item
-        
-        
-        
-        ">
-      <a href="../../900_appendices/">
-          9 Appendices
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-          
-
-        
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/900_appendices/901_roger/" title="901 - Roger &amp; Chip" class="dd-item ">
-        <a href="../../900_appendices/901_roger/">
-        901 - Roger &amp; Chip
+      <li data-nav-id="/30_interrupts/31_interrupt/" title="1 - Interrupt" class="dd-item ">
+        <a href="../../30_interrupts/31_interrupt/">
+        1 - Interrupt
         
         </a>
     </li>
@@ -834,7 +396,7 @@
             
           
           
-            <a href='../../'>HWSW codesign</a> > <a href='../../400_interrupt/'>4  Interrupt</a> > 401 - Interrupt
+            <a href='../../'>HWSW codesign</a> > <a href=''>4  Interrupt</a> > 401 - Interrupt
           
         
           
@@ -1028,22 +590,6 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1059,299 +605,6 @@
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -1413,10 +666,8 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="../../400_interrupt/" title="4  Interrupt"> <i class="fa fa-chevron-left"></i></a>
 		
-		
-			<a class="nav nav-next" href="../../400_interrupt/402_handling/" title="402 - Interrupt handling" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../10_compiling/" title="1 Setting the playing field" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1426,19 +677,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1709889567"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1709889567"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1709889567"></script>
-    <script src="../../js/jquery.sticky.js?1709889567"></script>
-    <script src="../../js/featherlight.min.js?1709889567"></script>
-    <script src="../../js/highlight.pack.js?1709889567"></script>
+    <script src="../../js/clipboard.min.js?1734094324"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1734094324"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1734094324"></script>
+    <script src="../../js/jquery.sticky.js?1734094324"></script>
+    <script src="../../js/featherlight.min.js?1734094324"></script>
+    <script src="../../js/highlight.pack.js?1734094324"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1709889567"></script>
-    <script src="../../js/learn.js?1709889567"></script>
-    <script src="../../js/hugo-learn.js?1709889567"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1734094324"></script>
+    <script src="../../js/learn.js?1734094324"></script>
+    <script src="../../js/hugo-learn.js?1734094324"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1709889567"></script>
+            <script src="../../mermaid/mermaid.js?1734094324"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
