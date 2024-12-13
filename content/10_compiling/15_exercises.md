@@ -1,11 +1,12 @@
 ---
-title: '9 - Exercises'
-weight: 19
+title: '5 - Exercises'
+weight: 15
 ---
 
 ## Practice makes perfect
 
-Below are a number of programming exercises. The aim is that you **1)** prepare a working setup, and **2)** that you refresh you low-level C programming skills. In the exercises where inputs are required, these **inputs can be hardcoded** as we have no means of inputting data to the processor.
+Below are a number of programming exercises. The aim is that you **1)** retrieve your RISC-V implementation **2)** prepare a working setup, and **3)** that you refresh you low-level C programming skills.
+ <!-- In the exercises where inputs are required, these **inputs can be hardcoded** as we have no means of inputting data to the processor. -->
 
 <!-- An example of the file structure can be seen [here](https://github.com/KULeuven-Diepenbeek/course_hwswcodesign/tree/master/src/100). -->
 

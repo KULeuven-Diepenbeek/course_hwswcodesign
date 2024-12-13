@@ -100,16 +100,17 @@ In case you are using Vivado to simulate your design, testing a new version of t
 
 Working in an organised way might look cumbersome, but it will definetly pay of on the long(er) run. The remainder of this section describes the recommended way of working.
 
-{{% multiHcolumn %}}
-{{% column %}}
-![org_fs](/img/10/org_fs.png)
-{{% /column %}}
-{{% column %}}
 #### It all starts on the filesystem
 
 The code that you will be writing can ultimately be seen as *as bunch of files*. It is recommended that you stick to a fixed organisation. As with many things that will follow (in this course, or in 'live'), this might require an investment, but you will reap the fruits of this labour later and multiple times.
 
 This image shows a way of organising the files:
+
+{{% multiHcolumn %}}
+{{% column %}}
+![org_fs](/img/10/org_fs.png)
+{{% /column %}}
+{{% column %}}
 
 * **project name**: this folder is simply the name of the project, or the exercise that you are working on;
 * **doc**: it makes sense (as you undoubtedly know) to keep some documentation. This can be in the form of markdown files, for example.
@@ -123,11 +124,52 @@ This image shows a way of organising the files:
 * **scripts**: a folder for scripts
     * **python**: python tools
     * **tcl**: project generation scripts
-{{% /column %}}
-{{% /multiHcolumn %}}
 
 A fixed file structure, like the one described above, will ensure that:
 
 * you can more **easily find your way**
-* you can **(re-)generate** tool-dependant projects
 * you have a text-file-only folder that is perfect for **version control**
+* you can **(re-)generate** tool-dependant projects (e.g. Vivado project)
+{{% /column %}}
+{{% /multiHcolumn %}}
+
+#### Make
+
+**Make** is a tool for building software. On Linux machines, there typically is a GNU implementation of Make. With a **Makefile** the software is configured to build everything you need. All dependicies will be solved.
+
+A Makefile is a perfect example of **the fruits of your labour**. Setting up a Makefile that fits your environment and way-of-working can take some time. But **it's worth the effort!!** Below an example is given that is saved in the *firmware* folder. Feel free to start your own Makefile from this example.
+
+The Makefile example shown below:
+
+{{% multiHcolumn %}}
+{{% column %}}
+* compiles all the assembly source files **.S** in the subfolder **src**
+* compiles all the C source files **.c** in the subfolder **src**
+* puts all generated object files in the subfolder **build**
+* makes the **firmware.elf** binary
+<br/>
+<br/>
+* facilitates **make report** that parses the outfile of BasicIO
+{{% /column %}}
+
+{{% column %}}
+* it generates an *objdump* of firmware.elf in **firmware.objdump**
+* it generates an executable *objcopy* of firmware.elf in **firmware.bin**
+* it generates a UTF-8 encoded version of firmware.bin
+  * the first 2048 entries are stored in **firmware_imem.hex**
+  * the second 2048 entries are stored in **firmware_dmem.hex**
+{{% /column %}}
+{{% /multiHcolumn %}}
+
+<center>
+{{% notice note %}}
+The overall *conversion* that is done by the Makefile (and python scripts) is: **software source** to **model-initialisation files**.
+{{% /notice %}}
+</center>
+
+{{< code_caption "Makefile" >}}
+{{< include_file "/src/10/04_make" "Make" >}}
+
+## The .zip
+
+A zip archive is prepared that helps you to get started: [hwswcd_template.zip](/src/hwswcd_template.zip)
