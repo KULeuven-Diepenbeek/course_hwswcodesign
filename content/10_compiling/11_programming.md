@@ -71,4 +71,4 @@ The output of this program can be seen here:
 {{% /column %}}
 {{% /multiHcolumn %}}
 
-Before your implementation of the RISC-V core is capable of running this **very simple** code, there is still some work left. The remainder of this chapter will cover *'all you need to know'*. 
+Before your implementation of the RISC-V core is capable of running this very simple code, there is still some work left. The remainder of this chapter will cover *'all you need to know'*. 

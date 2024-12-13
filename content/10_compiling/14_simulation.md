@@ -3,10 +3,9 @@ title: '4 - Simulation'
 weight: 14
 ---
 
-In this course you will have to work both on the hardware and on the software. To facilitate this kind of designing, it will be useful to run simulation as smooth as possible. 
+In this course you will have to work both on the hardware and on the software. To facilitate this kind of designing and developing, it will be invaluable to run simulation as smooth as possible. Before jumping to the testbench, it might useful to briefly refresh the concept of **synthesisable** hardware.
 
-Before jumping to the testbench, it might useful to briefly refresh the concept of **synthesisable** hardware.
-
+## Synthesisable HDL
 
 All hardware description languages (HDLs) have a lingo that is used to **describe** a hardware design. Typically, these HDLs also have parts of their language dedicated to verification. The parts of the HDL that describe components that can be *made* are the synthesisable subset of that language. 
 
@@ -19,7 +18,7 @@ z <= x when y = '0' else '0';
 {{% /column %}}
 
 {{% column %}}
-Example of non-synthesiable code:
+Example of non-synthesisable code:
 ```vhdl
 process (y, x)
 begin
@@ -69,11 +68,29 @@ With this description of the model (and the earlier C-example for printing), it 
 {{% /column %}}
 {{% /multiHcolumn %}}
 
-The testbench that will be used in this course will start with a description like shown below.
+## The testbench
+
+The testbench that will be used in this course will start with a description of the architecture shown below.
+
 
 ![sim_design](/img/10/sim_design.png)
 
-With the testbench set up like shown above, a (relatively) fast way of developing-and-testing is facilitated.
+{{% multiHcolumn %}}
+{{% column %}}
+#### RISC-V
+At the heart of the implementation sits the RISC-V **microprocessor**. This is the processor that you have been working on in an earlier class (COMAR). This processor is used to make a **microcontroller** that can also be seen as a System-on-Chip.
+{{% /column %}}
+{{% column %}}
+#### MEM models
+Two instantiations of a memory model are added. One will serve as the data memory (**DMEM**) and the other as the instruction memory (**IMEM**). The model that is used allows *initialisation* of the memory through a text file.
+{{% /column %}}
+{{% column %}}
+#### BASIC IO
+The third component is again a model that facilitates basic IO. For now, however, only Output is facilitated. It will give the student a way to communicate from the microcontroller to the outside world.
+{{% /column %}}
+{{% /multiHcolumn %}}
+
+<!-- With the testbench set up like this, a (relatively) fast way of developing-and-testing is facilitated.  -->
 
 {{% notice tip %}}
 In case you are using Vivado to simulate your design, testing a new version of the firmware is easy. Simply **restart** the simulation, as in: hit the Restart button. When you also make modifications to your hardware design, you have to **relauch** te simulation. The latter takes more time than restarting.
@@ -81,7 +98,7 @@ In case you are using Vivado to simulate your design, testing a new version of t
 
 ## The proposed approach for developing and testing
 
-Working in an organised way might look cumbersome, but it will definetly pay of on the long(er) run. The remainder of this section describes *one* way of working.
+Working in an organised way might look cumbersome, but it will definetly pay of on the long(er) run. The remainder of this section describes the recommended way of working.
 
 {{% multiHcolumn %}}
 {{% column %}}
@@ -90,20 +107,19 @@ Working in an organised way might look cumbersome, but it will definetly pay of 
 {{% column %}}
 #### It all starts on the filesystem
 
-The code that you will be writing can ultimately be seen as *as bunch of files*. It is recommended that you stick to a certain organisation. As with many things that will follow (in this course, or in 'live'), this might require an investment, but you will reap the fruits of this later and multiple times.
+The code that you will be writing can ultimately be seen as *as bunch of files*. It is recommended that you stick to a fixed organisation. As with many things that will follow (in this course, or in 'live'), this might require an investment, but you will reap the fruits of this labour later and multiple times.
 
-This image shows a way of organising:
+This image shows a way of organising the files:
 
 * **project name**: this folder is simply the name of the project, or the exercise that you are working on;
-* **doc**: it makes sense (as you undoubtedly know) to keep some documentation. This can be in the form of markdown files, for example;
-* **firmware**: The folder that hold everything that has to do with *software*
-    * **build**: an empty folder that will be used store intermediate files (e.g. object files)
+* **doc**: it makes sense (as you undoubtedly know) to keep some documentation. This can be in the form of markdown files, for example.
+* **firmware**: The folder that holds everything that has to do with *software*
+    * **build**: an empty folder that will be used store intermediate files
     * **src**: a folder for the .h and .c files
     * Makefile: ... well, this is the Makefile for your .elf
 * **hdl**: a folder for the hardware description files
     * **tb**: a folder for the non-synthesisable code
-        * .vhd: non-synthesisable .vhd files
-    * .vhd: synthesisable .vhd files
+    * .v(hd): synthesisable hdl files
 * **scripts**: a folder for scripts
     * **python**: python tools
     * **tcl**: project generation scripts
