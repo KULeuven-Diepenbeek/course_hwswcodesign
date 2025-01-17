@@ -1,5 +1,5 @@
 ---
-title: '3 - Linking Bare Metal'
+title: '1.3 - Linking Bare Metal'
 weight: 13
 ---
 

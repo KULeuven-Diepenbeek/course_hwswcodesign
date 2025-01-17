@@ -1,5 +1,5 @@
 ---
-title: '2 - Compiling Bare Metal'
+title: '1.2 - Compiling Bare Metal'
 weight: 12
 ---
 

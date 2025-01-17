@@ -1,5 +1,5 @@
 ---
-title: '1 - Programming the RISC-V'
+title: '1.1 - Programming the RISC-V'
 weight: 11
 ---
 
