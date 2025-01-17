@@ -1,6 +1,7 @@
 ---
 title: '1.1 - Programming the RISC-V'
 weight: 11
+pre: "<i class='fas fa-book'></i> "
 ---
 
 In the third year of the Bachelor program, you have done the course unit **Computer architecture** (3435). In this course you made an implementation for a RISC-V processor. This course (of which you are currently reading the course material) starts with one of the earlier implementations you made: the **RV32I** implementation. The processor runs a *program* and the ins-and-outs of this will be the handover point between both courses.The implementation of the ISA is capable of executing instructions. These instructions are written in assembly. As you have implemented the processor itself, you will probably be familiar with the concept. 

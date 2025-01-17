@@ -1,6 +1,7 @@
 ---
 title: '1.4 - Simulation'
 weight: 14
+pre: "<i class='fas fa-book'></i> "
 ---
 
 In this course you will have to work both on the hardware and on the software. To facilitate this kind of designing and developing, it will be invaluable to run simulation as smooth as possible. Before jumping to the testbench, it might useful to briefly refresh the concept of **synthesisable** hardware.

@@ -1,6 +1,7 @@
 ---
 title: '1.3 - Linking Bare Metal'
 weight: 13
+pre: "<i class='fas fa-book'></i> "
 ---
 
 With the three object files generated, it is time to stich everything togehter. These object files are compiled, so they are converted to machine code. They are organised in **sections** and they all start at **address 0x0**. (At the bottom of this page, three object dumps are found so you can verify for yourself.) The image below shows which object file contains which sections. As mentioned before, it is the linker's job to do the stiching. A recipe for this can be provided in the form of a **linker script**.

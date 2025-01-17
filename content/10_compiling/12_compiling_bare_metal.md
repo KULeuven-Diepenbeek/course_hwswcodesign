@@ -1,6 +1,7 @@
 ---
 title: '1.2 - Compiling Bare Metal'
 weight: 12
+pre: "<i class='fas fa-book'></i> "
 ---
 
 When you learned to write C, you might have been in touch with compiling already. In case you're a master at compiling and cross compiling, this section is a refresher. In the other case (which also includes those that only *clicked the Compile-button in an IDE*), this section will guide you through the most import aspects (for this course).

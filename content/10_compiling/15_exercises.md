@@ -1,6 +1,7 @@
 ---
 title: '1.5 - Exercises'
 weight: 15
+pre: "<i class='fas fa-pen-square'></i> "
 ---
 
 ## Practice makes perfect
