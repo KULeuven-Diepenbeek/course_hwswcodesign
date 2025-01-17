@@ -1,10 +1,10 @@
 ---
-title: '2 Once upon a time'
+title: '2 Once upon a time(r)'
 chapter: true
 weight: 20
 ---
 
-# Once upon a time
+# Once upon a time(r)
 
 ![hourglass](/img/20/pexels-samerdaboul-1209999.jpg)
 
