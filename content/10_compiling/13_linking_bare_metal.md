@@ -24,8 +24,8 @@ Then the available memories are defined. In the case of a RISC processor, the ar
     * starts at address 0x800 (2048)
 {{% /column %}}
 {{% column %}}
-{{< code_caption "firmware.ld" >}}
-{{< include_file "/src/10/03_firmware.ld" "C" >}}
+{{< code_caption "firmware.lds" >}}
+{{< include_file "/src/10/03_firmware.lds" "C" >}}
 {{% /column %}}
 {{% /multiHcolumn %}}
 

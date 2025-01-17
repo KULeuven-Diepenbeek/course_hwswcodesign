@@ -1,50 +1,77 @@
 
-build/firmware.o:     file format elf32-littleriscv
-build/firmware.o
-architecture: riscv:rv32, flags 0x00000011:
-HAS_RELOC, HAS_SYMS
-start address 0x00000000
-
-Sections:
-Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000000  00000000  00000000  00000034  2**2
-                  CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00000000  00000000  00000034  2**0
-                  CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000000  00000000  00000000  00000034  2**0
-                  ALLOC
-  3 .rodata.str1.4 0000000e  00000000  00000000  00000034  2**2
-                  CONTENTS, ALLOC, LOAD, READONLY, DATA
-  4 .text.startup 0000001c  00000000  00000000  00000044  2**2
-                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
-  5 .comment      0000001a  00000000  00000000  00000060  2**0
-                  CONTENTS, READONLY
-  6 .note.GNU-stack 00000000  00000000  00000000  0000007a  2**0
-                  CONTENTS, READONLY
-  7 .riscv.attributes 0000001c  00000000  00000000  0000007a  2**0
-                  CONTENTS, READONLY
-SYMBOL TABLE:
-00000000 l    df *ABS*	00000000 firmware.c
-00000000 l    d  .text	00000000 .text
-00000000 l    d  .data	00000000 .data
-00000000 l    d  .bss	00000000 .bss
-00000000 l    d  .rodata.str1.4	00000000 .rodata.str1.4
-00000000 l    d  .text.startup	00000000 .text.startup
-00000000 l    d  .note.GNU-stack	00000000 .note.GNU-stack
-00000000 l    d  .comment	00000000 .comment
-00000000 l    d  .riscv.attributes	00000000 .riscv.attributes
-00000000 g     F .text.startup	0000001c main
-00000000         *UND*	00000000 print_str
+firmware.o:     file format elf32-littleriscv
 
 
-RELOCATION RECORDS FOR [.text.startup]:
-OFFSET   TYPE              VALUE
-00000000 R_RISCV_HI20      .LC0
-00000000 R_RISCV_RELAX     *ABS*
-00000008 R_RISCV_LO12_I    .LC0
-00000008 R_RISCV_RELAX     *ABS*
-00000010 R_RISCV_CALL_PLT  print_str
-00000010 R_RISCV_RELAX     *ABS*
-00000018 R_RISCV_JAL       .L2
+Disassembly of section .text.startup:
 
+00000000 <main>:
+   0:	ff010113          	addi	sp,sp,-16
+   4:	00200593          	li	a1,2
+   8:	00100513          	li	a0,1
+   c:	00112623          	sw	ra,12(sp)
+  10:	00000097          	auipc	ra,0x0
+  14:	000080e7          	jalr	ra # 10 <main+0x10>
+  18:	00200593          	li	a1,2
+  1c:	00100513          	li	a0,1
+  20:	00000097          	auipc	ra,0x0
+  24:	000080e7          	jalr	ra # 20 <main+0x20>
+  28:	00200593          	li	a1,2
+  2c:	00058513          	mv	a0,a1
+  30:	00000097          	auipc	ra,0x0
+  34:	000080e7          	jalr	ra # 30 <main+0x30>
+  38:	00200593          	li	a1,2
+  3c:	00300513          	li	a0,3
+  40:	00000097          	auipc	ra,0x0
+  44:	000080e7          	jalr	ra # 40 <main+0x40>
+  48:	00200593          	li	a1,2
+  4c:	00500513          	li	a0,5
+  50:	00000097          	auipc	ra,0x0
+  54:	000080e7          	jalr	ra # 50 <main+0x50>
+  58:	00200593          	li	a1,2
+  5c:	00800513          	li	a0,8
+  60:	00000097          	auipc	ra,0x0
+  64:	000080e7          	jalr	ra # 60 <main+0x60>
+  68:	00200593          	li	a1,2
+  6c:	00d00513          	li	a0,13
+  70:	00000097          	auipc	ra,0x0
+  74:	000080e7          	jalr	ra # 70 <main+0x70>
+  78:	00200593          	li	a1,2
+  7c:	01500513          	li	a0,21
+  80:	00000097          	auipc	ra,0x0
+  84:	000080e7          	jalr	ra # 80 <main+0x80>
 
+00000088 <.L2>:
+  88:	0000006f          	j	88 <.L2>
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	4700                	.insn	2, 0x4700
+   2:	203a4343          	.insn	4, 0x203a4343
+   6:	6728                	.insn	2, 0x6728
+   8:	3430                	.insn	2, 0x3430
+   a:	3936                	.insn	2, 0x3936
+   c:	6436                	.insn	2, 0x6436
+   e:	3066                	.insn	2, 0x3066
+  10:	2939                	.insn	2, 0x2939
+  12:	3120                	.insn	2, 0x3120
+  14:	2e34                	.insn	2, 0x2e34
+  16:	2e32                	.insn	2, 0x2e32
+  18:	0030                	.insn	2, 0x0030
+
+Disassembly of section .riscv.attributes:
+
+00000000 <.riscv.attributes>:
+   0:	1b41                	.insn	2, 0x1b41
+   2:	0000                	.insn	2, 0x
+   4:	7200                	.insn	2, 0x7200
+   6:	7369                	.insn	2, 0x7369
+   8:	01007663          	bgeu	zero,a6,14 <.riscv.attributes+0x14>
+   c:	0011                	.insn	2, 0x0011
+   e:	0000                	.insn	2, 0x
+  10:	1004                	.insn	2, 0x1004
+  12:	7205                	.insn	2, 0x7205
+  14:	3376                	.insn	2, 0x3376
+  16:	6932                	.insn	2, 0x6932
+  18:	7032                	.insn	2, 0x7032
+  1a:	0031                	.insn	2, 0x0031

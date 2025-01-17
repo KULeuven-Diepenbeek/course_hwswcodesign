@@ -55,7 +55,7 @@ Ofcourse you are warmly invited to get the toolchain up and running on your own 
 
 
 ## Bare metal
-Bare metal programming is writing software that is *not running on an Operating System (OS)*. You probably have done this (maybe unknowingly) while programming an Arduino or another microprocessor. Running without an OS has one major disadvantage: there is no OS. This implies that everything a programmer needs, has to be provided. In the C-example of the previous section, two functions have been used: ```print_hex(x, y);``` and ```print_chr(x);```. Code for these functions has to be provided too. 
+Bare metal programming is writing software that is *not running on an Operating System (OS)*. You probably have done this (maybe unknowingly) while programming an Arduino or another microprocessor. Running without an OS has one major disadvantage: there is no OS. This implies that everything a programmer needs, has to be provided. In the C-example of the previous section, one more function has been used: ```print_hex(x, y);```. Code for this function has to be provided too. 
 
 {{% multiHcolumn %}}
 {{% column %}}
@@ -89,12 +89,18 @@ When it comes to compiling, more files are involved. When the linker looks at th
 
 ![gcc_1](/img/10/compile_3.png)
 
-Note that also the object files can be inspected. The compiler typically includes a tool for this. In case of the RISC-V crosscompiler this tool is invoked like this: ```riscv32-unknown-elf-objdump -x build/print.o```.
+Note that also the object files can be inspected. The compiler typically includes a tool for this. In case of the RISC-V crosscompiler this tool is invoked like this: ```riscv32-unknown-elf-objdump -D build/print.o```.
 
+{{% multiHcolumn %}}
+{{% column %}}
 {{< code_caption "objdump of print.o" >}}
 {{< include_file "/src/10/02_print.objdump" "S" >}}
+{{% /column %}}
+{{% column %}}
 {{< code_caption "objdump of firmware.o" >}}
 {{< include_file "/src/10/02_firmware.objdump" "S" >}}
+{{% /column %}}
+{{% /multiHcolumn %}}
 
 
 

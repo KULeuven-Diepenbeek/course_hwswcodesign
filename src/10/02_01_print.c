@@ -10,7 +10,20 @@ void print_str(const char *p) {
 }
 
 void print_hex(unsigned int val, int digits) {
-	for (int i = (4*digits)-4; i >= 0; i -= 4)
-		HWSWCD_PRINT = "0123456789ABCDEF"[(val >> i) & 255];
-	print_chr('\n');
+	unsigned int index, max;
+	int i; /* !! must be signed, because of the check 'i>=0' */
+	char x;
+
+	if(digits == 0)
+		return;
+
+	max = digits << 2;
+
+	for (i = max-4; i >= 0; i -= 4) {
+		index = val >> i;
+		index = index & 0xF;
+		HWSWCD_PRINT="0123456789ABCDEF"[index];
+	}
+
+	print_str("\n");
 }

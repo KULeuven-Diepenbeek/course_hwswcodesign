@@ -1,6 +1,6 @@
 .global start
 
-.section .init
+.section .init, "ax"
 
 start:
   /* zero-initialize all registers */
@@ -41,6 +41,7 @@ start:
 
   /* call main */
   jal ra, main
+  j done
 
 done:
   j done

@@ -7,7 +7,8 @@ weight: 15
 
 Below are a number of programming exercises. The aim is that you **1)** retrieve your RISC-V implementation **2)** prepare a working setup, and **3)** refresh your low-level C programming skills.
 
-As a reminder ... a zip archive to get you started can be found [here](https://github.com/KULeuven-Diepenbeek/course_hwswcodesign/blob/master/src/hwswcd_template.zip).
+As a reminder ... a zip archive to get you started can be found
+<a href="/src/hwswcd_template.zip" download>here</a>.
 
 
 {{% centeredColumn 75 %}}

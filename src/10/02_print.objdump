@@ -1,49 +1,173 @@
 
-build/print.o:     file format elf32-littleriscv
-build/print.o
-architecture: riscv:rv32, flags 0x00000011:
-HAS_RELOC, HAS_SYMS
-start address 0x00000000
-
-Sections:
-Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000006c  00000000  00000000  00000034  2**2
-                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
-  1 .data         00000000  00000000  00000000  000000a0  2**0
-                  CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000000  00000000  00000000  000000a0  2**0
-                  ALLOC
-  3 .rodata.str1.4 00000011  00000000  00000000  000000a0  2**2
-                  CONTENTS, ALLOC, LOAD, READONLY, DATA
-  4 .comment      0000001a  00000000  00000000  000000b1  2**0
-                  CONTENTS, READONLY
-  5 .note.GNU-stack 00000000  00000000  00000000  000000cb  2**0
-                  CONTENTS, READONLY
-  6 .riscv.attributes 0000001c  00000000  00000000  000000cb  2**0
-                  CONTENTS, READONLY
-SYMBOL TABLE:
-00000000 l    df *ABS*	00000000 print.c
-00000000 l    d  .text	00000000 .text
-00000000 l    d  .data	00000000 .data
-00000000 l    d  .bss	00000000 .bss
-00000000 l    d  .rodata.str1.4	00000000 .rodata.str1.4
-00000000 l    d  .note.GNU-stack	00000000 .note.GNU-stack
-00000000 l    d  .comment	00000000 .comment
-00000000 l    d  .riscv.attributes	00000000 .riscv.attributes
-00000000 g     F .text	0000000c print_chr
-0000000c g     F .text	0000001c print_str
-00000028 g     F .text	00000044 print_hex
+print.o:     file format elf32-littleriscv
 
 
-RELOCATION RECORDS FOR [.text]:
-OFFSET   TYPE              VALUE
-00000014 R_RISCV_BRANCH    .L4
-00000024 R_RISCV_JAL       .L3
-00000030 R_RISCV_HI20      .LC0
-00000030 R_RISCV_RELAX     *ABS*
-00000038 R_RISCV_BRANCH    .L7
-00000050 R_RISCV_LO12_I    .LC0
-00000050 R_RISCV_RELAX     *ABS*
-00000068 R_RISCV_JAL       .L6
+Disassembly of section .text:
 
+00000000 <print_chr>:
+   0:	800007b7          	lui	a5,0x80000
+   4:	00a7a023          	sw	a0,0(a5) # 80000000 <.L17+0x7ffffeb8>
+   8:	00008067          	ret
 
+0000000c <print_str>:
+   c:	80000737          	lui	a4,0x80000
+
+00000010 <.L3>:
+  10:	00054783          	lbu	a5,0(a0)
+  14:	00079463          	bnez	a5,1c <.L4>
+  18:	00008067          	ret
+
+0000001c <.L4>:
+  1c:	00150513          	addi	a0,a0,1
+  20:	00f72023          	sw	a5,0(a4) # 80000000 <.L17+0x7ffffeb8>
+  24:	fedff06f          	j	10 <.L3>
+
+00000028 <_print_dec>:
+  28:	ff010113          	addi	sp,sp,-16
+  2c:	00812423          	sw	s0,8(sp)
+  30:	00112623          	sw	ra,12(sp)
+  34:	00050413          	mv	s0,a0
+  38:	00900793          	li	a5,9
+  3c:	00000513          	li	a0,0
+
+00000040 <.L6>:
+  40:	0287ec63          	bltu	a5,s0,78 <.L7>
+  44:	04a7e063          	bltu	a5,a0,84 <.L8>
+  48:	03050513          	addi	a0,a0,48
+  4c:	0ff57513          	zext.b	a0,a0
+  50:	800007b7          	lui	a5,0x80000
+  54:	00a7a023          	sw	a0,0(a5) # 80000000 <.L17+0x7ffffeb8>
+
+00000058 <.L9>:
+  58:	03040413          	addi	s0,s0,48
+  5c:	0ff47413          	zext.b	s0,s0
+  60:	800007b7          	lui	a5,0x80000
+  64:	00c12083          	lw	ra,12(sp)
+  68:	0087a023          	sw	s0,0(a5) # 80000000 <.L17+0x7ffffeb8>
+  6c:	00812403          	lw	s0,8(sp)
+  70:	01010113          	addi	sp,sp,16
+  74:	00008067          	ret
+
+00000078 <.L7>:
+  78:	00150513          	addi	a0,a0,1
+  7c:	ff640413          	addi	s0,s0,-10
+  80:	fc1ff06f          	j	40 <.L6>
+
+00000084 <.L8>:
+  84:	00000097          	auipc	ra,0x0
+  88:	000080e7          	jalr	ra # 84 <.L8>
+  8c:	fcdff06f          	j	58 <.L9>
+
+00000090 <print_dec>:
+  90:	ff010113          	addi	sp,sp,-16
+  94:	00812423          	sw	s0,8(sp)
+  98:	00112623          	sw	ra,12(sp)
+  9c:	00050413          	mv	s0,a0
+  a0:	00900793          	li	a5,9
+  a4:	00000513          	li	a0,0
+
+000000a8 <.L12>:
+  a8:	0487e063          	bltu	a5,s0,e8 <.L13>
+  ac:	04a7e463          	bltu	a5,a0,f4 <.L14>
+  b0:	03050513          	addi	a0,a0,48
+  b4:	0ff57513          	zext.b	a0,a0
+  b8:	800007b7          	lui	a5,0x80000
+  bc:	00a7a023          	sw	a0,0(a5) # 80000000 <.L17+0x7ffffeb8>
+
+000000c0 <.L15>:
+  c0:	03040413          	addi	s0,s0,48
+  c4:	0ff47413          	zext.b	s0,s0
+  c8:	800007b7          	lui	a5,0x80000
+  cc:	0087a023          	sw	s0,0(a5) # 80000000 <.L17+0x7ffffeb8>
+  d0:	00c12083          	lw	ra,12(sp)
+  d4:	00812403          	lw	s0,8(sp)
+  d8:	00a00713          	li	a4,10
+  dc:	00e7a023          	sw	a4,0(a5)
+  e0:	01010113          	addi	sp,sp,16
+  e4:	00008067          	ret
+
+000000e8 <.L13>:
+  e8:	00150513          	addi	a0,a0,1
+  ec:	ff640413          	addi	s0,s0,-10
+  f0:	fb9ff06f          	j	a8 <.L12>
+
+000000f4 <.L14>:
+  f4:	00000097          	auipc	ra,0x0
+  f8:	000080e7          	jalr	ra # f4 <.L14>
+  fc:	fc5ff06f          	j	c0 <.L15>
+
+00000100 <print_hex>:
+ 100:	04058463          	beqz	a1,148 <.L17>
+ 104:	00259593          	slli	a1,a1,0x2
+ 108:	ffc58593          	addi	a1,a1,-4
+ 10c:	000006b7          	lui	a3,0x0
+ 110:	80000637          	lui	a2,0x80000
+
+00000114 <.L19>:
+ 114:	0005da63          	bgez	a1,128 <.L20>
+ 118:	00000537          	lui	a0,0x0
+ 11c:	00050513          	mv	a0,a0
+ 120:	00000317          	auipc	t1,0x0
+ 124:	00030067          	jr	t1 # 120 <.L19+0xc>
+
+00000128 <.L20>:
+ 128:	00b55733          	srl	a4,a0,a1
+ 12c:	00068793          	mv	a5,a3
+ 130:	00f77713          	andi	a4,a4,15
+ 134:	00e787b3          	add	a5,a5,a4
+ 138:	0007c783          	lbu	a5,0(a5)
+ 13c:	ffc58593          	addi	a1,a1,-4
+ 140:	00f62023          	sw	a5,0(a2) # 80000000 <.L17+0x7ffffeb8>
+ 144:	fd1ff06f          	j	114 <.L19>
+
+00000148 <.L17>:
+ 148:	00008067          	ret
+
+Disassembly of section .rodata.str1.4:
+
+00000000 <.LC1>:
+   0:	000a                	.insn	2, 0x000a
+	...
+
+00000004 <.LC0>:
+   4:	3130                	.insn	2, 0x3130
+   6:	3332                	.insn	2, 0x3332
+   8:	3534                	.insn	2, 0x3534
+   a:	3736                	.insn	2, 0x3736
+   c:	3938                	.insn	2, 0x3938
+   e:	4241                	.insn	2, 0x4241
+  10:	46454443          	.insn	4, 0x46454443
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	4700                	.insn	2, 0x4700
+   2:	203a4343          	.insn	4, 0x203a4343
+   6:	6728                	.insn	2, 0x6728
+   8:	3430                	.insn	2, 0x3430
+   a:	3936                	.insn	2, 0x3936
+   c:	6436                	.insn	2, 0x6436
+   e:	3066                	.insn	2, 0x3066
+  10:	2939                	.insn	2, 0x2939
+  12:	3120                	.insn	2, 0x3120
+  14:	2e34                	.insn	2, 0x2e34
+  16:	2e32                	.insn	2, 0x2e32
+  18:	0030                	.insn	2, 0x0030
+
+Disassembly of section .riscv.attributes:
+
+00000000 <.riscv.attributes>:
+   0:	1b41                	.insn	2, 0x1b41
+   2:	0000                	.insn	2, 0x
+   4:	7200                	.insn	2, 0x7200
+   6:	7369                	.insn	2, 0x7369
+   8:	01007663          	bgeu	zero,a6,14 <.riscv.attributes+0x14>
+   c:	0011                	.insn	2, 0x0011
+   e:	0000                	.insn	2, 0x
+  10:	1004                	.insn	2, 0x1004
+  12:	7205                	.insn	2, 0x7205
+  14:	3376                	.insn	2, 0x3376
+  16:	6932                	.insn	2, 0x6932
+  18:	7032                	.insn	2, 0x7032
+  1a:	0031                	.insn	2, 0x0031
