@@ -4,8 +4,6 @@ weight: 22
 pre: "<i class='fas fa-book'></i> "
 ---
 
-
-
 A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V implementation is the first extension that will be made.
 
 The exercise could be: **Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th.** The expected output from such a program would look like: **.......:.......;.......:.......;...**
@@ -27,7 +25,7 @@ This *should* ring a bell from an ealier course: **System-on-Chip design and exp
 {{% multiHcolumn %}}
 {{% column %}}
 #### Inputs
-Two registers are allocated for **commands**. One of these 32-bit registers will be directly wired to the **CMP** (compare) input of the Timer/Counter. The other register will control both 2-bit inputs **CS** and **WGM**. As the hardware designer it is your choice how these mappings are done. As an example, the two LSBs of the register (indexes 1 and 0) can be assigned to the clock select (CS) and the next two LSBs (indexes 3 and 2) can be assigned to the waveform generation mode (WGM).
+Two registers are allocated for **commands**. One of these 32-bit registers will be directly wired to the **CMP** (compare) input of the Timer/Counter. The other register will control both 2-bit inputs **CS** and **WGM**. As the hardware designer it is your choice how these mappings are done. As an example, the two LSBs of the register (indexes 1 and 0) can be assigned to the clock select (CS) and the next two LSBs (indexes 3 and 2) can be assigned to the waveform generation mode (WGM). The bit at index 8 will control the clear (**CLR**).
 {{% /column %}}
 {{% column %}}
 #### Outputs
@@ -126,7 +124,11 @@ When taking the same channel for the timer/counter inteface as well, it becomes 
 
 ![sim_design](/img/20/sim_design.png)
 
-<!-- ## Now it's your turn 
+To solve this issue, a multiplexer is typically placed. Within the scope of this course, it will be assumed that peripherals each have 256 addresses. For the timer/counter this boils down to: **0x810000**<u>00</u> to **0x810000**<u>FF</u>. Given that a *word* takes 4 addresses, this means that a peripheral can use up to 64 32-bit registers.
+
+With this approach each peripheral as a **BASE ADDRESS** (0x810000 for the timer/counter) that is 24 bits wide. The selection input of the added multiplexer can thus be the 24 MSBs of the address.
+
+## Now it's your turn 
 
 Use the timer component to solve: 
-> **Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th.** -->
+> **Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th.**
