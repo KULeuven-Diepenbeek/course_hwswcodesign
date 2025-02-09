@@ -10,46 +10,67 @@
     <webMaster>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</webMaster>
     <atom:link href="https://kuleuven-diepenbeek.github.io/course_hwswcodesign/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>1 - Programming the RISC-V</title>
+      <title>1.1 - Programming the RISC-V</title>
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/11_programming/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/11_programming/</guid>
-      <description>In the third year of the Bachelor program, you have done the course unit Computer architecture (3435). In this course you made an implementation for a RISC-V processor. This course (of which you are currently reading the course material) starts with one of the earlier implementations you made: the RV32I implementation. The processor runs a program and the ins-and-outs of this will be the handover point between both courses.&#xA;Assembly The implementation of the ISA is capable of executing instructions.</description>
+      <description>In the third year of the Bachelor program, you have done the course unit Computer architecture (3435). In this course you made an implementation for a RISC-V processor. This course (of which you are currently reading the course material) starts with one of the earlier implementations you made: the RV32I implementation. The processor runs a program and the ins-and-outs of this will be the handover point between both courses.The implementation of the ISA is capable of executing instructions.</description>
     </item>
     <item>
-      <title>2 - Compiling Bare Metal</title>
+      <title>1.2 - Compiling Bare Metal</title>
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/12_compiling_bare_metal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/12_compiling_bare_metal/</guid>
       <description>When you learned to write C, you might have been in touch with compiling already. In case you&amp;rsquo;re a master at compiling and cross compiling, this section is a refresher. In the other case (which also includes those that only clicked the Compile-button in an IDE), this section will guide you through the most import aspects (for this course).&#xA;Compiling is typically used to describe the proces that converts the C sources into a binary that can be executed.</description>
     </item>
     <item>
-      <title>3 - Linking Bare Metal</title>
+      <title>1.3 - Linking Bare Metal</title>
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/13_linking_bare_metal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/13_linking_bare_metal/</guid>
       <description>With the three object files generated, it is time to stich everything togehter. These object files are compiled, so they are converted to machine code. They are organised in sections and they all start at address 0x0. (At the bottom of this page, three object dumps are found so you can verify for yourself.) The image below shows which object file contains which sections. As mentioned before, it is the linker&amp;rsquo;s job to do the stiching.</description>
     </item>
     <item>
-      <title>4 - Simulation</title>
+      <title>1.4 - Simulation</title>
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/14_simulation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/14_simulation/</guid>
       <description>In this course you will have to work both on the hardware and on the software. To facilitate this kind of designing and developing, it will be invaluable to run simulation as smooth as possible. Before jumping to the testbench, it might useful to briefly refresh the concept of synthesisable hardware.&#xA;Synthesisable HDL All hardware description languages (HDLs) have a lingo that is used to describe a hardware design. Typically, these HDLs also have parts of their language dedicated to verification.</description>
     </item>
     <item>
-      <title>5 - Exercises</title>
+      <title>1.5 - Exercises</title>
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/15_exercises/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/15_exercises/</guid>
       <description>Practice makes perfect Below are a number of programming exercises. The aim is that you 1) retrieve your RISC-V implementation 2) prepare a working setup, and 3) refresh your low-level C programming skills.&#xA;As a reminder &amp;hellip; a zip archive to get you started can be found here.&#xA;Exercise 101 For this exercise you should simply try to get the zip file to work on your own RISC-V.&#xA;As FPGA device, you can pick a ZYNQ XC7Z020-1CLG400C.</description>
     </item>
     <item>
-      <title>1 - Timer</title>
+      <title>2.1 - Timer</title>
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/21_timer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/21_timer/</guid>
       <description>A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V implementation is the first extension that will be made.&#xA;The exercise could be: Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th. The expected output from such a program would look like: &amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&#xA;Software The first way of making a solution for this exercise can be to make it in software.</description>
+    </item>
+    <item>
+      <title>2.2 - Timer/counter</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/22_timer_counter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/22_timer_counter/</guid>
+      <description>A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V implementation is the first extension that will be made.&#xA;The exercise could be: Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th. The expected output from such a program would look like: &amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&#xA;Hardware A second way of making a solution for the aforementioned exercise can be made in hardware.</description>
+    </item>
+    <item>
+      <title>2.3 - Using TCNT</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/23_tcnt_use/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/23_tcnt_use/</guid>
+      <description>As an example for using the timer counter, it is going to be used to measure the time of a matrix multiplication. The matrices are fixed in size and all have a 2x2 dimension. This image refreshes your memory on matrix multiplication (in case you need it).&#xA;Regular multiplication The first problem that arises is the normal multiplication. Given the fact that the RISC-V still has RV32i configuration, this means that there is no multiplier present.</description>
+    </item>
+    <item>
+      <title>2.4 - What&#39;s the cost</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/24_cost/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/24_cost/</guid>
+      <description> Now that the design is taking some size, it is time to start looking at the cost. You might have touched upon this earlier in this program. The triangle that is shown here allows you to pick maximum 2 things to focus on.&#xA;Speed (think clock frequency, throughput, latency) Flexibility (think &amp;lsquo;only AES&amp;rsquo; vs &amp;rsquo;every cryptographic algorithm ever invented&amp;rsquo;) Cost (think euros, mm2 of Silicon) </description>
     </item>
     <item>
       <title>1 - Interrupt</title>
@@ -57,6 +78,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/31_interrupt/</guid>
       <description>An exception or interrupt is essentially an unscheduled procedure call.</description>
+    </item>
+    <item>
+      <title>x - Manual</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/39_manual/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/39_manual/</guid>
+      <description>This manual will guide you through the changes that are required to include the Zicsr extension.&#xA;Th</description>
     </item>
     <item>
       <title>101 - Processor</title>
@@ -218,6 +246,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/900_appendices/901_roger/</guid>
       <description>Within the Engineering Technology program it is sometimes needed to have access to a server. For this purpose, Roger was born. On this server several virtual machines are running. For this course, students can use chip.&#xA;This server is accessible over the Internet. To be able to connect to the virtual machines a VPN connection is required. You have received (or will receive) an email that contains your username and password.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/31_wip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/31_wip/</guid>
+      <description>RISC-V refers to an external asynchronous event that may cause a RISC-V core to execute an unexpected transfer of control as interrupt. Similarly, an unusual condition occurring at the run time (due to invalid instructions etc.) is referred to as exceptions. The term trap is used to collectively refer to interrupt or exception.&#xA;RISC-V supports two main trap handling mechanisms: direct and vectored. Based on the last 2 bits of the mtvec register (or stvec for ‘S’ mode), it could be either perform Direct handling (bit values – 00) or Vectored handling (bit values – 01).</description>
     </item>
   </channel>
 </rss>

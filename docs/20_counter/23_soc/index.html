@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/course_hwswcodesign/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=course_hwswcodesign/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.123.7">
+    <meta name="description" content="">
+<meta name="author" content="map[email:&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; name:Jo Vliegen]">
+
+    <link rel="icon" href="../../images/favicon.png" type="image/png">
+
+    <title>2.3 - Put a SoC in it :: HW/SW codesign</title>
+
+    
+    <link href="../../css/nucleus.css?1737352218" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1737352218" rel="stylesheet">
+    <link href="../../css/hybrid.css?1737352218" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1737352218" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1737352218" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1737352218" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1737352218" rel="stylesheet">
+    <link href="../../css/theme.css?1737352218" rel="stylesheet">
+    <link href="../../css/tabs.css?1737352218" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1737352218" rel="stylesheet">
+    
+    <link href="../../css/theme-kul.css?1737352218" rel="stylesheet">
+    
+    
+
+    <script src="../../js/jquery-3.3.1.min.js?1737352218"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script src=../../js/exercises.js></script> 
+  </head>
+  <body class="" data-url="../../20_counter/23_soc/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="https://www.kuleuven.be/kuleuven/" target="_blank">
+  <img src="../../img/style/kul.png" alt="KU Leuven" /><br/>
+</a>
+<a href="https://www.uhasselt.be/" target="_blank">
+  <img src="../../img/style/uhasselt.svg" alt="UHasselt" id="uhlogo" />
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1737352218"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1737352218"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost:1313\/course_hwswcodesign\/";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1737352218"></script>
+
+    
+  </div>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/10_compiling/" title="1 Setting the playing field" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../10_compiling/">
+          1 Setting the playing field
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/11_programming/" title="1.1 - Programming the RISC-V" class="dd-item ">
+        <a href="../../10_compiling/11_programming/">
+        <i class='fas fa-book'></i> 1.1 - Programming the RISC-V
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/12_compiling_bare_metal/" title="1.2 - Compiling Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/12_compiling_bare_metal/">
+        <i class='fas fa-book'></i> 1.2 - Compiling Bare Metal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/13_linking_bare_metal/" title="1.3 - Linking Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/13_linking_bare_metal/">
+        <i class='fas fa-book'></i> 1.3 - Linking Bare Metal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/14_simulation/" title="1.4 - Simulation" class="dd-item ">
+        <a href="../../10_compiling/14_simulation/">
+        <i class='fas fa-book'></i> 1.4 - Simulation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/15_exercises/" title="1.5 - Exercises" class="dd-item ">
+        <a href="../../10_compiling/15_exercises/">
+        <i class='fas fa-pen-book'></i>1.5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/20_counter/" title="2 Once upon a time(r)" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="../../20_counter/">
+          2 Once upon a time(r)
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_counter/21_timer/" title="2.1 - Timer" class="dd-item ">
+        <a href="../../20_counter/21_timer/">
+        <i class='fas fa-book'></i> 2.1 - Timer
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_counter/22_timer_counter/" title="2.2 - Timer/counter" class="dd-item ">
+        <a href="../../20_counter/22_timer_counter/">
+        <i class='fas fa-book'></i>2.2 - Timer/counter
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_counter/23_soc/" title="2.3 - Put a SoC in it" class="dd-item active">
+        <a href="../../20_counter/23_soc/">
+        <i class='fas fa-book'></i>2.3 - Put a SoC in it
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/30_interrupts/" title="3 Interrupts" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../30_interrupts/">
+          3 Interrupts
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_interrupts/31_interrupt/" title="1 - Interrupt" class="dd-item ">
+        <a href="../../30_interrupts/31_interrupt/">
+        1 - Interrupt
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_interrupts/39_manual/" title="x - Manual" class="dd-item ">
+        <a href="../../30_interrupts/39_manual/">
+        x - Manual
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_interrupts/31_wip/" title="" class="dd-item ">
+        <a href="../../30_interrupts/31_wip/">
+        
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://studiegidswww.uhasselt.be/opleidingsonderdeel.aspx?a=2023&amp;i=3468&amp;n=4&amp;t=04"><i class='fa fa-university'></i> ECTS Sheet</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://p.cygnus.cc.kuleuven.be/webapps/blackboard/execute/announcement?method=search&amp;context=course&amp;course_id=_1176295_1&amp;handle=cp_announcements&amp;mode=cpview"><i class='fa fa-university'></i> Toledo</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../'>HWSW codesign</a> > <a href='../../20_counter/'>2 Once upon a time(r)</a> > 2.3 - Put a SoC in it
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#amba">AMBA</a></li>
+    <li><a href="#advanced-peripheral-bus-apb">Advanced Peripheral Bus (APB)</a>
+      <ul>
+        <li><a href="#peripheral-overhead">Peripheral (overhead)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              2.3 - Put a SoC in it
+            </h1>
+          
+
+        
+
+
+<p>A SoC consists of more components than only a processor, as the name already implies. The <em>system</em> has multiple components depending on the task for which it was designed. Having multiple components like timers, interrupt controllers, or communication cores are very useful, unless they can&rsquo;t be used. To achieve <em>reachability</em>, all the components must be connected through some bus architecture to the processor.</p>
+<p>A number of standardised bus architectures exist, for example:</p>
+<ul>
+<li>Wishbone</li>
+<li>Avalon</li>
+<li>AMBA</li>
+<li>CoreConnect</li>
+</ul>
+<h2 id="amba">AMBA</h2>
+<p><strong>ARM</strong> has defined an <strong>open standard</strong> which allows the interconnection of such functional blocks: <strong>Advanced Microcontroller Bus Architecture (AMBA)</strong>. Currently the fifth generation of the AMBA bus is available.</p>
+<p><img src="https://developer.arm.com/-/media/Arm%20Developer%20Community/Images/Block%20Diagrams/updated%20AMBA%20overview%20diagram.png?h=393&amp;w=905&amp;hash=5E9F468F2C11760232E849C0081241D9C463BA6C" alt="AMBA"></p>
+<style>
+  p.image_courtesy {
+    color: #7E7E7E;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: -1px;
+    padding-top: 0px;
+    margin-top: -20px;
+    text-align: center;
+  }
+</style>
+<p class="image_courtesy">image source: https://developer.arm.com/architectures/system-architectures/amba</p>
+<p>It should not come as a surprise that the more recent versions are more powerful than the older ones, but they are also more complicated &#x1f603;. When working with design software like Xilinx&rsquo;s Vivado, almost all components have an <strong>AXI4 interface</strong>. As the provided cores in such an ecosystem are all tuned towards a single standard, it becomes fairly easy for the designer to build a SoC. Two examples of how to use these buses in a <em>system</em> are shown in the images below.</p>
+<div class="multiHcolumn">
+<div class="column">
+  <p><img src="https://www.researchgate.net/profile/Milica-Jovanovic-2/publication/339325397/figure/fig1/AS:859847788597250@1582015096244/AMBA-based-system-architecture.ppm" alt="example"></p>
+</div>    
+<div class="column">
+  <p><img src="https://www.mouser.be/images/marketingid/2019/microsites/0/Zynq-7000BlockDiagram.png" alt="example"></p>
+</div>    
+</div>    
+<p>To protect ourselves from getting lost in details, only the <em>APB</em> bus will be used in this course. The most recent specification of this protocol can be obtained from the <a href="https://developer.arm.com/documentation/ihi0024/d" target="_blank">ARM website</a>.</p>
+<h2 id="advanced-peripheral-bus-apb">Advanced Peripheral Bus (APB)</h2>
+<p>When two components are talking, typically the names master and slave are used. The lingo in the APB-bus uses: the <strong>requester</strong> and the <strong>completer</strong>. The image below shows a setup with one requester and one completer. The <strong>clock</strong> and <strong>reset</strong> signals are provided externally. Most of the signals are driven by the requester, but (offcourse) a couple of signals are driven by the completer.</p>
+<figure><img src="../../img/20/apb.png"/><figcaption>
+            <h4>An APB bus wrapper</h4>
+        </figcaption>
+</figure>
+<p>For a more in-depth description of each of these signals, you can visit the <a href="https://developer.arm.com/documentation/ihi0024/d" target="_blank">specification</a>.</p>
+<p>Transfers on the APB-bus follow 2 successive phases: the the <strong>setup phase</strong> and the <strong>access phase</strong>. In the <em>setup phase</em> the requester drives the SEL and the ADDR lines, amongst other. After <strong>one clock cycle</strong> the requester drives the <em>ENABLE</em> signal in the <em>access phase</em>.</p>
+<div class="multiHcolumn">
+<div class="column">
+  <h3 id="write-transfer-without-wait-states">Write transfer (without wait states)</h3>
+<figure><img src="../../img/20/wavedrom_apb_write_nowait.png"/><figcaption>
+            <h4>Waveforms of a write transfer</h4>
+        </figcaption>
+</figure>
+<!-- https://wavedrom.com/editor.html?%7Bsignal%3A%20%5B%0A%20%20%20%20%7B%20name%3A%20%22PCLK%22%2C%20wave%3A%20%27p...%27%20%7D%2C%0A%20%20%20%20%7B%20name%3A%20%22PSEL%22%2C%20wave%3A%20%2201.0%22%20%7D%2C%0A%20%20%20%20%7B%20name%3A%20%22PWRITE%22%2C%20wave%3A%20%2201.0%22%20%7D%2C%0A%20%20%20%20%7B%20name%3A%20%22PENABLE%22%2C%20wave%3A%20%220.10%22%20%7D%2C%0A%20%20%20%20%7B%20name%3A%20%22PADDR%22%2C%20wave%3A%20%27x3.x%27%2C%20data%3A%20%5B%22A0%22%5D%20%7D%2C%0A%20%20%20%20%7B%20name%3A%20%22PWDATA%22%2C%20wave%3A%20%27x4.x%27%2C%20data%3A%20%5B%22D0%22%5D%20%7D%2C%0A%20%20%20%20%7B%20name%3A%20%22PREADY%22%2C%20wave%3A%20%220.10%22%20%7D%2C%0A%20%20%20%20%7B%20name%3A%20%22PRDATA%22%2C%20wave%3A%20%27x...%27%2C%20data%3A%20%5B%22D0%22%5D%20%7D%2C%0A%0A%20%20%5D%2C%0A%20%20%22config%22%20%3A%20%7B%20%22hscale%22%20%3A%202%20%7D%0A%7D%0A -->
+</div>    
+<div class="column">
+  <h3 id="read-transfer-without-wait-states">Read transfer (without wait states)</h3>
+<figure><img src="../../img/20/wavedrom_apb_read_nowait.png"/><figcaption>
+            <h4>Waveforms of a read transfer</h4>
+        </figcaption>
+</figure>
+</div>    
+</div>    
+<p>The examples above show the default write and read transfers. In the specification more detail (and explanation) is available, but putting these images right beside each other allows to better see the differences (and the similarities).</p>
+<p>From the images and the description it is clear that each transfer takes at least <strong>two clockcycles</strong> to complete. There you have the most important reason why the bus is mainly used for peripherals.</p>
+<p>The peripherals that are connected through the APB bus typically use a <em>register-interface</em>. The idea behind this is that a peripheral has a number of registers that can be written and read by the processor. Based on the address map, read and write operations are handled by the targeted peripheral.</p>
+<h3 id="peripheral-overhead">Peripheral (overhead)</h3>
+<p>Below is an <strong>example</strong> of a peripheral implementation. It contains NO functional block, but supports an APB interface.</p>
+<figure><img src="../../img/20/apb_peripheral.png"/><figcaption>
+            <h4>An APB peripheral</h4>
+        </figcaption>
+</figure>
+<p>In the top-middle part are a number registers. These can be written and read by the <em>requester</em>. As with many other systems, there is a <strong>strobe</strong> signal. This allows you to mask (out) the 32-bit values with byte granularity.</p>
+<p>The register in the top-right stores the data that is to be read. This register is loaded with one of the other register <strong>OR</strong> with another value (depicted by the small cloud in the closing curly bracket).</p>
+<p>As all the peripherals are connected through a single APB bus, every peripheral must verify if a transfer is to be obeyed or not.</p>
+<div class="multiHcolumn">
+<div class="column">
+  <p>This example takes into account the following conditions to determine whether or not a transfer is targeted at this peripheral:</p>
+<ul>
+<li> the address <b>PADDR</b> is larger than or equal to the base address (BA)</li>
+<li> the address <b>PADDR</b> is smaller than or equal to the high address (HA)</li>
+<li> the <b>PSEL</b> input is high</li>
+<li> the <b>PENABLE</b> input is low (= setup phase)</li>
+</ul>
+<p>When these conditions are met, the transfer is aimed at this peripheral. Depending on the <strong>PWRITE</strong> signal, the transfer is either a write (1) or a read (0) transfer.</p>
+<p>The transfer that is considered for this peripheral (both in case of read or write) is sampled in one of the register on the bottom right. A simple OR of these registers can be used as the <strong>PREADY</strong> signal.</p>
+</div>    
+<div class="column">
+  <figure><img src="../../img/20/apb_write_sim.png"/><figcaption>
+            <h4>Simulation of an APB write operation</h4>
+        </figcaption>
+</figure>
+</div>    
+</div>    
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../20_counter/22_timer_counter/" title="2.2 - Timer/counter"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../30_interrupts/" title="3 Interrupts" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1737352218"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1737352218"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1737352218"></script>
+    <script src="../../js/jquery.sticky.js?1737352218"></script>
+    <script src="../../js/featherlight.min.js?1737352218"></script>
+    <script src="../../js/highlight.pack.js?1737352218"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1737352218"></script>
+    <script src="../../js/learn.js?1737352218"></script>
+    <script src="../../js/hugo-learn.js?1737352218"></script>
+    
+        
+            <script src="../../mermaid/mermaid.js?1737352218"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

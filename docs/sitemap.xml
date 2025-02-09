@@ -6,31 +6,35 @@
     <lastmod>2024-12-06T16:09:33+01:00</lastmod>
   </url><url>
     <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/11_programming/</loc>
-    <lastmod>2024-12-13T12:20:41+01:00</lastmod>
+    <lastmod>2025-01-17T14:38:36+01:00</lastmod>
   </url><url>
     <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/12_compiling_bare_metal/</loc>
-    <lastmod>2024-12-10T07:17:22+01:00</lastmod>
+    <lastmod>2025-01-17T14:38:36+01:00</lastmod>
   </url><url>
     <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/13_linking_bare_metal/</loc>
-    <lastmod>2024-12-10T07:17:22+01:00</lastmod>
+    <lastmod>2025-01-17T14:38:36+01:00</lastmod>
   </url><url>
     <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/14_simulation/</loc>
-    <lastmod>2024-12-13T13:42:59+01:00</lastmod>
+    <lastmod>2025-01-17T14:38:36+01:00</lastmod>
   </url><url>
     <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/10_compiling/15_exercises/</loc>
-    <lastmod>2024-12-13T13:51:59+01:00</lastmod>
-  </url><url>
-    <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/</loc>
-    <lastmod>2024-12-10T07:17:42+01:00</lastmod>
+    <lastmod>2025-01-17T14:38:36+01:00</lastmod>
   </url><url>
     <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/21_timer/</loc>
-    <lastmod>2024-12-10T07:17:42+01:00</lastmod>
+    <lastmod>2025-01-17T14:39:10+01:00</lastmod>
   </url><url>
-    <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/</loc>
-    <lastmod>2024-12-10T07:17:42+01:00</lastmod>
+    <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/22_timer_counter/</loc>
+    <lastmod>2025-01-17T14:39:10+01:00</lastmod>
+  </url><url>
+    <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/23_tcnt_use/</loc>
+  </url><url>
+    <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/24_cost/</loc>
   </url><url>
     <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/31_interrupt/</loc>
     <lastmod>2024-12-10T07:17:42+01:00</lastmod>
+  </url><url>
+    <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/39_manual/</loc>
+    <lastmod>2025-01-17T14:39:25+01:00</lastmod>
   </url><url>
     <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/100_processor/101_processor/</loc>
     <lastmod>2023-04-24T09:48:40+02:00</lastmod>
@@ -100,6 +104,9 @@
   </url><url>
     <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/900_appendices/901_roger/</loc>
     <lastmod>2024-02-08T09:09:18+01:00</lastmod>
+  </url><url>
+    <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/31_wip/</loc>
+    <lastmod>2025-01-17T14:39:25+01:00</lastmod>
   </url><url>
     <loc>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/</loc>
     <lastmod>2023-04-24T09:42:44+02:00</lastmod>
