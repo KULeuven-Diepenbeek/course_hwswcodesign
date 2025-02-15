@@ -210,6 +210,13 @@ div.centeredColumn75 {
     margin-right: auto;
 }
 
+div.assignment {
+    color: rgb(129, 0, 0);
+    font-weight: bold;
+    padding-left: 20px;
+    font-style: italic;
+}
+
 /* end VlJo */
 
 
