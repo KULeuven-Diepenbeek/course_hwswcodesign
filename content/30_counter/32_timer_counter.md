@@ -1,6 +1,6 @@
 ---
-title: '2.2 - Timer/counter'
-weight: 22
+title: '3.2 - Timer/counter'
+weight: 32
 pre: "<i class='fas fa-book'></i> "
 ---
 

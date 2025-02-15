@@ -1,6 +1,6 @@
 ---
-title: '2.3 - Using TCNT'
-weight: 23
+title: '3.3 - Using TCNT'
+weight: 33
 pre: "<i class='fas fa-book'></i> "
 ---
 

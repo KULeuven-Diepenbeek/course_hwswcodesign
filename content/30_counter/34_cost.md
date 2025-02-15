@@ -1,6 +1,6 @@
 ---
-title: "2.4 - What's the cost"
-weight: 24
+title: "3.4 - What's the cost"
+weight: 34
 pre: "<i class='fas fa-book'></i> "
 ---
 
