@@ -1,7 +1,7 @@
 ---
 title: '1.5 - Exercises'
 weight: 15
-pre: "<i class='fas fa-pen-book'></i>"
+pre: "<i class='fas fa-pen'></i> "
 ---
 
 ## Practice makes perfect
@@ -77,6 +77,7 @@ Determine how long it takes (in clock cycles) to perform the calculation !!
 
 {{% centeredColumn 75 %}}
 #### Exercise 105
+<div class="assignment">ASSIGNMENT</div>
 {{% /centeredColumn %}}
 
 {{% centeredColumn 50 %}}
