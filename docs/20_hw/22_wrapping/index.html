@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.123.7">
+    <meta name="description" content="">
+<meta name="author" content="map[email:&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; name:Jo Vliegen]">
+
+    <link rel="icon" href="../../images/favicon.png" type="image/png">
+
+    <title>2.2 - Wrapping it up :: HW/SW codesign</title>
+
+    
+    <link href="../../css/nucleus.css?1739605499" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1739605499" rel="stylesheet">
+    <link href="../../css/hybrid.css?1739605499" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1739605499" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1739605499" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1739605499" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1739605499" rel="stylesheet">
+    <link href="../../css/theme.css?1739605499" rel="stylesheet">
+    <link href="../../css/tabs.css?1739605499" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1739605499" rel="stylesheet">
+    
+    <link href="../../css/theme-kul.css?1739605499" rel="stylesheet">
+    
+    
+
+    <script src="../../js/jquery-3.3.1.min.js?1739605499"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script src=../../js/exercises.js></script> 
+  </head>
+  <body class="" data-url="../../20_hw/22_wrapping/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="https://www.kuleuven.be/kuleuven/" target="_blank">
+  <img src="../../img/style/kul.png" alt="KU Leuven" /><br/>
+</a>
+<a href="https://www.uhasselt.be/" target="_blank">
+  <img src="../../img/style/uhasselt.svg" alt="UHasselt" id="uhlogo" />
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1739605499"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1739605499"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1739605499"></script>
+
+    
+  </div>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/10_compiling/" title="1 Setting the playing field" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../10_compiling/">
+          1 Setting the playing field
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/11_programming/" title="1.1 - Programming the RISC-V" class="dd-item ">
+        <a href="../../10_compiling/11_programming/">
+        <i class='fas fa-book'></i> 1.1 - Programming the RISC-V
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/12_compiling_bare_metal/" title="1.2 - Compiling Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/12_compiling_bare_metal/">
+        <i class='fas fa-book'></i> 1.2 - Compiling Bare Metal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/13_linking_bare_metal/" title="1.3 - Linking Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/13_linking_bare_metal/">
+        <i class='fas fa-book'></i> 1.3 - Linking Bare Metal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/14_simulation/" title="1.4 - Simulation" class="dd-item ">
+        <a href="../../10_compiling/14_simulation/">
+        <i class='fas fa-book'></i> 1.4 - Simulation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/15_exercises/" title="1.5 - Exercises" class="dd-item ">
+        <a href="../../10_compiling/15_exercises/">
+        <i class='fas fa-pen'></i> 1.5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/20_hw/" title="2 Making it work on hardware" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="../../20_hw/">
+          2 Making it work on hardware
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/21_current_situation/" title="2.1 - The current situation" class="dd-item ">
+        <a href="../../20_hw/21_current_situation/">
+        <i class='fas fa-book'></i> 2.1 - The current situation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/22_wrapping/" title="2.2 - Wrapping it up" class="dd-item active">
+        <a href="../../20_hw/22_wrapping/">
+        <i class='fas fa-book'></i> 2.2 - Wrapping it up
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/23_onemore/" title="2.3 - One more thing ..." class="dd-item ">
+        <a href="../../20_hw/23_onemore/">
+        <i class='fas fa-book'></i> 2.3 - One more thing ...
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/24_ooc/" title="2.4 - Go as fast as you can" class="dd-item ">
+        <a href="../../20_hw/24_ooc/">
+        <i class='fas fa-book'></i> 2.4 - Go as fast as you can
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/25_exercises/" title="2.5 - Exercises" class="dd-item ">
+        <a href="../../20_hw/25_exercises/">
+        <i class='fas fa-pen'></i> 2.5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://studiegidswww.uhasselt.be/opleidingsonderdeel.aspx?a=2023&amp;i=3468&amp;n=4&amp;t=04"><i class='fa fa-university'></i> ECTS Sheet</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://p.cygnus.cc.kuleuven.be/webapps/blackboard/execute/announcement?method=search&amp;context=course&amp;course_id=_1176295_1&amp;handle=cp_announcements&amp;mode=cpview"><i class='fa fa-university'></i> Toledo</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../'>HWSW codesign</a> > <a href='../../20_hw/'>2 Making it work on hardware</a> > 2.2 - Wrapping it up
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#clock-and-reset">Clock and Reset</a></li>
+        <li><a href="#memories">Memories</a></li>
+        <li><a href="#wrapping-it-up">Wrapping it up</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              2.2 - Wrapping it up
+            </h1>
+          
+
+        
+
+
+<p>Before the resource utilisation table can be extracted, a number of things need to be taken care of first.</p>
+<h3 id="clock-and-reset">Clock and Reset</h3>
+<p>The two most important signals are <strong>clock</strong>. Without this signals there can be no synchronous design. In an FPGA this signal is taken care of very well to such extend that it even has its own routing network. To allow a signal access to this clocking network, dedicated buffers are available (e.g. BUFG, BUFR, BUFH). An in-depth overview of clocking in an AMD FGPA can be found in the user guides (e.g. <a href="https://docs.amd.com/v/u/en-US/ug472_7Series_Clocking" target="_blank">ug472</a> for 7-series).</p>
+<div class="multiHcolumn">
+<div class="column">
+  <p>A good approach to clocking the FPGA is by using a mixed-mode clock manager (<strong>MMCM</strong>). The MMCM is a <strong>device primitive</strong> that takes in an external clock source and reset. It internally generates a <strong>feedback clock</strong> which can be parameterised. The internal design of the MMCM uses this feedback clock to tune itself to obtain a set frequency. With this internal configuration, other (up to 7!!) <strong>internal clock signals</strong> can be generated.</p>
+<p>The MMCM generates a signal when an internal lock is achieved. This indicates that the output clocks are stable. If this signal is synchronised (e.g. by using a shift register) and inverted, this signal can be used as an <strong>internal, synchronous, active-high reset</strong>.</p>
+<p>Note that two clock buffers are required in this design.</p>
+</div>    
+<div class="column">
+  <p><img src="../../img/20/mmcm.png" alt="Example of MMCM usage"></p>
+</div>    
+</div>    
+<p>The frequency of the internal clock (f<sub><i>clkout0</i></sub>) can be set using the frequnecy of the input clock (f<sub><i>clkin</i></sub>). There is a master division operation (D<sub><i>master</i></sub>) and a master multiplication operation (M<sub><i>master</i></sub>) that are applied for all clocks. These parameters shape the frequency of the VCO and must be <strong>between 600MHz to 1200MHz</strong> (for an FPGA with speed grade -1).</p>
+<p>Additionaly, for each output clock of the MMCM, three parameters can be set: the duty cycyle, a specific phase shift and a specific divisor (D<sub><i>clkout0</i></sub>).
+On the PYNQ-Z2 board, the following parameters would result in a <strong>40 MHz clock</strong>:</p>
+<div class="multiHcolumn">
+<div class="column">
+  <ul>
+<li>f<sub><i>clkin</i></sub> = 125 MHz</li>
+</ul>
+</div>    
+<div class="column">
+  <ul>
+<li>D<sub><i>master</i></sub> = 1</li>
+</ul>
+</div>    
+<div class="column">
+  <ul>
+<li>M<sub><i>master</i></sub> = 8</li>
+</ul>
+</div>    
+<div class="column">
+  <ul>
+<li>D<sub><i>clkout<sub>0</sub></i></sub> = 25</li>
+</ul>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <center><div style="border: 2px solid #54bceb; padding: 20px; margin-left: 10%; margin-right: 10%">f<sub><i>VCO</i></sub> = f<sub><i>clkin</i></sub> / D<sub><i>master</i></sub> * M<sub><i>master</i></sub></div></center>
+</div>    
+<div class="column">
+  <center><div style="border: 2px solid #54bceb; padding: 20px; margin-left: 10%; margin-right: 10%">f<sub><i>CLKOUT<sub>0</sub></i></sub> = f<sub><i>VCO</i></sub> / D<sub><i>clkout<sub>0</sub></i></sub></div> </center>
+</div>    
+</div>    
+<p>An example of the VHDL code for the MMCM wrapper can be found <a href="../../src/20/clock_and_reset_pynq.vhd" target="_blank">here</a>.</p>
+<h3 id="memories">Memories</h3>
+<div class="multiHcolumn">
+<div class="column">
+  <p>To implement both the instruction and the data memory another <strong>device primitive</strong> will be used: the block RAM (<strong>BRAM</strong>). An FPGA typically has a number of dedicated memories that can be tailored to fit the design&rsquo;s need. More info on this primitive can be found in the user guides (e.g. <a href="https://docs.amd.com/v/u/en-US/ug473_7Series_Memory_Resources" target="_blank">ug473</a>). For a 7-series FPGA, a BRAM is 36 kb(it!) in size. Also, these BRAMs are <strong>dual-ported</strong>. This means that there are two <em>access ports</em> to the same memory space. The 36 kb memory consists of 32 kb memory for data an 4kb for parity (out of scope for this course). One of the allowed proportions for this 32kb of memory is a width of 32 bits and a depth of 1024 addresses or a <strong>1024x32-bit memory</strong>. In the previous chapter an instruction memory (and data memory) of 2048x32-bit were expected, however. This can be made by using two BRAMs.</p>
+<p>This image shows how two 1024x32-bit memories are combined to make one 2048x32-bit memory. The <em>glue logic</em> that is required needs to be repeated for the second port (port B).</p>
+<p>The interface to this memory is the typical quartet: data in (<strong>din</strong>), address (<strong>addr</strong>), write enable (<strong>we</strong>) and data out (<strong>dout</strong>).</p>
+</div>    
+<div class="column">
+  <p><img src="../../img/20/bram.png" alt="Example of 2kx32 BRAM"></p>
+</div>    
+</div>    
+<p>A final remark on these BRAMs is that they need <strong>at least 1 clock cycle</strong> to produce the requested data on the output.</p>
+<p>An example of the VHDL code for the BRAM wrapper can be found <a href="../../src/20/two_k_bram.vhd" target="_blank">here</a>.</p>
+<h3 id="wrapping-it-up">Wrapping it up</h3>
+<div class="multiHcolumn">
+<div class="column">
+  <p><img src="../../img/20/wrapped.png" alt="Example of 2kx32 BRAM"></p>
+</div>    
+<div class="column">
+  <p>With the wrapped-up clock and reset signals, the wrapped-up memories, and the RISC-V processor, it time to wrap things together. The processor itself is written in synthesisable HDL. Both used primitives and the small wrapping code are also synthesisable. Therefore, this resulting design can be put on FPGA.</p>
+<p>As you might have spotted already, there is no IO available in this implementation. A quick-and-dirty solution could be to simply add LEDs. Tapping on the data that goes to the data memory could be a way to sneak out data. Adding a simple bit of VHDL code could leverage this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vhd" data-lang="vhd"><span style="display:flex;"><span><span style="color:#a6e22e">PREG_LEDS</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">process</span>(clock)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> rising_edge(clock) <span style="color:#66d9ef">then</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> reset <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span> <span style="color:#66d9ef">then</span> 
+</span></span><span style="display:flex;"><span>            leds <span style="color:#f92672">&lt;=</span> <span style="color:#e6db74">&#34;0000&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> dmem_we <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span> <span style="color:#66d9ef">and</span> dmem_a <span style="color:#f92672">=</span> <span style="color:#ae81ff">x&#34;88000000&#34;</span> <span style="color:#66d9ef">then</span> 
+</span></span><span style="display:flex;"><span>                leds <span style="color:#f92672">&lt;=</span> dmem_di(<span style="color:#ae81ff">3</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span> <span style="color:#66d9ef">process</span>;
+</span></span></code></pre></div>
+</div>    
+</div>    
+<p>One essential file that is required still is the <strong>constraint file</strong>. This is file that ties input and outputs to dedicated pins of the FPGA. It might be that the file extension <strong>.xdc</strong> rings a bell.</p>
+<p>As there are only 2 inputs and 4 outputs, the xdc to implement the wrapped design on a PYNQ-Z2 looks like shown here.
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e"># Clock signal 125 MHz
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set_property <span style="color:#f92672">-</span>dict { PACKAGE_PIN H16   IOSTANDARD LVCMOS33 } [get_ports { sys_clock }];
+</span></span><span style="display:flex;"><span>create_clock <span style="color:#f92672">-</span>add <span style="color:#f92672">-</span>name sys_clk_pin <span style="color:#f92672">-</span>period <span style="color:#ae81ff">8.00</span> <span style="color:#f92672">-</span>waveform {<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">4</span>} [get_ports { sys_clock }];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># LEDs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set_property <span style="color:#f92672">-</span>dict { PACKAGE_PIN R14   IOSTANDARD LVCMOS33 } [get_ports { gpio_leds[<span style="color:#ae81ff">0</span>] }];
+</span></span><span style="display:flex;"><span>set_property <span style="color:#f92672">-</span>dict { PACKAGE_PIN P14   IOSTANDARD LVCMOS33 } [get_ports { gpio_leds[<span style="color:#ae81ff">1</span>] }];
+</span></span><span style="display:flex;"><span>set_property <span style="color:#f92672">-</span>dict { PACKAGE_PIN N16   IOSTANDARD LVCMOS33 } [get_ports { gpio_leds[<span style="color:#ae81ff">2</span>] }];
+</span></span><span style="display:flex;"><span>set_property <span style="color:#f92672">-</span>dict { PACKAGE_PIN M14   IOSTANDARD LVCMOS33 } [get_ports { gpio_leds[<span style="color:#ae81ff">3</span>] }];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Buttons
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set_property <span style="color:#f92672">-</span>dict { PACKAGE_PIN L19   IOSTANDARD LVCMOS33 } [get_ports { sys_reset }]; <span style="color:#960050;background-color:#1e0010">#</span>IO_L9P_T1_DQS_AD3P_35 Sch<span style="color:#f92672">=</span>btn[<span style="color:#ae81ff">3</span>]
+</span></span></code></pre></div></p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../20_hw/21_current_situation/" title="2.1 - The current situation"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../20_hw/23_onemore/" title="2.3 - One more thing ..." style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1739605499"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1739605499"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1739605499"></script>
+    <script src="../../js/jquery.sticky.js?1739605499"></script>
+    <script src="../../js/featherlight.min.js?1739605499"></script>
+    <script src="../../js/highlight.pack.js?1739605499"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1739605499"></script>
+    <script src="../../js/learn.js?1739605499"></script>
+    <script src="../../js/hugo-learn.js?1739605499"></script>
+    
+        
+            <script src="../../mermaid/mermaid.js?1739605499"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.123.7">
+    <meta name="description" content="">
+<meta name="author" content="map[email:&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; name:Jo Vliegen]">
+
+    <link rel="icon" href="../../images/favicon.png" type="image/png">
+
+    <title>x - Manual :: HW/SW codesign</title>
+
+    
+    <link href="../../css/nucleus.css?1739605499" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1739605499" rel="stylesheet">
+    <link href="../../css/hybrid.css?1739605499" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1739605499" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1739605499" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1739605499" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1739605499" rel="stylesheet">
+    <link href="../../css/theme.css?1739605499" rel="stylesheet">
+    <link href="../../css/tabs.css?1739605499" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1739605499" rel="stylesheet">
+    
+    <link href="../../css/theme-kul.css?1739605499" rel="stylesheet">
+    
+    
+
+    <script src="../../js/jquery-3.3.1.min.js?1739605499"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script src=../../js/exercises.js></script> 
+  </head>
+  <body class="" data-url="../../40_interrupts/49_manual/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="https://www.kuleuven.be/kuleuven/" target="_blank">
+  <img src="../../img/style/kul.png" alt="KU Leuven" /><br/>
+</a>
+<a href="https://www.uhasselt.be/" target="_blank">
+  <img src="../../img/style/uhasselt.svg" alt="UHasselt" id="uhlogo" />
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1739605499"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1739605499"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1739605499"></script>
+
+    
+  </div>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/10_compiling/" title="1 Setting the playing field" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../10_compiling/">
+          1 Setting the playing field
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/11_programming/" title="1.1 - Programming the RISC-V" class="dd-item ">
+        <a href="../../10_compiling/11_programming/">
+        <i class='fas fa-book'></i> 1.1 - Programming the RISC-V
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/12_compiling_bare_metal/" title="1.2 - Compiling Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/12_compiling_bare_metal/">
+        <i class='fas fa-book'></i> 1.2 - Compiling Bare Metal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/13_linking_bare_metal/" title="1.3 - Linking Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/13_linking_bare_metal/">
+        <i class='fas fa-book'></i> 1.3 - Linking Bare Metal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/14_simulation/" title="1.4 - Simulation" class="dd-item ">
+        <a href="../../10_compiling/14_simulation/">
+        <i class='fas fa-book'></i> 1.4 - Simulation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/15_exercises/" title="1.5 - Exercises" class="dd-item ">
+        <a href="../../10_compiling/15_exercises/">
+        <i class='fas fa-pen'></i> 1.5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/20_hw/" title="2 Making it work on hardware" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../20_hw/">
+          2 Making it work on hardware
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/21_current_situation/" title="2.1 - The current situation" class="dd-item ">
+        <a href="../../20_hw/21_current_situation/">
+        <i class='fas fa-book'></i> 2.1 - The current situation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/22_wrapping/" title="2.2 - Wrapping it up" class="dd-item ">
+        <a href="../../20_hw/22_wrapping/">
+        <i class='fas fa-book'></i> 2.2 - Wrapping it up
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/23_onemore/" title="2.3 - One more thing ..." class="dd-item ">
+        <a href="../../20_hw/23_onemore/">
+        <i class='fas fa-book'></i> 2.3 - One more thing ...
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/24_ooc/" title="2.4 - Go as fast as you can" class="dd-item ">
+        <a href="../../20_hw/24_ooc/">
+        <i class='fas fa-book'></i> 2.4 - Go as fast as you can
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/25_exercises/" title="2.5 - Exercises" class="dd-item ">
+        <a href="../../20_hw/25_exercises/">
+        <i class='fas fa-pen'></i> 2.5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://studiegidswww.uhasselt.be/opleidingsonderdeel.aspx?a=2023&amp;i=3468&amp;n=4&amp;t=04"><i class='fa fa-university'></i> ECTS Sheet</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://p.cygnus.cc.kuleuven.be/webapps/blackboard/execute/announcement?method=search&amp;context=course&amp;course_id=_1176295_1&amp;handle=cp_announcements&amp;mode=cpview"><i class='fa fa-university'></i> Toledo</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../'>HWSW codesign</a> > <a href=''>3 Interrupts</a> > x - Manual
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              x - Manual
+            </h1>
+          
+
+        
+
+
+<p>This <em>manual</em> will guide you through the changes that are required to include the <strong>Zicsr</strong> extension.</p>
+<p>Th</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+		
+			<a class="nav nav-next" href="../../10_compiling/" title="1 Setting the playing field" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1739605499"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1739605499"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1739605499"></script>
+    <script src="../../js/jquery.sticky.js?1739605499"></script>
+    <script src="../../js/featherlight.min.js?1739605499"></script>
+    <script src="../../js/highlight.pack.js?1739605499"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1739605499"></script>
+    <script src="../../js/learn.js?1739605499"></script>
+    <script src="../../js/hugo-learn.js?1739605499"></script>
+    
+        
+            <script src="../../mermaid/mermaid.js?1739605499"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

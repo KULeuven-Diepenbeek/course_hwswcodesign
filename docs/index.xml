@@ -45,45 +45,80 @@
       <description>Practice makes perfect Below are a number of programming exercises. The aim is that you 1) retrieve your RISC-V implementation 2) prepare a working setup, and 3) refresh your low-level C programming skills.&#xA;As a reminder &amp;hellip; a zip archive to get you started can be found here.&#xA;Exercise 101 For this exercise you should simply try to get the zip file to work on your own RISC-V.&#xA;As FPGA device, you can pick a ZYNQ XC7Z020-1CLG400C.</description>
     </item>
     <item>
-      <title>2.1 - Timer</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/21_timer/</link>
+      <title>2.1 - The current situation</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_hw/21_current_situation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/21_timer/</guid>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_hw/21_current_situation/</guid>
+      <description>Take a moment to assess what has been done so far. An implementation has been made of a RISCV32i Software has been written in C Crosscompilation was done to obtain an .elf file Python scripts are used to generate a hex file A testbench has been run to check the correctness of both hardware and software The main question that will posed in this course is: &amp;ldquo;What&amp;rsquo;s the performance and the cost?</description>
+    </item>
+    <item>
+      <title>2.2 - Wrapping it up</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_hw/22_wrapping/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_hw/22_wrapping/</guid>
+      <description>Before the resource utilisation table can be extracted, a number of things need to be taken care of first.&#xA;Clock and Reset The two most important signals are clock. Without this signals there can be no synchronous design. In an FPGA this signal is taken care of very well to such extend that it even has its own routing network. To allow a signal access to this clocking network, dedicated buffers are available (e.</description>
+    </item>
+    <item>
+      <title>2.3 - One more thing ...</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_hw/23_onemore/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_hw/23_onemore/</guid>
+      <description>The implementation of the RISC-V that is used in this course, is a single-cycle implementation. Nonetheless, in earlier courses you might have already seen how pipelining has a huge effect on the implementation. The major advantage of a single-cycle implementation is that it is rather simple to understand and implement. The major drawback is that is not as performant, but it going to get even worse.&#xA;In the previous section, it was shown that the BRAM needs at least one clock cycle to read from the memory.</description>
+    </item>
+    <item>
+      <title>2.4 - Go as fast as you can</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_hw/24_ooc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_hw/24_ooc/</guid>
+      <description>This chapter has introduced the use of a digital clock manager. A nice feature that comes from using such a primitive is that you can set the desired clock frequency to a value that suits your implementation like a glove. Although that is a nice feature, the question arises: &amp;ldquo;What is the maximal frequency?&amp;rdquo;. As you (hopefully) know by know, the maximal frequency is determined by the critical path.&#xA;The critical path in digital circuit design refers to the longest sequence of dependent operations that determine the minimum clock period, and thus the maximum clock frequency.</description>
+    </item>
+    <item>
+      <title>2.5 - Exercises</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_hw/25_exercises/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_hw/25_exercises/</guid>
+      <description>Practice makes perfect Below are a number of programming exercises.&#xA;Exercise 201 Gather all the info from this chapter and apply them to your implementation so you end up with a synthesisable design. Then, write software that puts a counter on the 4 LEDS. The period should be rouhgly around 1Hz so the correct working can be easily verified with the naked eye.&#xA;Exercise 202 Find the highest possible frequency at which your RISC-V implementation can operate, while still meeting the timing requirements.</description>
+    </item>
+    <item>
+      <title>3.1 - Timer</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/31_timer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/31_timer/</guid>
       <description>A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V implementation is the first extension that will be made.&#xA;The exercise could be: Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th. The expected output from such a program would look like: &amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&#xA;Software The first way of making a solution for this exercise can be to make it in software.</description>
     </item>
     <item>
-      <title>2.2 - Timer/counter</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/22_timer_counter/</link>
+      <title>3.2 - Timer/counter</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/32_timer_counter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/22_timer_counter/</guid>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/32_timer_counter/</guid>
       <description>A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V implementation is the first extension that will be made.&#xA;The exercise could be: Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th. The expected output from such a program would look like: &amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&#xA;Hardware A second way of making a solution for the aforementioned exercise can be made in hardware.</description>
     </item>
     <item>
-      <title>2.3 - Using TCNT</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/23_tcnt_use/</link>
+      <title>3.3 - Using TCNT</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/33_tcnt_use/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/23_tcnt_use/</guid>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/33_tcnt_use/</guid>
       <description>As an example for using the timer counter, it is going to be used to measure the time of a matrix multiplication. The matrices are fixed in size and all have a 2x2 dimension. This image refreshes your memory on matrix multiplication (in case you need it).&#xA;Regular multiplication The first problem that arises is the normal multiplication. Given the fact that the RISC-V still has RV32i configuration, this means that there is no multiplier present.</description>
     </item>
     <item>
-      <title>2.4 - What&#39;s the cost</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/24_cost/</link>
+      <title>3.4 - What&#39;s the cost</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/34_cost/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_counter/24_cost/</guid>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/34_cost/</guid>
       <description> Now that the design is taking some size, it is time to start looking at the cost. You might have touched upon this earlier in this program. The triangle that is shown here allows you to pick maximum 2 things to focus on.&#xA;Speed (think clock frequency, throughput, latency) Flexibility (think &amp;lsquo;only AES&amp;rsquo; vs &amp;rsquo;every cryptographic algorithm ever invented&amp;rsquo;) Cost (think euros, mm2 of Silicon) </description>
     </item>
     <item>
       <title>1 - Interrupt</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/31_interrupt/</link>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/41_interrupt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/31_interrupt/</guid>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/41_interrupt/</guid>
       <description>An exception or interrupt is essentially an unscheduled procedure call.</description>
     </item>
     <item>
       <title>x - Manual</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/39_manual/</link>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/49_manual/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/39_manual/</guid>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/49_manual/</guid>
       <description>This manual will guide you through the changes that are required to include the Zicsr extension.&#xA;Th</description>
     </item>
     <item>
@@ -249,9 +284,9 @@
     </item>
     <item>
       <title></title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/31_wip/</link>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/41_wip/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_interrupts/31_wip/</guid>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/41_wip/</guid>
       <description>RISC-V refers to an external asynchronous event that may cause a RISC-V core to execute an unexpected transfer of control as interrupt. Similarly, an unusual condition occurring at the run time (due to invalid instructions etc.) is referred to as exceptions. The term trap is used to collectively refer to interrupt or exception.&#xA;RISC-V supports two main trap handling mechanisms: direct and vectored. Based on the last 2 bits of the mtvec register (or stvec for ‘S’ mode), it could be either perform Direct handling (bit values – 00) or Vectored handling (bit values – 01).</description>
     </item>
   </channel>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2 Once upon a time(r) on HW/SW codesign</title>
+    <link>http://localhost:1313/course_hwswcodesign/30_counter/</link>
+    <description>Recent content in 2 Once upon a time(r) on HW/SW codesign</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <managingEditor>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</managingEditor>
+    <webMaster>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</webMaster>
+    <atom:link href="http://localhost:1313/course_hwswcodesign/30_counter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>3.1 - Timer</title>
+      <link>http://localhost:1313/course_hwswcodesign/30_counter/31_timer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>http://localhost:1313/course_hwswcodesign/30_counter/31_timer/</guid>
+      <description>A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V implementation is the first extension that will be made.&#xA;The exercise could be: Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th. The expected output from such a program would look like: &amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&#xA;Software The first way of making a solution for this exercise can be to make it in software.</description>
+    </item>
+    <item>
+      <title>3.2 - Timer/counter</title>
+      <link>http://localhost:1313/course_hwswcodesign/30_counter/32_timer_counter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>http://localhost:1313/course_hwswcodesign/30_counter/32_timer_counter/</guid>
+      <description>A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V implementation is the first extension that will be made.&#xA;The exercise could be: Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th. The expected output from such a program would look like: &amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&#xA;Hardware A second way of making a solution for the aforementioned exercise can be made in hardware.</description>
+    </item>
+    <item>
+      <title>3.3 - Using TCNT</title>
+      <link>http://localhost:1313/course_hwswcodesign/30_counter/33_tcnt_use/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>http://localhost:1313/course_hwswcodesign/30_counter/33_tcnt_use/</guid>
+      <description>As an example for using the timer counter, it is going to be used to measure the time of a matrix multiplication. The matrices are fixed in size and all have a 2x2 dimension. This image refreshes your memory on matrix multiplication (in case you need it).&#xA;Regular multiplication The first problem that arises is the normal multiplication. Given the fact that the RISC-V still has RV32i configuration, this means that there is no multiplier present.</description>
+    </item>
+    <item>
+      <title>3.4 - What&#39;s the cost</title>
+      <link>http://localhost:1313/course_hwswcodesign/30_counter/34_cost/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>http://localhost:1313/course_hwswcodesign/30_counter/34_cost/</guid>
+      <description> Now that the design is taking some size, it is time to start looking at the cost. You might have touched upon this earlier in this program. The triangle that is shown here allows you to pick maximum 2 things to focus on.&#xA;Speed (think clock frequency, throughput, latency) Flexibility (think &amp;lsquo;only AES&amp;rsquo; vs &amp;rsquo;every cryptographic algorithm ever invented&amp;rsquo;) Cost (think euros, mm2 of Silicon) </description>
+    </item>
+  </channel>
+</rss>
