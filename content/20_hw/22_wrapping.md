@@ -74,12 +74,33 @@ A final remark on these BRAMs is that they need **at least 1 clock cycle** to pr
 
 An example of the VHDL code for the BRAM wrapper can be found <a href="/src/20/two_k_bram.vhd" target="_blank">here</a>.
 
+#### Initialisation of the memories
+
+A processor without a program that can be ran, is pointless. The memories that are wrapped here, should therefor be initialised. In the previous chapter, the non-synthesisable part of the testbench wrote this initialisation during reset. This is not a viable approach to use on the hardware. To intialised the BRAMs, they have a long list of generecic that can be mapped to initialised values.
+
+```vhd
+        INIT_00 => X"0000000000000000000000000000000000000000000000000000000000000000",
+        INIT_01 => X"0000000000000000000000000000000000000000000000000000000000000000",
+        ...
+        INIT_3F => X"0000000000000000000000000000000000000000000000000000000000000000",
+```
+
+The <span style="color:rgb(0, 128, 0); font-weight: bold">advantage</span> of this approach is that it is <u>simulatable AND synthesisable</u>. The <span style="color:rgb(128, 0, 0); font-weight: bold">drawback</span> of this approach is that <u>a new .vhd file</u> needs to be written for each change on the software code.
+
+Luckily are proficient in writing software that can make this happen *auto-magic-ally*. <a href="/src/20/makevhd.py" target="_blank">Here</a> is an example of a Python script that takes a template file and a hex file and generates a freshly baked vhdl file that has an initialised BRAM. In this example, <a href="/src/20/imem_template.vhd" target="_blank">the template file</a> contains two **pointers** at which the initialisation should be written. 
+
+The execution of such a script can be done through the **Makefile**.
+
+<!-- Different types for notices are: info (yellow), tip (green), warning (red), note (blue)-->
+{{% notice tip %}}
+Knitting all of this together is left as an exercise.
+{{% /notice %}}
 
 ### Wrapping it up
 
 {{% multiHcolumn %}}
 {{% column %}}
-![Example of 2kx32 BRAM](/img/20/wrapped.png)
+![Microcontroller](/img/20/wrapped.png)
 {{% /column %}}
 {{% column %}}
 With the wrapped-up clock and reset signals, the wrapped-up memories, and the RISC-V processor, it time to wrap things together. The processor itself is written in synthesisable HDL. Both used primitives and the small wrapping code are also synthesisable. Therefore, this resulting design can be put on FPGA.

@@ -31,5 +31,5 @@ Find the highest possible frequency at which your RISC-V implementation can oper
 {{% /centeredColumn %}}
 
 {{% centeredColumn 50 %}}
-Make a **bitstream** and a **report on resource utilisation** of your synthesisable code, with the code of the '*visisble counter*'
+Make a **bitstream** and a **report on resource utilisation** of your synthesisable code, with the code of the '*visisble counter*', as shown in the previous section.
 {{% /centeredColumn %}}
