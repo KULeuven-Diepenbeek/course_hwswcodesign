@@ -67,9 +67,9 @@
     </item>
     <item>
       <title>2.4 - Go as fast as you can</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_hw/24_ooc/</link>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_hw/24_go_fast/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_hw/24_ooc/</guid>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/20_hw/24_go_fast/</guid>
       <description>This chapter has introduced the use of a digital clock manager. A nice feature that comes from using such a primitive is that you can set the desired clock frequency to a value that suits your implementation like a glove. Although that is a nice feature, the question arises: &amp;ldquo;What is the maximal frequency?&amp;rdquo;. As you (hopefully) know by know, the maximal frequency is determined by the critical path.&#xA;The critical path in digital circuit design refers to the longest sequence of dependent operations that determine the minimum clock period, and thus the maximum clock frequency.</description>
     </item>
     <item>
