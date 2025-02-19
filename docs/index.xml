@@ -84,7 +84,7 @@
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/31_timer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/31_timer/</guid>
-      <description>A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V implementation is the first extension that will be made.&#xA;The exercise could be: Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th. The expected output from such a program would look like: &amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&#xA;Software The first way of making a solution for this exercise can be to make it in software.</description>
+      <description>A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V microcontroller is the first extension that will be made.&#xA;A textbook exercise could be: Toggle a LED roughly every 500 ms and with each fourth period, toggle all the LEDS.&#xA;Software The first way of making a solution for this exercise can be to make it in software.</description>
     </item>
     <item>
       <title>3.2 - Timer/counter</title>

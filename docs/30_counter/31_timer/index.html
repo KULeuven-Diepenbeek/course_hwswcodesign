@@ -12,22 +12,22 @@
     <title>3.1 - Timer :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1739690003" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1739690003" rel="stylesheet">
-    <link href="../../css/hybrid.css?1739690003" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1739690003" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1739690003" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1739690003" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1739690003" rel="stylesheet">
-    <link href="../../css/theme.css?1739690003" rel="stylesheet">
-    <link href="../../css/tabs.css?1739690003" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1739690003" rel="stylesheet">
+    <link href="../../css/nucleus.css?1739959005" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1739959005" rel="stylesheet">
+    <link href="../../css/hybrid.css?1739959005" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1739959005" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1739959005" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1739959005" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1739959005" rel="stylesheet">
+    <link href="../../css/theme.css?1739959005" rel="stylesheet">
+    <link href="../../css/tabs.css?1739959005" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1739959005" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1739690003" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1739959005" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1739690003"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1739959005"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1739690003"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1739690003"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1739959005"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1739959005"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1739690003"></script>
+<script type="text/javascript" src="../../js/search.js?1739959005"></script>
 
     
   </div>
@@ -425,7 +425,7 @@
             
           
           
-            <a href='../../'>HWSW codesign</a> > <a href=''>2 Once upon a time(r)</a> > 3.1 - Timer
+            <a href='../../'>HWSW codesign</a> > <a href=''>3 Once upon a time(r)</a> > 3.1 - Timer
           
         
           
@@ -469,8 +469,8 @@
         
 
 
-<p>A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V implementation is the first extension that will be made.</p>
-<p>The exercise could be: <strong>Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th.</strong> The expected output from such a program would look like: <strong>&hellip;&hellip;.:&hellip;&hellip;.;&hellip;&hellip;.:&hellip;&hellip;.;&hellip;</strong></p>
+<p>A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V microcontroller is the first extension that will be made.</p>
+<p>A textbook exercise could be: <strong>Toggle a LED roughly every 500 ms and with each fourth period, toggle all the LEDS</strong>.</p>
 <h2 id="software">Software</h2>
 <p>The first way of making a solution for this exercise can be to make it in software.</p>
 <p>The counter that is used for the for-loop can be reused. If the 4 LSBs are zero, it divisable by 16. In the other case when 3 LSBs are zero, it is divisable by 8 and for all other cases, the default character can be printed. The image below shows the output of this program and it indeed shows what was requested.</p>
@@ -480,7 +480,7 @@
     21_sw_timer_v1.c
 </div>    
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"></code></pre></div>
-<p><img src="../../img/20/screenshot_sw1.png" alt="ss_sw1"></p>
+<p><img src="../../img/30/screenshot_sw1.png" alt="ss_sw1"></p>
 </div>    
 <div class="column">
   <p><strong>BUT</strong> &hellip; what with the timing?
@@ -752,19 +752,19 @@ The time between subsequent writes can be measured by inspecting the waveforms o
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1739690003"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1739690003"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1739690003"></script>
-    <script src="../../js/jquery.sticky.js?1739690003"></script>
-    <script src="../../js/featherlight.min.js?1739690003"></script>
-    <script src="../../js/highlight.pack.js?1739690003"></script>
+    <script src="../../js/clipboard.min.js?1739959005"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1739959005"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1739959005"></script>
+    <script src="../../js/jquery.sticky.js?1739959005"></script>
+    <script src="../../js/featherlight.min.js?1739959005"></script>
+    <script src="../../js/highlight.pack.js?1739959005"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1739690003"></script>
-    <script src="../../js/learn.js?1739690003"></script>
-    <script src="../../js/hugo-learn.js?1739690003"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1739959005"></script>
+    <script src="../../js/learn.js?1739959005"></script>
+    <script src="../../js/hugo-learn.js?1739959005"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1739690003"></script>
+            <script src="../../mermaid/mermaid.js?1739959005"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
