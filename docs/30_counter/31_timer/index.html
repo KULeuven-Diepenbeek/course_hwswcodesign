@@ -12,22 +12,22 @@
     <title>3.1 - Timer :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1739959005" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1739959005" rel="stylesheet">
-    <link href="../../css/hybrid.css?1739959005" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1739959005" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1739959005" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1739959005" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1739959005" rel="stylesheet">
-    <link href="../../css/theme.css?1739959005" rel="stylesheet">
-    <link href="../../css/tabs.css?1739959005" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1739959005" rel="stylesheet">
+    <link href="../../css/nucleus.css?1740048191" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1740048191" rel="stylesheet">
+    <link href="../../css/hybrid.css?1740048191" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1740048191" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1740048191" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1740048191" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1740048191" rel="stylesheet">
+    <link href="../../css/theme.css?1740048191" rel="stylesheet">
+    <link href="../../css/tabs.css?1740048191" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1740048191" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1739959005" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1740048191" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1739959005"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1740048191"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1739959005"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1739959005"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1740048191"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1740048191"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1739959005"></script>
+<script type="text/javascript" src="../../js/search.js?1740048191"></script>
 
     
   </div>
@@ -476,16 +476,32 @@
 <p>The counter that is used for the for-loop can be reused. If the 4 LSBs are zero, it divisable by 16. In the other case when 3 LSBs are zero, it is divisable by 8 and for all other cases, the default character can be printed. The image below shows the output of this program and it indeed shows what was requested.</p>
 <div class="multiHcolumn">
 <div class="column">
-  <div class="code_caption">
-    21_sw_timer_v1.c
-</div>    
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"></code></pre></div>
-<p><img src="../../img/30/screenshot_sw1.png" alt="ss_sw1"></p>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define LED_BASEAxDDRESS 0x80000000
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define LED_REG0_ADDRESS (LED_BASEAxDDRESS + 0*4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define LED              (*(volatile unsigned int *) LED_REG0_ADDRESS)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> counter<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span>(<span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (counter <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span>) {
+</span></span><span style="display:flex;"><span>			counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>			LED <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xFFFFFFFF</span>;
+</span></span><span style="display:flex;"><span>		} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>			counter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>			LED <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		LED <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x0</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 </div>    
 <div class="column">
   <p><strong>BUT</strong> &hellip; what with the timing?
-<img src="../../img/20/ss_timer_nowait.png" alt="ss_timer_nowait">
-The time between subsequent writes can be measured by inspecting the waveforms of the simulation. With <strong>130 ns</strong> between subsequent writes, the RISC-V implementation is too quick to meet the timing requirements of the exercise.</p>
+<img src="../../img/30/ss_timer_nowait.png" alt="ss_timer_nowait">
+The time between subsequent writes can be measured by inspecting the waveforms of the simulation. With <strong>120 ns</strong> between subsequent writes, the RISC-V implementation is too quick to meet the timing requirements of the exercise.</p>
 </div>    
 </div>    
 <h4 id="introducing-wait-like-statements">Introducing wait-like statements</h4>
@@ -494,17 +510,44 @@ The time between subsequent writes can be measured by inspecting the waveforms o
 <div class="column">
   <p>The C-code can be altered so there is <strong>wait</strong> statement.</p>
 <p>Note that the variable <em>i</em> is declared as a <strong>volatile</strong> variable. It implies that the value of this variable can be altered by another source. This results in <strong>not</strong> having the compiler optimise this part away.</p>
-<p>With the for-loop in the wait function iterating 50 times, the duration between subsequent writes increases to 3210 ns.
-<img src="../../img/20/ss_timer_wait50.png" alt="ss_timer_wait50"></p>
+<p>With the individual for-loop in the wait function iterating 20 times, the duration between subsequent writes increases to 155'520 ns.
+<img src="../../img/30/ss_timer_wait20.png" alt="ss_timer_wait50"></p>
 </div>    
 <div class="column">
-  <div class="code_caption">
-    21_sw_timer_v2.c
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define LED_BASEAxDDRESS 0x80000000
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define LED_REG0_ADDRESS (LED_BASEAxDDRESS + 0*4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define LED              (*(volatile unsigned int *) LED_REG0_ADDRESS)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define WAIT_IMIT 		 20
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">wait</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> i,j ;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>WAIT_IMIT; i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (j<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; j<span style="color:#f92672">&lt;</span>WAIT_IMIT; j<span style="color:#f92672">++</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> counter<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span>(<span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (counter <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span>) {
+</span></span><span style="display:flex;"><span>			counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>			LED <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xFFFFFFFF</span>;
+</span></span><span style="display:flex;"><span>		} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>			counter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>			LED <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">wait</span>();
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		LED <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x0</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">wait</span>();
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 </div>    
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"></code></pre></div>
 </div>    
-</div>    
-<p>If the wait-loop is iterated 25 times, the duration drops again to 1710 ns. There is a linear relationship between the number of loop iterations (x) and the duration (y) that follows the equation: <strong>y = a*x + b</strong>. Two points on this <em>curve</em> are known by counting waveforms: (50, 3210) and (25, 1710). This allows to solve the equation to <code>y = 60*x+210</code>. When targeting a duration of 1000 ns (y=1000), x can be calculated to be 13.1666. Given only integers can be used, this would introduce an <strong>error of 10 ns</strong> =  1000 ns - 990 ns.</p>
+<p>If the wait-loop is iterated 25 times, the duration increases to 239'220 ns. There is a linear relationship between the number of loop iterations (x) and the duration (y) that follows the equation: <strong>y = a*x + b</strong>. Two points on this <em>curve</em> are known by counting waveforms: (20, 155520) and (25, 239220). This allows to solve the equation to <code>y = 16'740*x - 179'280</code>. When targeting a duration of 500'000'000 ns is targeted, x can be calculated to be 2'997.5675. Given only integers can be used, this would introduce a <strong>small error</strong>.</p>
 
 
 <footer class="footline">
@@ -752,19 +795,19 @@ The time between subsequent writes can be measured by inspecting the waveforms o
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1739959005"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1739959005"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1739959005"></script>
-    <script src="../../js/jquery.sticky.js?1739959005"></script>
-    <script src="../../js/featherlight.min.js?1739959005"></script>
-    <script src="../../js/highlight.pack.js?1739959005"></script>
+    <script src="../../js/clipboard.min.js?1740048191"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1740048191"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1740048191"></script>
+    <script src="../../js/jquery.sticky.js?1740048191"></script>
+    <script src="../../js/featherlight.min.js?1740048191"></script>
+    <script src="../../js/highlight.pack.js?1740048191"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1739959005"></script>
-    <script src="../../js/learn.js?1739959005"></script>
-    <script src="../../js/hugo-learn.js?1739959005"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1740048191"></script>
+    <script src="../../js/learn.js?1740048191"></script>
+    <script src="../../js/hugo-learn.js?1740048191"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1739959005"></script>
+            <script src="../../mermaid/mermaid.js?1740048191"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
