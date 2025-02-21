@@ -1,5 +1,5 @@
 ---
-title: '3.1 - Timer'
+title: '3.1 - SW Timer'
 weight: 31
 pre: "<i class='fas fa-book'></i> "
 ---
