@@ -9,25 +9,25 @@
 
     <link rel="icon" href="../../images/favicon.png" type="image/png">
 
-    <title>3.2 - Timer/counter :: HW/SW codesign</title>
+    <title>3.2 - HW Timer :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1740048191" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1740048191" rel="stylesheet">
-    <link href="../../css/hybrid.css?1740048191" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1740048191" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1740048191" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1740048191" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1740048191" rel="stylesheet">
-    <link href="../../css/theme.css?1740048191" rel="stylesheet">
-    <link href="../../css/tabs.css?1740048191" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1740048191" rel="stylesheet">
+    <link href="../../css/nucleus.css?1740322419" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1740322419" rel="stylesheet">
+    <link href="../../css/hybrid.css?1740322419" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1740322419" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1740322419" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1740322419" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1740322419" rel="stylesheet">
+    <link href="../../css/theme.css?1740322419" rel="stylesheet">
+    <link href="../../css/tabs.css?1740322419" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1740322419" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1740048191" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1740322419" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1740048191"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1740322419"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1740048191"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1740048191"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1740322419"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1740322419"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1740048191"></script>
+<script type="text/javascript" src="../../js/search.js?1740322419"></script>
 
     
   </div>
@@ -425,7 +425,7 @@
             
           
           
-            <a href='../../'>HWSW codesign</a> > <a href=''>3 Once upon a time(r)</a> > 3.2 - Timer/counter
+            <a href='../../'>HWSW codesign</a> > <a href=''>3 Once upon a time(r)</a> > 3.2 - HW Timer
           
         
           
@@ -446,7 +446,6 @@
       </ul>
     </li>
     <li><a href="#now-to-tie-the-loose-ends">Now to tie the loose ends</a></li>
-    <li><a href="#now-its-your-turn">Now it&rsquo;s your turn</a></li>
   </ul>
 </nav>
     </div>
@@ -464,7 +463,7 @@
           
             <h1>
               
-              3.2 - Timer/counter
+              3.2 - HW Timer
             </h1>
           
 
@@ -475,10 +474,10 @@
 <p>The exercise could be: <strong>Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th.</strong> The expected output from such a program would look like: <strong>&hellip;&hellip;.:&hellip;&hellip;.;&hellip;&hellip;.:&hellip;&hellip;.;&hellip;</strong></p>
 <h2 id="hardware">Hardware</h2>
 <p>A second way of making a solution for the aforementioned exercise can be made in hardware. Commercially available of the shelf (COTS) microprocessors typically have hardware-based timer/counter functionalities. Such a timer/counter (TCNT) has multiple waveform generator modes: Normal, Clear-Timer-on-Compare and Pulse Width Modulation. A possible architecture for such a timer is shown below.</p>
-<p><img src="../../img/20/tcnt.png" alt="tcnt"></p>
+<p><img src="../../img/30/tcnt.png" alt="tcnt"></p>
 <h3 id="how-do-you-connect-this-hardware-to-the-processor">How do you connect this hardware to the processor?</h3>
 <p>As you might have spotted already, the RISC-V (in the version we are using it) always works with <em>words</em> that are 32 bits in width: instruction-width, register-width, ALU-width, &hellip; Hence, it is to be expected that hardware that will be attached to this RISC-V, will need a 32-bit interface. A standard approach to faciliate this is to put a <strong>wrapper</strong> around the customly build hardware.</p>
-<figure><img src="../../img/20/tcnt_wrapped.png"/><figcaption>
+<figure><img src="../../img/30/tcnt_wrapped.png"/><figcaption>
             <h4>Wrapped timer/couner</h4>
         </figcaption>
 </figure>
@@ -493,14 +492,14 @@
 <p>Two registers are allocated for <strong>status</strong>. One of these 32-bit registers will be directly fed by the <strong>TCNT</strong> (timer value) output of the Timer/Counter. The other register will reflect the 3 single-bit outputs <strong>CEQ</strong>, <strong>OFl</strong> and <strong>PWM</strong>. As the hardware designer it is your choice how these mappings are done. As an example, the three LSBs of the register (indexes 2, 1 and 0) can be assigned to the pulse width modulation (PWM), the overflow (OFl) and the compare equal (CEQ).</p>
 </div>    
 </div>    
-<figure><img src="../../img/20/wrapper_mapping.png"/><figcaption>
+<figure><img src="../../img/30/wrapper_mapping.png"/><figcaption>
             <h4>Register mapping in the wrapper</h4>
         </figcaption>
 </figure>
 <p>With the mapping of the IOs in the wrapper done, the final step needs to be taken: <strong>map the registers in the memory space</strong>. In all fairness, this has already been done in the first chapter. Writing to the output to facilitate <em>printing</em> was also done through <em>an address</em>: 0x80000000. The mapping of the registers of the TimerCounter will be appended to this. Note that a <em>gap</em> is left.</p>
 <div class="multiHcolumn">
 <div class="column">
-  <figure><img src="../../img/20/memory_map.png"/><figcaption>
+  <figure><img src="../../img/30/memory_map.png"/><figcaption>
             <h4>Memory map</h4>
         </figcaption>
 </figure>
@@ -517,70 +516,77 @@
 <div class="multiHcolumn">
 <div class="column">
   <h4 id="tcnth">tcnt.h</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">#ifndef TCNT_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define TCNT_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define TCNT_BASEADDRESS        0x81000000
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define TCNT_REG0_ADDRESS       (TCNT_BASEADDRESS + 0*4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define TCNT_REG1_ADDRESS       (TCNT_BASEADDRESS + 1*4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define TCNT_REG2_ADDRESS       (TCNT_BASEADDRESS + 2*4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define TCNT_REG3_ADDRESS       (TCNT_BASEADDRESS + 3*4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define TCNT_CR                 (*(volatile unsigned int *) TCNT_REG0_ADDRESS)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define TCNT_CMP                (*(volatile unsigned int *) TCNT_REG1_ADDRESS)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define TCNT_SR                 (*(volatile unsigned int *) TCNT_REG2_ADDRESS)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define TCNT_VAL                (*(volatile unsigned int *) TCNT_REG3_ADDRESS)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define TCNT_CR_CS_DIV8         0x1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define TCNT_CR_CS_DIV64        0x2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define TCNT_CR_CS_ON           0x3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">TCNT_start</span>(<span style="color:#66d9ef">void</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">TCNT_start_div8</span>(<span style="color:#66d9ef">void</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">TCNT_start_div16</span>(<span style="color:#66d9ef">void</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">TCNT_stop</span>(<span style="color:#66d9ef">void</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span></code></pre></div>
 </div>    
 <div class="column">
   <h4 id="tcntc">tcnt.c</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;tcnt.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">TCNT_start</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    TCNT_CR <span style="color:#f92672">=</span> TCNT_CR <span style="color:#f92672">|</span> TCNT_CR_CS_ON;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">TCNT_start_div8</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">TCNT_stop</span>();
+</span></span><span style="display:flex;"><span>    TCNT_CR <span style="color:#f92672">=</span> TCNT_CR <span style="color:#f92672">|</span> TCNT_CR_CS_DIV8;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">TCNT_start_div16</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">TCNT_stop</span>();
+</span></span><span style="display:flex;"><span>    TCNT_CR <span style="color:#f92672">=</span> TCNT_CR <span style="color:#f92672">|</span> TCNT_CR_CS_DIV64;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">TCNT_stop</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    TCNT_CR <span style="color:#f92672">=</span> TCNT_CR <span style="color:#f92672">&amp;</span> <span style="color:#f92672">~</span>(TCNT_CR_CS_ON);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 </div>    
 </div>    
 <p>With the drivers as shown above, starting the Timer/counter becomes more clear:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>		<span style="color:#a6e22e">TCNT_start</span>();
 </span></span></code></pre></div><h2 id="now-to-tie-the-loose-ends">Now to tie the loose ends</h2>
-<div class="multiHcolumn">
-<div class="column">
-  <p>With the situation as is, we have:</p>
-<ul>
-<li>a processor with a fixed memory map
-<ul>
-<li>one section is allocated for the printing</li>
-<li>one section is allocated for the timer/counter</li>
-</ul>
-</li>
-<li><span style="color: red; font-style: italic">&lt;glue&gt;</span></li>
-<li>a hardware wrapper around the timer/counter</li>
-<li>a hardware block that implements timer/counter</li>
-</ul>
-<p>What we are left with is implementing the <span style="color: red; font-style: italic">&lt;glue&gt;</span>.</p>
-</div>    
-<div class="column">
-  <p>The microprocessor (mainly) has two memory interfaces. One interface is a read-only memory interface that goes to <strong>IMEM</strong>. This impacts the instruction handling and is not useful for this task. The other interface is a read-write memory interface that goes to <strong>BRAM</strong>. This is the one that will be used.</p>
-<div class="multiHcolumn">
-  <div class="column">
-  <p>The typical memory interface has the following interface:</p>
-<ul>
-<li>an n-bit data input</li>
-<li>a log<sub>2</sub>(n)-bit address input</li>
-<li>a write-flag</li>
-<li>an n-bit data output</li>
-</ul>
-</div>    
-<div class="column">
-  <figure><img src="../../img/20/mem_iface.png"/>
-</figure>
-</div>    
-</div>    
-</div>    
-</div>    
-<p>When the microprocessor wants to perform <u>a read operation</u> from the memory, it presents the <strong>address</strong> and keeps the <strong>write</strong> low. The data on that address in the memory will appear on the <strong>data_out</strong>. When the microprocessor wants to perform <u>a write operation</u> to the memory, the <strong>write</strong> has to be high while the address is <strong>applied</strong>. The data that needs to be written is presented on the <strong>data_in</strong>.</p>
-<div class="multiHcolumn">
-<div class="column">
-  <p><img src="../../img/20/sim_design_1.png" alt="sim_design"></p>
-</div>    
-<div class="column">
-  <p>Up until now, there were only 2 <em>subscribers</em> to the data memory channel: the data memory itself &hellip; and the basic IO block. The <strong>DMEM</strong> having access to this channel should not come as a surprise. Maybe the <strong>Basic IO</strong> block is not that much of a surprise either. After all, it only <em>accepts</em> data. When the software wants to print something out, it writes to our agreed address: 0x80000000.</p>
-<p>Data flowing in the other direction (from the DMEM channel into the processor) could only come from the DMEM.</p>
-</div>    
-</div>    
+<p>Up until now, there were only 2 <em>subscribers</em> to the data memory channel: the data memory itself and the basic IO block. In the exercises in the last chapter, the basic IO block was implemented as a register that drives the LEDs. <!-- The **DMEM** having access to this channel should not come as a surprise. Maybe the **Basic IO** block is not that much of a surprise either. After all, it only *accepts* data. When the software wants to print something out, it writes to our agreed address: 0x80000000. --> Data flowing in the other direction (<strong>into</strong> the processor) could only come from the DMEM.</p>
 <p>When taking the same channel for the timer/counter inteface as well, it becomes a little more tricky. Sure, similarly to the Basic IO block, writing to the <strong>TCNT wrapper</strong> does not introduce any problems. The other way, reading from the timer/counter, does. Data through the memory interface channel, that goes into the microprocessor, now has <strong>2 different sources</strong>. Simply attaching these signals would introduce <u>double drivers</u>.</p>
-<p><img src="../../img/20/sim_design.png" alt="sim_design"></p>
-<p>To solve this issue, a multiplexer is typically placed. Within the scope of this course, it will be assumed that peripherals each have 256 addresses. For the timer/counter this boils down to: <strong>0x810000</strong><u>00</u> to <strong>0x810000</strong><u>FF</u>. Given that a <em>word</em> takes 4 addresses, this means that a peripheral can use up to 64 32-bit registers.</p>
-<p>With this approach each peripheral as a <strong>BASE ADDRESS</strong> (0x810000 for the timer/counter) that is 24 bits wide. The selection input of the added multiplexer can thus be the 24 MSBs of the address.</p>
-<h2 id="now-its-your-turn">Now it&rsquo;s your turn</h2>
-<p>Use the timer component to solve:</p>
-<blockquote>
-<p><strong>Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th.</strong></p>
-</blockquote>
+<div class="multiHcolumn">
+<div class="column">
+  <p>To solve this issue, a multiplexer is typically placed. Within the scope of this course, it will be assumed that <u>each peripherals has 256 addresses</u>. For the timer/counter this boils down to: <strong>0x810000</strong><u>00</u> to <strong>0x810000</strong><u>FF</u>. Given that a <em>word</em> takes 4 addresses, this means that a peripheral can use up to 64 32-bit registers.</p>
+<p>With this approach each peripheral has a <strong>BASE ADDRESS</strong> (0x810000 for the timer/counter) that is 24 bits wide. The selection input of the added multiplexer can thus be the 24 MSBs of the address on the data bus.</p>
+</div>    
+<div class="column">
+  <p><img src="../../img/30/mux.png" alt="mux"></p>
+</div>    
+</div>    
+<!-- ## Now it's your turn 
+
+Use the timer component to solve: 
+> **Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th.** -->
 
 
 <footer class="footline">
@@ -828,19 +834,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1740048191"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1740048191"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1740048191"></script>
-    <script src="../../js/jquery.sticky.js?1740048191"></script>
-    <script src="../../js/featherlight.min.js?1740048191"></script>
-    <script src="../../js/highlight.pack.js?1740048191"></script>
+    <script src="../../js/clipboard.min.js?1740322419"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1740322419"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1740322419"></script>
+    <script src="../../js/jquery.sticky.js?1740322419"></script>
+    <script src="../../js/featherlight.min.js?1740322419"></script>
+    <script src="../../js/highlight.pack.js?1740322419"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1740048191"></script>
-    <script src="../../js/learn.js?1740048191"></script>
-    <script src="../../js/hugo-learn.js?1740048191"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1740322419"></script>
+    <script src="../../js/learn.js?1740322419"></script>
+    <script src="../../js/hugo-learn.js?1740322419"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1740048191"></script>
+            <script src="../../mermaid/mermaid.js?1740322419"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

@@ -9,25 +9,25 @@
 
     <link rel="icon" href="../../images/favicon.png" type="image/png">
 
-    <title>3.4 - What&#39;s the cost :: HW/SW codesign</title>
+    <title>3.4 - How much bang do you get for your buck? :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1740048191" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1740048191" rel="stylesheet">
-    <link href="../../css/hybrid.css?1740048191" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1740048191" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1740048191" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1740048191" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1740048191" rel="stylesheet">
-    <link href="../../css/theme.css?1740048191" rel="stylesheet">
-    <link href="../../css/tabs.css?1740048191" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1740048191" rel="stylesheet">
+    <link href="../../css/nucleus.css?1740322419" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1740322419" rel="stylesheet">
+    <link href="../../css/hybrid.css?1740322419" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1740322419" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1740322419" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1740322419" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1740322419" rel="stylesheet">
+    <link href="../../css/theme.css?1740322419" rel="stylesheet">
+    <link href="../../css/tabs.css?1740322419" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1740322419" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1740048191" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1740322419" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1740048191"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1740322419"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1740048191"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1740048191"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1740322419"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1740322419"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1740048191"></script>
+<script type="text/javascript" src="../../js/search.js?1740322419"></script>
 
     
   </div>
@@ -425,7 +425,7 @@
             
           
           
-            <a href='../../'>HWSW codesign</a> > <a href=''>3 Once upon a time(r)</a> > 3.4 - What's the cost
+            <a href='../../'>HWSW codesign</a> > <a href=''>3 Once upon a time(r)</a> > 3.4 - How much bang do you get for your buck?
           
         
           
@@ -454,7 +454,7 @@
           
             <h1>
               
-              3.4 - What&#39;s the cost
+              3.4 - How much bang do you get for your buck?
             </h1>
           
 
@@ -471,10 +471,14 @@
 </ul>
 </div>    
 <div class="column">
-  <figure><img src="../../img/20/triangle.png"/>
+  <figure><img src="../../img/30/triangle.png"/>
 </figure>
 </div>    
 </div>    
+<p>Generate the results of the implementation at this point. How many resources does the design require? What memory size is required? These metrics have been covered in the previous chapter.</p>
+<p><img src="../../img/30/screenshot_2x2.png" alt="Simulation Example"></p>
+<p>From the waveform above, it can be learned that a 2x2 matrix multiplication takes 0x1b6 <strong>clock cycles</strong>. From the implementation results it is clear that a clock cycle takes 25 ns.</p>
+<p>A simple calculation learns that one 2x2 matrix multiplication has a latency of: 0x1b6 * 25 ns = 438 * 25 ns = 10'950 ns.</p>
 
 
 <footer class="footline">
@@ -722,19 +726,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1740048191"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1740048191"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1740048191"></script>
-    <script src="../../js/jquery.sticky.js?1740048191"></script>
-    <script src="../../js/featherlight.min.js?1740048191"></script>
-    <script src="../../js/highlight.pack.js?1740048191"></script>
+    <script src="../../js/clipboard.min.js?1740322419"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1740322419"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1740322419"></script>
+    <script src="../../js/jquery.sticky.js?1740322419"></script>
+    <script src="../../js/featherlight.min.js?1740322419"></script>
+    <script src="../../js/highlight.pack.js?1740322419"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1740048191"></script>
-    <script src="../../js/learn.js?1740048191"></script>
-    <script src="../../js/hugo-learn.js?1740048191"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1740322419"></script>
+    <script src="../../js/learn.js?1740322419"></script>
+    <script src="../../js/hugo-learn.js?1740322419"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1740048191"></script>
+            <script src="../../mermaid/mermaid.js?1740322419"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
