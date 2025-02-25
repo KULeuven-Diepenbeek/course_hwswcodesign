@@ -7,27 +7,27 @@
     <meta name="description" content="">
 <meta name="author" content="map[email:&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; name:Jo Vliegen]">
 
-    <link rel="icon" href="../../images/favicon.png" type="image/png">
+    <link rel="icon" href="../images/favicon.png" type="image/png">
 
-    <title>102 - RISC-V :: HW/SW codesign</title>
+    <title>3 Once upon a time(r) :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1740481900" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1740481900" rel="stylesheet">
-    <link href="../../css/hybrid.css?1740481900" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1740481900" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1740481900" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1740481900" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1740481900" rel="stylesheet">
-    <link href="../../css/theme.css?1740481900" rel="stylesheet">
-    <link href="../../css/tabs.css?1740481900" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1740481900" rel="stylesheet">
+    <link href="../css/nucleus.css?1740481900" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1740481900" rel="stylesheet">
+    <link href="../css/hybrid.css?1740481900" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1740481900" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1740481900" rel="stylesheet">
+    <link href="../css/auto-complete.css?1740481900" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1740481900" rel="stylesheet">
+    <link href="../css/theme.css?1740481900" rel="stylesheet">
+    <link href="../css/tabs.css?1740481900" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1740481900" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1740481900" rel="stylesheet">
+    <link href="../css/theme-kul.css?1740481900" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1740481900"></script>
+    <script src="../js/jquery-3.3.1.min.js?1740481900"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -43,9 +43,9 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-<script src=../../js/exercises.js></script> 
+<script src=../js/exercises.js></script> 
   </head>
-  <body class="" data-url="../../100_processor/102_riscv/">
+  <body class="" data-url="../30_counter/">
     <nav id="sidebar" class="">
 
 
@@ -53,10 +53,10 @@
   <div id="header-wrapper">
     <div id="header">
       <a href="https://www.kuleuven.be/kuleuven/" target="_blank">
-  <img src="../../img/style/kul.png" alt="KU Leuven" /><br/>
+  <img src="../img/style/kul.png" alt="KU Leuven" /><br/>
 </a>
 <a href="https://www.uhasselt.be/" target="_blank">
-  <img src="../../img/style/uhasselt.svg" alt="UHasselt" id="uhlogo" />
+  <img src="../img/style/uhasselt.svg" alt="UHasselt" id="uhlogo" />
 </a>
     </div>
     
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1740481900"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1740481900"></script>
+<script type="text/javascript" src="../js/lunr.min.js?1740481900"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1740481900"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1740481900"></script>
+<script type="text/javascript" src="../js/search.js?1740481900"></script>
 
     
   </div>
@@ -97,7 +97,7 @@
         
         
         ">
-      <a href="../../10_compiling/">
+      <a href="../10_compiling/">
           1 Setting the playing field
           
       </a>
@@ -120,7 +120,7 @@
   
     
       <li data-nav-id="/10_compiling/11_programming/" title="1.1 - Programming the RISC-V" class="dd-item ">
-        <a href="../../10_compiling/11_programming/">
+        <a href="../10_compiling/11_programming/">
         <i class='fas fa-book'></i> 1.1 - Programming the RISC-V
         
         </a>
@@ -141,7 +141,7 @@
   
     
       <li data-nav-id="/10_compiling/12_compiling_bare_metal/" title="1.2 - Compiling Bare Metal" class="dd-item ">
-        <a href="../../10_compiling/12_compiling_bare_metal/">
+        <a href="../10_compiling/12_compiling_bare_metal/">
         <i class='fas fa-book'></i> 1.2 - Compiling Bare Metal
         
         </a>
@@ -162,7 +162,7 @@
   
     
       <li data-nav-id="/10_compiling/13_linking_bare_metal/" title="1.3 - Linking Bare Metal" class="dd-item ">
-        <a href="../../10_compiling/13_linking_bare_metal/">
+        <a href="../10_compiling/13_linking_bare_metal/">
         <i class='fas fa-book'></i> 1.3 - Linking Bare Metal
         
         </a>
@@ -183,7 +183,7 @@
   
     
       <li data-nav-id="/10_compiling/14_simulation/" title="1.4 - Simulation" class="dd-item ">
-        <a href="../../10_compiling/14_simulation/">
+        <a href="../10_compiling/14_simulation/">
         <i class='fas fa-book'></i> 1.4 - Simulation
         
         </a>
@@ -204,7 +204,7 @@
   
     
       <li data-nav-id="/10_compiling/15_exercises/" title="1.5 - Exercises" class="dd-item ">
-        <a href="../../10_compiling/15_exercises/">
+        <a href="../10_compiling/15_exercises/">
         <i class='fas fa-pen'></i> 1.5 - Exercises
         
         </a>
@@ -236,7 +236,7 @@
         
         
         ">
-      <a href="../../20_hw/">
+      <a href="../20_hw/">
           2 Making it work on hardware
           
       </a>
@@ -259,7 +259,7 @@
   
     
       <li data-nav-id="/20_hw/21_current_situation/" title="2.1 - The current situation" class="dd-item ">
-        <a href="../../20_hw/21_current_situation/">
+        <a href="../20_hw/21_current_situation/">
         <i class='fas fa-book'></i> 2.1 - The current situation
         
         </a>
@@ -280,7 +280,7 @@
   
     
       <li data-nav-id="/20_hw/22_wrapping/" title="2.2 - Wrapping it up" class="dd-item ">
-        <a href="../../20_hw/22_wrapping/">
+        <a href="../20_hw/22_wrapping/">
         <i class='fas fa-book'></i> 2.2 - Wrapping it up
         
         </a>
@@ -301,7 +301,7 @@
   
     
       <li data-nav-id="/20_hw/23_onemore/" title="2.3 - One more thing ..." class="dd-item ">
-        <a href="../../20_hw/23_onemore/">
+        <a href="../20_hw/23_onemore/">
         <i class='fas fa-book'></i> 2.3 - One more thing ...
         
         </a>
@@ -322,7 +322,7 @@
   
     
       <li data-nav-id="/20_hw/24_go_fast/" title="2.4 - Go as fast as you can" class="dd-item ">
-        <a href="../../20_hw/24_go_fast/">
+        <a href="../20_hw/24_go_fast/">
         <i class='fas fa-book'></i> 2.4 - Go as fast as you can
         
         </a>
@@ -343,7 +343,7 @@
   
     
       <li data-nav-id="/20_hw/25_exercises/" title="2.5 - Exercises" class="dd-item ">
-        <a href="../../20_hw/25_exercises/">
+        <a href="../20_hw/25_exercises/">
         <i class='fas fa-pen'></i> 2.5 - Exercises
         
         </a>
@@ -372,10 +372,10 @@
     
     <li data-nav-id="/30_counter/" title="3 Once upon a time(r)" class="dd-item
         
-        
+        active
         
         ">
-      <a href="../../30_counter/">
+      <a href="../30_counter/">
           3 Once upon a time(r)
           
       </a>
@@ -398,7 +398,7 @@
   
     
       <li data-nav-id="/30_counter/31_timer/" title="3.1 - SW Timer" class="dd-item ">
-        <a href="../../30_counter/31_timer/">
+        <a href="../30_counter/31_timer/">
         <i class='fas fa-book'></i> 3.1 - SW Timer
         
         </a>
@@ -419,7 +419,7 @@
   
     
       <li data-nav-id="/30_counter/32_timer_counter/" title="3.2 - HW Timer" class="dd-item ">
-        <a href="../../30_counter/32_timer_counter/">
+        <a href="../30_counter/32_timer_counter/">
         <i class='fas fa-book'></i> 3.2 - HW Timer
         
         </a>
@@ -440,7 +440,7 @@
   
     
       <li data-nav-id="/30_counter/33_tcnt_use/" title="3.3 - Using TCNT" class="dd-item ">
-        <a href="../../30_counter/33_tcnt_use/">
+        <a href="../30_counter/33_tcnt_use/">
         <i class='fas fa-book'></i> 3.3 - Using TCNT
         
         </a>
@@ -461,7 +461,7 @@
   
     
       <li data-nav-id="/30_counter/34_cost/" title="3.4 - How much bang do you get for your buck?" class="dd-item ">
-        <a href="../../30_counter/34_cost/">
+        <a href="../30_counter/34_cost/">
         <i class='fas fa-book'></i> 3.4 - How much bang do you get for your buck?
         
         </a>
@@ -482,7 +482,7 @@
   
     
       <li data-nav-id="/30_counter/35_exercises/" title="3.5 - Exercises" class="dd-item ">
-        <a href="../../30_counter/35_exercises/">
+        <a href="../30_counter/35_exercises/">
         <i class='fas fa-pen'></i> 3.5 - Exercises
         
         </a>
@@ -548,8 +548,6 @@
                         </a>
                     </span>
                   
-                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
-                  
                   <span class="links">
                  
                  
@@ -560,13 +558,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='../../'>HWSW codesign</a> > <a href=''>1 Processor</a> > 102 - RISC-V
-          
-        
+            <a href='../'>HWSW codesign</a> > 3 Once upon a time(r)
           
         
           
@@ -575,18 +567,6 @@
                   </span>
                 </div>
                 
-                    <div class="progress">
-    <div class="wrapper">
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#risc-v-instruction-formats">RISC-V instruction formats</a></li>
-    <li><a href="#risc-v-instruction-sub-sets">RISC-V instruction sub-sets</a></li>
-  </ul>
-</nav>
-    </div>
-</div>
-
-                
               </div>
             </div>
             
@@ -594,68 +574,42 @@
         
         </div>
         
+          <div id="chapter">
+        
         <div id="body-inner">
-          
-            <h1>
-              
-              102 - RISC-V
-            </h1>
           
 
         
 
 
-<p>As you know by know, computers speak a different language than us, humans. Also, different computers don&rsquo;t speak the same language, although some similarities can be detected. Where all our words in the English or Dutch language are nicely summarised in a dictionary. Similarly, the words that a processor speaks are summarised in an <strong>instruction set</strong>.</p>
-<p>When we hear stories, from a certain level of abstraction these stories are simply a collection of words that occur in the dictionary. This concept also translates to a processor in the form of a <strong>program</strong>. A program is set of instructions put in a specific order to tell a story, or achieve a certain functionality.</p>
-<p>To interpret and execute a program, an <strong>architecture</strong> is needed. Such a computer architecture is a model on how the list of instructions should be executed. A frequently used <strong>instruction set architecture (ISA)</strong> is the <strong>load-store</strong> architecture. This technique is used by the PowerPC, a MIPS processor, an ARM core &hellip; and the RISC-V. Another famous ISA is the <strong>register-memory</strong> architecture. This is used by the Intel x86 and the Motorola 68000 series.</p>
-<p>The difference between a load-store architecture and a register-memory architecture can be illustrated using an example: <code>add a, b, c</code>. This instruction has the processor calculate the sum of b and c and places the result in a. In a load-store architecture <strong>all</strong> three locations (a, b, and c) must be residing in a register. In a register-memory architecture these locations can also reside in memory.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/RISC-V-logo.svg/220px-RISC-V-logo.svg.png" alt="RSIC-V_logo"></p>
-<p>In 2011 the University of California, Berkely published the <a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2011/EECS-2011-62.pdf" target="_blank">&lt;strong&gt;RISC-V Instruction Set Manual&lt;/strong&gt;</a>. The full history of RISC-V can be found on <a href="https://riscv.org/about/history/" target="_blank">their website</a>. This original specification has undergone quite some change. The most recent version (at the moment of writing) is December 16, 2021 and can be found <a href="https://github.com/riscv/riscv-isa-manual/releases/tag/draft-20211216-5651528" target="_blank">here</a>. Finally it is pointed out that RISC-V ISA is completely open and freely available to academia and industry &#x1f603;.</p>
-<p>A <em>word</em> from the instruction set is (for this course) assumed to be 32 bits. Such a 32-bit word can mean anything in the world until a consensus is achieved on how to interpret these words. This is done in the RISC-V ISA and will be shortly (re-)visit below.</p>
-<p>Having any idea, like the RISC-V, on paper is an important step. Of course, even the best design on paper is not running any programs. An <strong>implementation</strong> of the described ideas has to be made. For this course an existing implementation of RISC-V will used: the <a href="https://github.com/YosysHQ/picorv32" target="_blank">PicoRV32</a>. This implementation is a hardware description of a RISC-V processor and is optimised for size.</p>
-<h2 id="risc-v-instruction-formats">RISC-V instruction formats</h2>
-<p>The core instructions in RISC-V can be grouped in 6 different formats:</p>
-<div class="multiHcolumn">
-<div class="column">
-  <ol start="0">
-<li><strong>R-format:</strong> these are instructions with 3 register inputs</li>
-<li><strong>I-format:</strong> these are instructions with immediates and loads</li>
-<li><strong>S-format:</strong> these are store instructions</li>
-<li><strong>SB-format:</strong> these are branch instructions</li>
-<li><strong>U-format:</strong> these are store instructions wit hupper immediates</li>
-<li><strong>UJ-format:</strong> these are jump instructions</li>
-</ol>
-</div>    
-<div class="column">
-  <p>Depending on the format of the instruction, it should be interpreted differently.
-<img src="../../img/100/riscv_instruction_formats.png" alt="instruction_formats"></p>
-</div>    
-</div>    
-<h2 id="risc-v-instruction-sub-sets">RISC-V instruction sub-sets</h2>
-<p>Although there are many instructions defined in the instruction set, different subsets are made. The base instruction set exists in 3 different sizes: 32, 64 and 128 bits. These are named <strong>RV32I</strong>,<strong>RV64I</strong>, and <strong>RV128I</strong> respectively. In the 64-bit subset, registers are 64 bits wide; and the 128-bit subset increases this even to 128 bits. The need for the latter is debatable (and out of scope here). The base instructions sets all support instructions for <strong>basic integer operations</strong>. In the <strong>I</strong> variant there are 32 registers while in the <strong>E</strong> variant only 16 registers are required.</p>
-<p>Different extensions are also proposed.</p>
-<ul>
-<li><strong>M:</strong> Instructions for multiplication and division</li>
-<li><strong>C:</strong> Compact instructions that have only 16-bit encoding. This extension is very important for applications requiring low memory footprint.</li>
-<li><strong>F:</strong> Single-precision floating-point instructions</li>
-<li><strong>D:</strong> Double-precision floating-point instructions</li>
-<li><strong>A:</strong> Atomic memory instructions</li>
-<li><strong>B:</strong> Bit manipulation instructions. The extension contains instructions used for bit manipulations, such as rotations or bit set/clear instructions.</li>
-<li><strong>V:</strong> Vector instructions that can be used for HPC.</li>
-<li><strong>P:</strong> DSP and packed SIMD instructions needed for embedded DSP processors.</li>
-</ul>
-<p>The naming of the instruction sub-set hence defines what should be supported by the architecture and the implementation; for example: an RV64IM, or a RV32IMFB.</p>
-<p>From the README-file in the GitHub repository of the PicoRV can be read:</p>
-<blockquote>
-<p>PicoRV32 is a CPU core that implements the RISC-V RV32IMC Instruction Set. It can be configured as RV32E, RV32I, RV32IC, RV32IM, or RV32IMC core, and optionally contains a built-in interrupt controller.</p>
-</blockquote>
-<p>This means that all the configurations are 32-bit implementations that have 32 or 16 registers. Also the <strong>required</strong> base instruction set is present, and there are options to also enable the multiplication and division instructions; and (as the name suggests) there is an option for having compact instructions.</p>
+
+	<h1 id="once-upon-a-timer">Once upon a time(r)</h1>
+<p><img src="../img/30/pexels-samerdaboul-1209999.jpg" alt="hourglass"></p>
+<div class="image_courtesy">
+  Image courtesy: 
+  <a href="https://www.pexels.com" target="_blank">Pexels</a>
+   - 
+   <a href="https://www.pexels.com/photo/person-holding-hour-glass-1209999/" target="_blank">Samer Daboul</a>
+</div>
+
+<style>
+  div.image_courtesy {
+    text-align: center;
+    font-size: 100%;
+    font-style: italic;
+  }
+</style>
 
 
-<footer class="footline">
+
+
+
+<footer class=" footline" >
 	
 </footer>
 
+        
+            </div> 
         
         </div>
         
@@ -882,6 +836,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -894,6 +849,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -982,8 +940,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="../20_hw/25_exercises/" title="2.5 - Exercises"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="../../10_compiling/" title="1 Setting the playing field" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="../30_counter/31_timer/" title="3.1 - SW Timer" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -993,19 +953,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1740481900"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1740481900"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1740481900"></script>
-    <script src="../../js/jquery.sticky.js?1740481900"></script>
-    <script src="../../js/featherlight.min.js?1740481900"></script>
-    <script src="../../js/highlight.pack.js?1740481900"></script>
+    <script src="../js/clipboard.min.js?1740481900"></script>
+    <script src="../js/perfect-scrollbar.min.js?1740481900"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1740481900"></script>
+    <script src="../js/jquery.sticky.js?1740481900"></script>
+    <script src="../js/featherlight.min.js?1740481900"></script>
+    <script src="../js/highlight.pack.js?1740481900"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1740481900"></script>
-    <script src="../../js/learn.js?1740481900"></script>
-    <script src="../../js/hugo-learn.js?1740481900"></script>
+    <script src="../js/modernizr.custom-3.6.0.js?1740481900"></script>
+    <script src="../js/learn.js?1740481900"></script>
+    <script src="../js/hugo-learn.js?1740481900"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1740481900"></script>
+            <script src="../mermaid/mermaid.js?1740481900"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
@@ -1015,4 +975,3 @@
 
   </body>
 </html>
-

@@ -84,6 +84,13 @@
 	"content": "Practice makes perfect Below are a number of programming exercises.\nExercise 201 Gather all the info from this chapter and apply them to your implementation so you end up with a synthesisable design. Then, write software that puts a counter on the 4 LEDS. The period should be rouhgly around 1Hz so the correct working can be easily verified with the naked eye.\nExercise 202 Find the highest possible frequency at which your RISC-V implementation can operate, while still meeting the timing requirements.\nExercise 203 ASSIGNMENT Make a bitstream and a report on resource utilisation of your synthesisable code, with the code of the \u0026lsquo;visisble counter\u0026rsquo;, as shown in the previous section.\n"
 },
 {
+	"uri": "https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/",
+	"title": "3 Once upon a time(r)",
+	"tags": [],
+	"description": "",
+	"content": "Once upon a time(r) Image courtesy: Pexels - Samer Daboul "
+},
+{
 	"uri": "https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/31_timer/",
 	"title": "3.1 - SW Timer",
 	"tags": [],
