@@ -42,7 +42,7 @@
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/35_exercises/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/35_exercises/</guid>
-      <description>Practice makes perfect Below are a number of programming exercises.&#xA;Exercise 201 Repeat the example of the 2x2 matrix multiplication on you own implementation.&#xA;Exercise 202 ASSIGNMENT Extend the implementation to exclusively support 3x3 matrices.</description>
+      <description>Practice makes perfect Below are a number of programming exercises.&#xA;Exercise 201 Repeat the example of the 2x2 matrix multiplication on you own implementation.&#xA;Exercise 202 ASSIGNMENT Extend the implementation to (exclusively) support 3x3 matrices: 1) verify correct working, 2) find the latency, and 3) determine the cost (#LUT, #FF, imem-size)</description>
     </item>
   </channel>
 </rss>

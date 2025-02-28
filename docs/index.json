@@ -123,7 +123,7 @@
 	"title": "3.5 - Exercises",
 	"tags": [],
 	"description": "",
-	"content": "Practice makes perfect Below are a number of programming exercises.\nExercise 201 Repeat the example of the 2x2 matrix multiplication on you own implementation.\nExercise 202 ASSIGNMENT Extend the implementation to exclusively support 3x3 matrices.\n"
+	"content": "Practice makes perfect Below are a number of programming exercises.\nExercise 201 Repeat the example of the 2x2 matrix multiplication on you own implementation.\nExercise 202 ASSIGNMENT Extend the implementation to (exclusively) support 3x3 matrices: 1) verify correct working, 2) find the latency, and 3) determine the cost (#LUT, #FF, imem-size)\n"
 },
 {
 	"uri": "https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/41_interrupt/",

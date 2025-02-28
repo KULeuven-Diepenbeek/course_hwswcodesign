@@ -23,5 +23,5 @@ Repeat the example of the 2x2 matrix multiplication on you own implementation.
 {{% /centeredColumn %}}
 
 {{% centeredColumn 50 %}}
-Extend the implementation to exclusively support 3x3 matrices. 
+Extend the implementation to (exclusively) support 3x3 matrices: 1) verify correct working, 2) find the latency, and 3) determine the cost (#LUT, #FF, imem-size)
 {{% /centeredColumn %}}
