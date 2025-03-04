@@ -12,22 +12,22 @@
     <title>3.5 - Exercises :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1741072671" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1741072671" rel="stylesheet">
-    <link href="../../css/hybrid.css?1741072671" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1741072671" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1741072671" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1741072671" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1741072671" rel="stylesheet">
-    <link href="../../css/theme.css?1741072671" rel="stylesheet">
-    <link href="../../css/tabs.css?1741072671" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1741072671" rel="stylesheet">
+    <link href="../../css/nucleus.css?1741074754" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1741074754" rel="stylesheet">
+    <link href="../../css/hybrid.css?1741074754" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1741074754" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1741074754" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1741074754" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1741074754" rel="stylesheet">
+    <link href="../../css/theme.css?1741074754" rel="stylesheet">
+    <link href="../../css/tabs.css?1741074754" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1741074754" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1741072671" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1741074754" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1741072671"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1741074754"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1741072671"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1741072671"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1741074754"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1741074754"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1741072671"></script>
+<script type="text/javascript" src="../../js/search.js?1741074754"></script>
 
     
   </div>
@@ -611,19 +611,86 @@
 <h2 id="practice-makes-perfect">Practice makes perfect</h2>
 <p>Below are a number of programming exercises.</p>
 <div class="centeredColumn75">
-<h4 id="exercise-201">Exercise 201</h4>
+<h4 id="exercise-301">Exercise 301</h4>
   </div>    
 <div class="centeredColumn50">
 <p>Repeat the example of the 2x2 matrix multiplication on you own implementation.</p>
   </div>    
 <div class="centeredColumn75">
-<h4 id="exercise-202">Exercise 202</h4>
+<h4 id="exercise-302">Exercise 302</h4>
 <div class="assignment">ASSIGNMENT</div>
   </div>    
 <div class="centeredColumn50">
 <p>Extend the implementation to (exclusively) support 3x3 matrices: 1) verify correct working, 2) find the latency, and 3) determine the cost (#LUT, #FF, imem-size)</p>
+<h4 id="example">Example</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><center>3x3 matrix multiplication <br/> SW-only</center></th>
+<th><center>3x3 matrix multiplication <br/> with M extension</center></th>
+<th style="text-align:center">Relative <br/> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td># CC<sup>1</sup></td>
+<td>1887</td>
+<td>285</td>
+<td style="text-align:center"><div class="result_gain">15%</div></td>
+</tr>
+<tr>
+<td>T (ns)</td>
+<td>25</td>
+<td>36</td>
+<td style="text-align:center"><div class="result_loss">144%</div></td>
+</tr>
+<tr>
+<td>f<sub>clk</sub> (MHz)</td>
+<td>40</td>
+<td>27.78</td>
+<td style="text-align:center"><div class="result_loss">70%</div></td>
+</tr>
+<tr>
+<td>Latency (µs)</td>
+<td>47.175</td>
+<td>10.260</td>
+<td style="text-align:center"><div class="result_gain">22%</div></td>
+</tr>
+<tr>
+<td>imem size (bytes)</td>
+<td>2441</td>
+<td>1908</td>
+<td style="text-align:center"><div class="result_gain">78%</div></td>
+</tr>
+<tr>
+<td># LUT</td>
+<td>1553</td>
+<td>3501</td>
+<td style="text-align:center"><div class="result_loss">225%</div></td>
+</tr>
+<tr>
+<td># FF</td>
+<td>1156</td>
+<td>1156</td>
+<td style="text-align:center"><div class="result_neutral">100%</div></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Througput <br/>(matrix mult/s)</td>
+<td>1/47175e-9 = 21k mm/s</td>
+<td>1/10260e-9 = 97k mm /s</td>
+<td style="text-align:center"><div class="result_gain">462%</div></td>
+</tr>
+</tbody>
+</table>
+<p><sup>1</sup> This counts <u>real clock cycles</u>. The 33% duty cycle induced by the chip enable is taken into account. The non-optimal usage of the processor is hence reflected in the outcome.</p>
   </div>    
-
 
 <footer class="footline">
 	
@@ -973,19 +1040,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1741072671"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1741072671"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1741072671"></script>
-    <script src="../../js/jquery.sticky.js?1741072671"></script>
-    <script src="../../js/featherlight.min.js?1741072671"></script>
-    <script src="../../js/highlight.pack.js?1741072671"></script>
+    <script src="../../js/clipboard.min.js?1741074754"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1741074754"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1741074754"></script>
+    <script src="../../js/jquery.sticky.js?1741074754"></script>
+    <script src="../../js/featherlight.min.js?1741074754"></script>
+    <script src="../../js/highlight.pack.js?1741074754"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1741072671"></script>
-    <script src="../../js/learn.js?1741072671"></script>
-    <script src="../../js/hugo-learn.js?1741072671"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1741074754"></script>
+    <script src="../../js/learn.js?1741074754"></script>
+    <script src="../../js/hugo-learn.js?1741074754"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1741072671"></script>
+            <script src="../../mermaid/mermaid.js?1741074754"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

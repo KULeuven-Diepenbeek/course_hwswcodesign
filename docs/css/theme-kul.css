@@ -217,6 +217,26 @@ div.assignment {
     font-style: italic;
 }
 
+div.result_gain {
+    color: rgb(0, 129, 0);
+    font-weight: bold;
+    padding-left: 20px;
+    font-style: italic;
+}
+
+div.result_loss {
+    color: rgb(129, 0, 0);
+    font-weight: bold;
+    padding-left: 20px;
+    font-style: italic;
+}
+div.result_neutral {
+    color: rgb(77, 76, 76);
+    font-weight: bold;
+    padding-left: 20px;
+    font-style: italic;
+}
+
 /* end VlJo */
 
 

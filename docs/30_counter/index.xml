@@ -21,7 +21,7 @@
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/32_timer_counter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/32_timer_counter/</guid>
-      <description>A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V implementation is the first extension that will be made.&#xA;The exercise could be: Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th. The expected output from such a program would look like: &amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&amp;hellip;.:&amp;hellip;&amp;hellip;.;&amp;hellip;&#xA;Hardware A second way of making a solution for the aforementioned exercise can be made in hardware.</description>
+      <description>A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V microcontroller is the first extension that will be made.&#xA;A textbook exercise could be: Toggle a LED roughly every 500 ms and with each fourth period, toggle all the LEDS.&#xA;Hardware A second way of making a solution for the aforementioned exercise can be made in hardware.</description>
     </item>
     <item>
       <title>3.3 - Using TCNT</title>
@@ -42,7 +42,7 @@
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/35_exercises/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/30_counter/35_exercises/</guid>
-      <description>Practice makes perfect Below are a number of programming exercises.&#xA;Exercise 201 Repeat the example of the 2x2 matrix multiplication on you own implementation.&#xA;Exercise 202 ASSIGNMENT Extend the implementation to (exclusively) support 3x3 matrices: 1) verify correct working, 2) find the latency, and 3) determine the cost (#LUT, #FF, imem-size)</description>
+      <description>Practice makes perfect Below are a number of programming exercises.&#xA;Exercise 301 Repeat the example of the 2x2 matrix multiplication on you own implementation.&#xA;Exercise 302 ASSIGNMENT Extend the implementation to (exclusively) support 3x3 matrices: 1) verify correct working, 2) find the latency, and 3) determine the cost (#LUT, #FF, imem-size)&#xA;Example 3x3 matrix multiplication SW-only 3x3 matrix multiplication with M extension Relative # CC1 1887 285 15% T (ns) 25 36 144% fclk (MHz) 40 27.</description>
     </item>
   </channel>
 </rss>

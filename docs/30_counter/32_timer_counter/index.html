@@ -12,22 +12,22 @@
     <title>3.2 - HW Timer :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1741072671" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1741072671" rel="stylesheet">
-    <link href="../../css/hybrid.css?1741072671" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1741072671" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1741072671" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1741072671" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1741072671" rel="stylesheet">
-    <link href="../../css/theme.css?1741072671" rel="stylesheet">
-    <link href="../../css/tabs.css?1741072671" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1741072671" rel="stylesheet">
+    <link href="../../css/nucleus.css?1741074754" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1741074754" rel="stylesheet">
+    <link href="../../css/hybrid.css?1741074754" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1741074754" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1741074754" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1741074754" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1741074754" rel="stylesheet">
+    <link href="../../css/theme.css?1741074754" rel="stylesheet">
+    <link href="../../css/tabs.css?1741074754" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1741074754" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1741072671" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1741074754" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1741072671"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1741074754"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1741072671"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1741072671"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1741074754"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1741074754"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1741072671"></script>
+<script type="text/javascript" src="../../js/search.js?1741074754"></script>
 
     
   </div>
@@ -609,8 +609,8 @@
         
 
 
-<p>A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V implementation is the first extension that will be made.</p>
-<p>The exercise could be: <strong>Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th.</strong> The expected output from such a program would look like: <strong>&hellip;&hellip;.:&hellip;&hellip;.;&hellip;&hellip;.:&hellip;&hellip;.;&hellip;</strong></p>
+<p>A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V microcontroller is the first extension that will be made.</p>
+<p>A textbook exercise could be: <strong>Toggle a LED roughly every 500 ms and with each fourth period, toggle all the LEDS</strong>.</p>
 <h2 id="hardware">Hardware</h2>
 <p>A second way of making a solution for the aforementioned exercise can be made in hardware. Commercially available of the shelf (COTS) microprocessors typically have hardware-based timer/counter functionalities. Such a timer/counter (TCNT) has multiple waveform generator modes: Normal, Clear-Timer-on-Compare and Pulse Width Modulation. A possible architecture for such a timer is shown below.</p>
 <p><img src="../../img/30/tcnt.png" alt="tcnt"></p>
@@ -1079,19 +1079,19 @@ Use the timer component to solve:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1741072671"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1741072671"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1741072671"></script>
-    <script src="../../js/jquery.sticky.js?1741072671"></script>
-    <script src="../../js/featherlight.min.js?1741072671"></script>
-    <script src="../../js/highlight.pack.js?1741072671"></script>
+    <script src="../../js/clipboard.min.js?1741074754"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1741074754"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1741074754"></script>
+    <script src="../../js/jquery.sticky.js?1741074754"></script>
+    <script src="../../js/featherlight.min.js?1741074754"></script>
+    <script src="../../js/highlight.pack.js?1741074754"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1741072671"></script>
-    <script src="../../js/learn.js?1741072671"></script>
-    <script src="../../js/hugo-learn.js?1741072671"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1741074754"></script>
+    <script src="../../js/learn.js?1741074754"></script>
+    <script src="../../js/hugo-learn.js?1741074754"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1741072671"></script>
+            <script src="../../mermaid/mermaid.js?1741074754"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
