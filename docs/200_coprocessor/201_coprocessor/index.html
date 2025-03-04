@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.123.7">
+    <meta name="description" content="">
+<meta name="author" content="map[email:&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; name:Jo Vliegen]">
+
+    <link rel="icon" href="../../images/favicon.png" type="image/png">
+
+    <title>201 - Coprocessor :: HW/SW codesign</title>
+
+    
+    <link href="../../css/nucleus.css?1741074939" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1741074939" rel="stylesheet">
+    <link href="../../css/hybrid.css?1741074939" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1741074939" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1741074939" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1741074939" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1741074939" rel="stylesheet">
+    <link href="../../css/theme.css?1741074939" rel="stylesheet">
+    <link href="../../css/tabs.css?1741074939" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1741074939" rel="stylesheet">
+    
+    <link href="../../css/theme-kul.css?1741074939" rel="stylesheet">
+    
+    
+
+    <script src="../../js/jquery-3.3.1.min.js?1741074939"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script src=../../js/exercises.js></script> 
+  </head>
+  <body class="" data-url="../../200_coprocessor/201_coprocessor/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="https://www.kuleuven.be/kuleuven/" target="_blank">
+  <img src="../../img/style/kul.png" alt="KU Leuven" /><br/>
+</a>
+<a href="https://www.uhasselt.be/" target="_blank">
+  <img src="../../img/style/uhasselt.svg" alt="UHasselt" id="uhlogo" />
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1741074939"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1741074939"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1741074939"></script>
+
+    
+  </div>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/10_compiling/" title="1 Setting the playing field" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../10_compiling/">
+          1 Setting the playing field
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/11_programming/" title="1.1 - Programming the RISC-V" class="dd-item ">
+        <a href="../../10_compiling/11_programming/">
+        <i class='fas fa-book'></i> 1.1 - Programming the RISC-V
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/12_compiling_bare_metal/" title="1.2 - Compiling Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/12_compiling_bare_metal/">
+        <i class='fas fa-book'></i> 1.2 - Compiling Bare Metal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/13_linking_bare_metal/" title="1.3 - Linking Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/13_linking_bare_metal/">
+        <i class='fas fa-book'></i> 1.3 - Linking Bare Metal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/14_simulation/" title="1.4 - Simulation" class="dd-item ">
+        <a href="../../10_compiling/14_simulation/">
+        <i class='fas fa-book'></i> 1.4 - Simulation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/15_exercises/" title="1.5 - Exercises" class="dd-item ">
+        <a href="../../10_compiling/15_exercises/">
+        <i class='fas fa-pen'></i> 1.5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/20_hw/" title="2 Making it work on hardware" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../20_hw/">
+          2 Making it work on hardware
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/21_current_situation/" title="2.1 - The current situation" class="dd-item ">
+        <a href="../../20_hw/21_current_situation/">
+        <i class='fas fa-book'></i> 2.1 - The current situation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/22_wrapping/" title="2.2 - Wrapping it up" class="dd-item ">
+        <a href="../../20_hw/22_wrapping/">
+        <i class='fas fa-book'></i> 2.2 - Wrapping it up
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/23_onemore/" title="2.3 - One more thing ..." class="dd-item ">
+        <a href="../../20_hw/23_onemore/">
+        <i class='fas fa-book'></i> 2.3 - One more thing ...
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/24_go_fast/" title="2.4 - Go as fast as you can" class="dd-item ">
+        <a href="../../20_hw/24_go_fast/">
+        <i class='fas fa-book'></i> 2.4 - Go as fast as you can
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/25_exercises/" title="2.5 - Exercises" class="dd-item ">
+        <a href="../../20_hw/25_exercises/">
+        <i class='fas fa-pen'></i> 2.5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/30_counter/" title="3 Once upon a time(r)" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../30_counter/">
+          3 Once upon a time(r)
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/31_timer/" title="3.1 - SW Timer" class="dd-item ">
+        <a href="../../30_counter/31_timer/">
+        <i class='fas fa-book'></i> 3.1 - SW Timer
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/32_timer_counter/" title="3.2 - HW Timer" class="dd-item ">
+        <a href="../../30_counter/32_timer_counter/">
+        <i class='fas fa-book'></i> 3.2 - HW Timer
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/33_tcnt_use/" title="3.3 - Using TCNT" class="dd-item ">
+        <a href="../../30_counter/33_tcnt_use/">
+        <i class='fas fa-book'></i> 3.3 - Using TCNT
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/34_cost/" title="3.4 - How much bang do you get for your buck?" class="dd-item ">
+        <a href="../../30_counter/34_cost/">
+        <i class='fas fa-book'></i> 3.4 - How much bang do you get for your buck?
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/35_exercises/" title="3.5 - Exercises" class="dd-item ">
+        <a href="../../30_counter/35_exercises/">
+        <i class='fas fa-pen'></i> 3.5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://studiegidswww.uhasselt.be/opleidingsonderdeel.aspx?a=2023&amp;i=3468&amp;n=4&amp;t=04"><i class='fa fa-university'></i> ECTS Sheet</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://p.cygnus.cc.kuleuven.be/webapps/blackboard/execute/announcement?method=search&amp;context=course&amp;course_id=_1176295_1&amp;handle=cp_announcements&amp;mode=cpview"><i class='fa fa-university'></i> Toledo</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../'>HWSW codesign</a> > <a href=''>2  Coprocessor</a> > 201 - Coprocessor
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#offloading">Offloading</a></li>
+    <li><a href="#multiplication">Multiplication</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              201 - Coprocessor
+            </h1>
+          
+
+        
+
+
+<p>All the code that you write has to be executed on the processor. With computers being ever more powerful, it is easy to forget about all the work a processor is doing. Irrespective of how simple a job might seem, it still needs to be executed. The example illustrates this. The only thing the processor needs to do is <em>output</em> 2 values. Nonetheless with the software as seen before, this takes <strong>74 clock cycles</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;print.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">print_str</span>(<span style="color:#e6db74">&#34;;&#34;</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">print_str</span>(<span style="color:#e6db74">&#34;.&#34;</span>);
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+<p><img src="../../img/200/example1.png" alt="example"></p>
+<h2 id="offloading">Offloading</h2>
+<p>When a processor is doing a lot of work, it can become useful if parts of that work could be delegated or offloaded to another processor. Which portions of the work need to be offloaded ? What will the performance gain be ? What is the price (€s, area in silicon, energy, &hellip; ) ? These are simple questions, but answering them is not straightforward !!</p>
+<p>The first coprocessors saw the light of day in the 1970&rsquo;s. It became clear that only doing calculations with integer numbers was to restrictive. The first coprocessors were <strong>floating-point units</strong> (FPUs). These coprocessor were so heavily used that their functionality got integrated in the processor itself.</p>
+<h2 id="multiplication">Multiplication</h2>
+<p>The PicoRV32 implementation we&rsquo;ve used so far only supports the RV32I instruction set. This means that only the <strong>basic integer operations</strong> are supported. Although the instruction set does not contain a multiplication operation, it can be used nonetheless.</p>
+<div class="multiHcolumn">
+<div class="column">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;print.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> value1, value2, product;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	value1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">208</span>;
+</span></span><span style="display:flex;"><span>	value2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	product <span style="color:#f92672">=</span> value1 <span style="color:#f92672">*</span> value2;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">print_dec</span>(product);
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+</div>    
+<div class="column">
+  <p>Running this C-code generates an output .dat file. After parsing the output looks like this.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ae81ff">00000000000000000000000000110110</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">054</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">0x36</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000000000000000000000110010</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">050</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">0x32</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000000000000000000000110100</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">052</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">0x34</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">4</span></span></span></code></pre></div>
+The value <b>624</b> is the product of the (hardcoded) values 208 and 3.
+</div>    
+</div>    
+<p>The reason that this works without having a <strong>mul</strong> instruction is because of the compiler jumps. The compiler figures out what needs to be done and comes up with a recipe to achieve what the code prescribes.</p>
+<div class="multiHcolumn">
+<div class="column">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-armasm" data-lang="armasm"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">00000174</span> <span style="color:#960050;background-color:#1e0010">&lt;__</span>mulsi<span style="color:#960050;background-color:#1e0010">3&gt;:</span>
+</span></span><span style="display:flex;"><span> 174:	<span style="color:#960050;background-color:#1e0010">00050613</span>       	mv	<span style="color:#a6e22e">a2</span>,<span style="color:#a6e22e">a0</span>
+</span></span><span style="display:flex;"><span> 178:	<span style="color:#960050;background-color:#1e0010">00000513</span>       	li	<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span> 17c:	<span style="color:#960050;background-color:#1e0010">0015</span>f<span style="color:#960050;background-color:#1e0010">693</span>       	<span style="color:#960050;background-color:#1e0010">andi</span>	<span style="color:#a6e22e">a3</span>,<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">1</span>
+</span></span><span style="display:flex;"><span> 180:	<span style="color:#960050;background-color:#1e0010">00068463</span>       	beqz	<span style="color:#a6e22e">a3</span>,<span style="color:#960050;background-color:#1e0010">188</span> <span style="color:#960050;background-color:#1e0010">&lt;__mulsi3+0</span><span style="color:#a6e22e">x14</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 184:	<span style="color:#960050;background-color:#1e0010">00</span>c<span style="color:#960050;background-color:#1e0010">50533</span>       	<span style="color:#960050;background-color:#1e0010">add</span>	<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">a2</span>
+</span></span><span style="display:flex;"><span> 188:	<span style="color:#960050;background-color:#1e0010">0015</span>d<span style="color:#960050;background-color:#1e0010">593</span>       	<span style="color:#960050;background-color:#1e0010">srli</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x1</span>
+</span></span><span style="display:flex;"><span> 18c:	<span style="color:#960050;background-color:#1e0010">00161613</span>       	slli	<span style="color:#a6e22e">a2</span>,<span style="color:#a6e22e">a2</span>,<span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x1</span>
+</span></span><span style="display:flex;"><span> 190:	fe<span style="color:#960050;background-color:#1e0010">0596e3</span>       	<span style="color:#960050;background-color:#1e0010">bnez</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">17c</span> <span style="color:#960050;background-color:#1e0010">&lt;__mulsi3+0</span><span style="color:#a6e22e">x8</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 194:	<span style="color:#960050;background-color:#1e0010">00008067</span>       	ret</span></span></code></pre></div>
+</div>    
+<div class="column">
+  <p><img src="../../img/200/animation.gif" alt="build"></p>
+</div>    
+<div class="column">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-armasm" data-lang="armasm"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">00000274</span> <span style="color:#960050;background-color:#1e0010">&lt;</span>main<span style="color:#960050;background-color:#1e0010">&gt;:</span>
+</span></span><span style="display:flex;"><span> 274:	fe<span style="color:#960050;background-color:#1e0010">010113</span>       	<span style="color:#960050;background-color:#1e0010">addi</span>	<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">-32</span>
+</span></span><span style="display:flex;"><span> 278:	<span style="color:#960050;background-color:#1e0010">0</span>d<span style="color:#960050;background-color:#1e0010">000793</span>       	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">208</span>
+</span></span><span style="display:flex;"><span> 27c:	<span style="color:#960050;background-color:#1e0010">00</span>f<span style="color:#960050;background-color:#1e0010">12223</span>       	<span style="color:#960050;background-color:#1e0010">sw</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">4(sp)</span>
+</span></span><span style="display:flex;"><span> 280:	<span style="color:#960050;background-color:#1e0010">00300793</span>       	li	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">3</span>
+</span></span><span style="display:flex;"><span> 284:	<span style="color:#960050;background-color:#1e0010">00</span>f<span style="color:#960050;background-color:#1e0010">12423</span>       	<span style="color:#960050;background-color:#1e0010">sw</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">8(sp)</span>
+</span></span><span style="display:flex;"><span> 288:	<span style="color:#960050;background-color:#1e0010">00412503</span>       	lw	<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">4(sp)</span>
+</span></span><span style="display:flex;"><span> 28c:	<span style="color:#960050;background-color:#1e0010">00812583</span>       	lw	<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">8(sp)</span>
+</span></span><span style="display:flex;"><span> 290:	<span style="color:#960050;background-color:#1e0010">00112</span>e<span style="color:#960050;background-color:#1e0010">23</span>       	<span style="color:#960050;background-color:#1e0010">sw</span>	<span style="color:#960050;background-color:#1e0010">ra</span>,<span style="color:#960050;background-color:#1e0010">28(sp)</span>
+</span></span><span style="display:flex;"><span> 294:	ee<span style="color:#960050;background-color:#1e0010">1f</span><span style="color:#a6e22e">f0</span><span style="color:#960050;background-color:#1e0010">ef</span>       	<span style="color:#960050;background-color:#1e0010">jal</span>	<span style="color:#960050;background-color:#1e0010">ra</span>,<span style="color:#960050;background-color:#1e0010">174</span> <span style="color:#960050;background-color:#1e0010">&lt;__mulsi3&gt;</span></span></span></code></pre></div>
+</div>    
+</div>    
+<p>Changing <strong>one letter</strong> in the Makefile allows the compiler use the <strong>mul</strong> instruction.</p>
+<div class="multiHcolumn">
+<div class="column">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-S" data-lang="S"><span style="display:flex;"><span>ARCHITECTURE <span style="color:#f92672">=</span> rv32i<span style="color:#f92672">$</span>(subst C,c,<span style="color:#f92672">$</span>(COMPRESSED_ISA))</span></span></code></pre></div>
+to
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-S" data-lang="S"><span style="display:flex;"><span>ARCHITECTURE <span style="color:#f92672">=</span> rv32im<span style="color:#f92672">$</span>(subst C,c,<span style="color:#f92672">$</span>(COMPRESSED_ISA))</span></span></code></pre></div>
+</div>    
+<div class="column">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-armasm" data-lang="armasm"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">00000168</span> <span style="color:#960050;background-color:#1e0010">&lt;</span>main<span style="color:#960050;background-color:#1e0010">&gt;:</span>
+</span></span><span style="display:flex;"><span> 168:	ff<span style="color:#960050;background-color:#1e0010">010113</span>          	<span style="color:#960050;background-color:#1e0010">addi</span>	<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">-16</span>
+</span></span><span style="display:flex;"><span> 16c:	<span style="color:#960050;background-color:#1e0010">0</span>d<span style="color:#960050;background-color:#1e0010">000793</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">208</span>
+</span></span><span style="display:flex;"><span> 170:	<span style="color:#960050;background-color:#1e0010">00</span>f<span style="color:#960050;background-color:#1e0010">12223</span>          	<span style="color:#960050;background-color:#1e0010">sw</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">4(sp)</span>
+</span></span><span style="display:flex;"><span> 174:	<span style="color:#960050;background-color:#1e0010">00300793</span>          	li	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">3</span>
+</span></span><span style="display:flex;"><span> 178:	<span style="color:#960050;background-color:#1e0010">00</span>f<span style="color:#960050;background-color:#1e0010">12423</span>          	<span style="color:#960050;background-color:#1e0010">sw</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">8(sp)</span>
+</span></span><span style="display:flex;"><span> 17c:	<span style="color:#960050;background-color:#1e0010">00412783</span>          	lw	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">4(sp)</span>
+</span></span><span style="display:flex;"><span> 180:	<span style="color:#960050;background-color:#1e0010">00812703</span>          	lw	<span style="color:#a6e22e">a4</span>,<span style="color:#960050;background-color:#1e0010">8(sp)</span>
+</span></span><span style="display:flex;"><span> 184:	<span style="color:#960050;background-color:#1e0010">02</span>e<span style="color:#960050;background-color:#1e0010">787</span><span style="color:#a6e22e">b3</span>          	<span style="color:#960050;background-color:#1e0010">mul</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#a6e22e">a5</span>,<span style="color:#a6e22e">a4</span>
+</span></span><span style="display:flex;"><span> 188:	<span style="color:#960050;background-color:#1e0010">00</span>f<span style="color:#960050;background-color:#1e0010">12623</span>          	<span style="color:#960050;background-color:#1e0010">sw</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">12(sp)</span>
+</span></span><span style="display:flex;"><span> 18c:	<span style="color:#960050;background-color:#1e0010">00</span>c<span style="color:#960050;background-color:#1e0010">12503</span>          	<span style="color:#960050;background-color:#1e0010">lw</span>	<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">12(sp)</span>
+</span></span><span style="display:flex;"><span> 190:	<span style="color:#960050;background-color:#1e0010">01010113</span>          	addi	<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">16</span>
+</span></span><span style="display:flex;"><span> 194:	f<span style="color:#960050;background-color:#1e0010">29f</span><span style="color:#a6e22e">f06</span><span style="color:#960050;background-color:#1e0010">f</span>          	<span style="color:#960050;background-color:#1e0010">j</span>	<span style="color:#960050;background-color:#1e0010">bc</span> <span style="color:#960050;background-color:#1e0010">&lt;print_dec&gt;</span></span></span></code></pre></div>
+</div>    
+</div>    
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+		
+			<a class="nav nav-next" href="../../10_compiling/" title="1 Setting the playing field" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1741074939"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1741074939"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1741074939"></script>
+    <script src="../../js/jquery.sticky.js?1741074939"></script>
+    <script src="../../js/featherlight.min.js?1741074939"></script>
+    <script src="../../js/highlight.pack.js?1741074939"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1741074939"></script>
+    <script src="../../js/learn.js?1741074939"></script>
+    <script src="../../js/hugo-learn.js?1741074939"></script>
+    
+        
+            <script src="../../mermaid/mermaid.js?1741074939"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

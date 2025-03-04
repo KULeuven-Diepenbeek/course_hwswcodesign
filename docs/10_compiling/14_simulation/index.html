@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.123.7">
+    <meta name="description" content="">
+<meta name="author" content="map[email:&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; name:Jo Vliegen]">
+
+    <link rel="icon" href="../../images/favicon.png" type="image/png">
+
+    <title>1.4 - Simulation :: HW/SW codesign</title>
+
+    
+    <link href="../../css/nucleus.css?1741074939" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1741074939" rel="stylesheet">
+    <link href="../../css/hybrid.css?1741074939" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1741074939" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1741074939" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1741074939" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1741074939" rel="stylesheet">
+    <link href="../../css/theme.css?1741074939" rel="stylesheet">
+    <link href="../../css/tabs.css?1741074939" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1741074939" rel="stylesheet">
+    
+    <link href="../../css/theme-kul.css?1741074939" rel="stylesheet">
+    
+    
+
+    <script src="../../js/jquery-3.3.1.min.js?1741074939"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script src=../../js/exercises.js></script> 
+  </head>
+  <body class="" data-url="../../10_compiling/14_simulation/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="https://www.kuleuven.be/kuleuven/" target="_blank">
+  <img src="../../img/style/kul.png" alt="KU Leuven" /><br/>
+</a>
+<a href="https://www.uhasselt.be/" target="_blank">
+  <img src="../../img/style/uhasselt.svg" alt="UHasselt" id="uhlogo" />
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1741074939"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1741074939"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1741074939"></script>
+
+    
+  </div>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/10_compiling/" title="1 Setting the playing field" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="../../10_compiling/">
+          1 Setting the playing field
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/11_programming/" title="1.1 - Programming the RISC-V" class="dd-item ">
+        <a href="../../10_compiling/11_programming/">
+        <i class='fas fa-book'></i> 1.1 - Programming the RISC-V
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/12_compiling_bare_metal/" title="1.2 - Compiling Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/12_compiling_bare_metal/">
+        <i class='fas fa-book'></i> 1.2 - Compiling Bare Metal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/13_linking_bare_metal/" title="1.3 - Linking Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/13_linking_bare_metal/">
+        <i class='fas fa-book'></i> 1.3 - Linking Bare Metal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/14_simulation/" title="1.4 - Simulation" class="dd-item active">
+        <a href="../../10_compiling/14_simulation/">
+        <i class='fas fa-book'></i> 1.4 - Simulation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/15_exercises/" title="1.5 - Exercises" class="dd-item ">
+        <a href="../../10_compiling/15_exercises/">
+        <i class='fas fa-pen'></i> 1.5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/20_hw/" title="2 Making it work on hardware" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../20_hw/">
+          2 Making it work on hardware
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/21_current_situation/" title="2.1 - The current situation" class="dd-item ">
+        <a href="../../20_hw/21_current_situation/">
+        <i class='fas fa-book'></i> 2.1 - The current situation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/22_wrapping/" title="2.2 - Wrapping it up" class="dd-item ">
+        <a href="../../20_hw/22_wrapping/">
+        <i class='fas fa-book'></i> 2.2 - Wrapping it up
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/23_onemore/" title="2.3 - One more thing ..." class="dd-item ">
+        <a href="../../20_hw/23_onemore/">
+        <i class='fas fa-book'></i> 2.3 - One more thing ...
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/24_go_fast/" title="2.4 - Go as fast as you can" class="dd-item ">
+        <a href="../../20_hw/24_go_fast/">
+        <i class='fas fa-book'></i> 2.4 - Go as fast as you can
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/25_exercises/" title="2.5 - Exercises" class="dd-item ">
+        <a href="../../20_hw/25_exercises/">
+        <i class='fas fa-pen'></i> 2.5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/30_counter/" title="3 Once upon a time(r)" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../30_counter/">
+          3 Once upon a time(r)
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/31_timer/" title="3.1 - SW Timer" class="dd-item ">
+        <a href="../../30_counter/31_timer/">
+        <i class='fas fa-book'></i> 3.1 - SW Timer
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/32_timer_counter/" title="3.2 - HW Timer" class="dd-item ">
+        <a href="../../30_counter/32_timer_counter/">
+        <i class='fas fa-book'></i> 3.2 - HW Timer
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/33_tcnt_use/" title="3.3 - Using TCNT" class="dd-item ">
+        <a href="../../30_counter/33_tcnt_use/">
+        <i class='fas fa-book'></i> 3.3 - Using TCNT
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/34_cost/" title="3.4 - How much bang do you get for your buck?" class="dd-item ">
+        <a href="../../30_counter/34_cost/">
+        <i class='fas fa-book'></i> 3.4 - How much bang do you get for your buck?
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/35_exercises/" title="3.5 - Exercises" class="dd-item ">
+        <a href="../../30_counter/35_exercises/">
+        <i class='fas fa-pen'></i> 3.5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://studiegidswww.uhasselt.be/opleidingsonderdeel.aspx?a=2023&amp;i=3468&amp;n=4&amp;t=04"><i class='fa fa-university'></i> ECTS Sheet</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://p.cygnus.cc.kuleuven.be/webapps/blackboard/execute/announcement?method=search&amp;context=course&amp;course_id=_1176295_1&amp;handle=cp_announcements&amp;mode=cpview"><i class='fa fa-university'></i> Toledo</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../'>HWSW codesign</a> > <a href='../../10_compiling/'>1 Setting the playing field</a> > 1.4 - Simulation
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#synthesisable-hdl">Synthesisable HDL</a></li>
+    <li><a href="#the-testbench">The testbench</a></li>
+    <li><a href="#the-proposed-approach-for-developing-and-testing">The proposed approach for developing and testing</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#the-zip">The .zip</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              1.4 - Simulation
+            </h1>
+          
+
+        
+
+
+<p>In this course you will have to work both on the hardware and on the software. To facilitate this kind of designing and developing, it will be invaluable to run simulation as smooth as possible. Before jumping to the testbench, it might useful to briefly refresh the concept of <strong>synthesisable</strong> hardware.</p>
+<h2 id="synthesisable-hdl">Synthesisable HDL</h2>
+<p>All hardware description languages (HDLs) have a lingo that is used to <strong>describe</strong> a hardware design. Typically, these HDLs also have parts of their language dedicated to verification. The parts of the HDL that describe components that can be <em>made</em> are the synthesisable subset of that language.</p>
+<div class="multiHcolumn">
+<div class="column">
+  <p>Example of synthesiable code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vhdl" data-lang="vhdl"><span style="display:flex;"><span>z <span style="color:#f92672">&lt;=</span> x <span style="color:#66d9ef">when</span> y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;0&#39;</span>;
+</span></span></code></pre></div>
+</div>    
+<div class="column">
+  <p>Example of non-synthesisable code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vhdl" data-lang="vhdl"><span style="display:flex;"><span><span style="color:#66d9ef">process</span> (y, x)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>    z <span style="color:#f92672">&lt;=</span> <span style="color:#e6db74">&#39;0&#39;</span>&#39;;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">wait</span> <span style="color:#66d9ef">until</span> y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>
+</span></span><span style="display:flex;"><span>    z <span style="color:#f92672">&lt;=</span> x;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span> <span style="color:#66d9ef">process</span>;
+</span></span></code></pre></div>
+</div>    
+</div>    
+<p>Non-synthesisable code is used for testing/verification. A typical use for it is to describe <em>models</em> of component.</p>
+<div class="multiHcolumn">
+<div class="column">
+  <div class="code_caption">
+    basicIO_model.vhd
+</div>    
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vhdl" data-lang="vhdl"><span style="display:flex;"><span><span style="color:#66d9ef">library</span> IEEE;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">use</span> IEEE.STD_LOGIC_1164.<span style="color:#66d9ef">ALL</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">use</span> IEEE.NUMERIC_STD.<span style="color:#66d9ef">ALL</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">use</span> IEEE.STD_LOGIC_MISC.or_reduce;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">use</span> ieee.std_logic_textio.<span style="color:#66d9ef">all</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">use</span> STD.textio.<span style="color:#66d9ef">all</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">entity</span> <span style="color:#a6e22e">basicIO_model</span> <span style="color:#66d9ef">is</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">generic</span> (
+</span></span><span style="display:flex;"><span>        G_DATA_WIDTH <span style="color:#f92672">:</span> <span style="color:#66d9ef">integer</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">32</span>;
+</span></span><span style="display:flex;"><span>        FNAME_OUT_FILE <span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;data.dat&#34;</span>
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">port</span> (
+</span></span><span style="display:flex;"><span>        clock <span style="color:#f92672">:</span> <span style="color:#66d9ef">IN</span> <span style="color:#66d9ef">STD_LOGIC</span>;
+</span></span><span style="display:flex;"><span>        reset <span style="color:#f92672">:</span> <span style="color:#66d9ef">IN</span> <span style="color:#66d9ef">STD_LOGIC</span>;
+</span></span><span style="display:flex;"><span>        di <span style="color:#f92672">:</span> <span style="color:#66d9ef">IN</span> <span style="color:#66d9ef">STD_LOGIC_VECTOR</span>(G_DATA_WIDTH<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        ad <span style="color:#f92672">:</span> <span style="color:#66d9ef">IN</span> <span style="color:#66d9ef">STD_LOGIC_VECTOR</span>(G_DATA_WIDTH<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        we <span style="color:#f92672">:</span> <span style="color:#66d9ef">IN</span> <span style="color:#66d9ef">STD_LOGIC</span>;
+</span></span><span style="display:flex;"><span>        do <span style="color:#f92672">:</span> <span style="color:#66d9ef">OUT</span> <span style="color:#66d9ef">STD_LOGIC_VECTOR</span>(G_DATA_WIDTH<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        writing_out_flag <span style="color:#f92672">:</span> <span style="color:#66d9ef">OUT</span> <span style="color:#66d9ef">STD_LOGIC</span>
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span> <span style="color:#66d9ef">entity</span> <span style="color:#a6e22e">basicIO_model</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">architecture</span> <span style="color:#a6e22e">Behavioural</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">basicIO_model</span> <span style="color:#66d9ef">is</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- localised inputs</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">signal</span> clock_i, reset_i, we_i, writing_out_flag_o <span style="color:#f92672">:</span> <span style="color:#66d9ef">STD_LOGIC</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">signal</span> di_i, ad_i, do_o <span style="color:#f92672">:</span> <span style="color:#66d9ef">STD_LOGIC_VECTOR</span>(G_DATA_WIDTH<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">file</span> ofh <span style="color:#f92672">:</span> text;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- (DE-)LOCALISING IN/OUTPUTS</span>
+</span></span><span style="display:flex;"><span>    clock_i <span style="color:#f92672">&lt;=</span> clock;    reset_i <span style="color:#f92672">&lt;=</span> reset;
+</span></span><span style="display:flex;"><span>    di_i <span style="color:#f92672">&lt;=</span> di;          ad_i <span style="color:#f92672">&lt;=</span> ad;
+</span></span><span style="display:flex;"><span>    we_i <span style="color:#f92672">&lt;=</span> we;
+</span></span><span style="display:flex;"><span>    do <span style="color:#f92672">&lt;=</span> do_o;          writing_out_flag <span style="color:#f92672">&lt;=</span> writing_out_flag_o;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- COMBINATORIAL</span>
+</span></span><span style="display:flex;"><span>    writing_out_flag_o <span style="color:#f92672">&lt;=</span> we_i <span style="color:#66d9ef">when</span> ad_i <span style="color:#f92672">=</span> <span style="color:#ae81ff">x&#34;80000000&#34;</span> <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;0&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- MEMORY</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">PMEM</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">process</span>(reset_i, clock_i)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">variable</span> v_line <span style="color:#f92672">:</span> line;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">variable</span> v_temp <span style="color:#f92672">:</span> <span style="color:#66d9ef">STD_LOGIC_VECTOR</span>(G_DATA_WIDTH<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">variable</span> v_pointer <span style="color:#f92672">:</span> <span style="color:#66d9ef">integer</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> reset_i <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span> <span style="color:#66d9ef">then</span> 
+</span></span><span style="display:flex;"><span>            file_open(ofh, FNAME_OUT_FILE, write_mode);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elsif</span> rising_edge(clock_i) <span style="color:#66d9ef">then</span> 
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> we_i <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1&#39;</span> <span style="color:#66d9ef">then</span> 
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> ad_i <span style="color:#f92672">=</span> <span style="color:#ae81ff">x&#34;80000000&#34;</span> <span style="color:#66d9ef">then</span> 
+</span></span><span style="display:flex;"><span>                    write(v_line, di_i);
+</span></span><span style="display:flex;"><span>                    writeline(ofh, v_line);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">if</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">process</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span> <span style="color:#a6e22e">Behavioural</span>;
+</span></span></code></pre></div>
+</div>    
+<div class="column">
+  <p>This example shows the model for a basic input/output component. This code is non-synthesisable, but will be useful for testing. For the sake of completeness, the content and the working of this model are discussed below.</p>
+<h4 id="text-io">Text IO</h4>
+<p>The first part is the setting of the library and the usage of the packages. Note that there are includes for <strong>text_io</strong>. This is a first sign of the fact that this code will not synthesise.</p>
+<h4 id="generics">Generics</h4>
+<p>In de entity definition, two <strong>generics</strong> are used. These generics are parameters that are defaulted to the set values. As a reminder it is mentioned that these <strong>default values</strong> are only used when they are not explicitly set upon instantiation.</p>
+<h4 id="signals">Signals</h4>
+<p>Signals are made to interconnect things in this entity. Although it is not mandatory, this model ties signals to all the inputs and outputs. As a reminder for the hardware designer, the signals are suffixed with either <strong>_i</strong> for inputs or with <strong>_o</strong> for outputs.</p>
+<p>Some simulators behave (slightly) different when <em>ports</em> are used in comparison to when <em>signals</em> are used. Another reason for outputs to add a signal is that these signals can be use interally as well, in contrast to out ports.</p>
+<p>Finally, signals are declared between <strong>architecture</strong> and its <strong>begin</strong>. This is also the location where component declarations happen (which is <em>not</em> the case in this model).</p>
+<div class="notices tip" ><p>When you have to make a component declaration, simply copy-paste the entity of that component here. Then replace the keyword <strong>entity</strong> with the keyword <strong>component</strong>.</p>
+</div>
+<h4 id="behaviour">Behaviour</h4>
+<p>Between the begin and and of the architecture, the desired behaviour is described. In this case the following functionalities are implemented:</p>
+<ul>
+<li>The output port <strong>writing_out_flag</strong> will be high when the address is 0x8000_0000 and the WE (write enable) signal is high</li>
+<li>Upon reset, a file is opened for writing. The <strong>filename</strong> is given through a generic.</li>
+<li>When a write is done to address 0x8000_0000, a variable (<strong>v_line</strong>) is set with the incoming value. Subsequently the variable is written to the file handle.</li>
+</ul>
+<p>With this description of the model (and the earlier C-example for printing), it should be clear what it is used for &#x1f609;.</p>
+</div>    
+</div>    
+<h2 id="the-testbench">The testbench</h2>
+<p>The testbench that will be used in this course will start with a description of the architecture shown below.</p>
+<p><img src="../../img/10/sim_design.png" alt="sim_design"></p>
+<div class="multiHcolumn">
+<div class="column">
+  <h4 id="risc-v">RISC-V</h4>
+<p>At the heart of the implementation sits the RISC-V <strong>microprocessor</strong>. This is the processor that you have been working on in an earlier class (COMAR). This processor is used to make a <strong>microcontroller</strong> that can also be seen as a System-on-Chip.</p>
+</div>    
+<div class="column">
+  <h4 id="mem-models">MEM models</h4>
+<p>Two instantiations of a memory model are added. One will serve as the data memory (<strong>DMEM</strong>) and the other as the instruction memory (<strong>IMEM</strong>). The model that is used allows <em>initialisation</em> of the memory through a text file.</p>
+</div>    
+<div class="column">
+  <h4 id="basic-io">BASIC IO</h4>
+<p>The third component is again a model that facilitates basic IO. For now, however, only Output is facilitated. It will give the student a way to communicate from the microcontroller to the outside world.</p>
+</div>    
+</div>    
+<!-- With the testbench set up like this, a (relatively) fast way of developing-and-testing is facilitated.  -->
+
+<div class="notices tip" ><p>In case you are using Vivado to simulate your design, testing a new version of the firmware is easy. Simply <strong>restart</strong> the simulation, as in: hit the Restart button. When you also make modifications to your hardware design, you have to <strong>relauch</strong> te simulation. The latter takes more time than restarting.</p>
+</div>
+
+<h2 id="the-proposed-approach-for-developing-and-testing">The proposed approach for developing and testing</h2>
+<p>Working in an organised way might look cumbersome, but it will definetly pay of on the long(er) run. The remainder of this section describes the recommended way of working.</p>
+<h4 id="it-all-starts-on-the-filesystem">It all starts on the filesystem</h4>
+<p>The code that you will be writing can ultimately be seen as <em>as bunch of files</em>. It is recommended that you stick to a fixed organisation. As with many things that will follow (in this course, or in &rsquo;live&rsquo;), this might require an investment, but you will reap the fruits of this labour later and multiple times.</p>
+<p>This image shows a way of organising the files:</p>
+<div class="multiHcolumn">
+<div class="column">
+  <p><img src="../../img/10/org_fs.png" alt="org_fs"></p>
+</div>    
+<div class="column">
+  <ul>
+<li><strong>project name</strong>: this folder is simply the name of the project, or the exercise that you are working on;</li>
+<li><strong>doc</strong>: it makes sense (as you undoubtedly know) to keep some documentation. This can be in the form of markdown files, for example.</li>
+<li><strong>firmware</strong>: The folder that holds everything that has to do with <em>software</em>
+<ul>
+<li><strong>build</strong>: an empty folder that will be used store intermediate files</li>
+<li><strong>src</strong>: a folder for the .h and .c files</li>
+<li>Makefile: &hellip; well, this is the Makefile for your .elf</li>
+</ul>
+</li>
+<li><strong>hdl</strong>: a folder for the hardware description files
+<ul>
+<li><strong>tb</strong>: a folder for the non-synthesisable code</li>
+<li>.v(hd): synthesisable hdl files</li>
+</ul>
+</li>
+<li><strong>scripts</strong>: a folder for scripts
+<ul>
+<li><strong>python</strong>: python tools</li>
+<li><strong>tcl</strong>: project generation scripts</li>
+</ul>
+</li>
+</ul>
+<p>A fixed file structure, like the one described above, will ensure that:</p>
+<ul>
+<li>you can more <strong>easily find your way</strong></li>
+<li>you have a text-file-only folder that is perfect for <strong>version control</strong></li>
+<li>you can <strong>(re-)generate</strong> tool-dependant projects (e.g. Vivado project)</li>
+</ul>
+</div>    
+</div>    
+<h4 id="make">Make</h4>
+<p><strong>Make</strong> is a tool for building software. On Linux machines, there typically is a GNU implementation of Make. With a <strong>Makefile</strong> the software is configured to build everything you need. All dependicies will be solved.</p>
+<p>A Makefile is a perfect example of <strong>the fruits of your labour</strong>. Setting up a Makefile that fits your environment and way-of-working can take some time. But <strong>it&rsquo;s worth the effort!!</strong> Below an example is given that is saved in the <em>firmware</em> folder. Feel free to start your own Makefile from this example.</p>
+<p>The Makefile example shown below:</p>
+<div class="multiHcolumn">
+<div class="column">
+  <ul>
+<li>compiles all the assembly source files <strong>.S</strong> in the subfolder <strong>src</strong></li>
+<li>compiles all the C source files <strong>.c</strong> in the subfolder <strong>src</strong></li>
+<li>puts all generated object files in the subfolder <strong>build</strong></li>
+<li>makes the <strong>firmware.elf</strong> binary
+<br/>
+<br/></li>
+<li>facilitates <strong>make report</strong> that parses the outfile of BasicIO</li>
+</ul>
+</div>    
+<div class="column">
+  <ul>
+<li>it generates an <em>objdump</em> of firmware.elf in <strong>firmware.objdump</strong></li>
+<li>it generates an executable <em>objcopy</em> of firmware.elf in <strong>firmware.bin</strong></li>
+<li>it generates a UTF-8 encoded version of firmware.bin
+<ul>
+<li>the first 2048 entries are stored in <strong>firmware_imem.hex</strong></li>
+<li>the second 2048 entries are stored in <strong>firmware_dmem.hex</strong></li>
+</ul>
+</li>
+</ul>
+</div>    
+</div>    
+<center>
+
+<div class="notices note" ><p>The overall <em>conversion</em> that is done by the Makefile (and python scripts) is: <strong>software source</strong> to <strong>model-initialisation files</strong>.</p>
+</div>
+
+</center>
+<p><div class="code_caption">
+    Makefile
+</div>    
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Make" data-lang="Make"><span style="display:flex;"><span><span style="color:#75715e"># Makefile
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># RISCV_GNU_TOOLCHAIN_GIT_REVISION = 8c969a9
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>RISCV_GNU_TOOLCHAIN_GIT_REVISION <span style="color:#f92672">=</span> 20f6153
+</span></span><span style="display:flex;"><span>RISCV_GNU_TOOLCHAIN_INSTALL_PREFIX <span style="color:#f92672">=</span> /opt/riscv
+</span></span><span style="display:flex;"><span>TOOLCHAIN_PREFIX <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>RISCV_GNU_TOOLCHAIN_INSTALL_PREFIX<span style="color:#66d9ef">)</span>/bin/riscv32-unknown-elf-
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PYTHON <span style="color:#f92672">=</span> /usr/bin/python3
+</span></span><span style="display:flex;"><span>CC<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>TOOLCHAIN_PREFIX<span style="color:#66d9ef">)</span>gcc
+</span></span><span style="display:flex;"><span>RM <span style="color:#f92672">=</span> rm -rf
+</span></span><span style="display:flex;"><span>MKDIR <span style="color:#f92672">=</span> mkdir
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ARCHITECTURE <span style="color:#f92672">=</span> rv32i
+</span></span><span style="display:flex;"><span>ABI <span style="color:#f92672">=</span> ilp32
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CFLAGS <span style="color:#f92672">=</span> -c -Os -march<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>ARCHITECTURE<span style="color:#66d9ef">)</span> -mabi<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>ABI<span style="color:#66d9ef">)</span> -ffreestanding --std<span style="color:#f92672">=</span>c99
+</span></span><span style="display:flex;"><span>SFLAGS <span style="color:#f92672">=</span> -c -Os -march<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>ARCHITECTURE<span style="color:#66d9ef">)</span> -mabi<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>ABI<span style="color:#66d9ef">)</span> -ffreestanding --std<span style="color:#f92672">=</span>c99
+</span></span><span style="display:flex;"><span>LDFLAGS <span style="color:#f92672">=</span> -Wl,-Bstatic,-T,firmware.lds,-Map,firmware.map,--strip-debug -march<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>ARCHITECTURE<span style="color:#66d9ef">)</span> -mabi<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>ABI<span style="color:#66d9ef">)</span> -nostartfiles
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>LIBS <span style="color:#f92672">=</span> -L/opt/riscv/lib/gcc/riscv32-unknown-elf/14.2.0/libgcc.a -lgcc
+</span></span><span style="display:flex;"><span>LIBS <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>BUILDDIR <span style="color:#f92672">=</span> build
+</span></span><span style="display:flex;"><span>SOURCEDIR <span style="color:#f92672">=</span> src
+</span></span><span style="display:flex;"><span>HEADERDIR <span style="color:#f92672">=</span> src
+</span></span><span style="display:flex;"><span>TOOLS <span style="color:#f92672">=</span> ../../scripts/python
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SOURCES <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>wildcard <span style="color:#66d9ef">$(</span>SOURCEDIR<span style="color:#66d9ef">)</span>/*.c<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>SOURCES_A <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>wildcard <span style="color:#66d9ef">$(</span>SOURCEDIR<span style="color:#66d9ef">)</span>/*.S<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>OBJECTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>patsubst <span style="color:#66d9ef">$(</span>SOURCEDIR<span style="color:#66d9ef">)</span>/%.c, <span style="color:#66d9ef">$(</span>BUILDDIR<span style="color:#66d9ef">)</span>/%.o, <span style="color:#66d9ef">$(</span>SOURCES<span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>OBJECTS_A <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>patsubst <span style="color:#66d9ef">$(</span>SOURCEDIR<span style="color:#66d9ef">)</span>/%.S, <span style="color:#66d9ef">$(</span>BUILDDIR<span style="color:#66d9ef">)</span>/%.o, <span style="color:#66d9ef">$(</span>SOURCES_A<span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>BINARY <span style="color:#f92672">=</span> firmware.elf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span> all clean sizes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">################################################################################
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">all</span><span style="color:#f92672">:</span> firmware.hex firmware.objdump
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">################################################################################
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">%.objdump</span><span style="color:#f92672">:</span> %.elf
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">$(</span>TOOLCHAIN_PREFIX<span style="color:#66d9ef">)</span>objdump -D -M no-aliases $&lt; &gt; $@
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">%.bin</span><span style="color:#f92672">:</span> %.elf
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">$(</span>TOOLCHAIN_PREFIX<span style="color:#66d9ef">)</span>objcopy -O binary $&lt; $@
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">%.hex</span><span style="color:#f92672">:</span> %.bin
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">$(</span>PYTHON<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>TOOLS<span style="color:#66d9ef">)</span>/makehex.py $^ <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># LINKING ######################################################################
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">$(BINARY)</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>OBJECTS<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>OBJECTS_A<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">$(</span>CC<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>LDFLAGS<span style="color:#66d9ef">)</span> -o $@ $^ <span style="color:#66d9ef">$(</span>LIBS<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># COMPILING ####################################################################
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">$(BUILDDIR)/%.o</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>SOURCEDIR<span style="color:#66d9ef">)</span>/%.c
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">$(</span>CC<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>CFLAGS<span style="color:#66d9ef">)</span> -o $@ $&lt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">$(BUILDDIR)/%.o</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>SOURCEDIR<span style="color:#66d9ef">)</span>/%.S
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">$(</span>CC<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>SFLAGS<span style="color:#66d9ef">)</span> -o $@ $&lt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">################################################################################
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sizes</span><span style="color:#f92672">:</span> firmware.elf
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">$(</span>TOOLCHAIN_PREFIX<span style="color:#66d9ef">)</span>size $^
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">$(</span>RM<span style="color:#66d9ef">)</span> firmware*.elf firmware*.bin firmware*.hex firmware*.map firmware*.objdump
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">$(</span>RM<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>BINARY<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>OBJECTS<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>OBJECTS_A<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">$(</span>RM<span style="color:#66d9ef">)</span> -f simulation_output.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">report</span><span style="color:#f92672">:</span> simulation_output.txt
+</span></span><span style="display:flex;"><span>	@<span style="color:#66d9ef">$(</span>PYTHON<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>TOOLS<span style="color:#66d9ef">)</span>/parse_simulation.py $&lt;
+</span></span></code></pre></div></p>
+<h2 id="the-zip">The .zip</h2>
+<p><a href="../../src/hwswcd_template.zip" download>A zip archive</a> is prepared that helps you to get started. The archive contains the recommended folder structure. The example Makefile and the linkerscript are also in the archive.</p>
+<p><img src="../../img/10/ss_zip.png" alt="template"></p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../10_compiling/13_linking_bare_metal/" title="1.3 - Linking Bare Metal"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../10_compiling/15_exercises/" title="1.5 - Exercises" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1741074939"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1741074939"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1741074939"></script>
+    <script src="../../js/jquery.sticky.js?1741074939"></script>
+    <script src="../../js/featherlight.min.js?1741074939"></script>
+    <script src="../../js/highlight.pack.js?1741074939"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1741074939"></script>
+    <script src="../../js/learn.js?1741074939"></script>
+    <script src="../../js/hugo-learn.js?1741074939"></script>
+    
+        
+            <script src="../../mermaid/mermaid.js?1741074939"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

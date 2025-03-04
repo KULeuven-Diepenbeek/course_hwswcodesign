@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.123.7">
+    <meta name="description" content="">
+<meta name="author" content="map[email:&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; name:Jo Vliegen]">
+
+    <link rel="icon" href="../../images/favicon.png" type="image/png">
+
+    <title>104 - Cross compiling :: HW/SW codesign</title>
+
+    
+    <link href="../../css/nucleus.css?1741074939" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1741074939" rel="stylesheet">
+    <link href="../../css/hybrid.css?1741074939" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1741074939" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1741074939" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1741074939" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1741074939" rel="stylesheet">
+    <link href="../../css/theme.css?1741074939" rel="stylesheet">
+    <link href="../../css/tabs.css?1741074939" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1741074939" rel="stylesheet">
+    
+    <link href="../../css/theme-kul.css?1741074939" rel="stylesheet">
+    
+    
+
+    <script src="../../js/jquery-3.3.1.min.js?1741074939"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script src=../../js/exercises.js></script> 
+  </head>
+  <body class="" data-url="../../100_processor/104_crosscomp/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="https://www.kuleuven.be/kuleuven/" target="_blank">
+  <img src="../../img/style/kul.png" alt="KU Leuven" /><br/>
+</a>
+<a href="https://www.uhasselt.be/" target="_blank">
+  <img src="../../img/style/uhasselt.svg" alt="UHasselt" id="uhlogo" />
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1741074939"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1741074939"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1741074939"></script>
+
+    
+  </div>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/10_compiling/" title="1 Setting the playing field" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../10_compiling/">
+          1 Setting the playing field
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/11_programming/" title="1.1 - Programming the RISC-V" class="dd-item ">
+        <a href="../../10_compiling/11_programming/">
+        <i class='fas fa-book'></i> 1.1 - Programming the RISC-V
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/12_compiling_bare_metal/" title="1.2 - Compiling Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/12_compiling_bare_metal/">
+        <i class='fas fa-book'></i> 1.2 - Compiling Bare Metal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/13_linking_bare_metal/" title="1.3 - Linking Bare Metal" class="dd-item ">
+        <a href="../../10_compiling/13_linking_bare_metal/">
+        <i class='fas fa-book'></i> 1.3 - Linking Bare Metal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/14_simulation/" title="1.4 - Simulation" class="dd-item ">
+        <a href="../../10_compiling/14_simulation/">
+        <i class='fas fa-book'></i> 1.4 - Simulation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/10_compiling/15_exercises/" title="1.5 - Exercises" class="dd-item ">
+        <a href="../../10_compiling/15_exercises/">
+        <i class='fas fa-pen'></i> 1.5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/20_hw/" title="2 Making it work on hardware" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../20_hw/">
+          2 Making it work on hardware
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/21_current_situation/" title="2.1 - The current situation" class="dd-item ">
+        <a href="../../20_hw/21_current_situation/">
+        <i class='fas fa-book'></i> 2.1 - The current situation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/22_wrapping/" title="2.2 - Wrapping it up" class="dd-item ">
+        <a href="../../20_hw/22_wrapping/">
+        <i class='fas fa-book'></i> 2.2 - Wrapping it up
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/23_onemore/" title="2.3 - One more thing ..." class="dd-item ">
+        <a href="../../20_hw/23_onemore/">
+        <i class='fas fa-book'></i> 2.3 - One more thing ...
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/24_go_fast/" title="2.4 - Go as fast as you can" class="dd-item ">
+        <a href="../../20_hw/24_go_fast/">
+        <i class='fas fa-book'></i> 2.4 - Go as fast as you can
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/20_hw/25_exercises/" title="2.5 - Exercises" class="dd-item ">
+        <a href="../../20_hw/25_exercises/">
+        <i class='fas fa-pen'></i> 2.5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/30_counter/" title="3 Once upon a time(r)" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../30_counter/">
+          3 Once upon a time(r)
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/31_timer/" title="3.1 - SW Timer" class="dd-item ">
+        <a href="../../30_counter/31_timer/">
+        <i class='fas fa-book'></i> 3.1 - SW Timer
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/32_timer_counter/" title="3.2 - HW Timer" class="dd-item ">
+        <a href="../../30_counter/32_timer_counter/">
+        <i class='fas fa-book'></i> 3.2 - HW Timer
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/33_tcnt_use/" title="3.3 - Using TCNT" class="dd-item ">
+        <a href="../../30_counter/33_tcnt_use/">
+        <i class='fas fa-book'></i> 3.3 - Using TCNT
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/34_cost/" title="3.4 - How much bang do you get for your buck?" class="dd-item ">
+        <a href="../../30_counter/34_cost/">
+        <i class='fas fa-book'></i> 3.4 - How much bang do you get for your buck?
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/30_counter/35_exercises/" title="3.5 - Exercises" class="dd-item ">
+        <a href="../../30_counter/35_exercises/">
+        <i class='fas fa-pen'></i> 3.5 - Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://studiegidswww.uhasselt.be/opleidingsonderdeel.aspx?a=2023&amp;i=3468&amp;n=4&amp;t=04"><i class='fa fa-university'></i> ECTS Sheet</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://p.cygnus.cc.kuleuven.be/webapps/blackboard/execute/announcement?method=search&amp;context=course&amp;course_id=_1176295_1&amp;handle=cp_announcements&amp;mode=cpview"><i class='fa fa-university'></i> Toledo</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../'>HWSW codesign</a> > <a href=''>1 Processor</a> > 104 - Cross compiling
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#bare-metal">Bare metal</a></li>
+    <li><a href="#conversion-to-human-readable-and-to-fpga-compatible">Conversion to human-readable and to FPGA-compatible</a></li>
+    <li><a href="#overall-toolflow">Overall toolflow</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              104 - Cross compiling
+            </h1>
+          
+
+        
+
+
+<p>To make a program run on the PicoRV32, it has to be written first. The software that is written in this course will be in <strong>C</strong>. Of course, the processor does not understand C instructions. As you have seen in earlier courses, the C-code is first <strong>compiled</strong> and then <strong>linked</strong> to end up with a binary. This binary contains machine code that can be ran on the processor.</p>
+<p>If the machine on which the compiler and linker are executed differs from the target machine that is to execute the program, the term <strong>cross-compilation</strong> is used.</p>
+<p>All examples in this course were compiled with the <strong>riscv32-unknown-elf-gcc</strong>. For more information on installing this toolchain please use <a href="http://www.google.com" target="_blank"><span style="font-weight: bold"><span style="color: #4885ed">G</span><span style="color: #db3236">o</span><span style="color: #f4c20d">o</span><span style="color: #4885ed">g</span><span style="color: #3cba54">l</span><span style="color: #db3236">e</span></span></a>
+(e.g. <a href="https://mindchasers.com/dev/rv-getting-started" target="_blank">here</a>).</p>
+<h2 id="bare-metal">Bare metal</h2>
+<p>Bare metal programming is writing software that is not running on an Operating System (OS). You probably have done this when (maybe unknowingly) programming an Arduino or another microprocessor.</p>
+<div class="multiHcolumn">
+<div class="column">
+  <div class="code_caption">
+    firmware.c
+</div>    
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;print.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">print_str</span>(<span style="color:#e6db74">&#34;hello world</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+</div>    
+<div class="column">
+  <p>The simplest (but still traditional) code that you can imagine is shown here: a simple print of the string <strong>hello word</strong>. Even with 4 lines of code 2 things should be highlighted.<br/><br/>First of all, no include of <strong>stdio.h</strong> is done, but &ldquo;print.h&rdquo; is included. And secondly, the printing function is <strong>print_str()</strong> contrary to the traditional <strong>printf()</strong>.</p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>As there is no operating system, we have no access to functions other than to those that we write ourselves. Luckily the repository of the PicoRV32 provides example print functionality. With the include of <strong>firmware.h</strong> two basic header files are included and 4 forward declarations are done.</p>
+<div class="code_caption">
+    print.h
+</div>    
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// This is free and unencumbered software released into the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// public domain. Anyone is free to copy, modify, publish, 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// use, compile, sell, or distribute this software, either 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// in source code form or as a compiled binary, for any 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// purpose, commercial or non-commercial, and by any means.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef FIRMWARE_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define FIRMWARE_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdint.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdbool.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// print.c
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_chr</span>(<span style="color:#66d9ef">char</span> ch);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_str</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_dec</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> val);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_hex</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> val, <span style="color:#66d9ef">int</span> digits);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif</span></span></span></code></pre></div>
+<p>With these four functions, there is an opportunity to print a character, a string (as in a list of characters), a decimal value, or a hexadecimal value. A logical question would be: <strong>&ldquo;Where is my character (or other variable) printed ?&rdquo;</strong>. The answer lies in this line:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#f92672">*</span>((<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">uint32_t</span><span style="color:#f92672">*</span>)OUTPORT) <span style="color:#f92672">=</span> ch;</span></span></code></pre></div>
+<p>Let’s break this down for those whose C-skills are a bit rusty. The define <strong>OUTPORT</strong> makes sure that, everywhere in the code this <em>define</em> is substituted by the 32-bit number 0x10000000. This value is type-cast to an unsigned 32-bit pointer((volatile uint32_t*)). The keyword <strong>volatile</strong> states that the content of a variable can also be altered from another source. This is important !! Otherwise the optimisation of the C-compiler might optimise-out certain lines of C-code. Finally, that <em>address</em> is dereferenced to target <em>the memory</em> that is located at address 0x10000000.</p>
+</div>    
+<div class="column">
+  <div class="code_caption">
+    print.c
+</div>    
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// This is free and unencumbered software released into the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// public domain. Anyone is free to copy, modify, publish, 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// use, compile, sell, or distribute this software, either 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// in source code form or as a compiled binary, for any 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// purpose, commercial or non-commercial, and by any means.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;print.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define OUTPORT 0x10000000
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_chr</span>(<span style="color:#66d9ef">char</span> ch) {
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">*</span>((<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">uint32_t</span><span style="color:#f92672">*</span>)OUTPORT) <span style="color:#f92672">=</span> ch;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_str</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (<span style="color:#f92672">*</span>p <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">*</span>((<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">uint32_t</span><span style="color:#f92672">*</span>)OUTPORT) <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>(p<span style="color:#f92672">++</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_dec</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> val) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">10</span>];
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> buffer;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (val <span style="color:#f92672">||</span> p <span style="color:#f92672">==</span> buffer) {
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">*</span>(p<span style="color:#f92672">++</span>) <span style="color:#f92672">=</span> val <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>		val <span style="color:#f92672">=</span> val <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (p <span style="color:#f92672">!=</span> buffer) {
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">*</span>((<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">uint32_t</span><span style="color:#f92672">*</span>)OUTPORT) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">*</span>(<span style="color:#f92672">--</span>p);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">print_chr</span>(<span style="color:#e6db74">&#39;\n&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_hex</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> val, <span style="color:#66d9ef">int</span> digits) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> (<span style="color:#ae81ff">4</span><span style="color:#f92672">*</span>digits)<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">-=</span> <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">*</span>((<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">uint32_t</span><span style="color:#f92672">*</span>)OUTPORT) <span style="color:#f92672">=</span> \
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;0123456789ABCDEF&#34;</span>[(val <span style="color:#f92672">&gt;&gt;</span> i) <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>];
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">print_chr</span>(<span style="color:#e6db74">&#39;\n&#39;</span>);
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+</div>    
+</div>    
+<p>Typically, the one function that has to be present in every C-program is the main() function. This function is called by the OS to start of the program. As in bare metal programming there is no OS, some form of <strong>booting-process</strong> needs to be defined. The PicoRV32 comes with an example assembly file that can be simplified to the script below.</p>
+<div class="multiHcolumn">
+<div class="column">
+  <div class="code_caption">
+    start.S
+</div>    
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-S" data-lang="S"><span style="display:flex;"><span>  .section .init
+</span></span><span style="display:flex;"><span>  .global main
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>start<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">/*</span> zero<span style="color:#f92672">-</span>initialize all registers <span style="color:#f92672">*/</span>
+</span></span><span style="display:flex;"><span>  addi x1, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x2, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x3, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x4, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x5, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x6, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x7, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x8, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x9, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x10, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x11, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x12, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x13, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x14, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x15, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x16, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x17, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x18, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x19, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x20, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x21, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x22, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x23, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x24, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x25, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x26, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x27, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x28, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x29, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x30, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  addi x31, zero, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">/*</span> set stack pointer <span style="color:#f92672">*/</span>
+</span></span><span style="display:flex;"><span>  lui sp, <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>  addi sp, sp, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">/*</span> call main <span style="color:#f92672">*/</span>
+</span></span><span style="display:flex;"><span>  jal ra, main
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">/*</span> <span style="color:#66d9ef">break</span> <span style="color:#f92672">-</span> trap <span style="color:#f92672">*/</span>
+</span></span><span style="display:flex;"><span>  ebreak</span></span></code></pre></div>
+</div>    
+<div class="column">
+  <div class="code_caption">
+    firmware.lds
+</div>    
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-S" data-lang="S"><span style="display:flex;"><span>SECTIONS {
+</span></span><span style="display:flex;"><span>	.memory <span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>		. <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x000000</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">*</span>(.init);
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">*</span>(.text);
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>);
+</span></span><span style="display:flex;"><span>		. <span style="color:#f92672">=</span> <span style="color:#a6e22e">ALIGN</span>(<span style="color:#ae81ff">4</span>);
+</span></span><span style="display:flex;"><span>		end <span style="color:#f92672">=</span> .;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+<p>This assembly code will be executed first because it is mapped first in the memory space through the linker script (<strong>firmware.lds</strong>). The assembly file defines there is a label <em>main</em> and then starts of with <em>start</em> label.</p>
+<p>This <strong>start</strong> function sets all the registers of the processor to 0x0. Next it will load the <strong>stack pointer register</strong> with 0x0000_4000. Then, the <strong>main()</strong> function is called. After the main function has finished, an <strong>ebreak</strong> command is execute which will have the PicoRV32 halt and raise the <em>trap</em> signal.</p>
+<p><img src="../../img/100/toolflow1.png" alt="build"></p>
+</div>    
+</div>    
+<p>With these 5 files (1 header, 3 C files and a linker script) the final binary file can be generated. This binary is in the <em>Executable and Linkable Format (<a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank">.elf</a>)</em></p>
+<h2 id="conversion-to-human-readable-and-to-fpga-compatible">Conversion to human-readable and to FPGA-compatible</h2>
+<p>After running the tool chain, an <strong>.elf</strong> file is generated. It might become useful to understand what is going on in this file (as humans). Secondly, this file needs to be loaded to the FPGA implementation of the RISC-V.</p>
+<div class="multiHcolumn">
+<div class="column">
+  <h3 id="-to-human-readable">&hellip; to human-readable</h3>
+<p>The generated binary file can be <em>disassembled</em> again. Doing this allows us to read what was eventually generated by the compiler. The riscv32-toolbox comes with a program <strong>riscv32-unknown-elf-objdump</strong>. This can be used to achieve a disassembly by using the <strong>-D</strong> option.</p>
+<p>An option to generate this file is present in the Makefile and the result should look something like this.</p>
+<div class="code_caption">
+    firmware.objdump
+</div>    
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-armasm" data-lang="armasm"><span style="display:flex;"><span>firmware<span style="color:#960050;background-color:#1e0010">.elf:</span>     <span style="color:#960050;background-color:#1e0010">file</span> <span style="color:#960050;background-color:#1e0010">format</span> <span style="color:#960050;background-color:#1e0010">el</span><span style="color:#a6e22e">f32</span><span style="color:#960050;background-color:#1e0010">-littleriscv</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Disassembly <span style="color:#960050;background-color:#1e0010">of</span> <span style="color:#960050;background-color:#1e0010">section</span> <span style="color:#960050;background-color:#1e0010">.memory:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">00000000</span> <span style="color:#960050;background-color:#1e0010">&lt;</span>start<span style="color:#960050;background-color:#1e0010">&gt;:</span>
+</span></span><span style="display:flex;"><span>   0:	<span style="color:#960050;background-color:#1e0010">00000093</span>          	li	<span style="color:#960050;background-color:#1e0010">ra</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>   4:	<span style="color:#960050;background-color:#1e0010">00000113</span>          	li	<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>   8:	<span style="color:#960050;background-color:#1e0010">00000193</span>          	li	<span style="color:#960050;background-color:#1e0010">gp</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>   c:	<span style="color:#960050;background-color:#1e0010">00000213</span>          	li	<span style="color:#960050;background-color:#1e0010">tp</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  10:	<span style="color:#960050;background-color:#1e0010">00000293</span>          	li	<span style="color:#960050;background-color:#1e0010">t0</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  14:	<span style="color:#960050;background-color:#1e0010">00000313</span>          	li	<span style="color:#960050;background-color:#1e0010">t1</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  18:	<span style="color:#960050;background-color:#1e0010">00000393</span>          	li	<span style="color:#960050;background-color:#1e0010">t2</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  1c:	<span style="color:#960050;background-color:#1e0010">00000413</span>          	li	<span style="color:#a6e22e">s0</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  20:	<span style="color:#960050;background-color:#1e0010">00000493</span>          	li	<span style="color:#a6e22e">s1</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  24:	<span style="color:#960050;background-color:#1e0010">00000513</span>          	li	<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  28:	<span style="color:#960050;background-color:#1e0010">00000593</span>          	li	<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  2c:	<span style="color:#960050;background-color:#1e0010">00000613</span>          	li	<span style="color:#a6e22e">a2</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  30:	<span style="color:#960050;background-color:#1e0010">00000693</span>          	li	<span style="color:#a6e22e">a3</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  34:	<span style="color:#960050;background-color:#1e0010">00000713</span>          	li	<span style="color:#a6e22e">a4</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  38:	<span style="color:#960050;background-color:#1e0010">00000793</span>          	li	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  3c:	<span style="color:#960050;background-color:#1e0010">00000813</span>          	li	<span style="color:#a6e22e">a6</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  40:	<span style="color:#960050;background-color:#1e0010">00000893</span>          	li	<span style="color:#a6e22e">a7</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  44:	<span style="color:#960050;background-color:#1e0010">00000913</span>          	li	<span style="color:#a6e22e">s2</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  48:	<span style="color:#960050;background-color:#1e0010">00000993</span>          	li	<span style="color:#a6e22e">s3</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  4c:	<span style="color:#960050;background-color:#1e0010">00000</span>a<span style="color:#960050;background-color:#1e0010">13</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#a6e22e">s4</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  50:	<span style="color:#960050;background-color:#1e0010">00000</span>a<span style="color:#960050;background-color:#1e0010">93</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#a6e22e">s5</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  54:	<span style="color:#960050;background-color:#1e0010">00000</span>b<span style="color:#960050;background-color:#1e0010">13</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#a6e22e">s6</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  58:	<span style="color:#960050;background-color:#1e0010">00000</span>b<span style="color:#960050;background-color:#1e0010">93</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#a6e22e">s7</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  5c:	<span style="color:#960050;background-color:#1e0010">00000</span>c<span style="color:#960050;background-color:#1e0010">13</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#a6e22e">s8</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  60:	<span style="color:#960050;background-color:#1e0010">00000</span>c<span style="color:#960050;background-color:#1e0010">93</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#a6e22e">s9</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  64:	<span style="color:#960050;background-color:#1e0010">00000</span>d<span style="color:#960050;background-color:#1e0010">13</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#a6e22e">s10</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  68:	<span style="color:#960050;background-color:#1e0010">00000</span>d<span style="color:#960050;background-color:#1e0010">93</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#a6e22e">s11</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  6c:	<span style="color:#960050;background-color:#1e0010">00000</span>e<span style="color:#960050;background-color:#1e0010">13</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#960050;background-color:#1e0010">t3</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  70:	<span style="color:#960050;background-color:#1e0010">00000</span>e<span style="color:#960050;background-color:#1e0010">93</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#960050;background-color:#1e0010">t4</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  74:	<span style="color:#960050;background-color:#1e0010">00000</span>f<span style="color:#960050;background-color:#1e0010">13</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#960050;background-color:#1e0010">t5</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  78:	<span style="color:#960050;background-color:#1e0010">00000</span>f<span style="color:#960050;background-color:#1e0010">93</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#960050;background-color:#1e0010">t6</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span>  7c:	<span style="color:#960050;background-color:#1e0010">00004137</span>          	lui	<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x4</span>
+</span></span><span style="display:flex;"><span>  80:	<span style="color:#960050;background-color:#1e0010">00010113</span>          	mv	<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">sp</span>
+</span></span><span style="display:flex;"><span>  84:	<span style="color:#960050;background-color:#1e0010">1</span>c<span style="color:#960050;background-color:#1e0010">8000ef</span>          	<span style="color:#960050;background-color:#1e0010">jal</span>	<span style="color:#960050;background-color:#1e0010">ra</span>,<span style="color:#960050;background-color:#1e0010">24c</span> <span style="color:#960050;background-color:#1e0010">&lt;main&gt;</span>
+</span></span><span style="display:flex;"><span>  88:	<span style="color:#960050;background-color:#1e0010">00100073</span>          	ebreak
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">0000008</span>c <span style="color:#960050;background-color:#1e0010">&lt;esns_nop&gt;:</span>
+</span></span><span style="display:flex;"><span>  8c:	<span style="color:#960050;background-color:#1e0010">00000013</span>          	nop
+</span></span><span style="display:flex;"><span>  90:	<span style="color:#960050;background-color:#1e0010">00008067</span>          	ret
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">00000094</span> <span style="color:#960050;background-color:#1e0010">&lt;</span>print<span style="color:#960050;background-color:#1e0010">_chr&gt;:</span>
+</span></span><span style="display:flex;"><span>  94:	<span style="color:#960050;background-color:#1e0010">100007</span>b<span style="color:#960050;background-color:#1e0010">7</span>          	<span style="color:#960050;background-color:#1e0010">lui</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x10</span><span style="color:#960050;background-color:#1e0010">000</span>
+</span></span><span style="display:flex;"><span>  98:	<span style="color:#960050;background-color:#1e0010">00</span>a<span style="color:#960050;background-color:#1e0010">7</span><span style="color:#a6e22e">a02</span><span style="color:#960050;background-color:#1e0010">3</span>          	<span style="color:#960050;background-color:#1e0010">sw</span>	<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">0(</span><span style="color:#a6e22e">a5</span><span style="color:#960050;background-color:#1e0010">)</span> #<span style="color:#960050;background-color:#1e0010"> </span><span style="color:#ae81ff">10000000</span> <span style="color:#960050;background-color:#1e0010">&lt;end+0xffff</span><span style="color:#a6e22e">d98</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span>  9c:	<span style="color:#960050;background-color:#1e0010">00008067</span>          	ret
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">000000</span>a<span style="color:#960050;background-color:#1e0010">0</span> <span style="color:#960050;background-color:#1e0010">&lt;print_str&gt;:</span>
+</span></span><span style="display:flex;"><span>  a0:	<span style="color:#960050;background-color:#1e0010">10000737</span>          	lui	<span style="color:#a6e22e">a4</span>,<span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x10</span><span style="color:#960050;background-color:#1e0010">000</span>
+</span></span><span style="display:flex;"><span>  a4:	<span style="color:#960050;background-color:#1e0010">00054783</span>          	lbu	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">0(</span><span style="color:#a6e22e">a0</span><span style="color:#960050;background-color:#1e0010">)</span>
+</span></span><span style="display:flex;"><span>  a8:	<span style="color:#960050;background-color:#1e0010">00079463</span>          	bnez	<span style="color:#a6e22e">a5</span>,<span style="color:#a6e22e">b0</span> <span style="color:#960050;background-color:#1e0010">&lt;print_str+0</span><span style="color:#a6e22e">x10</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span>  ac:	<span style="color:#960050;background-color:#1e0010">00008067</span>          	ret
+</span></span><span style="display:flex;"><span>  b0:	<span style="color:#960050;background-color:#1e0010">00150513</span>          	addi	<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">1</span>
+</span></span><span style="display:flex;"><span>  b4:	<span style="color:#960050;background-color:#1e0010">00</span>f<span style="color:#960050;background-color:#1e0010">72023</span>          	<span style="color:#960050;background-color:#1e0010">sw</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">0(</span><span style="color:#a6e22e">a4</span><span style="color:#960050;background-color:#1e0010">)</span> #<span style="color:#960050;background-color:#1e0010"> </span><span style="color:#ae81ff">10000000</span> <span style="color:#960050;background-color:#1e0010">&lt;end+0xffff</span><span style="color:#a6e22e">d98</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span>  b8:	fedff<span style="color:#960050;background-color:#1e0010">06f</span>          	<span style="color:#960050;background-color:#1e0010">j</span>	<span style="color:#a6e22e">a4</span> <span style="color:#960050;background-color:#1e0010">&lt;print_str+0</span><span style="color:#a6e22e">x4</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">000000</span>bc <span style="color:#960050;background-color:#1e0010">&lt;print_dec&gt;:</span>
+</span></span><span style="display:flex;"><span>  bc:	fe<span style="color:#960050;background-color:#1e0010">010113</span>          	<span style="color:#960050;background-color:#1e0010">addi</span>	<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">-32</span> #<span style="color:#960050;background-color:#1e0010"> </span><span style="color:#ae81ff">3</span><span style="color:#960050;background-color:#1e0010">fe0</span> <span style="color:#960050;background-color:#1e0010">&lt;end+0</span><span style="color:#a6e22e">x3d78</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span>  c0:	<span style="color:#960050;background-color:#1e0010">00812</span>c<span style="color:#960050;background-color:#1e0010">23</span>          	<span style="color:#960050;background-color:#1e0010">sw</span>	<span style="color:#a6e22e">s0</span>,<span style="color:#960050;background-color:#1e0010">24(sp)</span>
+</span></span><span style="display:flex;"><span>  c4:	<span style="color:#960050;background-color:#1e0010">00410413</span>          	addi	<span style="color:#a6e22e">s0</span>,<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">4</span>
+</span></span><span style="display:flex;"><span>  c8:	<span style="color:#960050;background-color:#1e0010">00912</span>a<span style="color:#960050;background-color:#1e0010">23</span>          	<span style="color:#960050;background-color:#1e0010">sw</span>	<span style="color:#a6e22e">s1</span>,<span style="color:#960050;background-color:#1e0010">20(sp)</span>
+</span></span><span style="display:flex;"><span>  cc:	<span style="color:#960050;background-color:#1e0010">01212823</span>          	sw	<span style="color:#a6e22e">s2</span>,<span style="color:#960050;background-color:#1e0010">16(sp)</span>
+</span></span><span style="display:flex;"><span>  d0:	<span style="color:#960050;background-color:#1e0010">00112</span>e<span style="color:#960050;background-color:#1e0010">23</span>          	<span style="color:#960050;background-color:#1e0010">sw</span>	<span style="color:#960050;background-color:#1e0010">ra</span>,<span style="color:#960050;background-color:#1e0010">28(sp)</span>
+</span></span><span style="display:flex;"><span>  d4:	<span style="color:#960050;background-color:#1e0010">00050493</span>          	mv	<span style="color:#a6e22e">s1</span>,<span style="color:#a6e22e">a0</span>
+</span></span><span style="display:flex;"><span>  d8:	<span style="color:#960050;background-color:#1e0010">00040913</span>          	mv	<span style="color:#a6e22e">s2</span>,<span style="color:#a6e22e">s0</span>
+</span></span><span style="display:flex;"><span>  dc:	<span style="color:#960050;background-color:#1e0010">02049</span>c<span style="color:#960050;background-color:#1e0010">63</span>          	<span style="color:#960050;background-color:#1e0010">bnez</span>	<span style="color:#a6e22e">s1</span>,<span style="color:#960050;background-color:#1e0010">114</span> <span style="color:#960050;background-color:#1e0010">&lt;print_dec+0</span><span style="color:#a6e22e">x58</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span>  e0:	<span style="color:#960050;background-color:#1e0010">03240</span>a<span style="color:#960050;background-color:#1e0010">63</span>          	<span style="color:#960050;background-color:#1e0010">beq</span>	<span style="color:#a6e22e">s0</span>,<span style="color:#a6e22e">s2</span>,<span style="color:#960050;background-color:#1e0010">114</span> <span style="color:#960050;background-color:#1e0010">&lt;print_dec+0</span><span style="color:#a6e22e">x58</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span>  e4:	<span style="color:#960050;background-color:#1e0010">10000737</span>          	lui	<span style="color:#a6e22e">a4</span>,<span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x10</span><span style="color:#960050;background-color:#1e0010">000</span>
+</span></span><span style="display:flex;"><span>  e8:	fff<span style="color:#960050;background-color:#1e0010">40413</span>          	<span style="color:#960050;background-color:#1e0010">addi</span>	<span style="color:#a6e22e">s0</span>,<span style="color:#a6e22e">s0</span>,<span style="color:#960050;background-color:#1e0010">-1</span>
+</span></span><span style="display:flex;"><span>  ec:	<span style="color:#960050;background-color:#1e0010">00044783</span>          	lbu	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">0(</span><span style="color:#a6e22e">s0</span><span style="color:#960050;background-color:#1e0010">)</span>
+</span></span><span style="display:flex;"><span>  f0:	<span style="color:#960050;background-color:#1e0010">03078793</span>          	addi	<span style="color:#a6e22e">a5</span>,<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">48</span>
+</span></span><span style="display:flex;"><span>  f4:	<span style="color:#960050;background-color:#1e0010">00</span>f<span style="color:#960050;background-color:#1e0010">72023</span>          	<span style="color:#960050;background-color:#1e0010">sw</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">0(</span><span style="color:#a6e22e">a4</span><span style="color:#960050;background-color:#1e0010">)</span> #<span style="color:#960050;background-color:#1e0010"> </span><span style="color:#ae81ff">10000000</span> <span style="color:#960050;background-color:#1e0010">&lt;end+0xffff</span><span style="color:#a6e22e">d98</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span>  f8:	ff<span style="color:#960050;background-color:#1e0010">2418e3</span>          	<span style="color:#960050;background-color:#1e0010">bne</span>	<span style="color:#a6e22e">s0</span>,<span style="color:#a6e22e">s2</span>,<span style="color:#960050;background-color:#1e0010">e8</span> <span style="color:#960050;background-color:#1e0010">&lt;print_dec+0</span><span style="color:#a6e22e">x2</span><span style="color:#960050;background-color:#1e0010">c&gt;</span>
+</span></span><span style="display:flex;"><span>  fc:	<span style="color:#960050;background-color:#1e0010">01</span>c<span style="color:#960050;background-color:#1e0010">12083</span>          	<span style="color:#960050;background-color:#1e0010">lw</span>	<span style="color:#960050;background-color:#1e0010">ra</span>,<span style="color:#960050;background-color:#1e0010">28(sp)</span>
+</span></span><span style="display:flex;"><span> 100:	<span style="color:#960050;background-color:#1e0010">01812403</span>          	lw	<span style="color:#a6e22e">s0</span>,<span style="color:#960050;background-color:#1e0010">24(sp)</span>
+</span></span><span style="display:flex;"><span> 104:	<span style="color:#960050;background-color:#1e0010">01412483</span>          	lw	<span style="color:#a6e22e">s1</span>,<span style="color:#960050;background-color:#1e0010">20(sp)</span>
+</span></span><span style="display:flex;"><span> 108:	<span style="color:#960050;background-color:#1e0010">01012903</span>          	lw	<span style="color:#a6e22e">s2</span>,<span style="color:#960050;background-color:#1e0010">16(sp)</span>
+</span></span><span style="display:flex;"><span> 10c:	<span style="color:#960050;background-color:#1e0010">02010113</span>          	addi	<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">32</span>
+</span></span><span style="display:flex;"><span> 110:	<span style="color:#960050;background-color:#1e0010">00008067</span>          	ret
+</span></span><span style="display:flex;"><span> 114:	<span style="color:#960050;background-color:#1e0010">00</span>a<span style="color:#960050;background-color:#1e0010">00593</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">10</span>
+</span></span><span style="display:flex;"><span> 118:	<span style="color:#960050;background-color:#1e0010">00048513</span>          	mv	<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">s1</span>
+</span></span><span style="display:flex;"><span> 11c:	<span style="color:#960050;background-color:#1e0010">0</span>a<span style="color:#960050;background-color:#1e0010">8000ef</span>          	<span style="color:#960050;background-color:#1e0010">jal</span>	<span style="color:#960050;background-color:#1e0010">ra</span>,<span style="color:#960050;background-color:#1e0010">1</span><span style="color:#a6e22e">c4</span> <span style="color:#960050;background-color:#1e0010">&lt;__umodsi3&gt;</span>
+</span></span><span style="display:flex;"><span> 120:	<span style="color:#960050;background-color:#1e0010">00140413</span>          	addi	<span style="color:#a6e22e">s0</span>,<span style="color:#a6e22e">s0</span>,<span style="color:#960050;background-color:#1e0010">1</span>
+</span></span><span style="display:flex;"><span> 124:	fea<span style="color:#960050;background-color:#1e0010">40f</span><span style="color:#a6e22e">a3</span>          	<span style="color:#960050;background-color:#1e0010">sb</span>	<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">-1(</span><span style="color:#a6e22e">s0</span><span style="color:#960050;background-color:#1e0010">)</span>
+</span></span><span style="display:flex;"><span> 128:	<span style="color:#960050;background-color:#1e0010">00</span>a<span style="color:#960050;background-color:#1e0010">00593</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">10</span>
+</span></span><span style="display:flex;"><span> 12c:	<span style="color:#960050;background-color:#1e0010">00048513</span>          	mv	<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">s1</span>
+</span></span><span style="display:flex;"><span> 130:	<span style="color:#960050;background-color:#1e0010">04</span>c<span style="color:#960050;background-color:#1e0010">000ef</span>          	<span style="color:#960050;background-color:#1e0010">jal</span>	<span style="color:#960050;background-color:#1e0010">ra</span>,<span style="color:#960050;background-color:#1e0010">17c</span> <span style="color:#960050;background-color:#1e0010">&lt;__udivsi3&gt;</span>
+</span></span><span style="display:flex;"><span> 134:	<span style="color:#960050;background-color:#1e0010">00050493</span>          	mv	<span style="color:#a6e22e">s1</span>,<span style="color:#a6e22e">a0</span>
+</span></span><span style="display:flex;"><span> 138:	fa<span style="color:#960050;background-color:#1e0010">5f</span><span style="color:#a6e22e">f06</span><span style="color:#960050;background-color:#1e0010">f</span>          	<span style="color:#960050;background-color:#1e0010">j</span>	<span style="color:#960050;background-color:#1e0010">dc</span> <span style="color:#960050;background-color:#1e0010">&lt;print_dec+0</span><span style="color:#a6e22e">x20</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">0000013</span>c <span style="color:#960050;background-color:#1e0010">&lt;print_hex&gt;:</span>
+</span></span><span style="display:flex;"><span> 13c:	fff<span style="color:#960050;background-color:#1e0010">58593</span>          	<span style="color:#960050;background-color:#1e0010">addi</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">-1</span>
+</span></span><span style="display:flex;"><span> 140:	<span style="color:#960050;background-color:#1e0010">00000737</span>          	lui	<span style="color:#a6e22e">a4</span>,<span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x0</span>
+</span></span><span style="display:flex;"><span> 144:	<span style="color:#960050;background-color:#1e0010">00259593</span>          	slli	<span style="color:#a6e22e">a1</span>,<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x2</span>
+</span></span><span style="display:flex;"><span> 148:	<span style="color:#960050;background-color:#1e0010">22870713</span>          	addi	<span style="color:#a6e22e">a4</span>,<span style="color:#a6e22e">a4</span>,<span style="color:#960050;background-color:#1e0010">552</span> #<span style="color:#960050;background-color:#1e0010"> </span><span style="color:#ae81ff">228</span> <span style="color:#960050;background-color:#1e0010">&lt;__modsi3+0</span><span style="color:#a6e22e">x30</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 14c:	<span style="color:#960050;background-color:#1e0010">100006</span>b<span style="color:#960050;background-color:#1e0010">7</span>          	<span style="color:#960050;background-color:#1e0010">lui</span>	<span style="color:#a6e22e">a3</span>,<span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x10</span><span style="color:#960050;background-color:#1e0010">000</span>
+</span></span><span style="display:flex;"><span> 150:	<span style="color:#960050;background-color:#1e0010">0005</span>d<span style="color:#960050;background-color:#1e0010">463</span>          	<span style="color:#960050;background-color:#1e0010">bgez</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">158</span> <span style="color:#960050;background-color:#1e0010">&lt;print_hex+0</span><span style="color:#a6e22e">x1</span><span style="color:#960050;background-color:#1e0010">c&gt;</span>
+</span></span><span style="display:flex;"><span> 154:	<span style="color:#960050;background-color:#1e0010">00008067</span>          	ret
+</span></span><span style="display:flex;"><span> 158:	<span style="color:#960050;background-color:#1e0010">00</span>b<span style="color:#960050;background-color:#1e0010">557</span><span style="color:#a6e22e">b3</span>          	<span style="color:#960050;background-color:#1e0010">srl</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">a1</span>
+</span></span><span style="display:flex;"><span> 15c:	<span style="color:#960050;background-color:#1e0010">00</span>f<span style="color:#960050;background-color:#1e0010">7</span><span style="color:#a6e22e">f79</span><span style="color:#960050;background-color:#1e0010">3</span>          	<span style="color:#960050;background-color:#1e0010">andi</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">15</span>
+</span></span><span style="display:flex;"><span> 160:	<span style="color:#960050;background-color:#1e0010">00</span>e<span style="color:#960050;background-color:#1e0010">787</span><span style="color:#a6e22e">b3</span>          	<span style="color:#960050;background-color:#1e0010">add</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#a6e22e">a5</span>,<span style="color:#a6e22e">a4</span>
+</span></span><span style="display:flex;"><span> 164:	<span style="color:#960050;background-color:#1e0010">0007</span>c<span style="color:#960050;background-color:#1e0010">783</span>          	<span style="color:#960050;background-color:#1e0010">lbu</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">0(</span><span style="color:#a6e22e">a5</span><span style="color:#960050;background-color:#1e0010">)</span>
+</span></span><span style="display:flex;"><span> 168:	ffc<span style="color:#960050;background-color:#1e0010">58593</span>          	<span style="color:#960050;background-color:#1e0010">addi</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">-4</span>
+</span></span><span style="display:flex;"><span> 16c:	<span style="color:#960050;background-color:#1e0010">00</span>f<span style="color:#960050;background-color:#1e0010">6</span><span style="color:#a6e22e">a02</span><span style="color:#960050;background-color:#1e0010">3</span>          	<span style="color:#960050;background-color:#1e0010">sw</span>	<span style="color:#a6e22e">a5</span>,<span style="color:#960050;background-color:#1e0010">0(</span><span style="color:#a6e22e">a3</span><span style="color:#960050;background-color:#1e0010">)</span> #<span style="color:#960050;background-color:#1e0010"> </span><span style="color:#ae81ff">10000000</span> <span style="color:#960050;background-color:#1e0010">&lt;end+0xffff</span><span style="color:#a6e22e">d98</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 170:	fe<span style="color:#960050;background-color:#1e0010">1f</span><span style="color:#a6e22e">f06</span><span style="color:#960050;background-color:#1e0010">f</span>          	<span style="color:#960050;background-color:#1e0010">j</span>	<span style="color:#960050;background-color:#1e0010">150</span> <span style="color:#960050;background-color:#1e0010">&lt;print_hex+0</span><span style="color:#a6e22e">x14</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">00000174</span> <span style="color:#960050;background-color:#1e0010">&lt;__</span>divsi<span style="color:#960050;background-color:#1e0010">3&gt;:</span>
+</span></span><span style="display:flex;"><span> 174:	<span style="color:#960050;background-color:#1e0010">06054063</span>          	bltz	<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">1</span><span style="color:#a6e22e">d4</span> <span style="color:#960050;background-color:#1e0010">&lt;__umodsi3+0</span><span style="color:#a6e22e">x10</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 178:	<span style="color:#960050;background-color:#1e0010">0605</span>c<span style="color:#960050;background-color:#1e0010">663</span>          	<span style="color:#960050;background-color:#1e0010">bltz</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">1e4</span> <span style="color:#960050;background-color:#1e0010">&lt;__umodsi3+0</span><span style="color:#a6e22e">x20</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">0000017</span>c <span style="color:#960050;background-color:#1e0010">&lt;__udivsi3&gt;:</span>
+</span></span><span style="display:flex;"><span> 17c:	<span style="color:#960050;background-color:#1e0010">00058613</span>          	mv	<span style="color:#a6e22e">a2</span>,<span style="color:#a6e22e">a1</span>
+</span></span><span style="display:flex;"><span> 180:	<span style="color:#960050;background-color:#1e0010">00050593</span>          	mv	<span style="color:#a6e22e">a1</span>,<span style="color:#a6e22e">a0</span>
+</span></span><span style="display:flex;"><span> 184:	fff<span style="color:#960050;background-color:#1e0010">00513</span>          	<span style="color:#960050;background-color:#1e0010">li</span>	<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">-1</span>
+</span></span><span style="display:flex;"><span> 188:	<span style="color:#960050;background-color:#1e0010">02060</span>c<span style="color:#960050;background-color:#1e0010">63</span>          	<span style="color:#960050;background-color:#1e0010">beqz</span>	<span style="color:#a6e22e">a2</span>,<span style="color:#960050;background-color:#1e0010">1</span><span style="color:#a6e22e">c0</span> <span style="color:#960050;background-color:#1e0010">&lt;__udivsi3+0</span><span style="color:#a6e22e">x44</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 18c:	<span style="color:#960050;background-color:#1e0010">00100693</span>          	li	<span style="color:#a6e22e">a3</span>,<span style="color:#960050;background-color:#1e0010">1</span>
+</span></span><span style="display:flex;"><span> 190:	<span style="color:#960050;background-color:#1e0010">00</span>b<span style="color:#960050;background-color:#1e0010">67</span><span style="color:#a6e22e">a63</span>          	<span style="color:#960050;background-color:#1e0010">bgeu</span>	<span style="color:#a6e22e">a2</span>,<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">1</span><span style="color:#a6e22e">a4</span> <span style="color:#960050;background-color:#1e0010">&lt;__udivsi3+0</span><span style="color:#a6e22e">x28</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 194:	<span style="color:#960050;background-color:#1e0010">00</span>c<span style="color:#960050;background-color:#1e0010">05863</span>          	<span style="color:#960050;background-color:#1e0010">blez</span>	<span style="color:#a6e22e">a2</span>,<span style="color:#960050;background-color:#1e0010">1</span><span style="color:#a6e22e">a4</span> <span style="color:#960050;background-color:#1e0010">&lt;__udivsi3+0</span><span style="color:#a6e22e">x28</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 198:	<span style="color:#960050;background-color:#1e0010">00161613</span>          	slli	<span style="color:#a6e22e">a2</span>,<span style="color:#a6e22e">a2</span>,<span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x1</span>
+</span></span><span style="display:flex;"><span> 19c:	<span style="color:#960050;background-color:#1e0010">00169693</span>          	slli	<span style="color:#a6e22e">a3</span>,<span style="color:#a6e22e">a3</span>,<span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x1</span>
+</span></span><span style="display:flex;"><span> 1a0:	feb<span style="color:#960050;background-color:#1e0010">66ae3</span>          	<span style="color:#960050;background-color:#1e0010">bltu</span>	<span style="color:#a6e22e">a2</span>,<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">194</span> <span style="color:#960050;background-color:#1e0010">&lt;__udivsi3+0</span><span style="color:#a6e22e">x18</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 1a4:	<span style="color:#960050;background-color:#1e0010">00000513</span>          	li	<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">0</span>
+</span></span><span style="display:flex;"><span> 1a8:	<span style="color:#960050;background-color:#1e0010">00</span>c<span style="color:#960050;background-color:#1e0010">5e663</span>          	<span style="color:#960050;background-color:#1e0010">bltu</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#a6e22e">a2</span>,<span style="color:#960050;background-color:#1e0010">1</span><span style="color:#a6e22e">b4</span> <span style="color:#960050;background-color:#1e0010">&lt;__udivsi3+0</span><span style="color:#a6e22e">x38</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 1ac:	<span style="color:#960050;background-color:#1e0010">40</span>c<span style="color:#960050;background-color:#1e0010">585</span><span style="color:#a6e22e">b3</span>          	<span style="color:#960050;background-color:#1e0010">sub</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#a6e22e">a1</span>,<span style="color:#a6e22e">a2</span>
+</span></span><span style="display:flex;"><span> 1b0:	<span style="color:#960050;background-color:#1e0010">00</span>d<span style="color:#960050;background-color:#1e0010">56533</span>          	<span style="color:#960050;background-color:#1e0010">or</span>	<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">a3</span>
+</span></span><span style="display:flex;"><span> 1b4:	<span style="color:#960050;background-color:#1e0010">0016</span>d<span style="color:#960050;background-color:#1e0010">693</span>          	<span style="color:#960050;background-color:#1e0010">srli</span>	<span style="color:#a6e22e">a3</span>,<span style="color:#a6e22e">a3</span>,<span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x1</span>
+</span></span><span style="display:flex;"><span> 1b8:	<span style="color:#960050;background-color:#1e0010">00165613</span>          	srli	<span style="color:#a6e22e">a2</span>,<span style="color:#a6e22e">a2</span>,<span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x1</span>
+</span></span><span style="display:flex;"><span> 1bc:	fe<span style="color:#960050;background-color:#1e0010">0696e3</span>          	<span style="color:#960050;background-color:#1e0010">bnez</span>	<span style="color:#a6e22e">a3</span>,<span style="color:#960050;background-color:#1e0010">1</span><span style="color:#a6e22e">a8</span> <span style="color:#960050;background-color:#1e0010">&lt;__udivsi3+0</span><span style="color:#a6e22e">x2</span><span style="color:#960050;background-color:#1e0010">c&gt;</span>
+</span></span><span style="display:flex;"><span> 1c0:	<span style="color:#960050;background-color:#1e0010">00008067</span>          	ret
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">000001</span>c<span style="color:#960050;background-color:#1e0010">4</span> <span style="color:#960050;background-color:#1e0010">&lt;__umodsi3&gt;:</span>
+</span></span><span style="display:flex;"><span> 1c4:	<span style="color:#960050;background-color:#1e0010">00008293</span>          	mv	<span style="color:#960050;background-color:#1e0010">t0</span>,<span style="color:#960050;background-color:#1e0010">ra</span>
+</span></span><span style="display:flex;"><span> 1c8:	fb<span style="color:#960050;background-color:#1e0010">5f</span><span style="color:#a6e22e">f0</span><span style="color:#960050;background-color:#1e0010">ef</span>          	<span style="color:#960050;background-color:#1e0010">jal</span>	<span style="color:#960050;background-color:#1e0010">ra</span>,<span style="color:#960050;background-color:#1e0010">17c</span> <span style="color:#960050;background-color:#1e0010">&lt;__udivsi3&gt;</span>
+</span></span><span style="display:flex;"><span> 1cc:	<span style="color:#960050;background-color:#1e0010">00058513</span>          	mv	<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">a1</span>
+</span></span><span style="display:flex;"><span> 1d0:	<span style="color:#960050;background-color:#1e0010">00028067</span>          	jr	<span style="color:#960050;background-color:#1e0010">t0</span>
+</span></span><span style="display:flex;"><span> 1d4:	<span style="color:#960050;background-color:#1e0010">40</span>a<span style="color:#960050;background-color:#1e0010">00533</span>          	<span style="color:#960050;background-color:#1e0010">neg</span>	<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">a0</span>
+</span></span><span style="display:flex;"><span> 1d8:	<span style="color:#960050;background-color:#1e0010">0005</span>d<span style="color:#960050;background-color:#1e0010">863</span>          	<span style="color:#960050;background-color:#1e0010">bgez</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">1e8</span> <span style="color:#960050;background-color:#1e0010">&lt;__umodsi3+0</span><span style="color:#a6e22e">x24</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 1dc:	<span style="color:#960050;background-color:#1e0010">40</span>b<span style="color:#960050;background-color:#1e0010">005</span><span style="color:#a6e22e">b3</span>          	<span style="color:#960050;background-color:#1e0010">neg</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#a6e22e">a1</span>
+</span></span><span style="display:flex;"><span> 1e0:	f<span style="color:#960050;background-color:#1e0010">9df</span><span style="color:#a6e22e">f06</span><span style="color:#960050;background-color:#1e0010">f</span>          	<span style="color:#960050;background-color:#1e0010">j</span>	<span style="color:#960050;background-color:#1e0010">17c</span> <span style="color:#960050;background-color:#1e0010">&lt;__udivsi3&gt;</span>
+</span></span><span style="display:flex;"><span> 1e4:	<span style="color:#960050;background-color:#1e0010">40</span>b<span style="color:#960050;background-color:#1e0010">005</span><span style="color:#a6e22e">b3</span>          	<span style="color:#960050;background-color:#1e0010">neg</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#a6e22e">a1</span>
+</span></span><span style="display:flex;"><span> 1e8:	<span style="color:#960050;background-color:#1e0010">00008293</span>          	mv	<span style="color:#960050;background-color:#1e0010">t0</span>,<span style="color:#960050;background-color:#1e0010">ra</span>
+</span></span><span style="display:flex;"><span> 1ec:	f<span style="color:#960050;background-color:#1e0010">91f</span><span style="color:#a6e22e">f0</span><span style="color:#960050;background-color:#1e0010">ef</span>          	<span style="color:#960050;background-color:#1e0010">jal</span>	<span style="color:#960050;background-color:#1e0010">ra</span>,<span style="color:#960050;background-color:#1e0010">17c</span> <span style="color:#960050;background-color:#1e0010">&lt;__udivsi3&gt;</span>
+</span></span><span style="display:flex;"><span> 1f0:	<span style="color:#960050;background-color:#1e0010">40</span>a<span style="color:#960050;background-color:#1e0010">00533</span>          	<span style="color:#960050;background-color:#1e0010">neg</span>	<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">a0</span>
+</span></span><span style="display:flex;"><span> 1f4:	<span style="color:#960050;background-color:#1e0010">00028067</span>          	jr	<span style="color:#960050;background-color:#1e0010">t0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">000001</span>f<span style="color:#960050;background-color:#1e0010">8</span> <span style="color:#960050;background-color:#1e0010">&lt;__modsi3&gt;:</span>
+</span></span><span style="display:flex;"><span> 1f8:	<span style="color:#960050;background-color:#1e0010">00008293</span>          	mv	<span style="color:#960050;background-color:#1e0010">t0</span>,<span style="color:#960050;background-color:#1e0010">ra</span>
+</span></span><span style="display:flex;"><span> 1fc:	<span style="color:#960050;background-color:#1e0010">0005</span>ca<span style="color:#960050;background-color:#1e0010">63</span>          	<span style="color:#960050;background-color:#1e0010">bltz</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">210</span> <span style="color:#960050;background-color:#1e0010">&lt;__modsi3+0</span><span style="color:#a6e22e">x18</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 200:	<span style="color:#960050;background-color:#1e0010">00054</span>c<span style="color:#960050;background-color:#1e0010">63</span>          	<span style="color:#960050;background-color:#1e0010">bltz</span>	<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">218</span> <span style="color:#960050;background-color:#1e0010">&lt;__modsi3+0</span><span style="color:#a6e22e">x20</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 204:	f<span style="color:#960050;background-color:#1e0010">79f</span><span style="color:#a6e22e">f0</span><span style="color:#960050;background-color:#1e0010">ef</span>          	<span style="color:#960050;background-color:#1e0010">jal</span>	<span style="color:#960050;background-color:#1e0010">ra</span>,<span style="color:#960050;background-color:#1e0010">17c</span> <span style="color:#960050;background-color:#1e0010">&lt;__udivsi3&gt;</span>
+</span></span><span style="display:flex;"><span> 208:	<span style="color:#960050;background-color:#1e0010">00058513</span>          	mv	<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">a1</span>
+</span></span><span style="display:flex;"><span> 20c:	<span style="color:#960050;background-color:#1e0010">00028067</span>          	jr	<span style="color:#960050;background-color:#1e0010">t0</span>
+</span></span><span style="display:flex;"><span> 210:	<span style="color:#960050;background-color:#1e0010">40</span>b<span style="color:#960050;background-color:#1e0010">005</span><span style="color:#a6e22e">b3</span>          	<span style="color:#960050;background-color:#1e0010">neg</span>	<span style="color:#a6e22e">a1</span>,<span style="color:#a6e22e">a1</span>
+</span></span><span style="display:flex;"><span> 214:	fe<span style="color:#960050;background-color:#1e0010">0558e3</span>          	<span style="color:#960050;background-color:#1e0010">bgez</span>	<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">204</span> <span style="color:#960050;background-color:#1e0010">&lt;__modsi3+0xc&gt;</span>
+</span></span><span style="display:flex;"><span> 218:	<span style="color:#960050;background-color:#1e0010">40</span>a<span style="color:#960050;background-color:#1e0010">00533</span>          	<span style="color:#960050;background-color:#1e0010">neg</span>	<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">a0</span>
+</span></span><span style="display:flex;"><span> 21c:	f<span style="color:#960050;background-color:#1e0010">61f</span><span style="color:#a6e22e">f0</span><span style="color:#960050;background-color:#1e0010">ef</span>          	<span style="color:#960050;background-color:#1e0010">jal</span>	<span style="color:#960050;background-color:#1e0010">ra</span>,<span style="color:#960050;background-color:#1e0010">17c</span> <span style="color:#960050;background-color:#1e0010">&lt;__udivsi3&gt;</span>
+</span></span><span style="display:flex;"><span> 220:	<span style="color:#960050;background-color:#1e0010">40</span>b<span style="color:#960050;background-color:#1e0010">00533</span>          	<span style="color:#960050;background-color:#1e0010">neg</span>	<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">a1</span>
+</span></span><span style="display:flex;"><span> 224:	<span style="color:#960050;background-color:#1e0010">00028067</span>          	jr	<span style="color:#960050;background-color:#1e0010">t0</span>
+</span></span><span style="display:flex;"><span> 228:	<span style="color:#960050;background-color:#1e0010">3130</span>                	fld	<span style="color:#960050;background-color:#1e0010">f</span><span style="color:#a6e22e">a2</span>,<span style="color:#960050;background-color:#1e0010">96(</span><span style="color:#a6e22e">a0</span><span style="color:#960050;background-color:#1e0010">)</span>
+</span></span><span style="display:flex;"><span> 22a:	<span style="color:#960050;background-color:#1e0010">3332</span>                	fld	<span style="color:#960050;background-color:#1e0010">ft6</span>,<span style="color:#960050;background-color:#1e0010">296(sp)</span>
+</span></span><span style="display:flex;"><span> 22c:	<span style="color:#960050;background-color:#1e0010">3534</span>                	fld	<span style="color:#960050;background-color:#1e0010">f</span><span style="color:#a6e22e">a3</span>,<span style="color:#960050;background-color:#1e0010">104(</span><span style="color:#a6e22e">a0</span><span style="color:#960050;background-color:#1e0010">)</span>
+</span></span><span style="display:flex;"><span> 22e:	<span style="color:#960050;background-color:#1e0010">3736</span>                	fld	<span style="color:#960050;background-color:#1e0010">f</span><span style="color:#a6e22e">a4</span>,<span style="color:#960050;background-color:#1e0010">360(sp)</span>
+</span></span><span style="display:flex;"><span> 230:	<span style="color:#960050;background-color:#1e0010">3938</span>                	fld	<span style="color:#960050;background-color:#1e0010">f</span><span style="color:#a6e22e">a4</span>,<span style="color:#960050;background-color:#1e0010">112(</span><span style="color:#a6e22e">a0</span><span style="color:#960050;background-color:#1e0010">)</span>
+</span></span><span style="display:flex;"><span> 232:	<span style="color:#960050;background-color:#1e0010">4241</span>                	li	<span style="color:#960050;background-color:#1e0010">tp</span>,<span style="color:#960050;background-color:#1e0010">16</span>
+</span></span><span style="display:flex;"><span> 234:	<span style="color:#960050;background-color:#1e0010">46454443</span>          	fmadd<span style="color:#960050;background-color:#1e0010">.q</span>	<span style="color:#960050;background-color:#1e0010">f</span><span style="color:#a6e22e">s0</span>,<span style="color:#960050;background-color:#1e0010">f</span><span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">ft4</span>,<span style="color:#960050;background-color:#1e0010">f</span><span style="color:#a6e22e">s0</span>,<span style="color:#960050;background-color:#1e0010">rmm</span>
+</span></span><span style="display:flex;"><span> 238:	<span style="color:#960050;background-color:#1e0010">4700</span>                	lw	<span style="color:#a6e22e">s0</span>,<span style="color:#960050;background-color:#1e0010">8(</span><span style="color:#a6e22e">a4</span><span style="color:#960050;background-color:#1e0010">)</span>
+</span></span><span style="display:flex;"><span> 23a:	<span style="color:#960050;background-color:#1e0010">203</span>a<span style="color:#960050;background-color:#1e0010">4343</span>          	<span style="color:#960050;background-color:#1e0010">fmadd.s</span>	<span style="color:#960050;background-color:#1e0010">ft6</span>,<span style="color:#960050;background-color:#1e0010">f</span><span style="color:#a6e22e">s4</span>,<span style="color:#960050;background-color:#1e0010">ft3</span>,<span style="color:#960050;background-color:#1e0010">ft4</span>,<span style="color:#960050;background-color:#1e0010">rmm</span>
+</span></span><span style="display:flex;"><span> 23e:	<span style="color:#960050;background-color:#1e0010">4728</span>                	lw	<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">72(</span><span style="color:#a6e22e">a4</span><span style="color:#960050;background-color:#1e0010">)</span>
+</span></span><span style="display:flex;"><span> 240:	<span style="color:#960050;background-color:#1e0010">554</span>e                	<span style="color:#960050;background-color:#1e0010">lw</span>	<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">240(sp)</span>
+</span></span><span style="display:flex;"><span> 242:	<span style="color:#960050;background-color:#1e0010">2029</span>                	jal	<span style="color:#960050;background-color:#1e0010">24c</span> <span style="color:#960050;background-color:#1e0010">&lt;main&gt;</span>
+</span></span><span style="display:flex;"><span> 244:	<span style="color:#960050;background-color:#1e0010">2</span>e<span style="color:#960050;background-color:#1e0010">38</span>                	<span style="color:#960050;background-color:#1e0010">fld</span>	<span style="color:#960050;background-color:#1e0010">f</span><span style="color:#a6e22e">a4</span>,<span style="color:#960050;background-color:#1e0010">88(</span><span style="color:#a6e22e">a2</span><span style="color:#960050;background-color:#1e0010">)</span>
+</span></span><span style="display:flex;"><span> 246:	<span style="color:#960050;background-color:#1e0010">2</span>e<span style="color:#960050;background-color:#1e0010">32</span>                	<span style="color:#960050;background-color:#1e0010">fld</span>	<span style="color:#960050;background-color:#1e0010">ft8</span>,<span style="color:#960050;background-color:#1e0010">264(sp)</span>
+</span></span><span style="display:flex;"><span> 248:	<span style="color:#960050;background-color:#1e0010">0030</span>                	addi	<span style="color:#a6e22e">a2</span>,<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">8</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#960050;background-color:#1e0010">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">0000024</span>c <span style="color:#960050;background-color:#1e0010">&lt;main&gt;:</span>
+</span></span><span style="display:flex;"><span> 24c:	<span style="color:#960050;background-color:#1e0010">00000537</span>          	lui	<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x0</span>
+</span></span><span style="display:flex;"><span> 250:	<span style="color:#960050;background-color:#1e0010">25850513</span>          	addi	<span style="color:#a6e22e">a0</span>,<span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">600</span> #<span style="color:#960050;background-color:#1e0010"> </span><span style="color:#ae81ff">258</span> <span style="color:#960050;background-color:#1e0010">&lt;main+0xc&gt;</span>
+</span></span><span style="display:flex;"><span> 254:	e<span style="color:#960050;background-color:#1e0010">4df</span><span style="color:#a6e22e">f06</span><span style="color:#960050;background-color:#1e0010">f</span>          	<span style="color:#960050;background-color:#1e0010">j</span>	<span style="color:#a6e22e">a0</span> <span style="color:#960050;background-color:#1e0010">&lt;print_str&gt;</span>
+</span></span><span style="display:flex;"><span> 258:	<span style="color:#960050;background-color:#1e0010">6568</span>                	flw	<span style="color:#960050;background-color:#1e0010">f</span><span style="color:#a6e22e">a0</span>,<span style="color:#960050;background-color:#1e0010">76(</span><span style="color:#a6e22e">a0</span><span style="color:#960050;background-color:#1e0010">)</span>
+</span></span><span style="display:flex;"><span> 25a:	<span style="color:#960050;background-color:#1e0010">6</span>c<span style="color:#960050;background-color:#1e0010">6c</span>                	<span style="color:#960050;background-color:#1e0010">flw</span>	<span style="color:#960050;background-color:#1e0010">f</span><span style="color:#a6e22e">a1</span>,<span style="color:#960050;background-color:#1e0010">92(</span><span style="color:#a6e22e">s0</span><span style="color:#960050;background-color:#1e0010">)</span>
+</span></span><span style="display:flex;"><span> 25c:	<span style="color:#960050;background-color:#1e0010">6</span>f<span style="color:#960050;background-color:#1e0010">77206f</span>          	<span style="color:#960050;background-color:#1e0010">j</span>	<span style="color:#960050;background-color:#1e0010">73152</span> <span style="color:#960050;background-color:#1e0010">&lt;end+0</span><span style="color:#a6e22e">x72</span><span style="color:#960050;background-color:#1e0010">eea&gt;</span>
+</span></span><span style="display:flex;"><span> 260:	<span style="color:#960050;background-color:#1e0010">6</span>c<span style="color:#960050;background-color:#1e0010">72</span>                	<span style="color:#960050;background-color:#1e0010">flw</span>	<span style="color:#960050;background-color:#1e0010">f</span><span style="color:#a6e22e">s8</span>,<span style="color:#960050;background-color:#1e0010">28(sp)</span>
+</span></span><span style="display:flex;"><span> 262:	<span style="color:#960050;background-color:#1e0010">0</span>a<span style="color:#960050;background-color:#1e0010">64</span>                	<span style="color:#960050;background-color:#1e0010">addi</span>	<span style="color:#a6e22e">s1</span>,<span style="color:#960050;background-color:#1e0010">sp</span>,<span style="color:#960050;background-color:#1e0010">284</span>
+</span></span><span style="display:flex;"><span> 264:	<span style="color:#960050;background-color:#1e0010">0000</span>                	unimp
+</span></span><span style="display:flex;"><span>	<span style="color:#960050;background-color:#1e0010">...</span></span></span></code></pre></div>
+</div>    
+<div class="column">
+  <h3 id="-to-fpga-compatible">&hellip; to FPGA-compatible</h3>
+<p>Next to &lsquo;decompiling&rsquo; the binary .elf file to a human-readable representation, it can also be translated to a flat text format. This can be achieved with a Python script <a href="https://github.com/KULeuven-Diepenbeek/course_hwswcodesign/blob/master/src/tools/makehex.py" target="_blank">makehex.py</a>.</p>
+<p>An option to generate this hex dump is present in the Makefile and the result should look something like this.</p>
+<div class="code_caption">
+    firmware.hex
+</div>    
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ae81ff">000000</span><span style="color:#ae81ff">93</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000113</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">000001</span><span style="color:#ae81ff">93</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000213</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">000002</span><span style="color:#ae81ff">93</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000313</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">000003</span><span style="color:#ae81ff">93</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000413</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">000004</span><span style="color:#ae81ff">93</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000513</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">000005</span><span style="color:#ae81ff">93</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000613</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">000006</span><span style="color:#ae81ff">93</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000713</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">000007</span><span style="color:#ae81ff">93</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000</span><span style="color:#ae81ff">813</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000</span><span style="color:#ae81ff">893</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000</span><span style="color:#ae81ff">913</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000</span><span style="color:#ae81ff">993</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000</span>a13
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000</span>a93
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000</span>b13
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000</span>b93
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000</span>c13
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000</span>c93
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000</span>d13
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000</span>d93
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000e13</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000e93</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000f</span><span style="color:#ae81ff">13</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000f</span><span style="color:#ae81ff">93</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00004137</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00010113</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>c8000ef
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00100073</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000013</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0000</span><span style="color:#ae81ff">8067</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">100007</span>b7
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00</span>a7a023
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0000</span><span style="color:#ae81ff">8067</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10000737</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">000547</span><span style="color:#ae81ff">83</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0007</span><span style="color:#ae81ff">9463</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0000</span><span style="color:#ae81ff">8067</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00150513</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00f</span><span style="color:#ae81ff">72023</span>
+</span></span><span style="display:flex;"><span>fedff06f
+</span></span><span style="display:flex;"><span>fe010113
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00</span><span style="color:#ae81ff">812</span>c23
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00410413</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00</span><span style="color:#ae81ff">912</span>a23
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">01212</span><span style="color:#ae81ff">823</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00112e23</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">000504</span><span style="color:#ae81ff">93</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00040</span><span style="color:#ae81ff">913</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0204</span><span style="color:#ae81ff">9</span>c63
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">03240</span>a63
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10000737</span>
+</span></span><span style="display:flex;"><span>fff40413
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">000447</span><span style="color:#ae81ff">83</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0307</span><span style="color:#ae81ff">8793</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00f</span><span style="color:#ae81ff">72023</span>
+</span></span><span style="display:flex;"><span>ff2418e3
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">01</span>c12083
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">01</span><span style="color:#ae81ff">812403</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">014124</span><span style="color:#ae81ff">83</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">01012</span><span style="color:#ae81ff">903</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">02010113</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0000</span><span style="color:#ae81ff">8067</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00</span>a00593
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0004</span><span style="color:#ae81ff">8513</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span>a8000ef
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00140413</span>
+</span></span><span style="display:flex;"><span>fea40fa3
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00</span>a00593
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0004</span><span style="color:#ae81ff">8513</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">04</span>c000ef
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">000504</span><span style="color:#ae81ff">93</span>
+</span></span><span style="display:flex;"><span>fa5ff06f
+</span></span><span style="display:flex;"><span>fff58593
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000737</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0025</span><span style="color:#ae81ff">9593</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">22870713</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">100006</span>b7
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0005</span>d463
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0000</span><span style="color:#ae81ff">8067</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00</span>b557b3
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00f7f</span><span style="color:#ae81ff">793</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00e787</span>b3
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0007</span>c783
+</span></span><span style="display:flex;"><span>ffc58593
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00f</span><span style="color:#ae81ff">6</span>a023
+</span></span><span style="display:flex;"><span>fe1ff06f
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">06054063</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0605</span>c663
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0005</span><span style="color:#ae81ff">8613</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">000505</span><span style="color:#ae81ff">93</span>
+</span></span><span style="display:flex;"><span>fff00513
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">02060</span>c63
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">001006</span><span style="color:#ae81ff">93</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00</span>b67a63
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00</span>c05863
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00161613</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0016</span><span style="color:#ae81ff">9693</span>
+</span></span><span style="display:flex;"><span>feb66ae3
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000513</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00</span>c5e663
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">40</span>c585b3
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00</span>d56533
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0016</span>d693
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00165613</span>
+</span></span><span style="display:flex;"><span>fe0696e3
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0000</span><span style="color:#ae81ff">8067</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0000</span><span style="color:#ae81ff">8293</span>
+</span></span><span style="display:flex;"><span>fb5ff0ef
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0005</span><span style="color:#ae81ff">8513</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0002</span><span style="color:#ae81ff">8067</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">40</span>a00533
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0005</span>d863
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">40</span>b005b3
+</span></span><span style="display:flex;"><span>f9dff06f
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">40</span>b005b3
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0000</span><span style="color:#ae81ff">8293</span>
+</span></span><span style="display:flex;"><span>f91ff0ef
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">40</span>a00533
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0002</span><span style="color:#ae81ff">8067</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0000</span><span style="color:#ae81ff">8293</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0005</span>ca63
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00054</span>c63
+</span></span><span style="display:flex;"><span>f79ff0ef
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0005</span><span style="color:#ae81ff">8513</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0002</span><span style="color:#ae81ff">8067</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">40</span>b005b3
+</span></span><span style="display:flex;"><span>fe0558e3
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">40</span>a00533
+</span></span><span style="display:flex;"><span>f61ff0ef
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">40</span>b00533
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0002</span><span style="color:#ae81ff">8067</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">33323130</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">37363534</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">42413938</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">46454443</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">43434700</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4728203</span>a
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2029554</span>e
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2e322</span>e38
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000030</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000537</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">25850513</span>
+</span></span><span style="display:flex;"><span>e4dff06f
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6</span>c6c6568
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6f77206f</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span>a646c72
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span></span></span></code></pre></div>
+</div>    
+</div>    
+<h2 id="overall-toolflow">Overall toolflow</h2>
+<div class="multiHcolumn">
+<div class="column">
+  <p><img src="../../img/100/toolflow1.png" alt="build"></p>
+</div>    
+<div class="column">
+  <p><img src="../../img/100/toolflow2.png" alt="build"></p>
+</div>    
+</div>    
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+		
+			<a class="nav nav-next" href="../../10_compiling/" title="1 Setting the playing field" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1741074939"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1741074939"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1741074939"></script>
+    <script src="../../js/jquery.sticky.js?1741074939"></script>
+    <script src="../../js/featherlight.min.js?1741074939"></script>
+    <script src="../../js/highlight.pack.js?1741074939"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1741074939"></script>
+    <script src="../../js/learn.js?1741074939"></script>
+    <script src="../../js/hugo-learn.js?1741074939"></script>
+    
+        
+            <script src="../../mermaid/mermaid.js?1741074939"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+
