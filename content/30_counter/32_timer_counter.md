@@ -4,9 +4,9 @@ weight: 32
 pre: "<i class='fas fa-book'></i> "
 ---
 
-A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V implementation is the first extension that will be made.
+A typical microcontroller has a timer. Although this is a fairly basic component, it has many useful applications. Therefore, adding a timer to your RISC-V microcontroller is the first extension that will be made.
 
-The exercise could be: **Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th.** The expected output from such a program would look like: **.......:.......;.......:.......;...**
+A textbook exercise could be: **Toggle a LED roughly every 500 ms and with each fourth period, toggle all the LEDS**.
 
 ## Hardware
 
