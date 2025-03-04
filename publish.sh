@@ -4,6 +4,6 @@ cd docs
 rm -Rf *
 cd ..
 hugo
-git add -u docs
+git add docs/*
 git commit -m "publishing"
 git push
