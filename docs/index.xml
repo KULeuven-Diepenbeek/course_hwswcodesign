@@ -115,11 +115,11 @@
       <description>Practice makes perfect Below are a number of programming exercises.&#xA;Exercise 301 Repeat the example of the 2x2 matrix multiplication on you own implementation.&#xA;Exercise 302 ASSIGNMENT Extend the implementation to (exclusively) support 3x3 matrices: 1) verify correct working, 2) find the latency, and 3) determine the cost (#LUT, #FF, imem-size)&#xA;Example 3x3 matrix multiplication SW-only 3x3 matrix multiplication with M extension Relative # CC1 1887 285 15% T (ns) 25 36 144% fclk (MHz) 40 27.</description>
     </item>
     <item>
-      <title>1 - Interrupt</title>
+      <title>4.1 - Interrupt</title>
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/41_interrupt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/41_interrupt/</guid>
-      <description>An exception or interrupt is essentially an unscheduled procedure call.</description>
+      <description>In the beginning of the processor-age, all software was bare metal. This means that the processor is simply executing instructions, directly on the hardware. In contrast to bare metal, most computers nowadays run an operating system. However, many microcontrollers still run bare-metal-code. Everything that we have been doing, was bare metal, too.&#xA;Multiple tasks When operating without an OS, it becomes more difficult to run multiple tasks. Let&amp;rsquo;s take the example of a UART, aka the serial port.</description>
     </item>
     <item>
       <title>x - Manual</title>

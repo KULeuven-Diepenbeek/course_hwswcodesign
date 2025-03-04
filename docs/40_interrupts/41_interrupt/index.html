@@ -9,25 +9,25 @@
 
     <link rel="icon" href="../../images/favicon.png" type="image/png">
 
-    <title>1 - Interrupt :: HW/SW codesign</title>
+    <title>4.1 - Interrupt :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1741074939" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1741074939" rel="stylesheet">
-    <link href="../../css/hybrid.css?1741074939" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1741074939" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1741074939" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1741074939" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1741074939" rel="stylesheet">
-    <link href="../../css/theme.css?1741074939" rel="stylesheet">
-    <link href="../../css/tabs.css?1741074939" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1741074939" rel="stylesheet">
+    <link href="../../css/nucleus.css?1741079865" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1741079865" rel="stylesheet">
+    <link href="../../css/hybrid.css?1741079865" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1741079865" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1741079865" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1741079865" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1741079865" rel="stylesheet">
+    <link href="../../css/theme.css?1741079865" rel="stylesheet">
+    <link href="../../css/tabs.css?1741079865" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1741079865" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1741074939" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1741079865" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1741074939"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1741079865"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1741074939"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1741074939"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1741079865"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1741079865"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1741074939"></script>
+<script type="text/javascript" src="../../js/search.js?1741079865"></script>
 
     
   </div>
@@ -564,7 +564,7 @@
             
           
           
-            <a href='../../'>HWSW codesign</a> > <a href=''>4 Interrupts</a> > 1 - Interrupt
+            <a href='../../'>HWSW codesign</a> > <a href=''>4 Interrupts</a> > 4.1 - Interrupt
           
         
           
@@ -577,7 +577,11 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#multiple-tasks">Multiple tasks</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -593,13 +597,39 @@
           
             <h1>
               
-              1 - Interrupt
+              4.1 - Interrupt
             </h1>
           
 
         
 
 
+<p>In the beginning of the processor-age, all software was <strong>bare metal</strong>. This means that the processor is simply executing instructions, directly on the hardware. In contrast to bare metal, most computers nowadays run an <strong>operating system</strong>. However, many microcontrollers still run bare-metal-code. Everything that we have been doing, was bare metal, too.</p>
+<h2 id="multiple-tasks">Multiple tasks</h2>
+<p>When operating without an OS, it becomes more difficult to run multiple tasks. Let&rsquo;s take the example of a UART, aka the serial port. Imagine a program is running and it has to change a parameter that is fed to program over UART.</p>
+<div class="multiHcolumn">
+<div class="column">
+  <p><img src="../../img/400/flow.png" alt="interrupt"></p>
+</div>    
+<div class="column">
+  <h2 id="polling">Polling</h2>
+<p>The simplest way would be to periodically <strong>check if there is a command</strong>. Periodically checking for a condition is called <strong>polling</strong>.</p>
+<p>In this example, the main loop is running <em>forever</em>. The program conditionally takes one of two paths (an <em>if-statement</em>). In the left-hand branch, there is a repetition (a for or while loop). Finally, there is one more statement.</p>
+<p>Depending on the fact whether or not there is a <strong>new command</strong>, the left or right path is taken to the start of the loop again. Let&rsquo;s say that, in case of a new command, the 3 yellow statements have to be executed.</p>
+<p>Although polling provides a working solution, it&rsquo;s not the best solution. There is a additional delay (in this case of 1 if-statement), if a command arrives right after the checking, it has to wait for the next iteration, &hellip;</p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <h2 id="interrupts">Interrupts</h2>
+<p>In 1953 (!) the first interrupt-powered computer was invented. An interrupt does exactly what it is named after. It <strong>interrupts</strong> the current flow of the processor. A good analogy is the raising of a finger, in class.</p>
+<p>The example above would just keep on executing the main loop. Irrespective of when the UART comes now, this main loop is interrupted. After interruption, the three yellow statements are executed. Finally, the main loop is resumed at the point where it was left.</p>
+<p>As long as there are no <strong>interrupt storms</strong>, the impact of interrupts is low. They are still used in modern systems and the typical use-cases are asynchronous communication systems, like network cards, mouse movements, timers, or keyboard-key presses.</p>
+</div>    
+<div class="column">
+  <p><img src="../../img/400/interrupt.png" alt="interrupt"></p>
+</div>    
+</div>    
 <p>An exception or interrupt is essentially an unscheduled procedure call.</p>
 
 
@@ -944,19 +974,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1741074939"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1741074939"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1741074939"></script>
-    <script src="../../js/jquery.sticky.js?1741074939"></script>
-    <script src="../../js/featherlight.min.js?1741074939"></script>
-    <script src="../../js/highlight.pack.js?1741074939"></script>
+    <script src="../../js/clipboard.min.js?1741079865"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1741079865"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1741079865"></script>
+    <script src="../../js/jquery.sticky.js?1741079865"></script>
+    <script src="../../js/featherlight.min.js?1741079865"></script>
+    <script src="../../js/highlight.pack.js?1741079865"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1741074939"></script>
-    <script src="../../js/learn.js?1741074939"></script>
-    <script src="../../js/hugo-learn.js?1741074939"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1741079865"></script>
+    <script src="../../js/learn.js?1741079865"></script>
+    <script src="../../js/hugo-learn.js?1741079865"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1741074939"></script>
+            <script src="../../mermaid/mermaid.js?1741079865"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
