@@ -7,7 +7,7 @@ draft: true
 
 # Interrupts
 
-![interrupt](/img/20/pexels-pavel-danilyuk-8423051.jpg)
+![interrupt](/img/40/pexels-pavel-danilyuk-8423051.jpg)
 
 {{< image_courtesy 
   name="Pavel Danilyuk"
