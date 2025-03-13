@@ -82,22 +82,21 @@ When taking the same channel for the timer/counter inteface as well, it becomes 
 
 {{% multiHcolumn %}}
 {{% column %}}
-To solve this issue, a multiplexer is typically placed. Within the scope of this course, it will be assumed that <u>each peripherals has 256 addresses</u>. For the timer/counter this boils down to: **0x810000**<u>00</u> to **0x810000**<u>FF</u>. Given that a *word* takes 4 addresses, this means that a peripheral can use up to 64 32-bit registers.
+To solve this issue, a multiplexer is typically placed. Within the scope of this course, it will be assumed that <u>each peripherals has 4096 addresses</u>. For the timer/counter this boils down to: **0x81000**<u>000</u> to **0x81000**<u>FFF</u>. Given that a *word* takes 4 addresses, this means that a peripheral can use up to 1024 32-bit registers.
 
-With this approach each peripheral has a **BASE ADDRESS** (0x810000 for the timer/counter) that is 24 bits wide. The selection input of the added multiplexer can thus be the 24 MSBs of the address on the data bus.
+With this approach each peripheral has a **BASE ADDRESS** (0x81000 for the timer/counter) that is 20 bits wide. The selection input of the added multiplexer can thus be the 20 MSBs of the address on the data bus.
 {{% /column %}}
 {{% column %}}
 ![mux](/img/30/mux.png)
 {{% /column %}}
 {{% /multiHcolumn %}}
 
+A good place to "map" the different cores is in the package file (see below). Now the mux can simply commpare with a constant **C_TIMER_BASE_ADDRESS_MASK**. If, for some reason, the mapping changes in the future, a simple update of the package file will fix everything.
 
-
-
-
-
-<!-- ## Now it's your turn 
-
-Use the timer component to solve: 
-> **Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th.** -->
-
+```vhdl
+    -- Peripherals are all assigned a BASE ADDRESS.
+    -- From this address 4096 positions are reserved.
+    -- This comes down to 1024 32-bit words.
+    -- A peripheral can hence have 1024 memory-mapped registers
+    constant C_TIMER_BASE_ADDRESS_MASK : STD_LOGIC_VECTOR(C_WIDTH-1 downto 12) := x"81000";
+```
