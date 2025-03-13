@@ -9,25 +9,25 @@
 
     <link rel="icon" href="../../images/favicon.png" type="image/png">
 
-    <title> :: HW/SW codesign</title>
+    <title>4.2 - Zicsr :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1741079865" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1741079865" rel="stylesheet">
-    <link href="../../css/hybrid.css?1741079865" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1741079865" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1741079865" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1741079865" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1741079865" rel="stylesheet">
-    <link href="../../css/theme.css?1741079865" rel="stylesheet">
-    <link href="../../css/tabs.css?1741079865" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1741079865" rel="stylesheet">
+    <link href="../../css/nucleus.css?1741859774" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1741859774" rel="stylesheet">
+    <link href="../../css/hybrid.css?1741859774" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1741859774" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1741859774" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1741859774" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1741859774" rel="stylesheet">
+    <link href="../../css/theme.css?1741859774" rel="stylesheet">
+    <link href="../../css/tabs.css?1741859774" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1741859774" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1741079865" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1741859774" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1741079865"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1741859774"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -45,7 +45,7 @@
 
 <script src=../../js/exercises.js></script> 
   </head>
-  <body class="" data-url="../../40_interrupts/41_wip/">
+  <body class="" data-url="../../40_interrupts/42_zicsr/">
     <nav id="sidebar" class="">
 
 
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1741079865"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1741079865"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1741859774"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1741859774"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1741079865"></script>
+<script type="text/javascript" src="../../js/search.js?1741859774"></script>
 
     
   </div>
@@ -564,7 +564,7 @@
             
           
           
-            <a href='../../'>HWSW codesign</a> > <a href=''>4 Interrupts</a> > 
+            <a href='../../'>HWSW codesign</a> > <a href=''>4 Interrupts</a> > 4.2 - Zicsr
           
         
           
@@ -577,7 +577,12 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#instructions">Instructions</a></li>
+    <li><a href="#registers">Registers</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -593,44 +598,117 @@
           
             <h1>
               
-              
+              4.2 - Zicsr
             </h1>
           
 
         
 
 
-<p>RISC-V refers to an external asynchronous event that may cause a RISC-V core to execute an unexpected transfer of control as interrupt. Similarly, <em>an unusual condition</em> occurring at the run time (due to invalid instructions etc.) is referred to as <strong>exceptions</strong>. The term <strong>trap</strong> is used to collectively refer to interrupt or exception.</p>
-<p>RISC-V supports two main trap handling mechanisms: <strong>direct</strong> and <strong>vectored</strong>. Based on the last 2 bits of the mtvec register (or stvec for ‘S’ mode), it could be either perform Direct handling (bit values – 00) or Vectored handling (bit values – 01).</p>
-<p>Conditions for interrupt to M-mode</p>
+<h2 id="instructions">Instructions</h2>
+<p>The RISC-V specifications describe how interrupts should be handled in RISC-V. This is covered (among other things) in an <strong>extension</strong>: <strong>Zicsr</strong>. RISC-V refers to an external asynchronous event that may cause a RISC-V core to execute an unexpected transfer of control as <strong>interrupt</strong>. Similarly, <em>an unusual condition</em> occurring at the run time (due to invalid instructions etc.) is referred to as <strong>exceptions</strong>. The term <strong>trap</strong> is used to collectively refer to interrupt or exception.</p>
+<p>A separate address space of <strong>4096 Control and Status registers</strong> are associated with each hart. Six additional instructions are provided to interract with these registers.</p>
+<figure><img src="../../img/40/zicsr_instructions.png"/>
+</figure>
+<p>These instructions perform <strong>atomic</strong> substitutions between the CSR register and either a register from the registerfile or an immediate value.</p>
+<figure><img src="../../img/40/exchange.png"/>
+</figure>
+<table>
+<thead>
+<tr>
+<th>Register name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSRRW rd, CSR_ID, rs1</td>
+<td>Write <strong>rs1</strong> to the register CRS_ID while reading the content of CRS_ID into <strong>rd</strong></td>
+</tr>
+<tr>
+<td>CSRRS rd, CSR_ID, rs1</td>
+<td>Write <strong>CRS_ID <u>OR</u> rs1</strong> to the register CRS_ID while reading the content of CRS_ID into <strong>rd</strong></td>
+</tr>
+<tr>
+<td>CSRRC rd, CSR_ID, rs1</td>
+<td>Write <strong>CRS_ID <u>AND</u> not(rs1)</strong> to the register CRS_ID while reading the content of CRS_ID into <strong>rd</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CSRRWI rd, CSR_ID, <em>value</em></td>
+<td>identical to CSRRW but with an immediate value in stead of <strong>rs1</strong></td>
+</tr>
+<tr>
+<td>CSRRSI rd, CSR_ID, <em>value</em></td>
+<td>identical to CSRRS but with an immediate value in stead of <strong>rs1</strong> (setting bits)</td>
+</tr>
+<tr>
+<td>CSRRCI rd, CSR_ID, <em>value</em></td>
+<td>identical to CSRRC but with an immediate value in stead of <strong>rs1</strong> (clearing bits)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="registers">Registers</h2>
+<p>Although not all 4096 registers that are addressable are used, in this course even fewer registers are discussed. The most relevant registers for this course are enumerated here.</p>
+<div style="margin-left: 10%">
 <ul>
-<li>current priv mode is M and the MIE-bit in <strong>mstatus</strong>-reg is set</li>
-<li>i-bit is set in <strong>mip</strong> and <strong>mie</strong></li>
-<li>[if -e mideleg] and !mideleg(i)</li>
+<li> <b>CSR_MRO_mhartid</b> (address: 0xF14): This register holds the <b>ID</b> of the RISC-V core
+<li> <b>CSR_MRW_mstatus</b> (address: 0x300): This register holds 32 bits of <b>status bits</b>
+<li> <b>CSR_MRW_misa</b> (address: 0x301): This register an <b>identifier</b> of the ISA
+<li> <b>CSR_MRW_mie</b> (address: 0x304): This register masks which <b>interrupts</b> are enabled
+<li> <b>CSR_MRW_mtvec</b> (address: 0x305): This register holds the address of the <b>trap vector</b>
+<li> <b>CSR_MRW_mstatush</b> (address: 0x310): This register holds another 32 bits of <b>status bits</b>
+<li> <b>CSR_MRW_mscratch</b> (address: 0x340): This register hold the address for the <b>trap</b> handler
+<li> <b>CSR_MRW_mepc</b> (address: 0x341): This register serves as backup register for the <b>program counter</b>
+<li> <b>CSR_MRW_mcause</b> (address: 0x342): This register samples the <b>cause</b> of the interrupt
+<li> <b>CSR_MRW_mip</b> (address: 0x344): This register hold <b>pending</b> requests
 </ul>
-<p>These conditions for an interrupt trap to occur must be evaluated in a bounded amount of time from
+</div>
+<!-- 
+While CSRs are primarily used by the privileged architecture, there are several uses in unprivileged code including for counters and timers, and for floating-point status.
+
+The counters and timers are no longer considered mandatory parts of the standard base ISAs, and so the CSR instructions required to access them have been moved out of Chapter [rv32] into this separate chapter.
+
+
+RISC-V supports two main trap handling mechanisms: **direct** and **vectored**. Based on the last 2 bits of the mtvec register (or stvec for ‘S’ mode), it could be either perform Direct handling (bit values – 00) or Vectored handling (bit values – 01).
+
+
+Conditions for interrupt to M-mode
+
+* current priv mode is M and the MIE-bit in **mstatus**-reg is set
+* i-bit is set in **mip** and **mie**
+* [if -e mideleg] and !mideleg(i)
+
+These conditions for an interrupt trap to occur must be evaluated in a bounded amount of time from
 when an interrupt becomes, or ceases to be, pending in mip, and must also be evaluated immediately
 following the execution of an xRET instruction or an explicit write to a CSR on which these interrupt
-trap conditions expressly depend (including mip, mie, mstatus, and mideleg).</p>
-<p>mip(13) &lt;= lcofip   &ndash; (RO) &lsquo;0&rsquo; when Sscofpmf extension is not implemented
-mip(11) &lt;= meip     &ndash; interrupt pending for machine-level external interrupts (RO) is set and cleared by a platform-specific interrupt controller
-mip(9) &lt;= seip      &ndash; (RO) &lsquo;0&rsquo; when S-mode is not implemented
-mip(7) &lt;= mtip      &ndash; interrupt pending for machine timer interrupts (RO) is cleared by writing to the memory-mapped machine-mode timer compare register.
-mip(5) &lt;= stip      &ndash; (RO) &lsquo;0&rsquo; when S-mode is not implemented
-mip(3) &lt;= msip      &ndash; interrupt pending for software interrupts (RO) is written by accesses to memory-mapped control registers,
-mip(1) &lt;= ssip      &ndash; (RO) &lsquo;0&rsquo; when S-mode is not implemented</p>
-<p>mie(13) &lt;= lcofie   &ndash; (RO) &lsquo;0&rsquo; when Sscofpmf extension is not implemented
-mie(11) &lt;= meie     &ndash; interrupt enable for machine-level external interrupts
-mie(9) &lt;= seie      &ndash; (RO) &lsquo;0&rsquo; when S-mode is not implemented
-mie(7) &lt;= mtie      &ndash; interrupt enable for machine timer interrupts
-mie(5) &lt;= stie      &ndash; (RO) &lsquo;0&rsquo; when S-mode is not implemented
-mie(3) &lt;= msie      &ndash; interrupt enable for software interrupts
-mie(1) &lt;= ssie      &ndash; (RO) &lsquo;0&rsquo; when S-mode is not implemented</p>
-<p>Multiple simultaneous interrupts destined for M-mode are handled in the following decreasing
+trap conditions expressly depend (including mip, mie, mstatus, and mideleg).
+
+mip(13) <= lcofip   -- (RO) '0' when Sscofpmf extension is not implemented
+mip(11) <= meip     -- interrupt pending for machine-level external interrupts (RO) is set and cleared by a platform-specific interrupt controller
+mip(9) <= seip      -- (RO) '0' when S-mode is not implemented
+mip(7) <= mtip      -- interrupt pending for machine timer interrupts (RO) is cleared by writing to the memory-mapped machine-mode timer compare register.
+mip(5) <= stip      -- (RO) '0' when S-mode is not implemented
+mip(3) <= msip      -- interrupt pending for software interrupts (RO) is written by accesses to memory-mapped control registers,
+mip(1) <= ssip      -- (RO) '0' when S-mode is not implemented
+
+mie(13) <= lcofie   -- (RO) '0' when Sscofpmf extension is not implemented
+mie(11) <= meie     -- interrupt enable for machine-level external interrupts
+mie(9) <= seie      -- (RO) '0' when S-mode is not implemented
+mie(7) <= mtie      -- interrupt enable for machine timer interrupts
+mie(5) <= stie      -- (RO) '0' when S-mode is not implemented
+mie(3) <= msie      -- interrupt enable for software interrupts 
+mie(1) <= ssie      -- (RO) '0' when S-mode is not implemented
+
+
+
+Multiple simultaneous interrupts destined for M-mode are handled in the following decreasing
 priority order: MEI, MSI, MTI, SEI, SSI, STI, LCOFI.
 machine-level external, software, timer
-software-level external, software, timer</p>
-
+software-level external, software, timer -->
 
 <footer class="footline">
 	
@@ -973,19 +1051,19 @@ software-level external, software, timer</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1741079865"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1741079865"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1741079865"></script>
-    <script src="../../js/jquery.sticky.js?1741079865"></script>
-    <script src="../../js/featherlight.min.js?1741079865"></script>
-    <script src="../../js/highlight.pack.js?1741079865"></script>
+    <script src="../../js/clipboard.min.js?1741859774"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1741859774"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1741859774"></script>
+    <script src="../../js/jquery.sticky.js?1741859774"></script>
+    <script src="../../js/featherlight.min.js?1741859774"></script>
+    <script src="../../js/highlight.pack.js?1741859774"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1741079865"></script>
-    <script src="../../js/learn.js?1741079865"></script>
-    <script src="../../js/hugo-learn.js?1741079865"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1741859774"></script>
+    <script src="../../js/learn.js?1741859774"></script>
+    <script src="../../js/hugo-learn.js?1741859774"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1741079865"></script>
+            <script src="../../mermaid/mermaid.js?1741859774"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

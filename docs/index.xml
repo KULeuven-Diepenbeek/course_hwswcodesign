@@ -119,7 +119,14 @@
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/41_interrupt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/41_interrupt/</guid>
-      <description>In the beginning of the processor-age, all software was bare metal. This means that the processor is simply executing instructions, directly on the hardware. In contrast to bare metal, most computers nowadays run an operating system. However, many microcontrollers still run bare-metal-code. Everything that we have been doing, was bare metal, too.&#xA;Multiple tasks When operating without an OS, it becomes more difficult to run multiple tasks. Let&amp;rsquo;s take the example of a UART, aka the serial port.</description>
+      <description>In the beginning of the processor-age, all software was bare metal. This means that the processor is simply executing instructions, directly on the hardware. In contrast to bare metal, most computers nowadays run an operating system. Nonetheless, many microcontrollers still run bare-metal-code. Everything that we have been doing, was bare metal, too.&#xA;Multiple tasks When working without an OS, it becomes more difficult to run multiple tasks. Let&amp;rsquo;s take the example of a UART, aka the serial port.</description>
+    </item>
+    <item>
+      <title>4.2 - Zicsr</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/42_zicsr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/42_zicsr/</guid>
+      <description>Instructions The RISC-V specifications describe how interrupts should be handled in RISC-V. This is covered (among other things) in an extension: Zicsr. RISC-V refers to an external asynchronous event that may cause a RISC-V core to execute an unexpected transfer of control as interrupt. Similarly, an unusual condition occurring at the run time (due to invalid instructions etc.) is referred to as exceptions. The term trap is used to collectively refer to interrupt or exception.</description>
     </item>
     <item>
       <title>x - Manual</title>
@@ -288,13 +295,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/900_appendices/901_roger/</guid>
       <description>Within the Engineering Technology program it is sometimes needed to have access to a server. For this purpose, Roger was born. On this server several virtual machines are running. For this course, students can use chip.&#xA;This server is accessible over the Internet. To be able to connect to the virtual machines a VPN connection is required. You have received (or will receive) an email that contains your username and password.</description>
-    </item>
-    <item>
-      <title></title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/41_wip/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/41_wip/</guid>
-      <description>RISC-V refers to an external asynchronous event that may cause a RISC-V core to execute an unexpected transfer of control as interrupt. Similarly, an unusual condition occurring at the run time (due to invalid instructions etc.) is referred to as exceptions. The term trap is used to collectively refer to interrupt or exception.&#xA;RISC-V supports two main trap handling mechanisms: direct and vectored. Based on the last 2 bits of the mtvec register (or stvec for ‘S’ mode), it could be either perform Direct handling (bit values – 00) or Vectored handling (bit values – 01).</description>
     </item>
   </channel>
 </rss>

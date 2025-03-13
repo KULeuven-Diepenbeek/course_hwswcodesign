@@ -12,22 +12,22 @@
     <title>3.2 - HW Timer :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1741079865" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1741079865" rel="stylesheet">
-    <link href="../../css/hybrid.css?1741079865" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1741079865" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1741079865" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1741079865" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1741079865" rel="stylesheet">
-    <link href="../../css/theme.css?1741079865" rel="stylesheet">
-    <link href="../../css/tabs.css?1741079865" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1741079865" rel="stylesheet">
+    <link href="../../css/nucleus.css?1741859774" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1741859774" rel="stylesheet">
+    <link href="../../css/hybrid.css?1741859774" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1741859774" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1741859774" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1741859774" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1741859774" rel="stylesheet">
+    <link href="../../css/theme.css?1741859774" rel="stylesheet">
+    <link href="../../css/tabs.css?1741859774" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1741859774" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1741079865" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1741859774" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1741079865"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1741859774"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1741079865"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1741079865"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1741859774"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1741859774"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1741079865"></script>
+<script type="text/javascript" src="../../js/search.js?1741859774"></script>
 
     
   </div>
@@ -715,18 +715,20 @@
 <p>When taking the same channel for the timer/counter inteface as well, it becomes a little more tricky. Sure, similarly to the Basic IO block, writing to the <strong>TCNT wrapper</strong> does not introduce any problems. The other way, reading from the timer/counter, does. Data through the memory interface channel, that goes into the microprocessor, now has <strong>2 different sources</strong>. Simply attaching these signals would introduce <u>double drivers</u>.</p>
 <div class="multiHcolumn">
 <div class="column">
-  <p>To solve this issue, a multiplexer is typically placed. Within the scope of this course, it will be assumed that <u>each peripherals has 256 addresses</u>. For the timer/counter this boils down to: <strong>0x810000</strong><u>00</u> to <strong>0x810000</strong><u>FF</u>. Given that a <em>word</em> takes 4 addresses, this means that a peripheral can use up to 64 32-bit registers.</p>
-<p>With this approach each peripheral has a <strong>BASE ADDRESS</strong> (0x810000 for the timer/counter) that is 24 bits wide. The selection input of the added multiplexer can thus be the 24 MSBs of the address on the data bus.</p>
+  <p>To solve this issue, a multiplexer is typically placed. Within the scope of this course, it will be assumed that <u>each peripherals has 4096 addresses</u>. For the timer/counter this boils down to: <strong>0x81000</strong><u>000</u> to <strong>0x81000</strong><u>FFF</u>. Given that a <em>word</em> takes 4 addresses, this means that a peripheral can use up to 1024 32-bit registers.</p>
+<p>With this approach each peripheral has a <strong>BASE ADDRESS</strong> (0x81000 for the timer/counter) that is 20 bits wide. The selection input of the added multiplexer can thus be the 20 MSBs of the address on the data bus.</p>
 </div>    
 <div class="column">
   <p><img src="../../img/30/mux.png" alt="mux"></p>
 </div>    
 </div>    
-<!-- ## Now it's your turn 
-
-Use the timer component to solve: 
-> **Print out a dot every microsecond, print a colon on the 8th and a semi-colon on every 16th.** -->
-
+<p>A good place to &ldquo;map&rdquo; the different cores is in the package file (see below). Now the mux can simply commpare with a constant <strong>C_TIMER_BASE_ADDRESS_MASK</strong>. If, for some reason, the mapping changes in the future, a simple update of the package file will fix everything.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vhdl" data-lang="vhdl"><span style="display:flex;"><span>    <span style="color:#75715e">-- Peripherals are all assigned a BASE ADDRESS.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- From this address 4096 positions are reserved.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- This comes down to 1024 32-bit words.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- A peripheral can hence have 1024 memory-mapped registers</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constant</span> C_TIMER_BASE_ADDRESS_MASK <span style="color:#f92672">:</span> <span style="color:#66d9ef">STD_LOGIC_VECTOR</span>(C_WIDTH<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">12</span>) <span style="color:#f92672">:=</span> <span style="color:#ae81ff">x&#34;81000&#34;</span>;
+</span></span></code></pre></div>
 
 <footer class="footline">
 	
@@ -1079,19 +1081,19 @@ Use the timer component to solve:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1741079865"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1741079865"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1741079865"></script>
-    <script src="../../js/jquery.sticky.js?1741079865"></script>
-    <script src="../../js/featherlight.min.js?1741079865"></script>
-    <script src="../../js/highlight.pack.js?1741079865"></script>
+    <script src="../../js/clipboard.min.js?1741859774"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1741859774"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1741859774"></script>
+    <script src="../../js/jquery.sticky.js?1741859774"></script>
+    <script src="../../js/featherlight.min.js?1741859774"></script>
+    <script src="../../js/highlight.pack.js?1741859774"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1741079865"></script>
-    <script src="../../js/learn.js?1741079865"></script>
-    <script src="../../js/hugo-learn.js?1741079865"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1741859774"></script>
+    <script src="../../js/learn.js?1741859774"></script>
+    <script src="../../js/hugo-learn.js?1741859774"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1741079865"></script>
+            <script src="../../mermaid/mermaid.js?1741859774"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
