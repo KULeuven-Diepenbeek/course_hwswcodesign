@@ -4,7 +4,6 @@ weight: 41
 pre: "<i class='fas fa-book'></i> "
 ---
 
-
 In the beginning of the processor-age, all software was **bare metal**. This means that the processor is simply executing instructions, directly on the hardware. In contrast to bare metal, most computers nowadays run an **operating system**. Nonetheless, many microcontrollers still run bare-metal-code. Everything that we have been doing, was bare metal, too.
 
 
