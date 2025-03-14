@@ -1,6 +1,6 @@
 ---
-title: '502 Image formats'
-weight: 502
+title: '52 Image formats'
+weight: 52
 draft: false
 ---
 

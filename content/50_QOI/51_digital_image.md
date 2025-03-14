@@ -1,6 +1,6 @@
 ---
-title: '501 Digital image'
-weight: 501
+title: '51 Digital image'
+weight: 51
 draft: false
 ---
 

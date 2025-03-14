@@ -1,7 +1,7 @@
 ---
 title: '5 QOI'
 chapter: true
-weight: 500
+weight: 50
 draft: true
 ---
 
