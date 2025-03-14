@@ -14,7 +14,7 @@ When working without an OS, it becomes more difficult to run multiple tasks. Let
 
 {{% multiHcolumn %}}
 {{% column %}}
-![interrupt](/img/400/flow.png)
+![interrupt](/img/40/flow.png)
 {{% /column %}}
 {{% column %}}
 ## Polling
@@ -41,7 +41,7 @@ As long as there are no **interrupt storms**, the impact of interrupts is low. T
 
 {{% /column %}}
 {{% column %}}
-![interrupt](/img/400/interrupt.png)
+![interrupt](/img/40/interrupt.png)
 {{% /column %}}
 {{% /multiHcolumn %}}
 

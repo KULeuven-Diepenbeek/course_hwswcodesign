@@ -28,7 +28,7 @@ These instructions perform **atomic** substitutions between the CSR register and
 | CSRRCI rd, CSR_ID, *value* | identical to CSRRC but with an immediate value in stead of **rs1** (clearing bits) |
 
 
-## Registers
+## Zicsr registers
 
 Although not all 4096 registers that are addressable are used, in this course even fewer registers are discussed. The most relevant registers for this course are enumerated here.
 
