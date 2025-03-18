@@ -12,22 +12,22 @@
     <title>4.2 - Zicsr :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1741859774" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1741859774" rel="stylesheet">
-    <link href="../../css/hybrid.css?1741859774" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1741859774" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1741859774" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1741859774" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1741859774" rel="stylesheet">
-    <link href="../../css/theme.css?1741859774" rel="stylesheet">
-    <link href="../../css/tabs.css?1741859774" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1741859774" rel="stylesheet">
+    <link href="../../css/nucleus.css?1742287319" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1742287319" rel="stylesheet">
+    <link href="../../css/hybrid.css?1742287319" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1742287319" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1742287319" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1742287319" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1742287319" rel="stylesheet">
+    <link href="../../css/theme.css?1742287319" rel="stylesheet">
+    <link href="../../css/tabs.css?1742287319" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1742287319" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1741859774" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1742287319" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1741859774"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1742287319"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1741859774"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1741859774"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1742287319"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1742287319"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1741859774"></script>
+<script type="text/javascript" src="../../js/search.js?1742287319"></script>
 
     
   </div>
@@ -580,7 +580,9 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#instructions">Instructions</a></li>
-    <li><a href="#registers">Registers</a></li>
+    <li><a href="#zicsr-registers">Zicsr registers</a></li>
+    <li><a href="#when-an-interrupt-presents-itself-">When an interrupt presents itself &hellip;</a></li>
+    <li><a href="#informing-the-compiler">Informing the compiler</a></li>
   </ul>
 </nav>
     </div>
@@ -651,7 +653,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="registers">Registers</h2>
+<h2 id="zicsr-registers">Zicsr registers</h2>
 <p>Although not all 4096 registers that are addressable are used, in this course even fewer registers are discussed. The most relevant registers for this course are enumerated here.</p>
 <div style="margin-left: 10%">
 <ul>
@@ -659,14 +661,78 @@
 <li> <b>CSR_MRW_mstatus</b> (address: 0x300): This register holds 32 bits of <b>status bits</b>
 <li> <b>CSR_MRW_misa</b> (address: 0x301): This register an <b>identifier</b> of the ISA
 <li> <b>CSR_MRW_mie</b> (address: 0x304): This register masks which <b>interrupts</b> are enabled
-<li> <b>CSR_MRW_mtvec</b> (address: 0x305): This register holds the address of the <b>trap vector</b>
+<li> <b>CSR_MRW_mtvec</b> (address: 0x305): This register holds the address of the <b>context vector</b>
 <li> <b>CSR_MRW_mstatush</b> (address: 0x310): This register holds another 32 bits of <b>status bits</b>
-<li> <b>CSR_MRW_mscratch</b> (address: 0x340): This register hold the address for the <b>trap</b> handler
+<li> <b>CSR_MRW_mscratch</b> (address: 0x340): This register hold the address for the <b>context space</b>
 <li> <b>CSR_MRW_mepc</b> (address: 0x341): This register serves as backup register for the <b>program counter</b>
 <li> <b>CSR_MRW_mcause</b> (address: 0x342): This register samples the <b>cause</b> of the interrupt
 <li> <b>CSR_MRW_mip</b> (address: 0x344): This register hold <b>pending</b> requests
 </ul>
 </div>
+<h2 id="when-an-interrupt-presents-itself-">When an interrupt presents itself &hellip;</h2>
+<p>When an interrupt presents itself the RISC-V needs to jump to the interrupt handler. However, when the interrupt is handled, the processor should continue where it left. This is achieved by the following steps</p>
+<ol>
+<li><strong>[Program Counter]</strong>: Load the program counter with a pointer to the <span style="background-color: #FFE6CC; color: #D79B00"> trap vector </span>, while making a backup of the program counter in <b>CSR_MRW_mepc</b> register of the Zicsr. This requires a modification in the hardware.</li>
+<li><strong>[Stack Pointer]</strong>: The <strong>context</strong> of the processor is the state of all the registers. Before these registers can be backed up, one register needs to be freed. RISC-V uses the <strong>stack pointer</strong> for this. The current value is swapped with the <b>CSR_MRW_mscratch</b> register of the Zicsr.</li>
+</ol>
+ <div class="centeredColumn50">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-S" data-lang="S"><span style="display:flex;"><span>    csrrw sp, mscratch, sp
+</span></span></code></pre></div>  </div>    
+<ol start="3">
+<li><strong>[Regfile backup]</strong>: With the stack pointer set, a backup of all 30 (!) registers can be made on the stack.</li>
+</ol>
+ <div class="centeredColumn50">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-S" data-lang="S"><span style="display:flex;"><span>	sw x1,   <span style="color:#ae81ff">0</span><span style="color:#f92672">*</span><span style="color:#ae81ff">4</span>(sp)
+</span></span><span style="display:flex;"><span>	sw x3,   <span style="color:#ae81ff">1</span><span style="color:#f92672">*</span><span style="color:#ae81ff">4</span>(sp)
+</span></span><span style="display:flex;"><span>	sw x4,   <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#ae81ff">4</span>(sp)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">...</span>
+</span></span><span style="display:flex;"><span>	sw x31,   <span style="color:#ae81ff">29</span><span style="color:#f92672">*</span><span style="color:#ae81ff">4</span>(sp)
+</span></span></code></pre></div>  </div>    
+<ol start="4">
+<li><strong>[Cause]</strong>: Fetch the cause of the interrupt from the <strong>CSR_MRW_mcause</strong> register, store it in <strong>reg a0</strong> and call the <span style="background-color: #F5F5F5; color: #666666"> interrupt handler </span>.</li>
+</ol>
+ <div class="centeredColumn50">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-S" data-lang="S"><span style="display:flex;"><span>    csrrc a0, mcause, zero
+</span></span><span style="display:flex;"><span>    jal ra, irq_handler
+</span></span></code></pre></div>  </div>    
+<ol start="5">
+<li><strong>[Restore Regfile]</strong>:</li>
+</ol>
+ <div class="centeredColumn50">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-S" data-lang="S"><span style="display:flex;"><span>   lw x1,   <span style="color:#ae81ff">0</span><span style="color:#f92672">*</span><span style="color:#ae81ff">4</span>(sp)
+</span></span><span style="display:flex;"><span>   lw x3,   <span style="color:#ae81ff">1</span><span style="color:#f92672">*</span><span style="color:#ae81ff">4</span>(sp)
+</span></span><span style="display:flex;"><span>   lw x4,   <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#ae81ff">4</span>(sp)
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">...</span>
+</span></span><span style="display:flex;"><span>   lw x31,   <span style="color:#ae81ff">29</span><span style="color:#f92672">*</span><span style="color:#ae81ff">4</span>(sp)
+</span></span></code></pre></div>  </div>    
+<ol start="6">
+<li><strong>[Restore SP]</strong>: The current value is swapped again  with the <b>CSR_MRW_mscratch</b> register of the Zicsr.</li>
+</ol>
+ <div class="centeredColumn50">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-S" data-lang="S"><span style="display:flex;"><span>    csrrw sp, mscratch, sp
+</span></span></code></pre></div>  </div>    
+<ol start="7">
+<li><strong>[Return from Trap Vector]</strong>: This can be done with a special instruction.</li>
+</ol>
+ <div class="centeredColumn50">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-S" data-lang="S"><span style="display:flex;"><span>    mret
+</span></span></code></pre></div>  </div>    
+<div class="multiHcolumn">
+<div class="column">
+  <figure><img src="../../img/40/memory_map_wo_irq.png"/>
+</figure>
+</div>    
+<div class="column">
+  <p>The software was organised as shown on the left. Upon reset, the initialisation was done in the <span style="background-color: #DAE8FC; color: #6C8EBF"> start </span> section. Here, all registers get initialised, the stack pointer is set to 0x1000 and a jump is done to the <span style="background-color: #D5E8D4; color: #82B366"> main </span> function. All other <span style="background-color: #F5F5F5; color: #666666"> functions </span> are compiled and are linked somewhere in the instruction memory.</p>
+<p>To allow for interrupts these sections have to move a little bit further down. This makes room for a <span style="background-color: #F8CECC; color: #B85450"> reset vector </span> and a <span style="background-color: #FFE6CC; color: #D79B00"> trap vector </span>.</p>
+<p>The <span style="background-color: #F8CECC; color: #B85450"> reset vector </span> is a very short set of instructions that mainly prepares the processor to <span style="background-color: #DAE8FC; color: #6C8EBF"> do reset </span>. The reason for adding this section is that the processor can keep starting operation at address 0x0 and that the trap vector can start very early on a <strong>fixed address</strong>.</p>
+<p>When an interrupt is present, the RISC-V should jump to the <span style="background-color: #FFE6CC; color: #D79B00"> trap vector </span>. Here a backup-copy is made of all the registers to the stack, the interrupt handler is called, after which all registers are restored from the stack.</p>
+</div>    
+<div class="column">
+  <figure><img src="../../img/40/memory_map_w_irq.png"/>
+</figure>
+</div>    
+</div>    
 <!-- 
 While CSRs are primarily used by the privileged architecture, there are several uses in unprivileged code including for counters and timers, and for floating-point status.
 
@@ -709,6 +775,22 @@ Multiple simultaneous interrupts destined for M-mode are handled in the followin
 priority order: MEI, MSI, MTI, SEI, SSI, STI, LCOFI.
 machine-level external, software, timer
 software-level external, software, timer -->
+<h2 id="informing-the-compiler">Informing the compiler</h2>
+<p>As the firmware also includes Zicsr instructions now, the compiler has to be notified of this. In the Makefile, the flags for the compiler can do this trick. The parameter <strong>arch</strong> needs to be changed from <strong>rv32i</strong> to <strong>rv32i_zicsr</strong>.</p>
+<div class="multiHcolumn">
+<div class="column">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Makefile" data-lang="Makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">...</span>
+</span></span><span style="display:flex;"><span>ARCHITECTURE <span style="color:#f92672">=</span> rv32i
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">...</span>
+</span></span></code></pre></div>
+</div>    
+<div class="column">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Makefile" data-lang="Makefile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">...</span>
+</span></span><span style="display:flex;"><span>ARCHITECTURE <span style="color:#f92672">=</span> rv32i_zicsr
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">...</span>
+</span></span></code></pre></div>
+</div>    
+</div>    
 
 <footer class="footline">
 	
@@ -1051,19 +1133,19 @@ software-level external, software, timer -->
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1741859774"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1741859774"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1741859774"></script>
-    <script src="../../js/jquery.sticky.js?1741859774"></script>
-    <script src="../../js/featherlight.min.js?1741859774"></script>
-    <script src="../../js/highlight.pack.js?1741859774"></script>
+    <script src="../../js/clipboard.min.js?1742287319"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1742287319"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1742287319"></script>
+    <script src="../../js/jquery.sticky.js?1742287319"></script>
+    <script src="../../js/featherlight.min.js?1742287319"></script>
+    <script src="../../js/highlight.pack.js?1742287319"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1741859774"></script>
-    <script src="../../js/learn.js?1741859774"></script>
-    <script src="../../js/hugo-learn.js?1741859774"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1742287319"></script>
+    <script src="../../js/learn.js?1742287319"></script>
+    <script src="../../js/hugo-learn.js?1742287319"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1741859774"></script>
+            <script src="../../mermaid/mermaid.js?1742287319"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

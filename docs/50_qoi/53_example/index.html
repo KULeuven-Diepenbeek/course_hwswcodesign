@@ -9,7 +9,7 @@
 
     <link rel="icon" href="../../images/favicon.png" type="image/png">
 
-    <title>2.3 - One more thing ... :: HW/SW codesign</title>
+    <title>53 Example :: HW/SW codesign</title>
 
     
     <link href="../../css/nucleus.css?1742287319" rel="stylesheet">
@@ -45,7 +45,7 @@
 
 <script src=../../js/exercises.js></script> 
   </head>
-  <body class="" data-url="../../20_hw/23_onemore/">
+  <body class="" data-url="../../50_qoi/53_example/">
     <nav id="sidebar" class="">
 
 
@@ -232,7 +232,7 @@
   
     
     <li data-nav-id="/20_hw/" title="2 Making it work on hardware" class="dd-item
-        parent
+        
         
         
         ">
@@ -300,7 +300,7 @@
  
   
     
-      <li data-nav-id="/20_hw/23_onemore/" title="2.3 - One more thing ..." class="dd-item active">
+      <li data-nav-id="/20_hw/23_onemore/" title="2.3 - One more thing ..." class="dd-item ">
         <a href="../../20_hw/23_onemore/">
         <i class='fas fa-book'></i> 2.3 - One more thing ...
         
@@ -564,7 +564,7 @@
             
           
           
-            <a href='../../'>HWSW codesign</a> > <a href='../../20_hw/'>2 Making it work on hardware</a> > 2.3 - One more thing ...
+            <a href='../../'>HWSW codesign</a> > <a href=''>5 QOI</a> > 53 Example
           
         
           
@@ -577,7 +577,13 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#header">Header</a></li>
+    <li><a href="#chunks">Chunks</a></li>
+    <li><a href="#end-marking">End marking</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -593,67 +599,257 @@
           
             <h1>
               
-              2.3 - One more thing ...
+              53 Example
             </h1>
           
 
         
 
 
-<p>The implementation of the RISC-V that is used in this course, is a <strong>single-cycle implementation</strong>. Nonetheless, in earlier courses you might have already seen how pipelining has a huge effect on the implementation. The major advantage of a single-cycle implementation is that it is rather simple to understand and implement. The major drawback is that is not as performant, but it going to get even <u><em>worse</em></u>.</p>
-<p>In the previous section, it was shown that the BRAM needs <strong>at least one clock cycle</strong> to read from the memory. Unfortunately, this does not work for a single cycle implementation.</p>
-<!-- {signal: [
-  {name: 'clock', wave: 'p......'},
-  {name: 'program counter', wave: 'x3333x.', data: ['A0', 'A1', 'A2', 'A3']},
-  {name: 'expected instruction', wave: 'x5555x.', data: ['inst0','inst1','inst2', 'inst3']},
-  {name: 'BRAM output', wave: 'x.5555x', data: ['inst0','inst1','inst2', 'inst3']},
-]} -->
-<p><img src="../../img/20/wavedrom_timing_issue_BRAM.png" alt="Timing issue with BRAM"></p>
-<p>The easiest <strong>&ldquo;fix&rdquo;</strong> for this is disable the processor every other cycle.</p>
-<!-- {signal: [
-  {name: 'clock', wave: 'p..........'},
-  {name: 'chip enable', wave: '01010101010'},
-  {name: 'program counter', wave: 'x3.3.3.3.x.', data: ['A0', 'A1', 'A2', 'A3']},
-  {name: 'BRAM output', wave: 'x.5.5.5.5.x', data: ['inst0','inst1','inst2', 'inst3']},
-]} -->
-<p><img src="../../img/20/wavedrom_timing_fix_BRAM.png" alt="Timing fix with BRAM"></p>
-<p>Even from the width of waveforms above, the issue with this <strong>fix</strong> can be clearly seen: <strong>the latency is doubled!</strong></p>
-<p>However, consider this &hellip;</p>
-<!-- {signal: [
-  {name: 'clock', wave: 'p..........'},
-  {name: 'chip enable', wave: '01010101010'},
-  {name: 'program counter', wave: 'x3.7.3.3.x.', data: ['A0', 'A1', 'A2', 'A3']},
-  {name: 'imem output', wave: 'x.5.7.5.5.x', data: ['nop','lw t0,4(sp)','inst2', 'inst3']},
-  
-  {name: 'dmem address', wave: 'x...7.x....', data: ['sp+4']},
-  {name: 'dmem output', wave: '2....7.2...', data: ['0x0','314','0x0']},
-  {name: 't0', wave: 'x....4.....', data: ['0x0']},
-  ],
-  head: {text:
-    ['tspan',
-      ['tspan', {class:'info h3'}, 'dmem[*]=0;   dmem[sp+4]=314'],
-    ]
-  }
-} -->
-<p><img src="../../img/20/wavedrom_timing_issue_BRAM_bis.png" alt="Timing issue with BRAM bis"></p>
-<p>One clock cycle had to be artificially added for the <em>instruction memory</em>. If the instruction also involves the <em>data memory</em> <strong>one more</strong> clock cycle needs to be added.</p>
-<!-- {signal: [
-  {name: 'clock', wave: 'p...............'},
-  {name: 'chip enable', wave: '010.10.10.10.10.'},
-  {name: 'program counter', wave: 'x3..7..3..3..x..', data: ['A0', 'A1', 'A2', 'A3']},
-  {name: 'imem output', wave: 'x.5..7..5..5..x.', data: ['nop','lw t0,4(sp)','inst2', 'inst3']},
-  
-  {name: 'dmem address', wave: 'x....7..x.......', data: ['sp+4']},
-  {name: 'dmem output', wave: '2.....7..2......', data: ['0x0','314','0x0']},
-  {name: 't0', wave: 'x.....7.........', data: ['314']},
-  ],
-  head: {text:
-    ['tspan',
-      ['tspan', {class:'info h3'}, 'dmem[*]=0;   dmem[sp+4]=314'],
-    ]
-  }
-} -->
-<p><img src="../../img/20/wavedrom_timing_fix_BRAM_bis.png" alt="Timing fix with BRAM"></p>
+<p>Here, an example is shown to help you understand how QOI (encoding) works. The data from the 8-by-8 sensor looks like shown below.</p>
+<p><img src="../../img/500/example.png" alt="Example image"></p>
+<h2 id="header">Header</h2>
+<p>The header is stictly defined:</p>
+<ul>
+<li>The first for bytes are the letters &lsquo;q&rsquo;, &lsquo;o&rsquo;, &lsquo;i&rsquo;, and &lsquo;f&rsquo;. These letters have to be UTF-8 encoded first, which results in <strong>0x716F6966</strong>.</li>
+<li>The width of the image is stored as a 32-bit value: <strong>0x00000008</strong>.</li>
+<li>The height of the image is stored as a 32-bit value: <strong>0x00000008</strong>.</li>
+<li>Depending on whether or not an alpha channel is present, the number of channels is either 3 (for RGB) or 4 (for RGBA). This is stored in a single byte: <strong>0x03</strong>.</li>
+<li>The colorspace is also represented in a single byte: <strong>0x00</strong> for sRGB with linear alpha and 0x01 for an image where all channels are linear.</li>
+</ul>
+<p>This makes the encoding of the header equal to<span style="font-weight: bold; background-color: orange"> 0x716F696600000008000000080300 </span>. Now we continue with the second row.</p>
+
+<div class="notices note" ><p>Both the channels and the colorspace fields are puely informative.</p>
+</div>
+
+<h2 id="chunks">Chunks</h2>
+<p>At the start, we assume that the previous values of R, G, and B (called <strong>R_d</strong>, <strong>G_d</strong>, and <strong>B_d</strong>) are all 0x0. The previous value for alpha (<strong>A_d</strong>) is 0xFF. The running array (<strong>RA</strong>) of width 64 is initialised on 0x0&rsquo;s. The current longest runs of repeating pixels is also initialised on -1 (<strong>RLE</strong>).</p>
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixel at (0,0) has value <strong>0xFF0000FF</strong></p>
+</div>    
+<div class="column">
+  <p><strong>1) </strong> It is not the same as the previous values R_d, G_d, B_d and A_d<br/>
+<strong>2) </strong> It is not present in the RA.<br/>
+     Nonetheless, we add it. H(R,G,B,A) = 50, so RA[50] = 0xFF0000FF.<br/>
+<strong>3) </strong> Difference with previous pixels<br/>
+     dr = 0xFF - 0x00 = 0xFF (= -1)   =&gt;   b01<br/>
+     dg = 0x00 - 0x00 = 0x00 (=  0)   =&gt;   b10<br/>
+     db = 0x00 - 0x00 = 0x00 (=  0)   =&gt;   b10<br/>
+<br/>
+This chunk is hence encoded as b01 b01 b10 b10 = b01011010 =<span style="font-weight: bold; background-color: yellow"> 0x5A </span>.<br/>
+R_d becomes 0xFF, G_d becomes 0x00, B_d becomes 0x00, A_d remains 0xFF.</p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixel at (1,0) has value <strong>0xFF0000FF</strong></p>
+</div>    
+<div class="column">
+  <p><strong>1) </strong> It is the same as the previous values R_d, G_d, B_d and A_d, so this is run-length encoding. <strong>RLE=0</strong><br/></p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixel at (2,0) has value <strong>0xFF0000FF</strong></p>
+</div>    
+<div class="column">
+  <p><strong>1) </strong> It is the same as the previous values R_d, G_d, B_d and A_d, so this is run-length encoding. <strong>RLE=1</strong><br/></p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixel at (3,0) has value <strong>0xFF0000FF</strong></p>
+</div>    
+<div class="column">
+  <p><strong>1) </strong> It is the same as the previous values R_d, G_d, B_d and A_d, so this is run-length encoding. <strong>RLE=2</strong><br/></p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixel at (4,0) has value <strong>0x00FF00FF</strong></p>
+</div>    
+<div class="column">
+  <p><strong>1) </strong> It is not the same as the previous values R_d, G_d, B_d and A_d. As there was a run length ongoing, this has to be recorded.<br/>
+The chunks becomes: b11 b000010 = b11000010 =<span style="font-weight: bold; background-color: yellow"> 0xC2 </span>. RLE is reset to -1. <br/>
+<strong>2) </strong> It is not present in the RA.<br/>
+     Nonetheless, we add it. H(R,G,B,A) = 45, so RA[48] = 0x00FF00FF.<br/>
+<strong>3) </strong> Difference with previous pixels<br/>
+     dr = 0x00 - 0xFF = 0x01 (=  1)   =&gt;   b11<br/>
+     dg = 0xFF - 0x00 = 0xFF (= -1)   =&gt;   b01<br/>
+     db = 0x00 - 0x00 = 0x00 (=  0)   =&gt;   b10<br/>
+<br/>
+This chunk is hence encoded as b01 b11 b01 b10 = b01110110 =<span style="font-weight: bold; background-color: yellow"> 0x76 </span>.<br/>
+R_d becomes 0xFF, G_d becomes 0x00, B_d becomes 0x00, A_d remains 0xFF.</p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixel (5,0), (6,0), and (7,0) are handled similarly to (1,0), (2,0), and (3,0).</p>
+</div>    
+<div class="column">
+  <p><strong>1) </strong> It is the same as the previous values R_d, G_d, B_d and A_d, so this is run-length encoding. <strong>RLE=0, RLE=1, RLE=2</strong><br/></p>
+</div>    
+</div>    
+<p>This makes the encoding of the first row, currently, equal to <span style="font-weight: bold; background-color: orange"> 0x5AC276 </span>. Now we continue with the second row.</p>
+<hr/>
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixel at (0,1) has value <strong>0xFF0000FF</strong></p>
+</div>    
+<div class="column">
+  <p><strong>1) </strong> It is not the same as the previous values R_d, G_d, B_d and A_d. As there was a run length ongoing, this has to be recorded.<br/>
+The chunks becomes: b11 b000010 = b11000010 =<span style="font-weight: bold; background-color: yellow"> 0xC2 </span>. RLE is reset to -1. <br/>
+<strong>2) </strong> It <strong>is</strong> present in the RA. H(R,G,B,A) = 50, and RA[50] <strong>==</strong> 0xFF0000FF.<br/>
+This chunk is hence encoded as b00 b110010 = b00110010 =<span style="font-weight: bold; background-color: yellow"> 0x32 </span>.<br/></p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixels at (1,1), (2,1), and (3,1) are handled similar as before.</p>
+</div>    
+<div class="column">
+  <p> </p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixel at (4,1) has value <strong>0x00FF00FF</strong></p>
+</div>    
+<div class="column">
+  <p><strong>1) </strong> It is not the same as the previous values R_d, G_d, B_d and A_d. As there was a run length ongoing, this has to be recorded.<br/>
+The chunks becomes: b11 b000010 = b11000010 =<span style="font-weight: bold; background-color: yellow"> 0xC2 </span>. RLE is reset to -1. <br/>
+<strong>2) </strong> It <strong>is</strong> present in the RA. H(R,G,B,A) = 48, and RA[48] <strong>==</strong> 0x00FF00FF.<br/>
+This chunk is hence encoded as b00 b110000 = b00110000 =<span style="font-weight: bold; background-color: yellow"> 0x30 </span>.<br/></p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixels at (5,1), (6,1), and (7,1) are handled similar as before.</p>
+</div>    
+<div class="column">
+  <p> </p>
+</div>    
+</div>    
+<p>This makes the encoding of the second row, currently, equal to <span style="font-weight: bold; background-color: orange"> 0xC232C230 </span>.</p>
+<hr/>
+<p>The third and fourth row in the image are handled identically to row 2.
+This makes the encoding of these rows, currently, equal to <span style="font-weight: bold; background-color: orange"> 0xC232C2300xC232C230 </span>.</p>
+<hr/>
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixel at (0,4) has value <strong>0x0000FFFF</strong></p>
+</div>    
+<div class="column">
+  <p><strong>1) </strong> It is not the same as the previous values R_d, G_d, B_d and A_d As there was a run length ongoing, this has to be recorded.<br/>
+The chunks becomes: b11 b000010 = b11000010 =<span style="font-weight: bold; background-color: yellow"> 0xC2 </span>. RLE is reset to -1. <br/>
+<strong>2) </strong> It is not present in the RA.<br/>
+     Nonetheless, we add it. H(R,G,B,A) = 46, so RA[46] = 0x0000FFFF.<br/>
+<strong>3) </strong> Difference with previous pixels<br/>
+     dr = 0x00 - 0x00 = 0x00 (=  0)   =&gt;   b10<br/>
+     dg = 0x00 - 0xFF = 0x01 (=  1)   =&gt;   b11<br/>
+     db = 0xFF - 0x00 = 0x00 (= -1)   =&gt;   b01<br/>
+<br/>
+This chunk is hence encoded as b01 b10 b11 b01 = b01101101 =<span style="font-weight: bold; background-color: yellow"> 0x6D </span>.</p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixels at (1,4), (2,4), and (3,4) are handled similar as before.</p>
+</div>    
+<div class="column">
+  <p> </p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixel at (4,4) has value <strong>0x7F7F7FFF</strong></p>
+</div>    
+<div class="column">
+  <p><strong>1) </strong> It is not the same as the previous values R_d, G_d, B_d and A_d As there was a run length ongoing, this has to be recorded.<br/>
+The chunks becomes: b11 b000010 = b11000010 =<span style="font-weight: bold; background-color: yellow"> 0xC2 </span>. RLE is reset to -1. <br/>
+<strong>2) </strong> It is not present in the RA.<br/>
+     Nonetheless, we add it. H(R,G,B,A) = 38, so RA[38] = 0x7F7F7FFF.<br/>
+<strong>3) </strong> Difference with previous pixels<br/>
+     dr = 0x7F - 0x00 = 0x7F =&gt;   <em>not defined</em><br/>
+     dg = 0x7F - 0x00 = 0x7F =&gt;   <em>not defined</em><br/>
+     db = 0x7F - 0xFF = 0x80 =&gt;   <em>not defined</em><br/>
+<strong>4) </strong> Difference with previous pixel&rsquo;s green<br/>
+     dg = 0x7F - 0x00 = 0x7F =&gt;   <em>not defined</em><br/>
+     &hellip;
+<strong>5) </strong> RGB<br/>
+     A_d and a are equal =&gt; b11111110 x7F x7F x7F<br/>
+This chunk is hence encoded as <span style="font-weight: bold; background-color: yellow"> 0xFE7F7F7F </span>.</p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixels at (5,4), (6,4), and (7,4) are handled similar as before.</p>
+</div>    
+<div class="column">
+  <p> </p>
+</div>    
+</div>    
+<p>This makes the encoding of the fifth row, currently, equal to <span style="font-weight: bold; background-color: orange"> 0xC26DC2FE7F7F7F </span>.</p>
+<hr/>
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixel at (0,5) has value <strong>0x0000FFFF</strong></p>
+</div>    
+<div class="column">
+  <p><strong>1) </strong> It is not the same as the previous values R_d, G_d, B_d and A_d As there was a run length ongoing, this has to be recorded.<br/>
+The chunks becomes: b11 b000010 = b11000010 =<span style="font-weight: bold; background-color: yellow"> 0xC2 </span>. RLE is reset to -1. <br/>
+<strong>2) </strong> It <strong>is</strong> present in the RA. H(R,G,B,A) = 46, and RA[46] <strong>==</strong> 0x0000FFFF.<br/>
+This chunk is hence encoded as b00 b101110 = b00101110 =<span style="font-weight: bold; background-color: yellow"> 0x2E </span>.<br/></p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixels at (1,5), (2,5), and (3,5) are handled similar as before.</p>
+</div>    
+<div class="column">
+  <p> </p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixel at (4,5) has value <strong>0x7F7F7FFF</strong></p>
+</div>    
+<div class="column">
+  <p><strong>1) </strong> It is not the same as the previous values R_d, G_d, B_d and A_d As there was a run length ongoing, this has to be recorded.<br/>
+The chunks becomes: b11 b000010 = b11000010 =<span style="font-weight: bold; background-color: yellow"> 0xC2 </span>. RLE is reset to -1. <br/>
+<strong>2) </strong> It <strong>is</strong> present in the RA. H(R,G,B,A) = 38, and RA[38] <strong>==</strong> 0x7F7F7FFF.<br/>
+This chunk is hence encoded as b00 b100110 = b00100110 =<span style="font-weight: bold; background-color: yellow"> 0x26 </span>.<br/></p>
+</div>    
+</div>    
+<div class="multiHcolumn">
+<div class="column">
+  <p>The pixels at (5,5), (6,5), and (7,5) are handled similar as before.</p>
+</div>    
+<div class="column">
+  <p> </p>
+</div>    
+</div>    
+<p>This makes the encoding of the fifth row, currently, equal to <span style="font-weight: bold; background-color: orange"> 0xC22EC226 </span>.</p>
+<hr/>
+<p>The final 2 rows are similarly processed as the previous one making the enconding equal to <span style="font-weight: bold; background-color: orange"> 0xC22EC226C22EC226 </span>.</p>
+<hr/>
+
+<div class="notices note" ><p><b>BEWARE!!</b><br/>
+There is still something in the RLE!! This is however handled equally as above. This means another, final, <span style="font-weight: bold; background-color: orange"> 0xC2 </span> needs to be added.</p>
+</div>
+
+<h2 id="end-marking">End marking</h2>
+<p>The end marker is a fixed 8-byte value: <span style="font-weight: bold; background-color: orange"> 0x0000000000000001 </span>.</p>
+<h1 id="results-of-the-example">Results of the example</h1>
+<p>The result of the QOI encoding of the image above hence is:</p>
+<p><span style="font-weight: bold; background-color: orange"> 0x716F696600000008000000080300 0x5AC276 0xC232C230 0xC232C230 0xC232C230 0xC26DC2FE7F7F7F 0xC22EC226 0xC22EC226C22EC226 0xC2 0x0000000000000001 </span></p>
+<p><span style="font-weight: bold; background-color: orange"> 716F6966000000080000000803005AC276C232C230C232C230C232C230C26DC2FE7F7F7FC22EC226C22EC226C22EC226C20000000000000001 </span></p>
+<p>This encoded result has a total size of <strong>57 bytes</strong>. If all the 64 pixels (8 by 8) would have to be stored in raw data, with an alpha channel, this would result in <strong>256 bytes</strong>. Without an alpha channel, this would result in <strong>192 bytes</strong> which is a reduction of <strong>70%</strong>!!</p>
+<p>If we assume that 1 image is to be recorded every 40 ms, this would result in 25 images per second. This is approximately the framerate of video. If the sensor would make <strong>one image every 40 ms</strong>, it also has to be encoded on that speed. In the simulation, as shown below, the encoding of a single image roughly takes 190000 ns. If we <em><u>extrapolate</u></em> this result, we get: 190000 ns / 64 pixels = 2.97 µs per pixel, and thus a <strong>480p</strong> image would take 640*480*3 µs = 307200*3 µs = 912384 µs = <strong>912.4 ms</strong>.</p>
+<p><img src="../../img/500/simulation.png" alt="Image of simulation"></p>
+<p><strong>&hellip; and this is an extrapolation!!</strong></p>
+<p>It is hard to give a fixed duration for the encoding of single image. An image of 307'200 consecutive white pixels will be done more quickly than 307'200 random pixels.</p>
 
 
 <footer class="footline">
@@ -790,7 +986,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -804,8 +999,21 @@
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
-                        
+            
+            
+                
                     
                 
                 
@@ -838,26 +1046,6 @@
             
             
                 
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
                     
                 
                 
@@ -994,10 +1182,8 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="../../20_hw/22_wrapping/" title="2.2 - Wrapping it up"> <i class="fa fa-chevron-left"></i></a>
 		
-		
-			<a class="nav nav-next" href="../../20_hw/24_go_fast/" title="2.4 - Go as fast as you can" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../10_compiling/" title="1 Setting the playing field" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

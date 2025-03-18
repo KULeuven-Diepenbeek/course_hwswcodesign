@@ -129,11 +129,39 @@
       <description>Instructions The RISC-V specifications describe how interrupts should be handled in RISC-V. This is covered (among other things) in an extension: Zicsr. RISC-V refers to an external asynchronous event that may cause a RISC-V core to execute an unexpected transfer of control as interrupt. Similarly, an unusual condition occurring at the run time (due to invalid instructions etc.) is referred to as exceptions. The term trap is used to collectively refer to interrupt or exception.</description>
     </item>
     <item>
-      <title>x - Manual</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/49_manual/</link>
+      <title>4.3 - Exercises</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/43_exercises/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/49_manual/</guid>
-      <description>This manual will guide you through the changes that are required to include the Zicsr extension.&#xA;Th</description>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/43_exercises/</guid>
+      <description>Exercise 401 Try to get the Zicsr extenstion to work. You can start from this template. The exercise is to redo the blinking lights from the previous chapter, but then without the software wait and have the TCNT generate interrupts.&#xA;Exercise 402 Determine how much time it takes for handling a single interrupt.</description>
+    </item>
+    <item>
+      <title>51 Digital image</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/51_digital_image/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/51_digital_image/</guid>
+      <description>Images are everywhere. When looking at digital images (as in: not for printing) every pixel of the image has pixelvalue. Typically, the light that is generated in a pixel is composed of red light, green light, and blue light, hence RGB. To make photos or movies, some device needs to capture the light. This is done in an image sensor. For the sake of completeness, it is mentioned that there two main types of sensors: CCD and CMOS.</description>
+    </item>
+    <item>
+      <title>52 Image formats</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/52_image_formats/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/52_image_formats/</guid>
+      <description>In general, to store a file on a computer, some form for file format is required. Examples of fileformats are: .pdf, .docx, and .html. A file format defines an encoding protocol on how to store the data.&#xA;As just seen, storing images in full will require a lot of storage. Of course, there are file formats for images as well. The most well known image file formats (or image formats) are .</description>
+    </item>
+    <item>
+      <title>53 Example</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/53_example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/53_example/</guid>
+      <description>Here, an example is shown to help you understand how QOI (encoding) works. The data from the 8-by-8 sensor looks like shown below.&#xA;Header The header is stictly defined:&#xA;The first for bytes are the letters &amp;lsquo;q&amp;rsquo;, &amp;lsquo;o&amp;rsquo;, &amp;lsquo;i&amp;rsquo;, and &amp;lsquo;f&amp;rsquo;. These letters have to be UTF-8 encoded first, which results in 0x716F6966. The width of the image is stored as a 32-bit value: 0x00000008. The height of the image is stored as a 32-bit value: 0x00000008.</description>
+    </item>
+    <item>
+      <title>54 Project</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/54_project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/54_project/</guid>
+      <description>The project within this course will have you designing an SOC that encodes sensor data to a QOI encoded image. As it would not be realistic to build the entire system, a number of compents will only be simulated:&#xA;APB_mem_model: this is model for the memory containing the instructions and data APB_print_model: this is model for the SD-card storage. For the sake of simplicity, it is assumed that all writes to 0x8000000 will automatically be handled.</description>
     </item>
     <item>
       <title>101 - Processor</title>
@@ -232,62 +260,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/300_soc/304_exercises/</guid>
       <description>Exercise 301 Try to get the example for the counter-enforced SoC to work.&#xA;Exercise 302 Make a new (as in: don&amp;rsquo;t modify the dummy) component that can calculated the Hamming distance of two values. Make a comparison like the table in 202 where you compare your pure software implementation of the Hamming distance with the codesign.&#xA;Exercise 303 Make a new component that calculates the sine of a positive angle. The angle is provided as natural number (no decimals), in degrees and can be up to 10 bits.</description>
-    </item>
-    <item>
-      <title>401 - Interrupt</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/400_interrupt/401_interrupt/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/400_interrupt/401_interrupt/</guid>
-      <description>In the beginning of the processor-age, all software was bare metal. This means that the processor is simply executing instructions, directly on the hardware. In contrast to bare metal, most computers nowadays run an operating system. However, many microcontrollers still run bare-metal-code. Everything that we have been doing, was bare metal, too.&#xA;Multiple tasks When operating without an OS, it becomes more difficult to run multiple tasks. Let&amp;rsquo;s take the example of a UART, aka the serial port.</description>
-    </item>
-    <item>
-      <title>402 - Interrupt handling</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/400_interrupt/402_handling/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/400_interrupt/402_handling/</guid>
-      <description>Interrupts can be generated by both hardware and software, but hardware-interrupts are focussed on here. A processor typically has a number of hardware interrupts. These signals are connected to the cores that generate interrupts.&#xA;When a core wants to signal an interruption, it raises the signal. This is called an Interrupt Request (IRQ). The processor has to halt its operation, to the interrupt can be handled. However, the processor has a context.</description>
-    </item>
-    <item>
-      <title>403 - Example</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/400_interrupt/403_example/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/400_interrupt/403_example/</guid>
-      <description>This page gives a hands-on example of using interrupts with the PicoRV32.&#xA;HARDWARE RISC-V instantiation At the instantiation, the following additional mappings need to be made:&#xA;ENABLE_IRQ &amp;hellip; to &amp;lsquo;1&amp;rsquo; ENABLE_IRQ_QREGS &amp;hellip; to &amp;lsquo;1&amp;rsquo; ENABLE_IRQ_TIMER &amp;hellip; to &amp;lsquo;1&amp;rsquo; MASKED_IRQ &amp;hellip; to x&amp;quot;00000000&amp;quot; LATCHED_IRQ &amp;hellip; to x&amp;quot;FFFFFFFF&amp;quot; PROGADDR_RESET &amp;hellip; to x&amp;quot;00000000&amp;quot; PROGADDR_IRQ &amp;hellip; to x&amp;quot;00000010&amp;quot; These settings:&#xA;enable the IRQ ensures the IRQs are not masked-out set the reset vector set the IRQ handler Interrupts can be given through signal irq, and the ack&amp;rsquo;s come at the eoi signal.</description>
-    </item>
-    <item>
-      <title>404 - Exercises</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/400_interrupt/404_exercises/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/400_interrupt/404_exercises/</guid>
-      <description>Exercise 401 Try to get the example to work.&#xA;Exercise 402 Determine how much time it takes for handling a single interrupt.&#xA;Exercise 403 Start from the example of the counter in 302. Have the peripheral trigger an interrupt when the count reaches 100&#39;000&#39;000. Given that a clock cycle takes 10 ns. an interrupt should be triggered every (10 ns/CC x 100&#39;000&#39;000 CC) second. Meanwhile the processor is in an endless loop that prints something.</description>
-    </item>
-    <item>
-      <title>501 Digital image</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/500_qoi/501_digital_image/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/500_qoi/501_digital_image/</guid>
-      <description>Images are everywhere. When looking at digital images (as in: not for printing) every pixel of the image has pixelvalue. Typically, the light that is generated in a pixel is composed of red light, green light, and blue light, hence RGB. To make photos or movies, some device needs to capture the light. This is done in an image sensor. For the sake of completeness, it is mentioned that there two main types of sensors: CCD and CMOS.</description>
-    </item>
-    <item>
-      <title>502 Image formats</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/500_qoi/502_image_formats/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/500_qoi/502_image_formats/</guid>
-      <description>In general, to store a file on a computer, some form for file format is required. Examples of fileformats are: .pdf, .docx, and .html. A file format defines an encoding protocol on how to store the data.&#xA;As just seen, storing images in full will require a lot of storage. Of course, there are file formats for images as well. The most well known image file formats (or image formats) are .</description>
-    </item>
-    <item>
-      <title>503 Example</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/500_qoi/503_example/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/500_qoi/503_example/</guid>
-      <description>Here, an example is shown to help you understand how QOI (encoding) works. The data from the 8-by-8 sensor looks like shown below.&#xA;Header The header is stictly defined:&#xA;The first for bytes are the letters &amp;lsquo;q&amp;rsquo;, &amp;lsquo;o&amp;rsquo;, &amp;lsquo;i&amp;rsquo;, and &amp;lsquo;f&amp;rsquo;. These letters have to be UTF-8 encoded first, which results in 0x716F6966. The width of the image is stored as a 32-bit value: 0x00000008. The height of the image is stored as a 32-bit value: 0x00000008.</description>
-    </item>
-    <item>
-      <title>504 Project</title>
-      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/500_qoi/504_project/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/500_qoi/504_project/</guid>
-      <description>The project within this course will have you designing an SOC that encodes sensor data to a QOI encoded image. As it would not be realistic to build the entire system, a number of compents will only be simulated:&#xA;APB_mem_model: this is model for the memory containing the instructions and data APB_print_model: this is model for the SD-card storage. For the sake of simplicity, it is assumed that all writes to 0x8000000 will automatically be handled.</description>
     </item>
     <item>
       <title>901 - Roger &amp; Chip</title>
