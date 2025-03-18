@@ -169,3 +169,24 @@ Multiple simultaneous interrupts destined for M-mode are handled in the followin
 priority order: MEI, MSI, MTI, SEI, SSI, STI, LCOFI.
 machine-level external, software, timer
 software-level external, software, timer -->
+
+## Informing the compiler
+
+As the firmware also includes Zicsr instructions now, the compiler has to be notified of this. In the Makefile, the flags for the compiler can do this trick. The parameter **arch** needs to be changed from **rv32i** to **rv32i_zicsr**.
+
+{{% multiHcolumn %}}
+{{% column %}}
+```Makefile
+...
+ARCHITECTURE = rv32i
+...
+```
+{{% /column %}}
+{{% column %}}
+```Makefile
+...
+ARCHITECTURE = rv32i_zicsr
+...
+```
+{{% /column %}}
+{{% /multiHcolumn %}}
