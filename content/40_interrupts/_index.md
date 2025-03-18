@@ -2,7 +2,6 @@
 title: '4 Interrupts'
 chapter: true
 weight: 40
-draft: true
 ---
 
 # Interrupts

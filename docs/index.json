@@ -126,6 +126,13 @@
 	"content": "Practice makes perfect Below are a number of programming exercises.\nExercise 301 Repeat the example of the 2x2 matrix multiplication on you own implementation.\nExercise 302 ASSIGNMENT Extend the implementation to (exclusively) support 3x3 matrices: 1) verify correct working, 2) find the latency, and 3) determine the cost (#LUT, #FF, imem-size)\nExample 3x3 matrix multiplication SW-only 3x3 matrix multiplication with M extension Relative # CC1 1887 285 15% T (ns) 25 36 144% fclk (MHz) 40 27.78 70% Latency (µs) 47.175 10.260 22% imem size (bytes) 2441 1908 78% # LUT 1553 3501 225% # FF 1156 1156 100% Througput (matrix mult/s) 1/47175e-9 = 21k mm/s 1/10260e-9 = 97k mm /s 462% 1 This counts real clock cycles. The 33% duty cycle induced by the chip enable is taken into account. The non-optimal usage of the processor is hence reflected in the outcome.\n"
 },
 {
+	"uri": "https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/",
+	"title": "4 Interrupts",
+	"tags": [],
+	"description": "",
+	"content": "Interrupts Image courtesy: Pexels - Pavel Danilyuk "
+},
+{
 	"uri": "https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/41_interrupt/",
 	"title": "4.1 - Interrupt",
 	"tags": [],

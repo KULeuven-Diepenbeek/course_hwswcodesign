@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>4 Interrupts on HW/SW codesign</title>
+    <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/</link>
+    <description>Recent content in 4 Interrupts on HW/SW codesign</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <managingEditor>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</managingEditor>
+    <webMaster>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</webMaster>
+    <atom:link href="https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>4.1 - Interrupt</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/41_interrupt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/41_interrupt/</guid>
+      <description>In the beginning of the processor-age, all software was bare metal. This means that the processor is simply executing instructions, directly on the hardware. In contrast to bare metal, most computers nowadays run an operating system. Nonetheless, many microcontrollers still run bare-metal-code. Everything that we have been doing, was bare metal, too.&#xA;Multiple tasks When working without an OS, it becomes more difficult to run multiple tasks. Let&amp;rsquo;s take the example of a UART, aka the serial port.</description>
+    </item>
+    <item>
+      <title>4.2 - Zicsr</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/42_zicsr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/42_zicsr/</guid>
+      <description>Instructions The RISC-V specifications describe how interrupts should be handled in RISC-V. This is covered (among other things) in an extension: Zicsr. RISC-V refers to an external asynchronous event that may cause a RISC-V core to execute an unexpected transfer of control as interrupt. Similarly, an unusual condition occurring at the run time (due to invalid instructions etc.) is referred to as exceptions. The term trap is used to collectively refer to interrupt or exception.</description>
+    </item>
+    <item>
+      <title>4.3 - Exercises</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/43_exercises/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/40_interrupts/43_exercises/</guid>
+      <description>Exercise 401 Try to get the Zicsr extenstion to work. You can start from this template. The exercise is to redo the blinking lights from the previous chapter, but then without the software wait and have the TCNT generate interrupts.&#xA;Exercise 402 Determine how much time it takes for handling a single interrupt.</description>
+    </item>
+  </channel>
+</rss>
