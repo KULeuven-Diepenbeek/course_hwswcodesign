@@ -136,32 +136,32 @@
       <description>Exercise 401 Try to get the Zicsr extenstion to work. You can start from this template. The exercise is to redo the blinking lights from the previous chapter, but then without the software wait and have the TCNT generate interrupts.&#xA;Exercise 402 Determine how much time it takes for handling a single interrupt.</description>
     </item>
     <item>
-      <title>51 Digital image</title>
+      <title>5.1 Digital image</title>
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/51_digital_image/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/51_digital_image/</guid>
       <description>Images are everywhere. When looking at digital images (as in: not for printing) every pixel of the image has pixelvalue. Typically, the light that is generated in a pixel is composed of red light, green light, and blue light, hence RGB. To make photos or movies, some device needs to capture the light. This is done in an image sensor. For the sake of completeness, it is mentioned that there two main types of sensors: CCD and CMOS.</description>
     </item>
     <item>
-      <title>52 Image formats</title>
+      <title>5.2 Image formats</title>
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/52_image_formats/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/52_image_formats/</guid>
       <description>In general, to store a file on a computer, some form for file format is required. Examples of fileformats are: .pdf, .docx, and .html. A file format defines an encoding protocol on how to store the data.&#xA;As just seen, storing images in full will require a lot of storage. Of course, there are file formats for images as well. The most well known image file formats (or image formats) are .</description>
     </item>
     <item>
-      <title>53 Example</title>
+      <title>5.3 Example</title>
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/53_example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/53_example/</guid>
       <description>Here, an example is shown to help you understand how QOI (encoding) works. The data from the 8-by-8 sensor looks like shown below.&#xA;Header The header is stictly defined:&#xA;The first for bytes are the letters &amp;lsquo;q&amp;rsquo;, &amp;lsquo;o&amp;rsquo;, &amp;lsquo;i&amp;rsquo;, and &amp;lsquo;f&amp;rsquo;. These letters have to be UTF-8 encoded first, which results in 0x716F6966. The width of the image is stored as a 32-bit value: 0x00000008. The height of the image is stored as a 32-bit value: 0x00000008.</description>
     </item>
     <item>
-      <title>54 Project</title>
+      <title>5.4 Project</title>
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/54_project/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
       <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/54_project/</guid>
-      <description>The project within this course will have you designing an SOC that encodes sensor data to a QOI encoded image. As it would not be realistic to build the entire system, a number of compents will only be simulated:&#xA;APB_mem_model: this is model for the memory containing the instructions and data APB_print_model: this is model for the SD-card storage. For the sake of simplicity, it is assumed that all writes to 0x8000000 will automatically be handled.</description>
+      <description>The project within this course will have you designing an HW/SW codesign that encodes sensor data to a QOI encoded image. The resulting design would look something like shown below.&#xA;Goals This project is to be achieved in two steps:&#xA;a software-only version, and a HW/SW codesign. This first version (SW-only) will set the reference. Additionally, this will help you in understanding the encoding scheme. The result of the first version will be a working implementation.</description>
     </item>
     <item>
       <title>101 - Processor</title>
