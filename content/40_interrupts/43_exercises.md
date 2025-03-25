@@ -1,6 +1,7 @@
 ---
 title: '4.3 - Exercises'
 weight: 43
+pre: "<i class='fas fa-pen'></i> "
 ---
 
 
