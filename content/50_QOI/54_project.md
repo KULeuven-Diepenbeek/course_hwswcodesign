@@ -1,7 +1,7 @@
 ---
-title: '54 Project'
+title: '5.4 Project'
 weight: 54
-draft: false
+pre: "<i class='fas fa-pen'></i> "
 ---
 
 The project within this course will have you designing an SOC that encodes sensor data to a QOI encoded image. As it would not be realistic to build the entire system, a number of compents will only be simulated: 

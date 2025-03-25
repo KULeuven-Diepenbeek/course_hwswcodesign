@@ -1,12 +1,12 @@
 ---
-title: '53 Example'
+title: '5.3 Example'
 weight: 53
-draft: false
+pre: "<i class='fas fa-book'></i> "
 ---
 
 Here, an example is shown to help you understand how QOI (encoding) works. The data from the 8-by-8 sensor looks like shown below.
 
-![Example image](/img/500/example.png)
+![Example image](/img/50/example.png)
 
 ## Header
 
@@ -198,6 +198,7 @@ The chunks becomes: b11 b000010 = b11000010 =<span style="font-weight: bold; bac
 **4)&nbsp;** Difference with previous pixel's green<br/>
 &nbsp; &nbsp; &nbsp;dg = 0x7F - 0x00 = 0x7F => &nbsp; *not defined*<br/>
 &nbsp; &nbsp; &nbsp;...
+
 **5)&nbsp;** RGB<br/>
 &nbsp; &nbsp; &nbsp;A_d and a are equal => b11111110 x7F x7F x7F<br/>
 This chunk is hence encoded as <span style="font-weight: bold; background-color: yellow"> 0xFE7F7F7F </span>.
@@ -286,8 +287,6 @@ The result of the QOI encoding of the image above hence is:
 This encoded result has a total size of **57 bytes**. If all the 64 pixels (8 by 8) would have to be stored in raw data, with an alpha channel, this would result in **256 bytes**. Without an alpha channel, this would result in **192 bytes** which is a reduction of **70%**!!
 
 If we assume that 1 image is to be recorded every 40 ms, this would result in 25 images per second. This is approximately the framerate of video. If the sensor would make **one image every 40 ms**, it also has to be encoded on that speed. In the simulation, as shown below, the encoding of a single image roughly takes 190000 ns. If we *<u>extrapolate</u>* this result, we get: 190000 ns / 64 pixels = 2.97 µs per pixel, and thus a **480p** image would take 640\*480\*3 µs = 307200*3 µs = 912384 µs = **912.4 ms**.
-
-![Image of simulation](/img/500/simulation.png)
 
 **... and this is an extrapolation!!**
 

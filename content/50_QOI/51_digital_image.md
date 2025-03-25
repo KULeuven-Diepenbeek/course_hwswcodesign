@@ -1,7 +1,7 @@
 ---
-title: '51 Digital image'
+title: '5.1 Digital image'
 weight: 51
-draft: false
+pre: "<i class='fas fa-book'></i> "
 ---
 
 Images are everywhere. When looking at digital images (as in: not for printing) every pixel of the image has pixelvalue. Typically, the light that is generated in a pixel is composed of <span style="color: red">red</span> light, <span style="color: green">green</span> light, and <span style="color: blue">blue</span> light, hence **RGB**. To make photos or movies, some device needs to *capture* the light. This is done in an image sensor. For the sake of completeness, it is mentioned that there two main types of sensors: CCD and CMOS.
@@ -26,7 +26,7 @@ It is not hard to see that the larger the resolution, the more bytes are require
 {{% /column %}}
 
 {{% column %}}
-![pixelated circle](/img/500/circle.png)
+![pixelated circle](/img/50/circle.png)
 {{% /column %}}
 {{% /multiHcolumn %}}
 
@@ -56,7 +56,7 @@ The images above serve to illustrate the concept of pixels and resolutions. Of c
 {{% /column %}}
 
 {{% column %}}
-![Resolutoins](/img/500/resolutions.png)
+![Resolutoins](/img/50/resolutions.png)
 {{% /column %}}
 {{% /multiHcolumn %}}
 

@@ -2,7 +2,6 @@
 title: '5 QOI'
 chapter: true
 weight: 50
-draft: true
 ---
 
 # Quite OK Image (QOI)
