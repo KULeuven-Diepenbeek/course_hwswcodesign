@@ -12,22 +12,22 @@
     <title>5.4 Project :: HW/SW codesign</title>
 
     
-    <link href="../../css/nucleus.css?1742892177" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1742892177" rel="stylesheet">
-    <link href="../../css/hybrid.css?1742892177" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1742892177" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1742892177" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1742892177" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1742892177" rel="stylesheet">
-    <link href="../../css/theme.css?1742892177" rel="stylesheet">
-    <link href="../../css/tabs.css?1742892177" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1742892177" rel="stylesheet">
+    <link href="../../css/nucleus.css?1742893047" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1742893047" rel="stylesheet">
+    <link href="../../css/hybrid.css?1742893047" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1742893047" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1742893047" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1742893047" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1742893047" rel="stylesheet">
+    <link href="../../css/theme.css?1742893047" rel="stylesheet">
+    <link href="../../css/tabs.css?1742893047" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1742893047" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1742892177" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1742893047" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1742892177"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1742893047"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -66,14 +66,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1742892177"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1742892177"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1742893047"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1742893047"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/course_hwswcodesign\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1742892177"></script>
+<script type="text/javascript" src="../../js/search.js?1742893047"></script>
 
     
   </div>
@@ -796,6 +796,7 @@
   <ul>
     <li><a href="#goals">Goals</a></li>
     <li><a href="#deadlines-ay2024-2025">Deadlines AY2024-2025</a></li>
+    <li><a href="#template">Template</a></li>
   </ul>
 </nav>
     </div>
@@ -850,7 +851,80 @@
 <li><u>May 6th:</u> work on HW/SW codesign</li>
 <li><u>May 13th:</u> <strong>Presentations</strong></li>
 </ul>
-
+<h2 id="template">Template</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdint.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define C_WIDTH 8
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define C_HEIGHT 8
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initialise</span>(<span style="color:#66d9ef">uint8_t</span> r[C_WIDTH][C_HEIGHT], <span style="color:#66d9ef">uint8_t</span> g[C_WIDTH][C_HEIGHT], <span style="color:#66d9ef">uint8_t</span> b[C_WIDTH][C_HEIGHT], <span style="color:#66d9ef">uint8_t</span> a[C_WIDTH][C_HEIGHT]) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> w, h;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(h<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;h<span style="color:#f92672">&lt;</span>C_HEIGHT<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;h<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(w<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;w<span style="color:#f92672">&lt;</span>C_WIDTH<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;w<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            r[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>; g[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; b[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; a[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(w<span style="color:#f92672">=</span>C_WIDTH<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;w<span style="color:#f92672">&lt;</span>C_WIDTH;w<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            r[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; g[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>; b[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; a[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(h<span style="color:#f92672">=</span>C_HEIGHT<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;h<span style="color:#f92672">&lt;</span>C_HEIGHT;h<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(w<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;w<span style="color:#f92672">&lt;</span>C_WIDTH<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;w<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            r[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; g[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; b[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>; a[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(w<span style="color:#f92672">=</span>C_WIDTH<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;w<span style="color:#f92672">&lt;</span>C_WIDTH;w<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            r[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">127</span>; g[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">127</span>; b[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">127</span>; a[h][w] <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> r[C_HEIGHT][C_WIDTH];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> g[C_HEIGHT][C_WIDTH];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> b[C_HEIGHT][C_WIDTH];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> a[C_HEIGHT][C_WIDTH];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> r_prev <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> g_prev <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> b_prev <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> a_prev <span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> dr, dg, db;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int8_t</span> rle <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint32_t</span> running_array[<span style="color:#ae81ff">64</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> rv;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> index;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint32_t</span> value;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* Sanity check */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>((C_WIDTH <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">||</span> (C_HEIGHT <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;ERROR: W or H not even&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* Initialisation */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">initialise</span>(r, g, b, a);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">uint8_t</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">64</span>;i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        running_array[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* Loop over pixels */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">uint8_t</span> h<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;h<span style="color:#f92672">&lt;</span>C_HEIGHT;h<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">uint8_t</span> w<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;w<span style="color:#f92672">&lt;</span>C_WIDTH;w<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">/* Do something useful here */</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 <footer class="footline">
 	
@@ -1344,19 +1418,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1742892177"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1742892177"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1742892177"></script>
-    <script src="../../js/jquery.sticky.js?1742892177"></script>
-    <script src="../../js/featherlight.min.js?1742892177"></script>
-    <script src="../../js/highlight.pack.js?1742892177"></script>
+    <script src="../../js/clipboard.min.js?1742893047"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1742893047"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1742893047"></script>
+    <script src="../../js/jquery.sticky.js?1742893047"></script>
+    <script src="../../js/featherlight.min.js?1742893047"></script>
+    <script src="../../js/highlight.pack.js?1742893047"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1742892177"></script>
-    <script src="../../js/learn.js?1742892177"></script>
-    <script src="../../js/hugo-learn.js?1742892177"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1742893047"></script>
+    <script src="../../js/learn.js?1742893047"></script>
+    <script src="../../js/hugo-learn.js?1742893047"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1742892177"></script>
+            <script src="../../mermaid/mermaid.js?1742893047"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
