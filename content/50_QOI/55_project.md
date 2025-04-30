@@ -16,7 +16,7 @@ To obtain the resource usage of a design, an implementation has to be done. The 
 
 This can be done through this change, in the syntheses settings:
 
-> -mode out-of-context
+> -mode out_of_context
 
 {{% multiHcolumn %}}
 {{% column %}}
