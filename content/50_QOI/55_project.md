@@ -26,3 +26,5 @@ This can be done through this change, in the syntheses settings:
 ![OOC2](/img/500/OOC_2.png)
 {{% /column %}}
 {{% /multiHcolumn %}}
+
+To be able to finish implementation, an update to clock_and_reset_pynq.vhd is required. This new file can be found <a href="/src/50/clock_and_reset_pynq.vhd" download>here</a>.
