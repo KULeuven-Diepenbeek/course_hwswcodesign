@@ -9,7 +9,7 @@
 
     <link rel="icon" href="../../images/favicon.png" type="image/png">
 
-    <title>303 - System on Chip (SoC) :: HW/SW codesign</title>
+    <title>5.5 Optimalisations :: HW/SW codesign</title>
 
     
     <link href="../../css/nucleus.css?1745997597" rel="stylesheet">
@@ -45,7 +45,7 @@
 
 <script src=../../js/exercises.js></script> 
   </head>
-  <body class="" data-url="../../300_soc/303_soc/">
+  <body class="" data-url="../../50_qoi/55_project/">
     <nav id="sidebar" class="">
 
 
@@ -607,7 +607,7 @@
   
     
     <li data-nav-id="/50_qoi/" title="5 QOI" class="dd-item
-        
+        parent
         
         
         ">
@@ -717,7 +717,7 @@
  
   
     
-      <li data-nav-id="/50_qoi/55_project/" title="5.5 Optimalisations" class="dd-item ">
+      <li data-nav-id="/50_qoi/55_project/" title="5.5 Optimalisations" class="dd-item active">
         <a href="../../50_qoi/55_project/">
         <i class='fas fa-pen'></i> 5.5 Optimalisations
         
@@ -800,7 +800,7 @@
             
           
           
-            <a href='../../'>HWSW codesign</a> > <a href=''>3  System on Chip</a> > 303 - System on Chip (SoC)
+            <a href='../../'>HWSW codesign</a> > <a href='../../50_qoi/'>5 QOI</a> > 5.5 Optimalisations
           
         
           
@@ -813,11 +813,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#memory-map">Memory map</a></li>
-  </ul>
-</nav>
+<nav id="TableOfContents"></nav>
     </div>
 </div>
 
@@ -833,54 +829,20 @@
           
             <h1>
               
-              303 - System on Chip (SoC)
+              5.5 Optimalisations
             </h1>
           
 
         
 
 
-<p>A system on a chip or <strong>SoC</strong> stands in contrast to the traditional PC or laptop which are organised around a motherboard. In the third Bachelor of this program an entire course was spent on this topic: System-on-Chip design and experimentation. If you need a refresher, please head over to <a href="https://kuleuven-diepenbeek.github.io/course_soc-lab/ch4_esw/1_driver/#installing-some-defines" target="_blank">the website</a>.</p>
-<p>The figure below shows an example of a SoC that we can build with what was seen before. At the hearth of the system is the RISC-V processor (<strong>picorv32i</strong>). The bus system that connects all the components together is an <strong>APB bus</strong>. Critical readers might point out the <em>native</em> memory interface of the picorv32i does not fit the APB-bus. A custom adapter is made to make this connection feasible (<strong>APB adapter</strong>). As you might have already spotted, the picorv32i already comes with two other adapters: 1 for connecting to an AXI bus, and 1 for converting to a wishbone interface.</p>
-<p><img src="../../img/300/soc.png" alt="soc"></p>
-<p>The <strong>APB memory</strong> and the <strong>APB print</strong> components were already discussed. It is pointed out once more that both these components are actually <em>models</em>. The HDL code of these components is <strong>non-synthesisable</strong>, meaning: it&rsquo;s valid HDL code, but it cannot be converted into hardware.</p>
-<p>Finally, the <strong>APB counter</strong> component was discussed in the previous page, and the <strong>APB dummy</strong> is simply a placeholder for any other core.</p>
-<h2 id="memory-map">Memory map</h2>
-<p>One question that is not solved yet is how <strong>memory mapped IO (MMIO)</strong> is configured. To make live a bit easier (<em>it&rsquo;s already too complicated anyway</em> &#x1f609;) the configuration is done in the package: <strong>PKG_hwswcodesign</strong>.</p>
-<div class="multiHcolumn">
-<div class="column" style="flex-basis: 45%">
-<div class="code_caption">
-    PKG_hwswcodesign.vhd
-</div>    
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vhd" data-lang="vhd"><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constant</span> C_BASE_ADDRESS_0 <span style="color:#f92672">:</span> <span style="color:#66d9ef">STD_LOGIC_VECTOR</span>(C_DATA_WIDTH<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">:=</span> <span style="color:#ae81ff">x&#34;00000000&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constant</span> C_HIGH_ADDRESS_0 <span style="color:#f92672">:</span> <span style="color:#66d9ef">STD_LOGIC_VECTOR</span>(C_DATA_WIDTH<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">:=</span> <span style="color:#ae81ff">x&#34;00003FFF&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constant</span> C_BASE_ADDRESS_1 <span style="color:#f92672">:</span> <span style="color:#66d9ef">STD_LOGIC_VECTOR</span>(C_DATA_WIDTH<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">:=</span> <span style="color:#ae81ff">x&#34;80000000&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constant</span> C_HIGH_ADDRESS_1 <span style="color:#f92672">:</span> <span style="color:#66d9ef">STD_LOGIC_VECTOR</span>(C_DATA_WIDTH<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">:=</span> <span style="color:#ae81ff">x&#34;80000004&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constant</span> C_BASE_ADDRESS_2 <span style="color:#f92672">:</span> <span style="color:#66d9ef">STD_LOGIC_VECTOR</span>(C_DATA_WIDTH<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">:=</span> <span style="color:#ae81ff">x&#34;81000000&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constant</span> C_HIGH_ADDRESS_2 <span style="color:#f92672">:</span> <span style="color:#66d9ef">STD_LOGIC_VECTOR</span>(C_DATA_WIDTH<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">:=</span> <span style="color:#ae81ff">x&#34;81000FFF&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constant</span> C_BASE_ADDRESS_3 <span style="color:#f92672">:</span> <span style="color:#66d9ef">STD_LOGIC_VECTOR</span>(C_DATA_WIDTH<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">:=</span> <span style="color:#ae81ff">x&#34;81100000&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constant</span> C_HIGH_ADDRESS_3 <span style="color:#f92672">:</span> <span style="color:#66d9ef">STD_LOGIC_VECTOR</span>(C_DATA_WIDTH<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">downto</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">:=</span> <span style="color:#ae81ff">x&#34;81100FFF&#34;</span>;
-</span></span><span style="display:flex;"><span>...</span></span></code></pre></div>
-</div>
-<div class="column">
-<div class="code_caption">
-    firmware.lds
-</div>    
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-s" data-lang="s"><span style="display:flex;"><span>SECTIONS {
-</span></span><span style="display:flex;"><span>	.memory <span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>		. <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x000000</span>;
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">*</span>(.init);
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">*</span>(.text);
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>);
-</span></span><span style="display:flex;"><span>		. <span style="color:#f92672">=</span> <span style="color:#a6e22e">ALIGN</span>(<span style="color:#ae81ff">4</span>);
-</span></span><span style="display:flex;"><span>		end <span style="color:#f92672">=</span> .;
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
-</div>
-</div>
-<p>These constants set both the base address and the high address of the four components. Which values you choose here, is completely up to you. One traditional technique is to have the memory start at 0x0. This is also reflected in the linker-script (<strong>firmware.lds</strong>).</p>
-<p>Every component gets its base address (BA) and high address (HA) configured through <em>generics</em> (or <em>parameters</em> for you .v people). The component can/could/should/may/&hellip; check these limits to see whether or not communication is intended for them. The APB bus also checks this to determine if the component needs to be talked to or not. Don&rsquo;t forget to make the correct modification on <strong>ALL</strong> (package, component, and APB-bus) locations if you want to modify the memory map.</p>
+<p>The software-only implementation that has been made will serve as <em>a reference</em>. In the second phase of the project, this implementation should be improved, using HW/SW codesign techniques. Whichever technique you want to use is fine.</p>
+<p>The goal is boost the <strong>throughput</strong>. A human eye needs between 20 and 30 frames to perceive succesive images as video. However, for many people it is possible to perceive up to 200 frames per second.</p>
+<ul>
+<li>calculate the encoding speed of your reference implementation. Note that you need to find the maximum clock frequency that your implementation can handle;</li>
+<li>pull out some tricks to <strong>improve the througput</strong>, with the <strong>constraint</strong> that the overal resource usage can not be more than double;</li>
+<li>make a detailed comparison between the reference implementation and the optimalisation.</li>
+</ul>
 
 
 <footer class="footline">
@@ -1273,6 +1235,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1285,6 +1248,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1349,6 +1315,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -1373,8 +1340,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="../../50_qoi/54_project/" title="5.4 Project"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="../../10_compiling/" title="1 Setting the playing field" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="../../50_qoi/51_digital_image/" title="5.1 Digital image" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

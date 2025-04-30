@@ -164,6 +164,13 @@
       <description>The project within this course will have you designing an HW/SW codesign that encodes sensor data to a QOI encoded image. The resulting design would look something like shown below.&#xA;Goals This project is to be achieved in two steps:&#xA;a software-only version, and a HW/SW codesign. This first version (SW-only) will set the reference. Additionally, this will help you in understanding the encoding scheme. The result of the first version will be a working implementation.</description>
     </item>
     <item>
+      <title>5.5 Optimalisations</title>
+      <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/55_project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/50_qoi/55_project/</guid>
+      <description>The software-only implementation that has been made will serve as a reference. In the second phase of the project, this implementation should be improved, using HW/SW codesign techniques. Whichever technique you want to use is fine.&#xA;The goal is boost the throughput. A human eye needs between 20 and 30 frames to perceive succesive images as video. However, for many people it is possible to perceive up to 200 frames per second.</description>
+    </item>
+    <item>
       <title>101 - Processor</title>
       <link>https://kuleuven-diepenbeek.github.io/course_hwswcodesign/100_processor/101_processor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Jo Vliegen)</author>
