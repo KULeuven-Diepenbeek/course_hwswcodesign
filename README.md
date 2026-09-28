@@ -1,5 +1,7 @@
 # Course: HW/SW codesign
 
+Link to the course: [https://kuleuven-diepenbeek.github.io/course_hwswcodesign/](https://kuleuven-diepenbeek.github.io/course_hwswcodesign/)
+
 ## Log
 
 * **[December 6, 2024]**: To have this course fit better after COMAR, it underwent major revision.
